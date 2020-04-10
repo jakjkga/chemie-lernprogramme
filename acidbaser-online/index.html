@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Acidbaser - online</title>
+    <meta name="description" content="Der Acidbaser generiert einfache Säure-Base-Reaktionsgleichungen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Säure-Base-Reaktion, Protonenübertragung, Protonenübergang, Brönsted-Säure, Korrespondierendes Säure-Base-Paar" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_b1">Teilchenname&nbsp;der&nbsp;<span class="b">Base&nbsp;1</span></label>:
+        </td>
+        <td>
+          <input id="i_b1" type="text" class="b" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_s2">Teilchenname&nbsp;der&nbsp;<span class="s">Säure&nbsp;2</span></label>:
+        </td>
+        <td>
+          <input id="i_s2" type="text" class="s" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <input type="button" value="Reaktionsgleichung ermitteln" onclick="ermittle()" />
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          Summenformelgleichung:
+        </td>
+        <td>
+          <input id="i_b1_sf" type="text" size="10" class="b sf" readonly="true" />
+        </td>
+        <td>
+          +
+        </td>
+        <td>
+          <input id="i_s2_sf" type="text" size="10" class="s sf" readonly="true" />
+        </td>
+        <td>
+          ⇌
+        </td>
+        <td>
+          <input id="i_s1_sf" type="text" size="10" class="s sf" readonly="true" />
+        </td>
+        <td>
+          +
+        </td>
+        <td>
+          <input id="i_b2_sf" type="text" size="10" class="b sf" readonly="true" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Teilchennamen&nbsp;der&nbsp;Endstoffe:
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <input id="i_s1_tn" type="text" size="15" class="s" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <input id="i_b2_tn" type="text" size="15" class="b" readonly="true" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Korrespondierende Säure/Base-Paare:
+        </td>
+        <td class="zentriert">
+          <span  class="b">Base 1</span>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span  class="s">Säure 2</span>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span  class="s">Säure 1</span>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span  class="b">Base 2</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Jeweilige&nbsp;Säure-&nbsp;bzw.&nbsp;Basenstärke:
+        </td>
+        <td class="zentriert">
+          <input id="i_b1_st" type="text" size="10" class="b" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_s2_st" type="text" size="10" class="s" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_s1_st" type="text" size="10" class="s" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_b2_st" type="text" size="10" class="b" readonly="true" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Summe der pK<sub>S</sub>&nbsp;und&nbsp;pK<sub>B</sub>-<a href="http://chemie-lernprogramme.de/daten/html/tabellen.html#protonendruckreihe" target="_blank">Werte</a>:
+        </td>
+        <td colspan="3" class="zentriert">
+          <input id="i_pk_ed" type="text" size="20" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td colspan="3" class="zentriert">
+          <input id="i_pk_prod" type="text" size="20" readonly="true" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

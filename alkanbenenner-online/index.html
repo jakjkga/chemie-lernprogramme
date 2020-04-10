@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Alkanbenenner - online</title>
+    <meta name="description" content="Der Alkanbenenner zeigt für eine Auswahl von Alkanen den Namen mit der jeweiligen Raumstruktur, der C-Kette, dem Siedepunkt sowie die Zahl der Gerüstisomere an." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Alkane, homologe Reihe, kettenförmige Alkane, verzweigte Alkane, Gerüstisomere, Methygruppe, Ethylgruppe" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript" src="daten/jsmol/JSmol.min.js"></script>
+    <script type="text/javascript">
+      var Info = {
+          addSelectionOptions: false,
+          color: '#ffffff',
+          debug: false,
+          j2sPath: 'daten/jsmol/j2s',               // nur HTML5
+          readyFunction: null,
+          script: null,
+          serverURL: 'daten/jsmol/jsmol.php',      // Für Bildexport
+          use:'HTML5',                             // nur HTML5
+          width: 400,
+          height: 400,
+          disableInitialConsole: true,
+          disableJ2SLoadMonitor: true,
+          allowJavaScript: true
+      };
+      $(document).ready(function(){
+          Jmol.loadFile(mein_applet1, 'daten/jsmol/strukturen/pdb/Methan.mol.pdb');
+      });
+      /*  for i in *.mol ; do echo $i; babel -i mol "$i"  --gen3D -h -o pdb "${i}.pdb"; done */
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_verb">kettenförmiges&nbsp;Alkan</label>:
+        </td>
+        <td>
+          <select id="s_verb" onchange="auswahl_alkan()">
+            <optgroup label="unverzweigt">
+              <option value="">Methan</option>
+              <option value="">Ethan</option>
+              <option value="">Propan</option>
+              <option value="">Butan</option>
+              <option value="">Pentan</option>
+              <option value="">Hexan</option>
+              <option value="">Heptan</option>
+              <option value="">Octan</option>
+              <option value="">Nonan</option>
+              <option value="">Decan</option>
+              <option value="">Undecan</option>
+              <option value="">Dodecan</option>
+            </optgroup>
+            <optgroup  label="verzweigte C3-Kette">
+              <option value="">2-Methylpropan</option>
+              <option value="">2,2-Dimethylpropan</option>
+            </optgroup>
+            <optgroup  label="verzweigte C4-Kette">
+              <option value="">2-Methylbutan</option>
+              <option value="">2,2-Dimethylbutan</option>
+              <option value="">2,3-Dimethylbutan</option>
+              <option value="">2,2,3-Trimethylbutan</option>
+              <option value="">2,2,3,3-Tetramethylbutan</option>
+            </optgroup>
+            <optgroup  label="verzweigte C5-Kette">
+              <option value="">2-Methylpentan</option>
+              <option value="">3-Methylpentan</option>
+              <option value="">2,2-Dimethylpentan</option>
+              <option value="">2,3-Dimethylpentan</option>
+              <option value="">3,3-Dimethylpentan</option>
+              <option value="">2,4-Dimethylpentan</option>
+              <option value="">2,2,3-Trimethylpentan</option>
+              <option value="">2,3,3-Trimethylpentan</option>
+              <option value="">2,2,4-Trimethylpentan</option>
+              <option value="">2,3,4-Trimethylpentan</option>
+              <option value="">2,2,4,4-Tetramethylpentan</option>
+              <option value="">2,2,3,4-Tetramethylpentan</option>
+              <option value="">2,3,3,4-Tetramethylpentan</option>
+              <option value="">2,2,3,3-Tetramethylpentan</option>
+              <option value="">3-Ethylpentan</option>
+              <option value="">3,3-Diethylpentan</option>
+              <option value="">3-Ethyl-3-methylpentan</option>
+              <option value="">3-Ethyl-2-methylpentan</option>
+              <option value="">3-Ethyl-2,3-dimethylpentan</option>
+              <option value="">3-Ethyl-2,2-dimethylpentan</option>
+              <option value="">3-Ethyl-2,2,3-trimethylpentan</option>
+              <option value="">3-Ethyl-2,2,4-trimethylpentan</option>
+              <option value="">3-Ethyl-2,2,3,4-tetramethylpentan</option>
+              <option value="">3-Ethyl-2,2,4,4-tetramethylpentan</option>
+              <option value="">3,3-Diethyl-2-methylpentan</option>
+              <option value="">3,3-Diethyl-2,2-dimethylpentan</option>
+              <option value="">3,3-Diethyl-2,4-dimethylpentan</option>
+              <option value="">3,3-Diethyl-2,2,4-trimethylpentan</option>
+              <option value="">3,3-Diethyl-2,2,4,4-tetramethylpentan</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_sf">Summenformel</label>:
+        </td>
+        <td>
+          <input id="i_sf" type="text" size="8" readonly class="nach_rechts" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_sdp">Siedepunkt</label>:
+        </td>
+        <td>
+          <input id="i_sdp" type="text" size="8" readonly class="nach_rechts" />°C
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_geruestisom">Anzahl&nbsp;Gerüstisomere</label>:
+        </td>
+        <td>
+          <input id="i_geruestisom" type="text" size="8" readonly class="nach_rechts" />
+        </td>
+      </tr>
+    </table>
+    <p>
+      <script type="text/javascript">
+        Jmol.getApplet('mein_applet1', Info);
+        Jmol.jmolBr();
+        Jmol.jmolCheckbox('mein_applet1', 'set showhydrogens on', 'set showhydrogens off', 'Wasserstoffatome an/aus', 'checked');
+        Jmol.jmolBr();
+      </script>
+    </p>
+  </body>
+</html>

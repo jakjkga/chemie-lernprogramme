@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gleichgewichtdrücker - online</title>
+    <meta name="description" content="Der Gleichgewichtdrücker veranschaulicht die Druckabhängigkeit der Lage des chemischen Gleichgewichts." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Chemisches Gleichgewicht, Druckabhängigkeit" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="zentriert" style="width:180px;">
+          Farbe eines Kolbenprobers <br>
+          mit <span class="no2">NO₂</span>/N₂O₄-Gemisch:
+        </td>
+        <td class="nach_unten zentriert">
+          Vergrößerte Teilchendarstellung:
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <img id="img_abb" src="daten/img/dummy.png" width="640" height="480" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table id="innere_tabelle1">
+            <tr>
+              <td class="nach_rechts">
+                <label for="r_druck">Druck</label>:
+              </td>
+              <td colspan="3">
+                <input type="range" id="r_druck" min="0" max="4" step="1" value="3" style="width:600px;" onchange="setze_druck();"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;
+              </td>
+              <td class="nach_links" style="width:190px;padding-left:20px;">
+                niedrig
+              </td>
+              <td class="zentriert" style="width:190px;">
+                mittel
+              </td>
+              <td class="nach_rechts" style="width:190px;padding-right:20px;">
+                hoch
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Volumen...
+              </td>
+              <td class="nach_links" style="width:190px;padding-left:20px;">
+                ...Vergrößerung
+              </td>
+              <td class="zentriert" style="width:190px;">
+                &nbsp;
+              </td>
+              <td class="nach_rechts" style="width:190px;padding-right:20px;">
+                ...Verkleinerung
+              </td>
+            </td>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <table id="innere_tabelle2">
+            <tr>
+              <td class="nach_rechts">
+                <label for="i_massprozent_no2">Anteil&nbsp;<span class="no2">NO₂</span>&nbsp;(in&nbsp;Massen-%)</label>:
+              </td>
+              <td>
+                <input type="text" id="i_massenprozent_no2" size="3" class="nach_rechts" readonly />
+              </td>
+              <td class="nach_rechts">
+                <label for="i_teilchenanteil_no2">Teilchenanteil&nbsp;<span class="no2">NO₂</span></label>:
+              </td>
+              <td>
+                <input type="text" id="i_teilchenanteil_no2" size="3" class="nach_rechts" readonly />
+              </td>
+            </tr>
+            <tr>
+              <td class="nach_rechts">
+                <label for="i_massprozent_n2o4">Anteil&nbsp;N₂O₄&nbsp;(in&nbsp;Massen-%)</label>:
+              </td>
+              <td>
+                <input type="text" id="i_massenprozent_n2o4" size="3" class="nach_rechts" readonly />
+              </td>
+              <td class="nach_rechts">
+                <label for="i_teilchenanteil_n2o4">Teilchenanteil&nbsp;N₂O₄</label>:
+              </td>
+              <td>
+                <input type="text" id="i_teilchenanteil_n2o4" size="3" class="nach_rechts" readonly />
+              </td>
+            </tr>
+            <tr>
+              <td class="nach_rechts">
+                &nbsp;
+              </td>
+              <td>
+                &nbsp;
+              </td>
+              <td class="nach_rechts">
+                <label for="i_teilchenanteil_n2o4">Benötigte&nbsp;Raumteile</label>:
+              </td>
+              <td>
+                <input type="text" id="i_raumteile" size="3" class="nach_rechts" readonly />
+              </td>
+            </tr>
+          </table>
+      </tr>
+    </table>
+  </body>
+</html>

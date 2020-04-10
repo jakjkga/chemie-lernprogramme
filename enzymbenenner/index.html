@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Enzymbenenner</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="daten/css/style.css" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <script type="text/javascript" src="daten/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            lade_seite();
+        });
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td id="beschriftung">
+          <label for="enzymauswahl" 
+                 title="wähle hier ein Enzym aus">Enzymauswahl:</label>
+        </td>
+        <td>
+          <select id="enzymauswahl" 
+                  onchange="waehle_enzym(this.value);" 
+                  title="wähle hier ein Enzym aus">
+            <option value="enzym">&nbsp;</option>
+            <optgroup label="1 Oxidoreduktasen" class="groueb"></optgroup>
+            <optgroup label="&nbsp;1.1 Oxidasen" class="kleueb">
+              <option value="ethanaloxidase" class="eintrag">Ethanaloxidase</option>
+              <option value="glucoseoxidase" class="eintrag">Glucoseoxidase</option>
+              <option value="ethanoldehydrogenase" class="eintrag">Ethanoldehydrogenase (ADH)</option>
+              <option value="homogentisatdioxygenase" class="eintrag">Homogentisatdioxygenase (HGD)</option>
+            </optgroup>
+            <optgroup label="&nbsp;1.2 Reduktasen" class="kleueb">  
+              <option value="ethanalreduktase" class="eintrag">Ethanalreduktase</option>
+            </optgroup>
+            <optgroup label="2 Transferasen" class="groueb">
+              <option value="glucokinase" class="eintrag">Glucokinase</option>
+            </optgroup>
+            <optgroup label="3 Hydrolasen" class="groueb"></optgroup> 
+            <optgroup label="&nbsp;3.1 Esterasen" class="kleueb">
+              <option value="lipase" class="eintrag">Lipase</option>
+              <option value="cholinesterase" class="eintrag">Cholinesterase</option>
+              <option value="dnanuklease" class="eintrag">DNA-Nuklease</option>
+            </optgroup>
+            <optgroup label="&nbsp;3.2 Glycosidasen" class="kleueb">
+              <option value="amylase" class="eintrag">Amylase</option>
+              <option value="lactase" class="eintrag">Lactase</option>
+            </optgroup>
+            <optgroup label="&nbsp;3.3 Peptidasen" class="kleueb">
+              <option value="pepsin" class="eintrag">Pepsin</option>
+              <option value="urease" class="eintrag">Urease</option>
+            </optgroup>
+            <optgroup label="4 Lyasen" class="groueb">
+              <option value="rubisco" class="eintrag">Ribulose-1,5-biphosphatcarboxylase (Rubisco)</option>
+              <option value="pyruvatdecarboxylase" class="eintrag">Pyruvatdecarboxylase</option>
+            </optgroup>
+            <optgroup label="5 Isomerasen" class="groueb">
+              <option value="glucoseisomerase" class="eintrag">Glucoseisomerase</option>
+              <option value="retinalisomerase" class="eintrag">Retinalisomerase</option>
+            </optgroup>
+            <optgroup label="6 Ligasen" class="groueb">
+              <option value="dnaligase" class="eintrag">DNA-Ligase</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+        <td colspan="2">
+          <div id="namensbereich">
+            <span id="name_des_substrats" title="Name des Substrats">&nbsp;</span>
+            <span id="wirkungsweise_des_enzyms" title="Wirkungsweise (falls keine Hydrolyse vorliegt)">&nbsp;</span>
+            <span id="endung_ase" title="Endung -ase">&nbsp;</span><br>
+            <span id="platz_fuer_wplink">&nbsp;</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" title="Allgemeiner Typ">
+          <div id="allgemeiner_typ">&nbsp;</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" title="Beispiel(e)">
+          <div id="beispiele">&nbsp;</div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

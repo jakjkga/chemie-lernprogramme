@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tensider online</title>
+    <meta name="description" content="Lernprogramm zu Waschmitteln und Tensiden - online-Version" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Tensid, anionisches Tensid, kationisches Tensid, Waschmittelwirkung" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap http://getbootstrap.com/getting-started/ -->
+    <link href="daten/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="daten/css/styles.css" rel="stylesheet" />
+    <style type="text/css">
+      /* body { padding-top: 70px; } */
+    </style>
+    <!-- Google-Analytics -->
+      <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <!-- ANFANG Werkzeugleiste -->
+    <nav class="navbar navbar-default" role="navigation"><!-- navbar-inverse  navbar-fixed-top -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <p class="navbar-text">&nbsp;</p> -->
+      </div>
+      
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <!-- ANFANG Menüpunkt -->
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Struktur</a>
+            <ul class="dropdown-menu" id="menuepunkt1">
+              <li><a href="#" id="s11" onclick="tuwas(this.id);">Amphiphiler Bau und Zeichenerklärung</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- ENDE Menüpunkt -->
+        <!-- ANFANG Menüpunkt -->
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Grenzflächenaktivität</a>
+            <ul class="dropdown-menu" id="menuepunkt2">
+              <li><a href="#" id="s21" onclick="tuwas(this.id);">Verringerung der Oberflächenspannung</a></li>
+              <li><a href="#" id="s22" onclick="tuwas(this.id);">Schaumbildung</a></li>
+              <li><a href="#" id="s23" onclick="tuwas(this.id);">Verbesserung der Benetzbarkeit</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- ENDE Menüpunkt -->
+        <!-- ANFANG Menüpunkt -->
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phasengemische</a>
+            <ul class="dropdown-menu" id="menuepunkt2">
+              <li><a href="#" id="s31" onclick="tuwas(this.id);">Bildung von Micellen</a></li>
+              <li><a href="#" id="s32" onclick="tuwas(this.id);">Aufbau der Zellmembran</a></li>
+              <li><a href="#" id="s33" onclick="tuwas(this.id);">Öl in Wasser Emulsion</a></li>
+              <li><a href="#" id="s34" onclick="tuwas(this.id);">Wasser in Öl Emulsion</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- ENDE Menüpunkt -->
+        <!-- ANFANG Menüpunkt -->
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Waschwirkung</a>
+            <ul class="dropdown-menu" id="menuepunkt2">
+              <li><a href="#" id="s41" onclick="tuwas(this.id);">Fettschmutz an unpolarer Faser</a></li>
+              <li><a href="#" id="s42" onclick="tuwas(this.id);">Fettschmutz an polarer Faser</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li ><a href="http://chemie-lernprogramme.de/daten/html/tensider.html" title="Homepage mit Übungsaufgaben zu diesem Lernprogramm" target="_blank">Tensider</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- ENDE Werkzeugleiste -->
+    <!-- ANFANG Seiteninhalt -->
+    <div class="container">   
+      <iframe id="anzeigerahmen" src="daten/html/s0.html"></iframe>
+      
+      
+
+    </div>
+    <!-- ENDE Seiteninhalt -->
+    <script src="daten/js/jquery.min.js"></script>
+    <script src="daten/js/bootstrap.min.js"></script>
+    <script src="daten/js/scripts.js"></script>
+  </body>
+</html>

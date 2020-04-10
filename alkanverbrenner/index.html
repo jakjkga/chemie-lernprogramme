@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Alkanverbrenner</title>
+    <meta name="description" content="Die Verbrennung von Alkanen ist eine wichtige Grundreaktion im Chemieanfangsunterricht und in der organischen Chemie. Das Ausgleichen der Koeffizienten bereit aber vielen Schülern Schwierigkeiten. Dieses Lernprogramm erklärt schrittweise zwei geeignete Methoden zum Ausgleichen solcher Reaktionsgleichungen.">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Alkan, Kohlenwasserstoffe, Verbrennung, Oxidation, Reaktionsgleichung, Koeffizienten ermitteln">
+    <link rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAChYgkAoWMJAKFkCwCiZQwApGcRAKRoEQCkaBIApGkTAKVpEwCmahUAp2wYAKdtGgCobhsAqG4cAKhxHwBtZ2gAbmhqAG5pagBwa2wAcWtsAHFsbQBybG0Acm1uAHRvcACvfDEAdXBxAHZxcgB3cnMAeHN0AHl0dQB5dXUAfXl5AIB7fACAfH0Agn1+AIJ+fwCEgIEAiIOEAIiEhQC7j08Ai4eIAL6TVgCOi4sAv5dcAL+YXACTj5AAlZGSAJmWlwCcmZkAxqJuAJ+bnAChnp4Ap6SkAKekpQDNrX0AqaWmAM6wgwCsqqoAraurALCtrQDWvJYA172XALq4uAC7uLkAvru8AMG/vwDCwMEAx8XFAOLPtQDRz88A0dDQAOXUvADT0dEA19bWAOjaxgDY19cA2tjYANnZ2QDa2dkA29raAN7d3QDf3t4A397fAOLh4gDj4uIA5OPjAPDn2gDx6d4A8ureAOno6ADp6OkA6enpAOvr6wDs6+sA9O3jAOzs7ADu7e0A9fDnAPbw6ADv7+8A8vHxAPLy8gD48+0A9PPzAPf17gD09PQA9fX1APb29gD39vYA+vfzAPj4+AD6+fUA+fj5APv59gD6+voA/fv6APv7+wD8/PwA/f39AP7+/QD+/v4A//7+AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeHp6enp6eHp1cmVSRkNCWXh4enp6eHp0OSATFRQcPnZ6enZfbHp6PxUbHBsmSHp6eGpAMlF6SB4dHBsuUXp6eHhPEyVVXSgcHBozW3p6eHp4ThAlSzQcHBc7Z3p6eHp6eFMRJC8hHBZBdHp4eHp6enpaFB0dHBpFeHp4eHp6enp6YBwcHB9Mend3enp6eHp6emMjGSJNemhHRFdvenp4enpkKhQ1a3orAQMONl56enh6aTAVLVx6DQwMCgQrYXp5em46DyBUeiwJDAwLBT1zenp4WTcSRnpYGAYMDAgpZnp4enpwSVB1elYnAgcAMW16enh6enh3eHp4cUo4PGJ6egAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+    <style type="text/css">
+      body, table, input, select {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:14px;
+      }
+      table, td {
+        border-collapse:collapse;
+      }
+      select {
+        cursor:pointer;
+      }
+      .formel {
+        font-size:1.6em;
+      }
+      .nach_rechts {
+        text-align:right;
+      }
+      input[type=text] {
+        border-color:#bebebe;
+        border-width:1px;
+        border-style:solid;
+        border-radius:5px;
+        padding:2px;
+        padding-left:4px;
+      }
+      input[type=text]:hover {
+        box-shadow: 0 0 1px 1px #369 inset;
+      }
+      a:focus {
+        outline: thin dotted;
+      }
+      a:active, a:hover {
+        outline: 0;
+      }
+      a {
+        color: #428bca;
+        text-decoration: none;
+      }
+      a:hover, a:focus {
+        color: #2a6496;
+        text-decoration: underline;
+      }
+      a:focus {
+        outline: thin dotted #333;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+      }
+      details {
+        color:black;
+        font-size:0.9em;
+      }
+      summary {
+        padding-top:10px;
+        color:black;
+        border-bottom-style:dotted;
+        border-bottom-color:black;
+        border-bottom-width:1px;
+        display:block;
+      }
+      details span.formel {
+        font-size:1.1em;
+      }
+      .hervorgehoben {
+        color:magenta;
+        font-weight:bold;
+      }
+      .unterueb {
+        padding-top:10px;
+        display:block;
+        font-style:italic;
+        text-decoration:underline;
+      }
+      .s1 {
+        color:#ff6600;
+        font-weight:bold;
+      }
+      .s2 {
+        color:green;
+        font-weight:bold;
+      }
+      .s3 {
+        color:blue;
+        font-weight:bold;
+      }
+      .s4 {
+        color:purple;
+        font-weight:bold;
+      }
+    </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var indizes={
+          '0':'₀', // bei Zehnerstelle
+          '1':'₁',  // wird nicht geschrieben
+          '2':'₂',
+          '3':'₃',
+          '4':'₄',
+          '5':'₅',
+          '6':'₆',
+          '7':'₇',
+          '8':'₈',
+          '9':'₉',
+      };
+    
+    var koeffizienten={
+          '0':'0', // bei Zehnerstelle
+          '1':'1',  // wird nicht geschrieben
+          '2':'2',
+          '3':'3',
+          '4':'4',
+          '5':'5',
+          '6':'6',
+          '7':'7',
+          '8':'8',
+          '9':'9',
+    };
+    
+      function ersetze_indizes(gesamtindex) {
+          var neuer_gesamtindex='';
+          for (var i=0; i< gesamtindex.length; i++) {
+              var aktueller_index=indizes[gesamtindex[i]];
+              neuer_gesamtindex=neuer_gesamtindex+aktueller_index;
+          }
+          return neuer_gesamtindex
+      }
+      
+      function ersetze_koeffizienten(gesamtkoeffizient) {
+          var neuer_gesamtkoeffizient='';
+          for (var i=0; i< gesamtkoeffizient.length; i++) {
+              var aktueller_koeffizient=koeffizienten[gesamtkoeffizient[i]];
+              neuer_gesamtkoeffizient=neuer_gesamtkoeffizient+aktueller_koeffizient;
+          }
+          return neuer_gesamtkoeffizient
+      }
+    
+      function ersetze_koeffizient_1(gleichung_vorlaeufig) {
+          var alle_elemente=gleichung_vorlaeufig.split(' ');
+          //console.log(alle_elemente);
+          var gleichung_endgueltig='';
+          for (var i=0; i< alle_elemente.length; i++) {
+              if (alle_elemente[i] != '1') {
+                  gleichung_endgueltig=gleichung_endgueltig+' '+alle_elemente[i];
+              }
+          }
+          return gleichung_endgueltig
+      }
+    
+      function ermittle_gleichung() {
+          var n=parseInt($('#s_n option:selected').val());
+          //console.log('ermittle_gleichung: '+n);
+          var koeff_h_ed=2;
+          var index_h_ed=eval(2*n+2);
+          var koeff_o_ed=eval(3*n+1);
+          var koeff_h2o_prod=eval(2*(n+1));
+          var koeff_co2_prod=eval(2*n);
+          // falls n ungerade: alle Koeffizienten durch 2 kürzen!
+          var restwert=n % 2;
+          //console.log(restwert);
+          if (restwert == 1) {
+              //console.log('n ist ungeradzahlig, teile durch 2!');
+              var koeff_h_ed_neu=1;
+              var koeff_o_ed_neu=eval(koeff_o_ed/2);
+              var koeff_h2o_prod_neu=eval(koeff_h2o_prod/2);
+              var koeff_co2_prod_neu=eval(koeff_co2_prod/2);
+          } else {
+              //console.log('n ist geradzahlig, Koeffizienten bleiben unverändert');
+              var koeff_h_ed_neu=koeff_h_ed;
+              var koeff_o_ed_neu=koeff_o_ed;
+              var koeff_h2o_prod_neu=koeff_h2o_prod;
+              var koeff_co2_prod_neu=koeff_co2_prod;
+          }
+          // alle Indizes tiefstellen
+          var gleichung_vorlaeufig=ersetze_koeffizienten(String(koeff_h_ed_neu))+
+                                   ' C'+ersetze_indizes(String(n))+
+                                   'H'+ersetze_indizes(String(index_h_ed))+
+                                   ' + '+
+                                   ersetze_koeffizienten(String(koeff_o_ed_neu))+' O₂ → '+
+                                   ersetze_koeffizienten(String(koeff_co2_prod_neu))+' CO₂'+
+                                   ' + '+
+                                   ersetze_koeffizienten(String(koeff_h2o_prod_neu))+' H₂O'; 
+          //$('#i_gleichung').val(gleichung_vorlaeufig);
+          var gleichung_endgueltig=ersetze_koeffizient_1(gleichung_vorlaeufig);
+          $('#i_gleichung').val(gleichung_endgueltig.replace(/C₁H₄/, 'CH₄'));
+      }
+      
+      
+      function lade_seite() {
+          $('#s_n option:first').prop('selected', true);
+          ermittle_gleichung();   
+      }
+
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan="2">
+          Wenn ein 
+          <a href="http://de.wikipedia.org/wiki/Alkane#Reaktionen_mit_Sauerstoff" target="_blank">Alkan</a>
+          <em>vollständig</em> mit 
+          elementarem Sauerstoff<br />
+          zu Kohlenstoffdioxid und Wasser
+          reagiert, <br />
+          gilt die folgende allgemeine 
+          Reaktionsgleichung:<br />
+          <!-- 
+            tiefgestelltes n: &#8345; oder \u2099
+            tiefgestelltes +: &#8331; oder \u208a
+          -->
+          <span class="formel">2&nbsp;CₙH₂ₙ₊₂&nbsp;+&nbsp;(3n+1)&nbsp;O₂&nbsp;→&nbsp;2n&nbsp;CO₂&nbsp;+&nbsp;2(n+1)&nbsp;H₂O</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_n">Wähle hier die Anzahl n der C-Atome des Alkans aus:</label>
+        </td>
+        <td>
+          <select id="s_n" onchange="ermittle_gleichung();">
+            <option value="1" title="Methan">1</option>
+            <option value="2" title="Ethan">2</option>
+            <option value="3" title="Propan">3</option>
+            <option value="4" title="Butan">4</option>
+            <option value="5" title="Pentan">5</option>
+            <option value="6" title="Hexan">6</option>
+            <option value="7" title="Heptan">7</option>
+            <option value="8" title="Octan">8</option>
+            <option value="9" title="Nonan">9</option>
+            <option value="10" title="Decan">10</option>
+            <option value="11" title="Undecan">11</option>
+            <option value="12" title="Dodecan">12</option>
+            <option value="13" title="Tridecan">13</option>
+            <option value="14" title="Tetradecan">14</option>
+            <option value="15" title="Pentadecan">15</option>
+            <option value="16" title="Hexadecan">16</option>
+            <option value="17" title="Heptadecan">17</option>
+            <option value="18" title="Octadecan">18</option>
+            <option value="19" title="Nonadecan">19</option>
+            <option value="20" title="Eicosan">20</option>
+            <option value="21" title="Heneicosan">21</option>
+            <option value="22" title="Docosan">22</option>
+            <option value="23" title="Tricosan">23</option>
+            <option value="24" title="Tetracosan">24</option>
+            <option value="25" title="Pentacosan">25</option>
+            <option value="26" title="Hexacosan">26</option>
+            <option value="27" title="Heptacosan">27</option>
+            <option value="28" title="Octacosan">28</option>
+            <option value="29" title="Nonacosan">29</option>
+            <option value="30" title="Triacontan">30</option>
+            <option value="31" title="Hentriacontan">31</option>
+            <option value="32" title="Dotriacontan">32</option>
+            <option value="33" title="Tritriacontan">33</option>
+            <option value="34" title="Tetratriacontan">34</option>
+            <option value="35" title="Pentatriacontan">35</option>
+            <option value="36" title="Hexatriacontan">36</option>
+            <option value="37" title="Heptatriacontan">37</option>
+            <option value="38" title="Octatriacontan">38</option>
+            <option value="39" title="Nonatriacontan">39</option>
+            <option value="40" title="Tetracontan">40</option>
+            <option value="41" title="Hentetracontan">41</option>
+            <option value="42" title="Dotetracontan">42</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="text" class="formel" id="i_gleichung" size="40" />
+        </td>
+      </tr>
+    </table>
+    <details id="methode_1">
+      <summary>
+        Erste Methode: Ableitung der allgemeinen Reaktionsgleichung aus der Alkanstruktur
+      </summary>
+        Jedes Alkan lässt sich formal zerlegen in die beiden Wasserstoffatome an 
+        den Kettenenden und dazwischen für jedes Kohlenstoffatom eine sogenannte 
+        Methenyl-Gruppe:<br />
+        
+        <span class="formel">H•  (•CH₂•)ₙ  •H</span><br />
+
+        Für die beiden H-Atome wird immer genau ein Sauerstoffatom benötigt und 
+        es entsteht daraus ein Wassermolekül:<br />
+        
+        <span class="formel">H• •H + 1 O → 1 H₂O</span><br />
+
+        Für jede CH₂-Gruppe werden jeweils drei Sauerstoffatome benötigt und 
+        es entstehen ein Kohlenstoffdioxidmolekül und ein Wassermolekül:<br />
+
+        <span class="formel">n •CH₂• + 3n O → n CO₂ + n H₂O</span><br />
+
+        Fasst man für das Alkan beide Gleichungen zusammen, erhält man daraus 
+        (immer noch vereinfachend ausgehend von einzelnen O-Atomen):<br />
+        
+    <span class="formel">CₙH₂ₙ₊₂ + (3n+1) O → n CO₂ + (n+1) H₂O</span><br />
+    
+    Da elementarer Sauerstoff aber in Form von 
+    <span class="hervorgehoben">zweiatomigen Molekülen</span> vorkommt, 
+    und nur ganzzahlige Koeffizienten erlaubt sind, benötigt man von allen 
+    Teilchen jeweils die doppelte Anzahl, so dass sich beim Sauerstoff der 
+    <span class="hervorgehoben">Index auf zwei</span> erhöht
+     und bei allen anderen Teilchen jeweils der 
+     <span class="hervorgehoben">Koeffizient verdoppelt</span> wird:<br />
+     
+    <span class="formel"><span class="hervorgehoben">2</span> CₙH₂ₙ₊₂ + (3n+1) O<span class="hervorgehoben">₂</span> → <span class="hervorgehoben">2</span>n CO₂ + <span class="hervorgehoben">2</span>(n+1) H₂O</span><br />
+    
+    Falls die Anzahl n der Kohlenstoffatome in der Kette ungeradzahlig ist, 
+    so sind alle Koeffizienten geradzahlig, so dass ein Kürzen durch den Faktor 2 
+    möglich ist das Alkanmolekül den Koeffizienten 1 erhält. 
+    Bei einer geraden Anzahl von Kohlenstoffatomen dagegen ist kein 
+    Kürzen möglich und der Koeffizient 2 bleibt für das Alkanmolekül erhalten.
+    </details>
+    
+    <details id="methode_2">
+      <summary>
+        Zweite Methode: Schrittweises Ausgleichen der Koeffizienten
+      </summary>
+      
+      <!-- a) für eine gerade Anzahl von C-Atomen -->
+      <span class="unterueb">a) für das Beispiel Undecan mit einer ungeraden Anzahl von C-Atomen</span>
+      
+       Zunächst werden die Summenformeln aller Edukte und Produkte hingeschrieben:<br /> 
+      
+       <span class="formel">? C₁₁H₂₄ + ? O₂ → ? CO₂ + ? H₂O</span><br />
+       
+        ① Aus jedem <span class="s1">C-Atom</span> entsteht ein CO₂-Molekül:<br />
+       <span class="formel">? <span class="s1">C₁₁</span>H₂₄ + ? O₂ → <span class="s1">11 C</span>O₂ + ? H₂O</span><br />
+       
+      
+      ② Aus je zwei <span class="s2">H-Atomen</span> entsteht ein H₂O-Molekül:<br />
+      
+      <span class="formel">? C₁₁<span class="s2">H₂₄</span> + ? O₂ →  11 CO₂ + <span class="s2">12 H₂</span>O</span><br />
+      
+     ③ Aus den auf der Produktseite insgesamt enthaltenen <span class="s3">O-Atomen</span> ergibt sich die Zahl der beteiligten O₂-Moleküle auf der Eduktseite:<br />
+      
+      <span class="formel">? C₁₁H₂₄ + <span class="s3">17 O₂</span> → <span class="s3">11</span> C<span class="s3">O₂</span> + <span class="s3">12</span> H₂<span class="s3">O</span></span><br />
+      
+      ④ Da jetzt die Anzahl aller Atome der verschiedenen Elemente auf beiden Seiten
+      ausgeglichen ist, entspricht dies der fertigen Reaktionsgleichung. 
+      Der Index 1 für das Alkan wird nicht hingeschrieben:<br />
+      
+      <span class="formel"> C₁₁H₂₄ + 17 O₂ → 11 CO₂ + 12 H₂O</span><br />
+      
+      <!-- b) für eine ungerade Anzahl von C-Atomen -->
+      <span class="unterueb">b) für das Beispiel Octan mit einer geraden Anzahl von C-Atomen</span>
+      
+       Zunächst werden die Summenformeln aller Edukte und Produkte hingeschrieben:<br /> 
+      
+       <span class="formel">? C₈H₁₈ + ? O₂ → ? CO₂ + ? H₂O</span><br />
+       
+        ① Aus jedem <span class="s1">C-Atom</span> entsteht ein CO₂-Molekül:<br />
+       <span class="formel">? <span class="s1">C₈</span>H₁₈ + ? O₂ → <span class="s1">8 C</span>O₂ + ? H₂O</span><br />
+       
+      
+      ② Aus je zwei <span class="s2">H-Atomen</span> entsteht ein H₂O-Molekül:<br />
+      
+      <span class="formel">? C₈<span class="s2">H₁₈</span> + ? O₂ →  8 CO₂ + <span class="s2">9 H₂</span>O</span><br />
+      
+     ③ Aus den auf der Produktseite insgesamt enthaltenen <span class="s3">O-Atomen</span> ergibt sich die Zahl der beteiligten O₂-Moleküle auf der Eduktseite:<br />
+      
+      <span class="formel">? C₈H₁₈ + <span class="s3">12,5 O₂</span> → <span class="s3">8</span> C<span class="s3">O₂</span> + <span class="s3">9</span> H₂<span class="s3">O</span></span><br />
+      
+      ④ Da nur <span class="s4">ganzzahlige Koeffizienten</span> erlaubt sind, muss man noch alle Koeffizienten mal 2 nehmen
+      und erhält so die fertige Reaktionsgleichung:<br />
+      
+      <span class="formel"><span class="s4">2</span> C₈H₁₈ +  <span class="s4">25</span> O₂ →  <span class="s4">16</span> CO₂ +  <span class="s4">18</span> H₂O</span><br />
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </details>
+    
+  </body>
+</html>

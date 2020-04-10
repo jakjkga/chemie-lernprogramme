@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Disaccharider - online</title>
+    <meta name="description" content="Der Disaccharider veranschaulicht die Struktur sowie die Eigenschaften wichtiger Disaccharide." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Disaccharide, Saccharose, Haushaltszucker, Kristallzucker, Rübenzucker, Fruchtzucker, Cellobiose, Maltose, Isomaltose, Isomaltulose, Trehalose, Lactose, Halbacetal, Vollacetal, Halbketal, Vollketal, glykosidische Bindung" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table id="table_formularinhalt">
+      <tr>
+        <td class="nach_oben">
+          <!-- <input type="button" value="Zurücksetzen" onclick="zuruecksetzen()" /> -->
+          <a href="#" onclick="zuruecksetzen()"><img src="daten/img/task-recurring.png" width="22" /></a>
+        </td>
+        <td>
+    <!-- ANFANG innere Tabelle -->
+    <table>
+      <tr>
+        <td class="zentriert">
+          <label for="s_monosaccharid_rest">Monosaccharid-Rest</label>
+        </td>
+        <td class="zentriert">
+          <label for="s_monosaccharid">Monosaccharid</label>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_oben">
+          <select id="s_monosaccharid_rest" size="4" onchange="setze_monosaccharid_rest()">
+            <option value="r1">1-α-D-Glucopyranosyl-</option>
+            <option value="r2">1-β-D-Glucopyranosyl-</option>
+            <option value="r3">2-β-D-Fructofuranosyl-</option>
+            <option value="r4">1-β-D-Galactopyranosyl-</option>
+          </select>
+        </td>
+        <td class="nach_oben">
+          <select id="s_monosaccharid" size="5" onchange="setze_monosaccharid()">
+            <option value="z1">4-α-D-Glucopyranose</option>
+            <option value="z2">4-β-D-Glucopyranose</option>
+            <option value="z3">1-α-D-Glucopyranosid</option>
+            <option value="z4">6-α-D-Glucopyranose</option>
+            <option value="z5">6-D-Fructofuranose</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <!-- ENDE innere Tabelle -->
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+        <label for="i_name">Name</label>:
+        </td>
+        <td>
+          <input type="text" id="i_name" size="56" />
+          <a href="#" id="a_informationsseite" title="Link zur interaktiven 3D-Ansicht dieses Moleküls"><img id="img_informationsseite" src="daten/img/dialog-information-inactive.png" height="16" /></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          <label for="i_struktur">Struktur</label>:
+        </td>
+        <td>
+          <img id="img_abb" src="daten/img/start.gif" width="480" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+        <label for="i_reduzierend">Reduzierend</label>?
+        </td>
+        <td>
+          <input type="text" id="i_reduzierend" size="4" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+        <label for="t_bedeutung">Bedeutung</label>:
+        </td>
+        <td>
+          <textarea id="t_bedeutung" cols="60" rows="3"></textarea>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

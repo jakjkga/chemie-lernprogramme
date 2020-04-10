@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>3D-Moleküle</title>
+    <meta name="description" content="Kurzbeschreibung" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Schlüsselwörter" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <!-- <link rel="stylesheet" href="daten/css/jquery-ui.min.css" /> -->
+    <script type="text/javascript" src="daten/jsmol/JSmol.min.js"></script>
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <!-- <script  type="text/javascript" src="daten/js/jquery-ui.min.js"></script> -->
+    <script type="text/javascript" src="daten/js/FileSaver.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+  /* try { */
+      var mein_applet;
+      var s = document.location.search;
+      jmol_isReady = function(applet) {
+	      //Jmol._getElement(applet, 'appletbereich').style.border='1px solid blue';
+	      lade_seite();
+      }
+      
+         
+      //var mein_applet; // s.u.
+      
+      var Info = {
+          addSelectionOptions: false, // Datenbanksuche?
+          color:            '#FFFFFF', // 
+          debug:            true,
+          defaultModel:     '',                         //'daten/jsmol/structure/wasserstoff.mol'
+          width:            640,
+          height:           480,
+          j2sPath:          'daten/jsmol/j2s',          // nur HTML5
+          readyFunction:    jmol_isReady,
+          /* http://chemie-lernprogramme.de/daten/programme/js/molekuelbetrachter/ */
+          script:           'load daten/jsmol/structure/wasserstoff.mol', // false
+          serverURL:        'daten/jsmol/jsmol.php',    // Für Bildexport
+          use:              'HTML5',                    // nur HTML5
+          disableInitialConsole: true, // true
+          allowJavaScript: true
+      }; 
+    
+      $(document).ready(function(){
+          //lade_seite();
+      });
+      
+   /* } catch(e) {
+       alert('In der lokalen offline Version muss Chrome mit der Kommandozeilenoption --allow-file-access-from-files gestartet werden!');
+            var weiterleiten=confirm('Weiterleiten zur online-Version?');
+            if (weiterleiten) {
+                location.href='http://quizdidaktik.de/simpleboard/daten/3dmolekuele/index.html'
+            }
+   } */
+    </script>
+  </head>
+  <body>
+    <div id="div_navi" style="word-space:nowrap;">
+      <select id="s_molekuel" onchange="zeige_auswahl();">
+
+<optgroup label="Wasserstoff">
+<option value="wasserstoff.mol">elementarer Wasserstoff</option>
+</optgroup>
+<optgroup label="Kohlenstoff">
+<option value="kohlenstoff.mol">elementarer Kohlenstoff (Diamant)</option>
+<option value="kohlenstoff2.mol">elementarer Kohlenstoff (Graphit)</option>
+<option value="fulleren.pdb">elementarer Kohlenstoff (Fullerene)</option>
+<option value="nanotubes.pdb">elementarer Kohlenstoff (Nanoröhrchen)</option>
+<option value="methan.mol">Methan (Erdgas)</option>
+<option value="kohlenstoffdioxid.mol">Kohlenstoffdioxid</option>
+<option value="kohlensaeure.mol">Kohlensäure</option>
+<!-- <option value="ethan.mol">Ethan</option> -->
+<!-- <option value="ethen.mol">Ethen</option> -->
+<!-- <option value="methanol.mol">Methanol</option> -->
+<!-- <option value="methansaeure.mol">Methansäure</option> -->
+<option value="methylamin.mol">Methylamin (Aminomethan)</option>
+</optgroup>
+
+<optgroup label="Stickstoff">
+<option value="stickstoff.mol">elementarer Stickstoff</option>
+<option value="ammoniak.mol">Ammoniak</option>
+<option value="hydrazin.mol">Hydrazin</option>
+<option value="stickstoffmonoxid.mol">Stickstoffmonoxid</option>
+<option value="stickstoffdioxid.mol">Stickstoffdioxid</option>
+<option value="salpetersaeure.mol">Salpetersäure</option>
+<option value="blausaeure.mol">Blausäure (Cyanwasserstoff)</option>
+</optgroup>
+
+<optgroup label="Sauerstoff">
+<option value="sauerstoff.mol">Sauerstoff</option>
+<option value="ozon.mol">Ozon</option>
+<option value="wasser.mol">Wasser (einzelnes Molekül)</option>
+<option value="wasser_dimer.pdb">Wasser (Dimer)</option>
+<option value="wasserstoffperoxid.mol">Wasserstoffperoxid</option>
+<option value="oxoniumion.mol">Oxoniumion</option>
+</optgroup>
+
+<optgroup label="Fluor">
+<option value="fluor.mol">elementares Fluor</option>
+<option value="fluorwasserstoff.mol">Fluorwasserstoff (Hydrogenfluorid)</option>
+</optgroup>
+
+<optgroup label="Phosphor">
+<option value="phosphor.mol">elementarer Phosphor</option>
+<option value="phosphin.mol">Phosphin</option>
+<option value="tetraphosphordecaoxid.mol">Tetraphosphordecaoxid</option>
+<option value="phosphorsaeure.mol">Phosphorsäure</option>
+<option value="phosphorige_saeure.mol">phosphorige Säure</option>
+</optgroup>
+
+<optgroup label="Schwefel">
+<option value="schwefel.mol">elementarer Schwefel</option>
+<option value="schwefelwasserstoff.mol">Schwefelwasserstoff (Dihydrogensulfid)</option>
+<option value="schwefeldioxid.mol">Schwefeldioxid</option>
+<option value="schwefeltrioxid.mol">Schwefeltrioxid</option>
+<option value="schwefelsaeure.mol">Schwefelsäure</option>
+</optgroup>
+
+<optgroup label="Chlor">
+<option value="chlor.mol">elementares Chlor</option>
+<option value="chlorwasserstoff.mol">Chlorwasserstoff (Hydrogenchlorid)</option>
+<option value="perchlorsaeure.mol">Perchlorsäure</option>
+</optgroup>
+
+<optgroup label="Brom">
+<option value="brom.mol">elementares Brom</option>
+<option value="bromwasserstoff.mol">Bromwasserstoff (Hydrogenbromid)</option>
+</optgroup>
+
+<optgroup label="Iod">
+<option value="iod.mol">elementares Iod</option>
+<option value="iodwasserstoff.mol">Iodwasserstoff (Hydrogeniodid)</option>
+<option value="triiodidion.mol">Triiodidion</option>
+</optgroup>
+
+<optgroup label="Raumstrukturen">
+<option value="raumstruktur_wasser_fluessig.mol">flüssiges Wasser</option>
+<option value="raumstruktur_wasser_fest.pdb">festes Wasser (Eis)</option>
+<option value="raumstruktur_natriumchlorid_gitter.mol">Natriumchlorid</option>
+<option value="raumstruktur_calcit_gitter.pdb">Calciumcarbonat (Calcit)</option>
+<option value="raumstruktur_zeolithe_gitter.pdb">Zeolithe</option>
+</optgroup>
+
+<optgroup label="Alkane">
+<option value="ethane.mol">Ethan</option>
+<option value="propane.mol">Propan</option>
+<option value="butane.mol">Butan</option>
+<option value="pentane.mol">Pentan</option>
+<option value="hexane.mol">Hexan</option>
+<option value="heptane.mol">Heptan</option>
+<option value="octane.mol">Octan</option>
+<option value="nonane.mol">Nonan</option>
+<option value="decane.mol">Decan</option>
+<option value="undecane.mol">Undecan</option>
+<option value="dodecane.mol">Dodecan</option>
+</optgroup>
+
+<optgroup label="Cycloalkane">
+<option value="cyclopentane.mol">Cyclopentan</option>
+<option value="cyclohexane.mol">Cyclohexan</option>
+</optgroup>
+
+<optgroup label="Alkene">
+<option value="ethene.mol">Ethen</option>
+<option value="propene.mol">Propen</option>
+<option value="but-1-ene.mol">But-1-en</option>
+<option value="E-but-2-ene.mol">(E)-But-2-en</option>
+<option value="Z-but-2-ene.mol">(Z)-But-2-en</option>
+<option value="cyclohexene.mol">Cyclohexen</option>
+</optgroup>
+
+<optgroup label="Alkine">
+<option value="ethin.mol">Ethin (Acetylen)</option>
+<option value="propyne.mol">Propin</option>
+</optgroup>
+
+<optgroup label="Aromaten">
+<option value="benzene.mol">Benzol</option>
+<option value="naphthalene.mol">Naphthalin</option>
+<option value="bromobenzene.mol">Bromobenzol</option>
+<option value="phenol.mol">Phenol (Hydroxybenzol)</option>
+<option value="aniline.mol">Anilin (Aminobenzol)</option>
+<option value="nitrobenzene.mol">Nitrobenzol</option>
+<option value="toluene.mol">Toluol (Methylbenzol)</option>
+</optgroup>
+
+<optgroup label="Halogenalkane">
+<option value="chloromethane.mol">Chloromethan (Methylchlorid)</option>
+<option value="chloroform.mol">Trichlormethan (Chloroform)</option>
+<option value="2S-2-bromobutane.mol">2-Bromobutan</option>
+<option value="2S-2-chlorobutane.mol">2-Chlorobutan</option>
+</optgroup>
+
+<optgroup label="Alkohole">
+<option value="methanol.mol">Methanol (Holzgeist, Hydroxymethan)</option>
+<option value="ethanol.mol">Ethanol (Trinkalkohol)</option>
+<option value="propan-1-ol.mol">Propan-1-ol</option>
+<option value="propan-2-ol.mol">Propan-2-ol</option>
+
+<option value="2S-butan-2-ol.mol">Butan-2-ol</option>
+<option value="2S-pentan-2-ol.mol">Pentan-2-ol</option>
+<option value="2S-hexan-2-ol.mol">Hexan-2-ol</option>
+<option value="2S-heptan-2-ol.mol">Heptan-2-ol</option>
+<option value="2S-octan-2-ol.mol">Octan-2-ol</option>
+</optgroup>
+
+<optgroup label="Aldehyde">
+<option value="methanal.mol">Methanal (Formaldehyd)</option>
+<option value="propanal.mol">Propanal</option>
+<option value="butanal.mol">Butanal</option>
+<option value="2R-2-methylbutanal.mol">2-Methylbutanal</option>
+</optgroup>
+
+<optgroup label="Ketone">
+<option value="acetone.mol">Propanon (Aceton)</option>
+<option value="butanone.mol">Butanon</option>
+</optgroup>
+
+<optgroup label="Carbonsäuren und Fettsäuren">
+<option value="methansaeure.mol">Methansäure (Ameisensäure)</option>
+<option value="acetic_acid.mol">Ethansäure (Essigsäure)</option>
+<option value="propanoic_acid.mol">Propansäure</option>
+<option value="butanoic_acid.mol">Butansäure (Buttersäure)</option>
+<option value="palmitic_acid.mol">Hexadecansäure (Palmitinsäure)</option>
+<option value="stearic_acid.mol">Octadecansäure (Stearinsäure)</option>
+<option value="Linoleic_acid.mol">(cis,cis)-Octadeca-9,12-diensäure (Linolsäure)</option>
+</optgroup>
+
+<optgroup label="Kohlenhydrate">
+<option value="d-glucose.mol">D-Glucose (Traubenzucker)</option>
+<option value="d-fructose.mol">D-Fructose (Fruchtzucker)</option>
+<option value="maltose.pdb">Maltose</option>
+<option value="cellobiose.pdb">Cellobiose</option>
+<option value="saccharose.pdb">Saccharose (Haushaltszucker, Kristallzucker)</option>
+<option value="lactose.pdb">Lactose (Milchzucker)</option>
+<option value="cellulose.pdb">Cellulose (Zellstoff)</option>
+<option value="amylose.pdb">Amylose (Stärke)</option>
+</optgroup>
+
+<optgroup label="Aminosäuren und Proteine">
+<option value="ala.pdb">Alanin</option>
+<option value="gly.pdb">Glycin</option>
+<option value="hemoglobin.pdb">Hämoglobin</option>
+</optgroup>
+
+<optgroup label="Nukleinsäuren">
+<option value="dna.pdb">DNA</option>
+<option value="trna.pdb">tRNA</option>
+</optgroup>
+<!-- <option value="1R-camphene.mol">(1R)-Camphene</option> -->
+<!-- <option value="1R-camphor.mol">(1R)-Camphor</option> -->
+<!-- <option value="1R_2S-1_2-diaminocyclohexane.mol">(1R,2S)-1,2-Diaminocyclohexane</option> -->
+<!-- <option value="1R_2S-1_2-dimethylcyclopentane.mol">(1R,2S)-1,2-Dimethylcyclopentane</option> -->
+<!-- <option value="1R_3S-1_3-dimethylcyclopentane.mol">(1R,3S)-1,3-Dimethylcyclopentane</option> -->
+<!-- <option value="1S_2R-1_2-diphenylethane-1_2-diol.mol">(1S,2R)-1,2-Diphenylethane-1,2-diol</option> -->
+<!-- <option value="1S_2S-1_2-diaminocyclohexane.mol">(1S,2S)-1,2-Diaminocyclohexane</option> -->
+<!-- <option value="1S_2S-1-ethyl-2-methylcyclopentane.mol">(1S,2S)-1-Ethyl-2-methylcyclopentane</option> -->
+<!-- <option value="2_2-dimethyl-3H-benzofuran-7-yl_N-methylcarbamate.mol">(2,2-Dimethyl-3H-benzofuran-7-yl) N-methylcarbamate</option> -->
+<!-- <option value="2R-butan-2-ol.mol">Butan-2-ol</option> -->
+<!-- <option value="2R_3R_4R_5S-hexane-1_2_3_4_5_6-hexol.mol">(2R,3R,4R,5S)-Hexane-1,2,3,4,5,6-hexol</option> -->
+<!-- <option value="2S_3R-butane-1_2_3_4-tetrol.mol">(2S,3R)-Butane-1,2,3,4-tetrol</option> -->
+<!-- <option value="3E-penta-1_3-diene.mol">(3E)-Penta-1,3-diene</option> -->
+<!-- <option value="3R-3-ethyl-2_5-dimethylhexane.mol">(3R)-3-Ethyl-2,5-dimethylhexane</option> -->
+<!-- <option value="3R_4S-3_4-dimethylhexane.mol">(3R,4S)-3,4-Dimethylhexane</option> -->
+<!-- <option value="3S-2_3-dimethylpentane.mol">(3S)-2,3-Dimethylpentane</option> -->
+<!-- <option value="3S-3-methylheptane.mol">(3S)-3-Methylheptane</option> -->
+<!-- <option value="3S-heptan-3-ol.mol">(3S)-Heptan-3-ol</option> -->
+<!-- <option value="3S-hexan-3-ol.mol">(3S)-Hexan-3-ol</option> -->
+<!-- <option value="3S-octan-3-ol.mol">(3S)-Octan-3-ol</option> -->
+<!-- <option value="3Z-3-ethylhepta-1_3-diene.mol">(3Z)-3-ethylhepta-1,3-diene</option> -->
+<!-- <option value="3Z-penta-1_3-diene.mol">(3Z)-Penta-1,3-diene</option> -->
+<!-- <option value="4-acetamidophenyl 2-hydroxybenzoate.mol">(4-Acetamidophenyl) 2-hydroxybenzoate</option> -->
+<!-- <option value="4R-octan-4-ol.mol">(4R)-Octan-4-ol</option> -->
+<!-- <option value="4S-2_4-dimethylhexane.mol">(4S)-2,4-Dimethylhexane</option> -->
+<!-- <option value="5Z_8Z_11Z_14Z_17Z-icosa-5_8_11_14_17-pentaenoic_acid.mol">(5Z,8Z,11Z,14Z,17Z)-Icosa-5,8,11,14,17-pentaenoic acid</option> -->
+<!-- <option value="6Z_9Z_12Z-octadeca-6_9_12-trienoic_acid.mol">(6Z,9Z,12Z)-Octadeca-6,9,12-trienoic acid</option> -->
+<!-- <option value="E-2-methylbut-2-enedioic_acid.mol">(E)-2-Methylbut-2-enedioic acid</option> -->
+<!-- <option value="E-butenedioic_acid.mol">(E)-Butenedioic acid</option> -->
+<!-- <option value="E-hept-2-ene.mol">(E)-Hept-2-ene</option> -->
+<!-- <option value="E-hept-3-ene.mol">(E)-Hept-3-ene</option> -->
+<!-- <option value="E-hex-2-ene.mol">(E)-Hex-2-ene</option> -->
+<!-- <option value="E-hex-3-ene.mol">(E)-Hex-3-ene</option> -->
+<!-- <option value="E-oct-2-ene.mol">(E)-Oct-2-ene</option> -->
+<!-- <option value="E-oct-3-ene.mol">(E)-Oct-3-ene</option> -->
+<!-- <option value="E-oct-4-ene.mol">(E)-Oct-4-ene</option> -->
+<!-- <option value="E-pent-2-ene.mol">(E)-Pent-2-ene</option> -->
+<!-- <option value="R-2-ethoxybutane.mol">(R)-2-Ethoxybutane</option> -->
+<!-- <option value="R-butane-2-thiol.mol">(R)-Butane-2-thiol</option> -->
+<!-- <option value="S-sec-butylamine.mol">(S)-sec-Butylamine</option> -->
+<!-- <option value="Z-2-methylbut-2-enedioic_acid.mol">(Z)-2-Methylbut-2-enedioic acid</option> -->
+<!-- <option value="Z-4-hydroxypent-3-en-2-one.mol">(Z)-4-Hydroxypent-3-en-2-one</option> -->
+<!-- <option value="Z-butenedioic_acid.mol">(Z)-Butenedioic acid</option> -->
+<!-- <option value="Z-cycloheptene.mol">(Z)-Cycloheptene</option> -->
+<!-- <option value="Z-cyclooctene.mol">(Z)-Cyclooctene</option> -->
+<!-- <option value="Z-hept-2-ene.mol">(Z)-Hept-2-ene</option> -->
+<!-- <option value="Z-hept-3-ene.mol">(Z)-Hept-3-ene</option> -->
+<!-- <option value="Z-hex-2-ene.mol">(Z)-Hex-2-ene</option> -->
+<!-- <option value="Z-hex-3-en-1-ol.mol">(Z)-Hex-3-en-1-ol</option> -->
+<!-- <option value="Z-hex-3-ene.mol">(Z)-Hex-3-ene</option> -->
+<!-- <option value="Z-oct-2-ene.mol">(Z)-Oct-2-ene</option> -->
+<!-- <option value="Z-oct-3-ene.mol">(Z)-Oct-3-ene</option> -->
+<!-- <option value="Z-oct-4-ene.mol">(Z)-Oct-4-ene</option> -->
+<!-- <option value="Z-pent-2-ene.mol">(Z)-Pent-2-ene</option> -->
+<!-- <option value="1_1_1_2_2_2-hexafluoroethane.mol">1,1,1,2,2,2-Hexafluoroethane</option> -->
+<!-- <option value="1_1_1_2_2-pentafluoroethane.mol">1,1,1,2,2-Pentafluoroethane</option> -->
+<!-- <option value="1_1_1_3_3_3-hexafluoropropan-2-ol.mol">1,1,1,3,3,3-Hexafluoropropan-2-ol</option> -->
+<!-- <option value="1_1_1-trichloroacetonitrile.mol">1,1,1-Trichloroacetonitrile</option> -->
+<!-- <option value="1_1_1-trichloroethane.mol">1,1,1-Trichloroethane</option> -->
+<!-- <option value="1_1_2_2-tetrachloroethane.mol">1,1,2,2-Tetrachloroethane</option> -->
+<!-- <option value="1_10-phenanthroline.mol">1,10-Phenanthroline</option> -->
+<!-- <option value="1_2-oxazole.mol">1,2-Oxazole</option> -->
+<!-- <option value="1_2-thiazole.mol">1,2-Thiazole</option> -->
+<!-- <option value="1_2-xylene.mol">1,2-Xylene</option> -->
+<!-- <option value="1_3_5-trichloro-2-methoxybenzene.mol">1,3,5-Trichloro-2-methoxybenzene</option> -->
+<!-- <option value="1_3_5-trimethylbenzene.mol">1,3,5-Trimethylbenzene</option> -->
+<!-- <option value="1_3-dichloropropane.mol">1,3-Dichloropropane</option> -->
+<!-- <option value="1_3-oxazole.mol">1,3-Oxazole</option> -->
+<!-- <option value="1_3-thiazole.mol">1,3-Thiazole</option> -->
+<!-- <option value="1_3-xylene.mol">1,3-Xylene</option> -->
+<!-- <option value="1_4_7_10_13_16-hexaoxacyclooctadecane.mol">1,4,7,10,13,16-Hexaoxacyclooctadecane</option> -->
+<!-- <option value="1_4-dichlorobut-2-yne.mol">1,4-Dichlorobut-2-yne</option> -->
+<!-- <option value="1_4-dioxane.mol">1,4-Dioxane</option> -->
+<!-- <option value="1_4-xylene.mol">1,4-Xylene</option> -->
+<!-- <option value="1_5-diaminopentane.mol">1,5-Diaminopentane</option> -->
+<!-- <option value="1_8-naphthyridine.mol">1,8-Naphthyridine</option> -->
+<!-- <option value="1-aminobutane.mol">1-Aminobutane</option> -->
+<!-- <option value="1-aminodecane.mol">1-Aminodecane</option> -->
+<!-- <option value="1-aminoheptane.mol">1-Aminoheptane</option> -->
+<!-- <option value="1-aminohexane.mol">1-Aminohexane</option> -->
+<!-- <option value="1-aminononane.mol">1-Aminononane</option> -->
+<!-- <option value="1-aminooctane.mol">1-Aminooctane</option> -->
+<!-- <option value="1-aminopentane.mol">1-Aminopentane</option> -->
+<!-- <option value="1-aminopropane.mol">1-Aminopropane</option> -->
+<!-- <option value="1-bromopropane.mol">1-Bromopropane</option> -->
+<!-- <option value="1-bromopyrrolidine-2_5-dione.mol">1-Bromopyrrolidine-2,5-dione</option> -->
+<!-- <option value="1-chloro-1_1_2_2_2-pentafluoroethane.mol">1-Chloro-1,1,2,2,2-pentafluoroethane</option> -->
+<!-- <option value="1-chloro-2-ethenylbenzene.mol">1-Chloro-2-ethenylbenzene</option> -->
+<!-- <option value="1-chloro-2-methoxybenzene.mol">1-Chloro-2-methoxybenzene</option> -->
+<!-- <option value="1-chloro-3-methoxybenzene.mol">1-Chloro-3-methoxybenzene</option> -->
+<!-- <option value="1-chloro-4-methoxybenzene.mol">1-Chloro-4-methoxybenzene</option> -->
+<!-- <option value="1-chlorobutane.mol">1-Chlorobutane</option> -->
+<!-- <option value="1-chlorodecane.mol">1-Chlorodecane</option> -->
+<!-- <option value="1-chloroheptane.mol">1-Chloroheptane</option> -->
+<!-- <option value="1-chlorohexane.mol">1-Chlorohexane</option> -->
+<!-- <option value="1-chlorononane.mol">1-Chlorononane</option> -->
+<!-- <option value="1-chlorooctane.mol">1-Chlorooctane</option> -->
+<!-- <option value="1-chloropentane.mol">1-Chloropentane</option> -->
+<!-- <option value="1-chloropropane.mol">1-Chloropropane</option> -->
+<!-- <option value="1-phenylbutan-1-one.mol">1-Phenylbutan-1-one</option> -->
+<!-- <option value="1H-1_2-benzodiazepine.mol">1H-1,2-Benzodiazepine</option> -->
+<!-- <option value="1H-1_4-benzodiazepine.mol">1H-1,4-Benzodiazepine</option> -->
+<!-- <option value="1H-azepine.mol">1H-Azepine</option> -->
+<!-- <option value="1H-indene.mol">1H-Indene</option> -->
+<!-- <option value="1H-indole.mol">1H-Indole</option> -->
+<!-- <option value="1H-pyrazole.mol">1H-Pyrazole</option> -->
+<!-- <option value="1H-pyridine-2-thione.mol">1H-Pyridine-2-thione</option> -->
+<!-- <option value="1H-pyrrole.mol">1H-Pyrrole</option> -->
+<!-- <option value="2_2_2-trichloroacetic_acid.mol">2,2,2-Trichloroacetic acid</option> -->
+<!-- <option value="2_2_2-trifluoroacetic_acid.mol">2,2,2-Trifluoroacetic acid</option> -->
+<!-- <option value="2_2_2-trifluoroethanol.mol">2,2,2-Trifluoroethanol</option> -->
+<!-- <option value="2_2-dichloroacetic_acid.mol">2,2-Dichloroacetic acid</option> -->
+<!-- <option value="2_3_4_5_6-pentachlorophenol.mol">2,3,4,5,6-Pentachlorophenol</option> -->
+<!-- <option value="2_3_4-trimethylpentane.mol">2,3,4-Trimethylpentane</option> -->
+<!-- <option value="2_3-dimethylbutane.mol">2,3-Dimethylbutane</option> -->
+<!-- <option value="2_3-dimethyloxepin.mol">2,3-Dimethyloxepin</option> -->
+<!-- <option value="2_3-dimethylphenol.mol">2,3-Dimethylphenol</option> -->
+<!-- <option value="2_4_6-trichlorophenol.mol">2,4,6-Trichlorophenol</option> -->
+<!-- <option value="2_4_6-trimethylaniline.mol">2,4,6-Trimethylaniline</option> -->
+<!-- <option value="2_4_6-trinitrotoluene.mol">2,4,6-Trinitrotoluene</option> -->
+<!-- <option value="2_4-diaminotoluène.mol">2,4-Diaminotoluène</option> -->
+<!-- <option value="2_4-dimethylphenol.mol">2,4-Dimethylphenol</option> -->
+<!-- <option value="2_5-dimethylphenol.mol">2,5-Dimethylphenol</option> -->
+<!-- <option value="2_6-diaminotoluene.mol">2,6-Diaminotoluene</option> -->
+<!-- <option value="2_6-dimethylphenol.mol">2,6-Dimethylphenol</option> -->
+<!-- <option value="2_7-dimethyloxepin.mol">2,7-Dimethyloxepin</option> -->
+<!-- <option value="2-2-hydroxyethoxy_ethanol.mol">2-(2-Hydroxyethoxy)ethanol</option> -->
+<!-- <option value="2-aminoethanol.mol">2-Aminoethanol</option> -->
+<!-- <option value="2-aminopropane.mol">2-Aminopropane</option> -->
+<!-- <option value="2-benzofuranyl methyl ketone.mol">2-Benzofuranyl methyl ketone</option> -->
+<!-- <option value="2-bromo-2-methylpropane.mol">2-Bromo-2-methylpropane</option> -->
+<!-- <option value="2-bromophenol.mol">2-Bromophenol</option> -->
+<!-- <option value="2-bromopropane.mol">2-Bromopropane</option> -->
+<!-- <option value="2-chloro-2-methylpropane.mol">2-Chloro-2-methylpropane</option> -->
+<!-- <option value="2-chloro-4-nitroaniline.mol">2-Chloro-4-nitroaniline</option> -->
+<!-- <option value="2-chloro-5-methylphenol.mol">2-Chloro-5-methylphenol</option> -->
+<!-- <option value="2-chlorophenol.mol">2-Chlorophenol</option> -->
+<!-- <option value="2-chloropropane.mol">2-Chloropropane</option> -->
+<!-- <option value="2-hydroxybenzaldehyde.mol">2-Hydroxybenzaldehyde</option> -->
+<!-- <option value="2-methylbut-2-ene.mol">2-Methylbut-2-ene</option> -->
+<!-- <option value="2-methylbuta-1_3-diene.mol">2-Methylbuta-1,3-diene</option> -->
+<!-- <option value="2-methylbutan-2-ol.mol">2-Methylbutan-2-ol</option> -->
+<!-- <option value="2-methylbutane.mol">2-Methylbutane</option> -->
+<!-- <option value="2-methylheptane.mol">2-Methylheptane</option> -->
+<!-- <option value="2-methylhexane.mol">2-Methylhexane</option> -->
+<!-- <option value="2-methylpentane.mol">2-Methylpentane</option> -->
+<!-- <option value="2-methylpropan-1-ol.mol">2-Methylpropan-1-ol</option> -->
+<!-- <option value="2-methylpropan-2-ol.mol">2-Methylpropan-2-ol</option> -->
+<!-- <option value="2-methylpropanal.mol">2-Methylpropanal</option> -->
+<!-- <option value="2-methylpropane.mol">2-Methylpropane</option> -->
+<!-- <option value="2-methylproprane-2-thiol.mol">2-Methylproprane-2-thiol</option> -->
+<!-- <option value="2-phenylacetic_acid.mol">2-Phenylacetic acid</option> -->
+<!-- <option value="2-phenylethanol.mol">2-Phenylethanol</option> -->
+<!-- <option value="2-pyridin-2-ylpyridine.mol">2-Pyridin-2-ylpyridine</option> -->
+<!-- <option value="2-thioethanol.mol">2-Thioethanol</option> -->
+<!-- <option value="2H-chromene.mol">2H-Chromene</option> -->
+<!-- <option value="3_4-dimethylphenol.mol">3,4-Dimethylphenol</option> -->
+<!-- <option value="3_5-dimethylphenol.mol">3,5-Dimethylphenol</option> -->
+<!-- <option value="3-bromophenol.mol">3-Bromophenol</option> -->
+<!-- <option value="3-chlorophenol.mol">3-Chlorophenol</option> -->
+<!-- <option value="3-chloropropanoxide.mol">3-Chloropropanoxide</option> -->
+<!-- <option value="3-chloropropene.mol">3-Chloropropene</option> -->
+<!-- <option value="3-ethylhexane.mol">3-Ethylhexane</option> -->
+<!-- <option value="3-ethylpentane.mol">3-Ethylpentane</option> -->
+<!-- <option value="3-methylbutanal.mol">3-Methylbutanal</option> -->
+<!-- <option value="3-methylfuran-2_5-dione.mol">3-Methylfuran-2,5-dione</option> -->
+<!-- <option value="3-methylpentane.mol">3-Methylpentane</option> -->
+<!-- <option value="3-pyridin-3-ylpyridine.mol">3-Pyridin-3-ylpyridine</option> -->
+<!-- <option value="4-bromo-5-methyl-2-propan-2-yphenol.mol">4-Bromo-5-methyl-2-propan-2-yphenol</option> -->
+<!-- <option value="4-bromophenol.mol">4-Bromophenol</option> -->
+<!-- <option value="4-chloro-2-methylphenol.mol">4-Chloro-2-methylphenol</option> -->
+<!-- <option value="4-chloro-3-methylphenol.mol">4-Chloro-3-methylphenol</option> -->
+<!-- <option value="4-chloroaniline.mol">4-Chloroaniline</option> -->
+<!-- <option value="4-chlorophenol.mol">4-Chlorophenol</option> -->
+<!-- <option value="4-dimethylaminobenzaldehyde.mol">4-Dimethylaminobenzaldehyde</option> -->
+<!-- <option value="4-methoxybenzaldehyde.mol">4-Methoxybenzaldehyde</option> -->
+<!-- <option value="4-methylbenzoic_acid.mol">4-Methylbenzoic acid</option> -->
+<!-- <option value="4-octylphenol.mol">4-Octylphenol</option> -->
+<!-- <option value="4-pyridin-4-ylpyridine.mol">4-Pyridin-4-ylpyridine</option> -->
+<!-- <option value="4-bis_4-dimethylaminophenylmethylene-2_5-cyclohexadien-1-iminium.mol">4-[Bis(4-dimethylaminophenyl)methylene]-2,5-cyclohexadien-1-iminium</option> -->
+<!-- <option value="4H-chromene.mol">4H-Chromene</option> -->
+<!-- <option value="5-chloro-2-2_4-dichlorophenoxy_phenol.mol">5-Chloro-2-(2,4-dichlorophenoxy)phenol</option> -->
+<!-- <option value="5-phenyl-1_3-dihydro-2H-1_4-benzodiazepin-2-one.mol">5-phenyl-1,3-dihydro-2H-1,4-benzodiazepin-2-one</option> -->
+<!-- <option value="7H-purine.mol">7H-Purine</option> -->
+<!-- <option value="9H-carbazole.mol">9H-Carbazole</option> -->
+<!-- <option value="9H-fluorene.mol">9H-Fluorene</option> -->
+<!-- <option value="9H-xanthene.mol">9H-Xanthene</option> -->
+<!-- <option value="abietic_acid.mol">Abietic acid</option> -->
+<!-- <option value="acenaphthene.mol">Acenaphthene</option> -->
+<!-- <option value="acenaphthenequinone.mol">Acenaphthenequinone</option> -->
+<!-- <option value="acenaphthylene.mol">Acenaphthylene</option> -->
+<!-- <option value="acepromazine.mol">Acepromazine</option> -->
+<!-- <option value="acetaldehyde.mol">Acetaldehyde</option> -->
+<!-- <option value="acetamide.mol">Acetamide</option> -->
+<!-- <option value="acetonitrile.mol">Acetonitrile</option> -->
+<!-- <option value="acetylene.mol">Acetylene</option> -->
+<!-- <option value="acridine.mol">Acridine</option> -->
+<!-- <option value="adenine.mol">Adenine</option> -->
+<!-- <option value="aminocyclohexane.mol">Aminocyclohexane</option> -->
+<!-- <option value="aminocyclopentane.mol">Aminocyclopentane</option> -->
+<!-- <option value="ammonia.mol">Ammonia</option> -->
+<!-- <option value="anisole.mol">Anisole</option> -->
+<!-- <option value="anthracene.mol">Anthracene</option> -->
+<!-- <option value="arachidonic_acid.mol">Arachidonic acid</option> -->
+<!-- <option value="azepane.mol">Azepane</option> -->
+<!-- <option value="benzaldehyde.mol">Benzaldehyde</option> -->
+<!-- <option value="benzamide.mol">Benzamide</option> -->
+<!-- <option value="benzene-1_2-diamine.mol">Benzene-1,2-diamine</option> -->
+<!-- <option value="benzene-1_2-diol.mol">Benzene-1,2-diol</option> -->
+<!-- <option value="benzene-1_3-diamine.mol">Benzene-1,3-diamine</option> -->
+<!-- <option value="benzene-1_3-diol.mol">Benzene-1,3-diol</option> -->
+<!-- <option value="benzene-1_4-diamine.mol">Benzene-1,4-diamine</option> -->
+<!-- <option value="benzene-1_4-diol.mol">Benzene-1,4-diol</option> -->
+<!-- <option value="benzenesulfonic_acid.mol">Benzenesulfonic acid</option> -->
+<!-- <option value="benzofuran.mol">Benzofuran</option> -->
+<!-- <option value="benzoic_acid.mol">Benzoic acid</option> -->
+<!-- <option value="benzonitrile.mol">Benzonitrile</option> -->
+<!-- <option value="benzothiophene.mol">Benzothiophene</option> -->
+<!-- <option value="benzoyl_chloride.mol">Benzoyl chloride</option> -->
+<!-- <option value="bromocyclohexane.mol">Bromocyclohexane</option> -->
+<!-- <option value="bromoethane.mol">Bromoethane</option> -->
+<!-- <option value="bromoform.mol">Bromoform</option> -->
+<!-- <option value="bromomethane.mol">Bromomethane</option> -->
+<!-- <option value="bromotrifluoromethane.mol">Bromotrifluoromethane</option> -->
+<!-- <option value="but-1-yne.mol">But-1-yne</option> -->
+<!-- <option value="but-2-yne.mol">But-2-yne</option> -->
+<!-- <option value="but-2-yne-1_4-diol.mol">But-2-yne-1,4-diol</option> -->
+<!-- <option value="butan-1-ol.mol">Butan-1-ol</option> -->
+<!-- <option value="butane-1-thiol.mol">Butane-1-thiol</option> -->
+<!-- <option value="butanedioic_acid.mol">Butanedioic acid</option> -->
+<!-- <option value="butyl_acetate.mol">Butyl acetate</option> -->
+<!-- <option value="butyl_butanoate.mol">Butyl butanoate</option> -->
+<!-- <option value="butyl_formate.mol">Butyl formate</option> -->
+<!-- <option value="butyl_pentanoate.mol">Butyl pentanoate</option> -->
+<!-- <option value="butyl_propanoate.mol">Butyl propanoate</option> -->
+<!-- <option value="butyronitrile.mol">Butyronitrile</option> -->
+<!-- <option value="caffeine.mol">Caffeine</option> -->
+<!-- <option value="cervonic_acid.mol">Cervonic acid</option> -->
+<!-- <option value="chloro-(chloromethoxymethane.mol">Chloro-(chloromethoxy)methane</option> -->
+<!-- <option value="chlorobenzene.mol">Chlorobenzene</option> -->
+<!-- <option value="chlorocyclohexane.mol">Chlorocyclohexane</option> -->
+<!-- <option value="chloroethane.mol">Chloroethane</option> -->
+<!-- <option value="chromone.mol">Chromone</option> -->
+<!-- <option value="cinnoline.mol">Cinnoline</option> -->
+<!-- <option value="citric_acid.mol">Citric acid</option> -->
+<!-- <option value="coumarin.mol">Coumarin</option> -->
+<!-- <option value="cubane.mol">Cubane</option> -->
+<!-- <option value="cyclodecane.mol">Cyclodecane</option> -->
+<!-- <option value="cyclohepta-1_3_5-triene.mol">Cyclohepta-1,3,5-triene</option> -->
+<!-- <option value="cyclohepta-1_3-diene.mol">Cyclohepta-1,3-diene</option> -->
+<!-- <option value="cyclohepta-1_4-diene.mol">Cyclohepta-1,4-diene</option> -->
+<!-- <option value="cycloheptane.mol">Cycloheptane</option> -->
+<!-- <option value="cyclohex-2-en-1-one.mol">Cyclohex-2-en-1-one</option> -->
+<!-- <option value="cyclohexa-1_3-diene.mol">Cyclohexa-1,3-diene</option> -->
+<!-- <option value="cyclohexa-1_4-diene.mol">Cyclohexa-1,4-diene</option> -->
+<!-- <option value="cyclohexanol.mol">Cyclohexanol</option> -->
+<!-- <option value="cyclohexanone.mol">Cyclohexanone</option> -->
+<!-- <option value="cyclononane.mol">Cyclononane</option> -->
+<!-- <option value="cycloocta-1_3_5_7-tetraene.mol">Cycloocta-1,3,5,7-tetraene</option> -->
+<!-- <option value="cycloocta-1_3_5-triene.mol">Cycloocta-1,3,5-triene</option> -->
+<!-- <option value="cycloocta-1_3-diene.mol">Cycloocta-1,3-diene</option> -->
+<!-- <option value="cyclooctane.mol">Cyclooctane</option> -->
+<!-- <option value="cyclopent-2-en-1-one.mol">Cyclopent-2-en-1-one</option> -->
+<!-- <option value="cyclopenta-1_3-diene.mol">Cyclopenta-1,3-diene</option> -->
+<!-- <option value="cyclopentanol.mol">Cyclopentanol</option> -->
+<!-- <option value="cyclopentanone.mol">Cyclopentanone</option> -->
+<!-- <option value="cyclopentene.mol">Cyclopentene</option> -->
+<!-- <option value="cytosine.mol">Cytosine</option> -->
+<!-- <option value="D-alanine.mol">D-Alanine</option> -->
+<!-- <option value="d-allose.mol">D-Allose</option> -->
+<!-- <option value="d-altrose.mol">D-Altrose</option> -->
+<!-- <option value="D-amphetamine.mol">D-Amphetamine</option> -->
+<!-- <option value="d-arabinose.mol">D-Arabinose</option> -->
+<!-- <option value="D-arginine.mol">D-Arginine</option> -->
+<!-- <option value="D-asparagine.mol">D-Asparagine</option> -->
+<!-- <option value="D-aspartic_acid.mol">D-Aspartic acid</option> -->
+<!-- <option value="D-cysteine.mol">D-Cysteine</option> -->
+<!-- <option value="d-erythrose.mol">D-Erythrose</option> -->
+<!-- <option value="d-erythrulose.mol">D-Erythrulose</option> -->
+<!-- <option value="d-galactose.mol">D-Galactose</option> -->
+<!-- <option value="D-glutamic_acid.mol">D-Glutamic acid</option> -->
+<!-- <option value="D-glutamine.mol">D-Glutamine</option> -->
+<!-- <option value="d-glyceraldehyde.mol">D-Glyceraldehyde</option> -->
+<!-- <option value="d-gulose.mol">D-Gulose</option> -->
+<!-- <option value="D-histidine.mol">D-Histidine</option> -->
+<!-- <option value="d-idose.mol">D-Idose</option> -->
+<!-- <option value="D-isoleucine.mol">D-Isoleucine</option> -->
+<!-- <option value="D-lactic_acid.mol">D-Lactic acid</option> -->
+<!-- <option value="D-leucine.mol">D-Leucine</option> -->
+<!-- <option value="D-lysine.mol">D-Lysine</option> -->
+<!-- <option value="d-lyxose.mol">D-Lyxose</option> -->
+<!-- <option value="D-malic_acid.mol">D-Malic acid</option> -->
+<!-- <option value="d-mannose.mol">D-Mannose</option> -->
+<!-- <option value="D-methionine.mol">D-Methionine</option> -->
+<!-- <option value="D-phenylalanine.mol">D-Phenylalanine</option> -->
+<!-- <option value="D-proline.mol">D-Proline</option> -->
+<!-- <option value="d-psicose.mol">D-Psicose</option> -->
+<!-- <option value="d-ribose.mol">D-Ribose</option> -->
+<!-- <option value="d-ribulose.mol">D-Ribulose</option> -->
+<!-- <option value="D-serine.mol">D-Serine</option> -->
+<!-- <option value="d-sorbose.mol">D-Sorbose</option> -->
+<!-- <option value="d-tagatose.mol">D-Tagatose</option> -->
+<!-- <option value="d-talose.mol">D-Talose</option> -->
+<!-- <option value="D-threonine.mol">D-Threonine</option> -->
+<!-- <option value="d-threose.mol">D-Threose</option> -->
+<!-- <option value="D-tryptophan.mol">D-Tryptophan</option> -->
+<!-- <option value="D-tyrosine.mol">D-Tyrosine</option> -->
+<!-- <option value="D-valine.mol">D-Valine</option> -->
+<!-- <option value="D-warfarin.mol">D-Warfarin</option> -->
+<!-- <option value="d-xylose.mol">D-Xylose</option> -->
+<!-- <option value="d-xylulose.mol">D-Xylulose</option> -->
+<!-- <option value="D-allo-threonine.mol">D-allo-Threonine</option> -->
+<!-- <option value="decan-1-ol.mol">Decan-1-ol</option> -->
+<!-- <option value="decanoic_acid.mol">Decanoic acid</option> -->
+<!-- <option value="di-tert-butylether.mol">Di-tert-butylether</option> -->
+<!-- <option value="diazepam.mol">Diazepam</option> -->
+<!-- <option value="dibutylether.mol">Dibutylether</option> -->
+<!-- <option value="dichloromethane.mol">Dichloromethane</option> -->
+<!-- <option value="diethylamine.mol">Diethylamine</option> -->
+<!-- <option value="diethylether.mol">Diethylether</option> -->
+<!-- <option value="difluoromethane.mol">Difluoromethane</option> -->
+<!-- <option value="dihydroxyacetone.mol">Dihydroxyacetone</option> -->
+<!-- <option value="diisopropylether.mol">Diisopropylether</option> -->
+<!-- <option value="dimethyl_sulfoxide.mol">Dimethyl sulfoxide</option> -->
+<!-- <option value="dimethylamine.mol">Dimethylamine</option> -->
+<!-- <option value="dimethylether.mol">Dimethylether</option> -->
+<!-- <option value="dipropylether.mol">Dipropylether</option> -->
+<!-- <option value="eicosane.mol">Eicosane</option> -->
+<!-- <option value="ethane-1_2-diol.mol">Ethane-1,2-diol</option> -->
+<!-- <option value="ethane-1_2-dithiol.mol">Ethane-1,2-dithiol</option> -->
+<!-- <option value="ethanethiol.mol">Ethanethiol</option> -->
+<!-- <option value="ethoxybenzene.mol">Ethoxybenzene</option> -->
+<!-- <option value="ethyl_acetate.mol">Ethyl acetate</option> -->
+<!-- <option value="ethyl_butanoate.mol">Ethyl butanoate</option> -->
+<!-- <option value="ethyl_carbamate.mol">Ethyl carbamate</option> -->
+<!-- <option value="ethyl_formate.mol">Ethyl formate</option> -->
+<!-- <option value="ethyl_pentanoate.mol">Ethyl pentanoate</option> -->
+<!-- <option value="ethyl_propanoate.mol">Ethyl propanoate</option> -->
+<!-- <option value="ethylamine.mol">Ethylamine</option> -->
+<!-- <option value="ethylmethylether.mol">Ethylmethylether</option> -->
+<!-- <option value="formaldehyde.mol">Formaldehyde</option> -->
+<!-- <option value="formic_acid.mol">Formic acid</option> -->
+<!-- <option value="furan.mol">Furan</option> -->
+<!-- <option value="furan-2_5-dione.mol">Furan-2,5-dione</option> -->
+<!-- <option value="glycine.mol">Glycine</option> -->
+<!-- <option value="guanine.mol">Guanine</option> -->
+<!-- <option value="hept-1-ene.mol">Hept-1-ene</option> -->
+<!-- <option value="heptan-1-ol.mol">Heptan-1-ol</option> -->
+<!-- <option value="heptan-2-one.mol">Heptan-2-one</option> -->
+<!-- <option value="heptan-3-one.mol">Heptan-3-one</option> -->
+<!-- <option value="heptan-4-ol.mol">Heptan-4-ol</option> -->
+<!-- <option value="heptan-4-one.mol">Heptan-4-one</option> -->
+<!-- <option value="heptanal.mol">Heptanal</option> -->
+<!-- <option value="heptane-1-thiol.mol">Heptane-1-thiol</option> -->
+<!-- <option value="heptanoic_acid.mol">Heptanoic acid</option> -->
+<!-- <option value="hex-1-ene.mol">Hex-1-ene</option> -->
+<!-- <option value="hexadecahydro-1H-cyclopenta[a]phenanthrene.mol">Hexadecahydro-1H-cyclopenta[a]phenanthrene</option> -->
+<!-- <option value="hexadecane.mol">Hexadecane</option> -->
+<!-- <option value="hexafluoroacetone.mol">Hexafluoroacetone</option> -->
+<!-- <option value="hexan-1-ol.mol">Hexan-1-ol</option> -->
+<!-- <option value="hexan-2-one.mol">Hexan-2-one</option> -->
+<!-- <option value="hexan-3-one.mol">Hexan-3-one</option> -->
+<!-- <option value="hexanal.mol">Hexanal</option> -->
+<!-- <option value="hexane-1-thiol.mol">Hexane-1-thiol</option> -->
+<!-- <option value="hexanoic_acid.mol">Hexanoic acid</option> -->
+<!-- <option value="isobutyric_acid.mol">Isobutyric acid</option> -->
+<!-- <option value="isobutyronitrile.mol">Isobutyronitrile</option> -->
+<!-- <option value="isonicotamide.mol">Isonicotamide</option> -->
+<!-- <option value="isonicotinic_acid.mol">Isonicotinic acid</option> -->
+<!-- <option value="isoquinoline.mol">Isoquinoline</option> -->
+<!-- <option value="L-4-nitrophenylalanine.mol">L-4-Nitrophenylalanine</option> -->
+<!-- <option value="L-alanine.mol">L-Alanine</option> -->
+<!-- <option value="L-arginine.mol">L-Arginine</option> -->
+<!-- <option value="L-ascorbic_acid.mol">L-Ascorbic acid</option> -->
+<!-- <option value="L-asparagine.mol">L-Asparagine</option> -->
+<!-- <option value="L-aspartic_acid.mol">L-Aspartic acid</option> -->
+<!-- <option value="L-cysteine.mol">L-Cysteine</option> -->
+<!-- <option value="L-glutamic_acid.mol">L-Glutamic acid</option> -->
+<!-- <option value="L-glutamine.mol">L-Glutamine</option> -->
+<!-- <option value="L-histidine.mol">L-Histidine</option> -->
+<!-- <option value="L-isoleucine.mol">L-Isoleucine</option> -->
+<!-- <option value="L-lactic_acid.mol">L-Lactic acid</option> -->
+<!-- <option value="L-leucine.mol">L-Leucine</option> -->
+<!-- <option value="L-lysine.mol">L-Lysine</option> -->
+<!-- <option value="L-malic_acid.mol">L-Malic acid</option> -->
+<!-- <option value="L-methionine.mol">L-Methionine</option> -->
+<!-- <option value="L-phenylalanine.mol">L-Phenylalanine</option> -->
+<!-- <option value="L-proline.mol">L-Proline</option> -->
+<!-- <option value="L-serine.mol">L-Serine</option> -->
+<!-- <option value="L-Tartaric_acid.mol">L-Tartaric acid</option> -->
+<!-- <option value="L-Threonine.mol">L-Threonine</option> -->
+<!-- <option value="L-Tryptophan.mol">L-Tryptophan</option> -->
+<!-- <option value="L-Tyrosine.mol">L-Tyrosine</option> -->
+<!-- <option value="L-Valine.mol">L-Valine</option> -->
+<!-- <option value="L-allo-isoleucine.mol">L-allo-Isoleucine</option> -->
+<!-- <option value="Lauric_acid.mol">Lauric acid</option> -->
+<!-- <option value="Linolein.mol">Linolein</option> -->
+<!-- <option value="methane.mol">Methane</option> -->
+<!-- <option value="methanesulfonic_acid.mol">Methanesulfonic acid</option> -->
+<!-- <option value="methanethiol.mol">Methanethiol</option> -->
+
+<!-- <option value="methyl_acetate.mol">Methyl acetate</option> -->
+<!-- <option value="methyl_butanoate.mol">Methyl butanoate</option> -->
+<!-- <option value="methyl_formate.mol">Methyl formate</option> -->
+<!-- <option value="methyl_pentanoate.mol">Methyl pentanoate</option> -->
+<!-- <option value="methyl_propanoate.mol">Methyl propanoate</option> -->
+<!-- <option value="methyl_vinyl_ketone.mol">Methyl vinyl ketone</option> -->
+<!-- <option value="methylamine.mol">Methylamine</option> -->
+<!-- <option value="methylcyclohexane.mol">Methylcyclohexane</option> -->
+<!-- <option value="morpholine.mol">Morpholine</option> -->
+<!-- <option value="myristic_acid.mol">Myristic acid</option> -->
+<!-- <option value="methylcyclopentane.mol">Methylcyclopentane</option> -->
+<!-- <option value="N_N_N'_N'-Tetramethylethane-1_2-diamine.mol">N,N,N',N'-Tetramethylethane-1,2-diamine</option> -->
+<!-- <option value="N_N-dimethylacetamide.mol">N,N-Dimethylacetamide</option> -->
+<!-- <option value="N_N-dimethylaniline.mol">N,N-Dimethylaniline</option> -->
+<!-- <option value="N_N-dimethylformamide.mol">N,N-Dimethylformamide</option> -->
+<!-- <option value="N-2-hydroxyethylphthalimide.mol">N-(2-Hydroxyethyl)phthalimide</option> -->
+<!-- <option value="N-4-hydroxyphenylacetamide.mol">N-(4-Hydroxyphenyl)acetamide</option> -->
+<!-- <option value="nicotinamide.mol">Nicotinamide</option> -->
+<!-- <option value="nicotinic_acid.mol">Nicotinic acid</option> -->
+<!-- <option value="nitroethane.mol">Nitroethane</option> -->
+<!-- <option value="nitromethane.mol">Nitromethane</option> -->
+<!-- <option value="nonan-1-ol.mol">Nonan-1-ol</option> -->
+<!-- <option value="norbornane.mol">Norbornane</option> -->
+<!-- <option value="oct-1-ene.mol">Oct-1-ene</option> -->
+<!-- <option value="octan-1-ol.mol">Octan-1-ol</option> -->
+<!-- <option value="octan-2-one.mol">Octan-2-one</option> -->
+<!-- <option value="octan-3-one.mol">Octan-3-one</option> -->
+<!-- <option value="octan-4-one.mol">Octan-4-one</option> -->
+<!-- <option value="octanal.mol">Octanal</option> -->
+<!-- <option value="octane-1-thiol.mol">Octane-1-thiol</option> -->
+<!-- <option value="octanoic_acid.mol">Octanoic acid</option> -->
+<!-- <option value="oleic_acid.mol">Oleic acid</option> -->
+<!-- <option value="oxalic_acid.mol">Oxalic acid</option> -->
+<!-- <option value="oxamide.mol">Oxamide</option> -->
+<!-- <option value="oxepin.mol">Oxepin</option> -->
+<!-- <option value="pent-1-ene.mol">Pent-1-ene</option> -->
+<!-- <option value="pentadecane.mol">Pentadecane</option> -->
+<!-- <option value="pentan-1-ol.mol">Pentan-1-ol</option> -->
+<!-- <option value="pentan-2-one.mol">Pentan-2-one</option> -->
+<!-- <option value="pentan-3-ol.mol">Pentan-3-ol</option> -->
+<!-- <option value="pentan-3-one.mol">Pentan-3-one</option> -->
+<!-- <option value="pentanal.mol">Pentanal</option> -->
+<!-- <option value="pentane-1-thiol.mol">Pentane-1-thiol</option> -->
+<!-- <option value="pentanoic_acid.mol">Pentanoic acid</option> -->
+<!-- <option value="pentyl_acetate.mol">Pentyl acetate</option> -->
+<!-- <option value="pentyl_butanoate.mol">Pentyl butanoate</option> -->
+<!-- <option value="pentyl_formate.mol">Pentyl formate</option> -->
+<!-- <option value="pentyl_pentanoate.mol">Pentyl pentanoate</option> -->
+<!-- <option value="pentyl_propanoate.mol">Pentyl propanoate</option> -->
+<!-- <option value="phenantrene.mol">Phenantrene</option> -->
+<!-- <option value="phenylmethanol.mol">Phenylmethanol</option> -->
+<!-- <option value="phthalimide.mol">Phthalimide</option> -->
+<!-- <option value="picolinamide.mol">Picolinamide</option> -->
+<!-- <option value="picolinic_acid.mol">Picolinic acid</option> -->
+<!-- <option value="piperazine.mol">Piperazine</option> -->
+<!-- <option value="piperidine.mol">Piperidine</option> -->
+<!-- <option value="porphin.mol">Porphin</option> -->
+<!-- <option value="prop-2-enal.mol">Prop-2-enal</option> -->
+<!-- <option value="propane-1_2_3-triol.mol">Propane-1,2,3-triol</option> -->
+<!-- <option value="propiononitrile.mol">Propiononitrile</option> -->
+<!-- <option value="proprane-1-thiol.mol">Proprane-1-thiol</option> -->
+<!-- <option value="proprane-2-thiol.mol">Proprane-2-thiol</option> -->
+<!-- <option value="propyl_acetate.mol">Propyl acetate</option> -->
+<!-- <option value="propyl_butanoate.mol">Propyl butanoate</option> -->
+<!-- <option value="propyl_formate.mol">Propyl formate</option> -->
+<!-- <option value="propyl_pentanoate.mol">Propyl pentanoate</option> -->
+<!-- <option value="propyl_propanoate.mol">Propyl propanoate</option> -->
+<!-- <option value="pyran-2-one.mol">Pyran-2-one</option> -->
+<!-- <option value="pyran-4-one.mol">Pyran-4-one</option> -->
+<!-- <option value="pyridine.mol">Pyridine</option> -->
+<!-- <option value="pyridine-2-thiol.mol">Pyridine-2-thiol</option> -->
+<!-- <option value="pyrrolidine.mol">Pyrrolidine</option> -->
+<!-- <option value="Quinazoline.mol">Quinazoline</option> -->
+<!-- <option value="Quinoline.mol">Quinoline</option> -->
+<!-- <option value="tetrachloromethane.mol">Tetrachloromethane</option> -->
+<!-- <option value="tetracosane.mol">Tetracosane</option> -->
+<!-- <option value="tetradecane.mol">Tetradecane</option> -->
+<!-- <option value="tetrahydrofuran.mol">Tetrahydrofuran</option> -->
+<!-- <option value="tetralin.mol">Tetralin</option> -->
+<!-- <option value="thiophene.mol">Thiophene</option> -->
+<!-- <option value="thiepin.mol">Thiepin</option> -->
+<!-- <option value="thymine.mol">Thymine</option> -->
+<!-- <option value="tridecane.mol">Tridecane</option> -->
+<!-- <option value="triethylamine.mol">Triethylamine</option> -->
+<!-- <option value="triethylenediamine.mol">Triethylenediamine</option> -->
+<!-- <option value="trimethylamine.mol">Trimethylamine</option> -->
+<!-- <option value="triphenylmethane.mol">Triphenylmethane</option> -->
+<!-- <option value="triphenylmethanol.mol">Triphenylmethanol</option> -->
+<!-- <option value="tris_4-aminophenyl_methanol.mol">Tris(4-aminophenyl)methanol</option> -->
+<!-- <option value="tris_4-cyanophenyl_methane.mol">Tris(4-cyanophenyl)methane</option> -->
+<!-- <option value="tris_4-cyanophenyl_methanol.mol">Tris(4-cyanophenyl)methanol</option> -->
+<!-- <option value="tris_4-dimethylaminophenyl_methanol.mol">Tris(4-dimethylaminophenyl)methanol</option> -->
+<!-- <option value="uracil.mol">Uracil</option> -->
+<!-- <option value="urea.mol">Urea</option> -->
+<!-- <option value="uric_acid.mol">Uric acid</option> -->
+<!-- <option value="water.mol">Water</option> -->
+<!-- <option value="E-2-chloroethenyl_benzene.mol">[(E)-2-Chloroethenyl]benzene</option> -->
+<!-- <option value="E-2-phenylethenyl_benzene.mol">[(E)-2-Phenylethenyl]benzene</option> -->
+<!-- <option value="cis-decahydronaphthalene.mol">cis-Decahydronaphthalene</option> -->
+<!-- <option value="o-benzoquinone.mol">o-Benzoquinone</option> -->
+<!-- <option value="p-benzoquinone.mol">p-Benzoquinone</option> -->
+<!-- <option value="p-toluenesulfonic_acid.mol">p-Toluenesulfonic acid</option> -->
+<!-- <option value="tert-butylamine.mol">tert-Butylamine</option> -->
+<!-- <option value="trans-decahydronaphthalene.mol">trans-Decahydronaphthalene</option> -->
+    </select>&nbsp;&nbsp;<input id="ein_stoffname" list="l_ein_stoffname" type="text" size="40" placeholder="links auswählen oder Stoffname hier eingeben" /><datalist id="l_ein_stoffname"></datalist><a onclick="eingabe_loeschen()" href="#"><img src="daten/img/edit-clear.png" style="width:16px;height:16px;padding-top:5px;" /></a>&nbsp;&nbsp;<input type="button" value="Auswählen" onclick="in_liste_suchen()" />
+    </div>
+    <div id="platzhalter" hidden style="user-select:none;min-height:7px;">&nbsp;</div>
+    <div id="div_ausgabe"></div>
+    <div id="appletbereich">&nbsp;</div>
+    <script type="text/javascript">
+      /*try {*/
+    
+          mein_applet=Jmol.getApplet('mein_applet', Info);
+          //Jmol.getTMApplet('mein_applet', Info);
+      
+      /*} catch(e) {
+       alert('In der lokalen offline Version muss Chrome mit der Kommandozeilenoption --allow-file-access-from-files gestartet werden!');
+            var weiterleiten=confirm('Weiterleiten zur online-Version?');
+            if (weiterleiten) {
+                location.href='http://quizdidaktik.de/simpleboard/daten/3dmolekuele/index.html'
+            }
+       }*/
+      
+    </script>
+    <!-- <input type="button" value="Speichern" onclick="speichern('testinhalt', 'Dateiname', 'txt')" /> -->
+    <div id="jmol_steuerelemente">
+      <label for="i_breite">Breite</label>:&nbsp;<input id="i_breite" type="number" min="240" max="1920" value="640" step="20" onchange="setze_groesse();" />&nbsp;&nbsp;<label for="i_hoehe">Höhe</label>:&nbsp;<input id="i_hoehe" type="number" min="240" max="1200" value="480" step="20" onchange="setze_groesse();" />
+    </div>
+    <div id="hinweis" style="font-size:12px;color:#d3d3d3;" hidden>Rechtsklick: Datei &gt; Laden &gt; Ausgewählte Datei öffnen &gt; Durchsuchen... ⇒ Load</div>
+  </body>
+</html>

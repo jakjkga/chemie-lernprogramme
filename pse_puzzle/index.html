@@ -1,0 +1,477 @@
+<html>
+  <head>
+    <title>PSE-Puzzle</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Puzzle zum Periodensystem der Elemente">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Periodensystem, Lernspiel">
+    <link rel="shortcut icon" href="https://chemie-lernprogramme.de/daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style type="text/css">
+      body {
+          background:#ffffff !important;
+          padding:5px;}
+      /* Tabelle für die Zielfelder des Periodensystems */
+      table.pse {
+          /*width:500px;*/
+          /*background-color:lightgrey;*/
+          border-style:none;
+          border-color:black;
+          border-width:1px;
+          border-spacing:0px;
+          border-collapse:collapse;
+      }
+      table.pse td {
+          border-spacing:0px;
+          margin:0px;
+          padding:0px;
+      }
+      td.ohne_rand {
+          border-style:none;
+      }
+      table.pse th {
+          font-family:'Times New Roman', Times, sans-serif;
+          font-size:14px;
+          font-weight:normal;
+          border-spacing:0px;
+          margin:0px;
+      }
+      table.pse td.feld {
+          width:50px;
+          height:50px;
+          border-style:solid;
+          border-color:black;
+          border-width:1px;
+          border-spacing:0px;
+          font-size:24px;
+          font-weight:bold;
+          text-align:center;
+      }
+      table.pse td.inaktiv {
+          background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wGCg4RMDZLXYYAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAqElEQVRo3u3XuwrEMAwF0Sv//z9ni0Ag5CE3gR0zqoXh4MKeSrKlma3d2Kdqbu+L88YKiKSBUBCvEBLiEUJD3EKIiAuEijhByIgDQkckyVgB0b4jFETVBISAaG+EgniFkBCPEBriFkJEXCBUxAlCRhwQOiJJaiZ1Cd+YsQLCZrfZbXab3Wa32W12m91mt9ltdpvdZrfZbXab3Wa32W12m91mt9n/+hvzA4YXB1ZsAPpNAAAAAElFTkSuQmCC');
+      }
+      table.pse td.aktiv:hover {
+          background-color:white;
+          /*opacity:0.3;*/
+          border-color:darkgrey;
+      }
+      table.pse td.beschriftung {
+          width:20px;
+          text-align:right;
+          padding-right:4px;
+          height:;
+          border-style:none;
+          border-color:black;
+          border-width:1px;
+          border-spacing:0px;
+          font-size:14px;
+          /*color:red;*/
+      }
+      table.pse td.erste_periode {
+          background-color:#d38d5f;
+      }
+      table.pse td.zweite_periode {
+          background-color:#ff9999;
+      }
+      table.pse td.dritte_periode {
+          background-color:#71c837;
+      }
+      table.pse td.vierte_periode {
+          background-color:#ff9955;
+      }
+      table.pse td.fuenfte_periode {
+          background-color:#00ccff;
+      }
+      table.pse td.sechste_periode {
+          background-color:#ffdd55;
+      }
+      table.pse td.siebte_periode {
+          background-color:#b380ff;
+      }
+      
+      input {
+          width:36px;
+          height:26px;
+          font-size:14px;
+          background-color:white;
+          border-style:solid;
+          border-width:1px;
+          border-color:black;
+          border-radius:4px;
+      }
+      input:hover {
+          background-color:#ffe6d5;
+          border-color:#f60;
+          color:#f60;
+          font-weight:bold;
+      }
+      input:disabled {
+          border-color:white;
+          background-color:white;
+          color:white;
+      }
+      table#auswahltabelle {
+          background-color:white;
+          margin-left:25px;
+          margin-top:5px;
+      }
+      span#bisher_richtige {
+          min-width:20px;
+          text-align:right;
+          /*background-color:yellow;*/
+          font-size:14px;
+          font-weight:bold;
+          color:green;
+      }
+      span#bisher_falsche {
+          width:20px;
+          text-align:right;
+          /*background-color:yellow;*/
+          font-size:14px;
+          font-weight:bold;
+          color:red;
+      }
+    </style>
+    <script type="text/javascript">
+var richtige=0;
+var falsche=0;
+
+var aktuelle_auswahl=''; //Globale Variable, die das jeweils ausgewählte Element enthält
+
+var zielfelder=[
+    'Ⅰ1',                                     'Ⅷ1',
+    'Ⅰ2', 'Ⅱ2','Ⅲ2', 'Ⅳ2', 'Ⅴ2','Ⅵ2','Ⅶ2','Ⅷ2',
+    'Ⅰ3', 'Ⅱ3','Ⅲ3', 'Ⅳ3', 'Ⅴ3','Ⅵ3','Ⅶ3','Ⅷ3',
+    'Ⅰ4', 'Ⅱ4',/*'Ⅲ4',*/ /*'Ⅳ4',*/ 'Ⅴ4','Ⅵ4','Ⅶ4','Ⅷ4',
+    'Ⅰ5', 'Ⅱ5',/*'Ⅲ5',*/ 'Ⅳ5', 'Ⅴ5','Ⅵ5','Ⅶ5','Ⅷ5',
+    'Ⅰ6', 'Ⅱ6',/*'Ⅲ6',*/ 'Ⅳ6', /*'Ⅴ6',*/ /*'Ⅵ6',*/ /*'Ⅶ6',*/ /*'Ⅷ6,'*/
+    /*'Ⅰ7',*/ /*'Ⅱ7'*/
+]
+
+var elemente=[
+'Al', 'Ar', 'As', /*'At',*/ 'B', 'Ba', 'Be', /*'Bi',*/ 'Br', 'C',
+'Ca', 'Cl', 'Cs', 'F', /*'Fr',*/ /*'Ga',*/ /*'Ge',*/ 'H', 'He', 'I', /*'In',*/ 'K',
+'Kr', 'Li', 'Mg', 'N', 'Na', 'Ne', 'O', 'P',
+'Pb', /*'Po',*/ /*'Ra',*/ 'Rb', /*'Rn',*/ 'S', 'Sb', 'Se', 'Si', 'Sn', 'Sr',
+'Te', /*'Tl',*/ 'Xe'
+]
+
+var zuordnung={
+'Ⅲ3':'Al',
+'Ⅷ3':'Ar', 
+'Ⅴ4':'As', 
+'Ⅲ2':'B', 
+'Ⅱ6':'Ba',
+'Ⅱ2':'Be',
+'Ⅶ4':'Br',
+'Ⅳ2':'C',
+'Ⅱ4':'Ca',
+'Ⅶ3':'Cl',
+'Ⅰ6':'Cs',
+'Ⅶ2':'F',
+'Ⅰ1':'H',
+'Ⅷ1':'He',
+'Ⅶ5':'I',
+'Ⅰ4':'K',
+'Ⅷ4':'Kr',
+'Ⅰ2':'Li',
+'Ⅱ3':'Mg',
+'Ⅴ2':'N',
+'Ⅰ3':'Na',
+'Ⅷ2':'Ne',
+'Ⅵ2':'O',
+'Ⅴ3':'P',
+'Ⅳ6':'Pb',
+'Ⅰ5':'Rb',
+'Ⅵ3':'S',
+'Ⅴ5':'Sb',
+'Ⅵ4':'Se',
+'Ⅳ3':'Si',
+'Ⅳ5':'Sn',
+'Ⅱ5':'Sr',
+'Ⅵ5':'Te',
+'Ⅷ5':'Xe'
+}
+
+function schreibe(feld, wert) {
+    document.getElementById(feld).innerHTML=wert;
+}
+
+function hole(feld) {
+   var wert=Number(document.getElementById(feld).firstChild.data);
+   return wert;
+}
+
+function spielfeld_laden() {
+    for (var i in zielfelder) {
+        //alert(felder[i]);
+        document.getElementById(zielfelder[i]).addEventListener('click', ziel_festlegen, false);
+    }
+    for (var j in elemente) {
+        document.getElementById(elemente[j]).removeAttribute('disabled');
+        document.getElementById(elemente[j]).addEventListener('click', waehle_aus, false)
+    }
+    aktuelle_auswahl='';
+    richtige=0;
+    falsche=0;
+    schreibe('bisher_richtige', richtige);
+    schreibe('bisher_falsche', falsche);
+}
+
+function waehle_aus(ereignis) {
+    var knopf=this.id;
+    //alert('waehle_aus: '+String(knopf));
+    //aktuellen Knopf gelb färben, alle anderen einfach weiß
+    for (var i in elemente) {
+        document.getElementById(elemente[i]).style.backgroundColor='white';
+    }
+    document.getElementById(knopf).style.backgroundColor='#ffeeaa';
+    //globale Variable mit dem aktuellen Wert füllen
+    aktuelle_auswahl=String(knopf); 
+}
+
+function ziel_festlegen(ereignis) {
+    var feld=this.id;
+    //alert('ziel_festlegen: '+String(feld)+' für das Element: '+String(aktuelle_auswahl));
+    //Richtige Lösung holen und vergleichen
+    var richtig=String(zuordnung[feld]);
+    //alert(richtig);
+    if (aktuelle_auswahl == richtig) {
+        //alert('richtig');
+        document.getElementById(feld).innerHTML=aktuelle_auswahl;
+        //entsprechenden Knopf deaktivieren
+        document.getElementById(richtig).setAttribute('disabled', true);
+        document.getElementById(richtig).style.backgroundColor='white';
+        if (eval(richtige+falsche) < elemente.length) {
+            richtige=richtige+1;
+        }
+        schreibe('bisher_richtige', richtige);
+    } else if (aktuelle_auswahl == '') {
+       alert('Wähle erst unten ein Element aus!')
+    } else {
+        alert('Falsch: Das Element '+aktuelle_auswahl+' steht nicht in der Position '+feld+'!');
+        if (eval(richtige+falsche) < elemente.length) {
+            falsche=falsche+1;
+        }
+        schreibe('bisher_falsche', falsche);
+    }
+}
+    </script>
+  </head>
+  <body onload="spielfeld_laden();">
+    <table class="pse" title="Wähle erst unten ein Element aus und klicke dann anschließend auf seine Position im Periodensystem!">
+      <tr>
+        <td>&nbsp;</td>
+        <th>Ⅰ</th>
+        <th>Ⅱ</th>
+        <th>Ⅲ</th>
+        <th>Ⅳ</th>
+        <th>Ⅴ</th>
+        <th>Ⅵ</th>
+        <th>Ⅶ</th>
+        <th>Ⅷ</th>
+      </tr>
+      <tr><!-- erste Periode -->
+        <td class="beschriftung">1</td>
+        <td class="feld erste_periode aktiv" id="Ⅰ1">&nbsp;</td>
+        <td class="leer" colspan="6">&nbsp;</td>
+        <td class="feld erste_periode aktiv" id="Ⅷ1">&nbsp;</td>
+      </tr>
+      <tr><!-- zweite Periode -->
+        <td class="beschriftung">2</td>
+        <td class="feld zweite_periode aktiv" id="Ⅰ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅱ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅲ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅳ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅴ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅵ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅶ2">&nbsp;</td>
+        <td class="feld zweite_periode aktiv" id="Ⅷ2">&nbsp;</td>
+      </tr>
+      <tr><!-- dritte Periode -->
+        <td class="beschriftung">3</td>
+        <td class="feld dritte_periode aktiv" id="Ⅰ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅱ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅲ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅳ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅴ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅵ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅶ3">&nbsp;</td>
+        <td class="feld dritte_periode aktiv" id="Ⅷ3">&nbsp;</td>
+      </tr>
+      <tr><!-- vierte Periode -->
+        <td class="beschriftung">4</td>
+        <td class="feld vierte_periode aktiv" id="Ⅰ4">&nbsp;</td>
+        <td class="feld vierte_periode aktiv" id="Ⅱ4">&nbsp;</td>
+        <td class="feld vierte_periode inaktiv" id="Ⅲ4">&nbsp;</td>
+        <td class="feld vierte_periode inaktiv" id="Ⅳ4">&nbsp;</td>
+        <td class="feld vierte_periode aktiv" id="Ⅴ4">&nbsp;</td>
+        <td class="feld vierte_periode aktiv" id="Ⅵ4">&nbsp;</td>
+        <td class="feld vierte_periode aktiv" id="Ⅶ4">&nbsp;</td>
+        <td class="feld vierte_periode aktiv" id="Ⅷ4">&nbsp;</td>
+      </tr>
+      <tr><!-- fünfte Periode -->
+        <td class="beschriftung">5</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅰ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅱ5">&nbsp;</td>
+        <td class="feld fuenfte_periode inaktiv" id="Ⅲ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅳ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅴ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅵ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅶ5">&nbsp;</td>
+        <td class="feld fuenfte_periode aktiv" id="Ⅷ5">&nbsp;</td>
+      </tr>
+      <tr><!-- sechste Periode -->
+        <td class="beschriftung">6</td>
+        <td class="feld sechste_periode aktiv" id="Ⅰ6">&nbsp;</td>
+        <td class="feld sechste_periode aktiv" id="Ⅱ6">&nbsp;</td>
+        <td class="feld sechste_periode inaktiv" id="Ⅲ6">&nbsp;</td>
+        <td class="feld sechste_periode aktiv" id="Ⅳ6">&nbsp;</td>
+        <td class="feld sechste_periode inaktiv" id="Ⅴ6">&nbsp;</td>
+        <td class="feld sechste_periode inaktiv" id="Ⅵ6">&nbsp;</td>
+        <td class="feld sechste_periode inaktiv" id="Ⅶ6">&nbsp;</td>
+        <td class="feld sechste_periode inaktiv" id="Ⅷ6">&nbsp;</td>
+      </tr>
+      <tr><!-- siebte Periode -->
+        <td class="beschriftung">7</td>
+        <td class="feld siebte_periode inaktiv" id="Ⅰ7">&nbsp;</td>
+        <td class="feld siebte_periode inaktiv" id="Ⅱ7">&nbsp;</td>
+        <td class="leer" colspan="6">&nbsp;</td>
+      </tr>
+    </table>
+    <table id="auswahltabelle" title="Wähle zunächst hier ein Element aus und klicke dann anschließend oben auf seine Position im Periodensystem!"><!-- -->
+      <form name="elementsymbol_auswahl">
+        <tr><!-- erste Zeile -->
+          <td>
+            <input type="button" id="Al" value="Al" title="Aluminium"></input>
+          </td>
+          <td>
+            <input type="button" id="Ar" value="Ar" title="Argon"></input>
+          </td>
+          <td>
+            <input type="button" id="As" value="As" title="Arsen"></input>
+          </td>
+          <td>
+            <input type="button" id="B" value="B" title="Bor"></input>
+          </td>
+          <td>
+            <input type="button" id="Ba" value="Ba" title="Barium"></input>
+          </td>
+          <td>
+            <input type="button" id="Be" value="Be" title="Beryllium"></input>
+          </td>
+          <td>
+            <input type="button" id="Br" value="Br" title="Brom"></input>
+          </td>
+          <td>
+            <input type="button" id="C" value="C" title="Kohlenstoff"></input>
+          </td>
+          <td><!-- Auswertung -->
+            richtig:
+          </td>
+          <td><!-- Auswertung -->
+            <span class="zahl" id="bisher_richtige">&nbsp;</span>
+          </td>
+        </tr>
+        <tr><!-- zweite Zeile -->  
+          <td>
+            <input type="button" id="Ca" value="Ca" title="Calcium"></input>
+          </td>
+          <td>
+            <input type="button" id="Cl" value="Cl" title="Chlor"></input>
+          </td>
+          <td>
+            <input type="button" id="Cs" value="Cs" title="Cäsium"></input>
+          </td>
+          <td>
+            <input type="button" id="F" value="F" title="Fluor"></input>
+          </td>
+          <td>
+            <input type="button" id="H" value="H" title="Wasserstoff"></input>
+          </td>
+          <td>
+            <input type="button" id="He" value="He" title="Helium"></input>
+          </td>
+          <td>
+            <input type="button" id="I" value="I" title="Iod"></input>
+          </td>
+          <td>
+            <input type="button" id="K" value="K" title="Kalium"></input>
+          </td>
+          <td><!-- Auswertung -->
+            falsch:
+          </td>
+          <td><!-- Auswertung -->
+            <span class="zahl" id="bisher_falsche">&nbsp;</span>
+          </td>
+        </tr>
+        <tr><!-- dritte Zeile -->     
+          <td>
+            <input type="button" id="Kr" value="Kr" title="Krypton"></input>
+          </td>
+          <td>
+            <input type="button" id="Li" value="Li" title="Lithium"></input>
+          </td>
+          <td>
+            <input type="button" id="Mg" value="Mg" title="Magnesium"></input>
+          </td>
+          <td>
+            <input type="button" id="N" value="N" title="Stickstoff"></input>
+          </td>
+          <td>
+            <input type="button" id="Na" value="Na" title="Natrium"></input>
+          </td>
+          <td>
+            <input type="button" id="Ne" value="Ne" title="Neon"></input>
+          </td>
+          <td>
+            <input type="button" id="O" value="O" title="Sauerstoff"></input>
+          </td>
+          <td>
+            <input type="button" id="P" value="P" title="Phosphor"></input>
+          </td>
+          <td rowspan="3"><!-- Auswertung -->
+            &nbsp;
+          </td>
+        </tr>
+        <tr><!-- vierte Zeile -->  
+          <td>
+            <input type="button" id="Pb" value="Pb" title="Blei"></input>
+          </td>
+          <td>
+            <input type="button" id="Rb" value="Rb" title="Rubidium"></input>
+          </td>
+          <td>
+            <input type="button" id="S" value="S" title="Schwefel"></input>
+          </td>
+          <td>
+            <input type="button" id="Sb" value="Sb" title="Antimon"></input>
+          </td>
+          <td>
+            <input type="button" id="Se" value="Se" title="Selen"></input>
+          </td>
+          <td>
+            <input type="button" id="Si" value="Si" title="Silicium"></input>
+          </td>
+          <td>
+            <input type="button" id="Sn" value="Sn" title="Zinn"></input>
+          </td>
+          <td>
+            <input type="button" id="Sr" value="Sr" title="Strontium"></input>
+          </td>
+        </tr>
+        <tr>    
+          <td>
+            <input type="button" id="Te" value="Te" title="Tellur"></input>
+          </td>
+          <td>
+            <input type="button" id="Xe" value="Xe" title="Xenon"></input>
+          </td>
+          <td colspan="6">
+            &nbsp;
+          </td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>

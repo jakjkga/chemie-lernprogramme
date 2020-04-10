@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gleichgewichtkonzentrierer - online</title>
+    <meta name="description" content="Der Gleichgewichtkonzentrierer veranschaulicht die Konzentrationsabhängigkeit der Lage des chemischen Gleichgewichts." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Chemisches Gleichgewicht, Konzentrationsabhängigkeit" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions:["mhchem.js"]}});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_unten zentriert">
+          Farbe&nbsp;einer&nbsp;<br><span class="thiocyanat">[Fe(H₂O)₃(SCN)₃]</span>-Lsg.:
+        </td>
+        <td class="nach_unten zentriert">
+          Vergrößerte&nbsp;Teilchendarstellung:
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_oben">
+<!-- ANFANG Abb. Stoffebene -->
+<svg id="" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+     width="160" height="480"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect id="gefaesshintergrund" x="10" y="15" width="140" height="449" 
+        fill="white" stroke="black" stroke-width="2.5"></rect>
+</svg>
+<!-- ENDE Abb. Stoffebene -->
+        </td>
+        <td class="nach_oben">
+          <img id="img_abb" src="daten/img/dummy.png" width="480" height="480">
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+         Reaktionsgleichung:
+        </td>
+        <td class="zentriert">
+          <span class="eisendrei">[Fe(H₂O)₆]³⁺</span>
+        </td>
+        <td class="zentriert">
+          +
+        </td>
+        <td class="zentriert">
+          3&nbsp;SCN⁻
+        </td>
+        <td class="zentriert">
+          ⇌
+        </td>
+        <td class="zentriert">
+          <span class="thiocyanat">[Fe(H₂O)₃(SCN)₃]</span>
+        </td>
+        <td class="zentriert">
+          +
+        </td>
+        <td class="zentriert">
+         3&nbsp;H₂O
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input type="button" id="b_ed1" value="Edukt A" onclick="setze_stoff(this.id)" style="color:orange;" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input type="button" id="b_ed2" value="Edukt B" onclick="setze_stoff(this.id)" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input type="button" id="b_prod1" value="Produkt C" onclick="setze_stoff(this.id)" style="color:darkred;" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+         <input type="button" id="b_prod2" value="Produkt D" onclick="setze_stoff(this.id)" />
+        </td>
+        <td>
+          <input type="button" value="Zurücksetzen" onclick="zuruecksetzen()" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Ausgangskonzentration:
+        </td>
+        <td class="zentriert">
+          <select id="s_ed1" onchange="setze_konzentration()">
+            <option value="0">hoch</option>
+            <option value="1">mittel</option>
+            <option value="2">niedrig</option>
+          </select>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <select id="s_ed2" onchange="setze_konzentration()">
+            <option value="0">hoch</option>
+            <option value="1">mittel</option>
+            <option value="2">niedrig</option>
+          </select>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <select id="s_prod1" onchange="setze_konzentration()">
+            <option value="0">hoch</option>
+            <option value="1">mittel</option>
+            <option value="2">niedrig</option>
+          </select>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+         <select id="s_prod2" onchange="setze_konzentration()">
+            <option value="0">hoch</option>
+            <option value="1">mittel</option>
+            <option value="2">niedrig</option>
+          </select>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Massenwirkungsgesetz:
+        </td>
+        <td colspan="8">
+<div style="width:480px;max-width:480px;">
+\[
+\begin{aligned}
+
+K_{C}= \frac { c(\color{darkred}{[Fe(H₂O)₃(SCN)₃]}) \cdot c(H₂O)^{3} } { c(\color{orange}{[Fe(H₂O)₆]³⁺}) \cdot c(SCN⁻)^{3} } 
+
+\end{aligned} 
+\]
+</div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

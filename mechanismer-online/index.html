@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mechanismer</title>
+    <meta name="description" content="Kurzbeschreibung" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Schlüsselwörter" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/textsammlung.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_oben">
+          <select id="s_edukte">
+            <optgroup label="Radikalische Substitution">
+              <option value="1_methan_und_brom">Methan und Brom</option>
+            </optgroup>
+            <optgroup label="Elektrophile Addition">
+              <option value="2_ethen_und_brom">Ethen und Brom</option>
+              <option value="3_ethen_und_bromwasserstoff">Ethen und Bromwasserstoff</option>
+              <option value="4_ethen_und_wasser">Ethen und Wasser</option>
+              <option value="5_ethen_und_ethen">Ethen und Ethen</option>
+              <option value="6_ethin_und_chlor">Ethin und Chlor</option>
+            </optgroup>
+            <optgroup label="Elektrophile Substitution">
+              <option value="7_benzol_und_brom">Benzol und Brom</option>
+              <option value="8_benzol_und_nitroniumion">Benzol und Nitroniumion</option>
+              <option value="9_benzol_und_schwefeltrioxid">Benzol und Schwefeltrioxid</option>
+              <option value="10_benzol_und_carbeniumion">Benzol und Carbeniumion</option>
+            </optgroup>
+            <optgroup label="Nukleophile Addition">
+              <option value="11_ethanal_und_methanol">Ethanal und Methanol</option>
+            </optgroup>
+            <optgroup label="Nukleophile Substitution">
+              <option value="12_ethansaeure_und_methanol">Ethansäure und Methanol</option>
+              <option value="13_ethansaeure_und_ammoniak">Ethansäure und Ammoniak</option>
+              <option value="14_ethansaeureethylester_und_hydroxidion">Ethansäure und Hydroxidion</option>
+              <option value="15_halbacetal_und_methanol">Halbacetal und Methanol</option>
+            </optgroup>
+          </select>
+        </td>
+      <!-- </tr>
+      <tr> -->
+        <td class="nach_oben">
+          <select id="s_radikalisch" size="5">
+            <option value="1_startreaktion">1. Startreaktion</option>
+            <option value="2_kettenreaktion">2. Kettenreaktion</option>
+            <option value="3_abbruchreaktion">3. Abbruchreaktion</option>
+          </select>
+          <select id="s_ionisch" size="5">
+            <option value="1_aktivierung_des_elektrophils">1. Aktivierung des Elektrophils</option>
+            <option value="2_angriff_des_nu_am_el">2. Angriff des Nukleophils am Elektrophil</option>
+            <option value="3_metastabiles_zwischenprodukt">3. Metastabiles Zwischenprodukt</option>
+            <option value="4_additionsschritt">4. Additionsschritt</option>
+            <option value="4_eliminierungsschritt">4. Eliminierungsschritt</option>
+          </select>
+        </td>
+        <td class="nach_oben">
+          <select id="s_bildnummer" size="3">
+            <option value="1">Bild 1</option>
+            <option value="2">Bild 2</option>
+            <option value="3">Bild 3</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <img id="bildausgabe" src="#"/>
+    </p>
+    <p id="textausgabe">
+    
+    </p>
+    <p>
+      <a href="elektrophile_substitution_animationen/index.html">Animationen zur elektrophilen Substitution</a>
+    </p>
+  </body>
+</html>

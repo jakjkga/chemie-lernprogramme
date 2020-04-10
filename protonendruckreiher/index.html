@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Protonedruckreiher</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+  <!-- Google-Analytics -->
+  <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <!-- <div class="mein_absatz">jQuery-Vorlage</div> -->
+    <table>
+      <tr>
+        <td class="s">
+          S2
+        </td>
+        <td class="b">
+          B1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HCl" value="Chlorwasserstoff" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_Cl⁻" value="Chloridion" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₂SO₄" value="Schwefelsäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_HSO₄⁻" value="Hydrogensulfation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₃O⁺" value="Oxoniumion" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_H₂O" value="Wasser" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HNO₃" value="Salpetersäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_NO₃⁻" value="Nitration" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HSO₄⁻" value="Hydrogensulfation" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_SO₄²⁻" value="Sulfation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₃PO₄" value="Phosphorsäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_H₂PO₄⁻" value="Dihydrogenphosphation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_CH₃COOH" value="Essigsäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_CH₃COO⁻" value="Acetation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₂CO₃" value="Kohlensäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_HCO₃⁻" value="Hydrogencarbonation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₂PO₄⁻" value="Dihydrogenphosphation" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_HPO₄²⁻" value="Hydrogenphosphation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_NH₄⁺" value="Ammoniumion" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_NH₃" value="Ammoniak" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HCN" value="Blausäure" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_CN⁻" value="Cyanidion" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HCO₃⁻" value="Hydrogencarbonation" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_CO₃²⁻" value="Carbonation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₂S" value="Schwefelwasserstoff" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_HS⁻" value="Hydrogensulfidion" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HPO₄²⁻" value="Hydrogenphosphation" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_PO₄³⁻" value="Phosphation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_HS⁻" value="Hydrogensulfidion" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_S²⁻" value="Sulfidion" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_H₂O" value="Wasser" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_OH⁻" value="Hydroxidion" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf saeure_knopf" id="S2_CH₃CH₂OH" value="Ethanol" onclick="setze_saeure(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf basen_knopf" id="B1_CH₃CH₂O⁻" value="Ethanolation" onclick="setze_base(this.id, this.value);" />
+        </td>
+      </tr>
+    </table>
+    <input type="text" id="gleichung" size="72" /><br />
+    <textarea id="in_worten" cols="72" rows="4"></textarea><br />
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="info_b1">pK<sub>B</sub>-Wert der Base 1:</label>
+        </td>
+        <td>
+          <input id="info_b1" class="information" type="text" />
+        </td>
+        <td class="nach_rechts">
+          <label for="info_s1">pK<sub>S</sub>-Wert der korrespondierenden Säure 1:</label>
+        </td>
+        <td>
+          <input id="info_s1" class="information" type="text" />
+        </td>
+        
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="info_s2">pK<sub>S</sub>-Wert der Säure 2:</label>
+        </td>
+        <td>
+          <input id="info_s2" class="information" type="text" />
+        </td>
+        <td class="nach_rechts">
+          <label for="info_b2">pK<sub>B</sub>-Wert der korrespondierenden Base 2:</label>
+        </td>
+        <td>
+          <input id="info_b2" class="information" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td colspan="3">
+          <label for="auswahl_ampholyte"><input type="checkbox" id="auswahl_ampholyte" onclick="zeige_ampholyte(this.id);">Ampholyte hervorheben</label>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Organische Säuren - online</title>
+    <meta name="description" content="Das Programm Organische Säuren zeigt für wichtige organische Säuren und Basen anhand von Struktureigenschaften wie Substituenteneffekten die voraussichtliche Färbung einer Universalindikator-Lösung an, und setzt die Gleichgewichtslage mit der Oxoniumionen- bzw. Hydroxidionen-Konzentration in Beziehung." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Aromatische und aliphatische organische Säuren und Basen, Substituenteneffekte, Mesomerer Effekt, Induktiver Effekt, Elektronenschub, Elektronenzug, Mesomerie" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <label for="s_sb">Säure- bzw. Base-Teilchen, das in 
+          <span style="background-color:yellow;">neutrale Universalindikator-Lösung</span> 
+          gegeben wird</label>:
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select id="s_sb" onchange="setze_auswahl()">
+            <optgroup label="Säure-Teilchen">
+              <option value="s_C6H5NH3+">Aniliniumion (-M des Phenylrests, pKₛ=4,6)</option>
+              <option value="s_CH3COOH">Ethansäure/Essigsäure (-M der Carbonylgruppe, pKₛ=4,75)</option>
+              <option value="s_NH4+">Ammoniumion (pKₛ=9,25)</option>
+              <option value="s_C6H5OH">Phenol (-M des Phenylrests, pKₛ=9,98)</option>
+              <option value="s_CH3CH2OH">Ethanol (+I des Ethylrests, pKₛ≈18)</option>
+            </optgroup>
+            <optgroup label="Base-Teilchen">
+              <option value="b_C6H5NH2">Anilin (-M des Phenylrests, pKB=9,4)</option>
+              <option value="b_CH3COO-">Ethanoation/Acetation (-M der Carbonylgruppe, pKB=9,25)</option>
+              <option value="b_NH3">Ammoniak (pKB=4,75)</option>
+              <option value="b_C6H5O-">Phenolation (-M des Phenylrests, pKB=4,02)</option>
+              <option value="b_CH3CH2O-">Ethanolation (+I des Ethylrests, pKB≈-4)</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="zentriert">
+          <img id="img_b1" src="#" />
+        </td>
+        <td class="zentriert">
+          +
+        </td>
+        <td class="zentriert">
+          <img id="img_s2" src="#" />
+        </td>
+        <td class="zentriert">
+          ⇌
+        </td>
+        <td class="zentriert">
+          <img id="img_s1" src="#" />
+        </td>
+        <td class="zentriert">
+          +
+        </td>
+        <td class="zentriert">
+          <img id="img_b2" src="#" />
+        </td>
+      </tr>
+      <tr>
+        <td class="zentriert">
+          <input id="i_b1" type="text" readonly />
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_s2" type="text" readonly />
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_s1" type="text" readonly />
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input id="i_b2" type="text" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td class="zentriert">
+          <span style="color:blue;">B1</span>
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span style="color:red;">S2</span>
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span style="color:red;">S1</span>
+        </td>
+        <td class="zentriert">
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <span style="color:blue;">B2</span>
+        </td>
+      </tr>
+    </table>
+    <table id="phskala">
+      <tr>
+        <td>
+          <span style="background-color:blue;color:white;">stark<br />alkalisch</span>
+        </td>
+        <td>
+          <span style="background-color:darkcyan;color:white;">alkalisch<br />&nbsp;</span>
+        </td>
+        <td>
+          <span style="background-color:forestgreen;color:white;">schwach<br />alkalisch</span>
+        </td>
+        <td>
+          <span style="background-color:yellowgreen;color:black;">sehr&nbsp;schwach<br />alkalisch</span>
+        </td>
+        <td>
+          <span style="background-color:yellow;color:black;">neutral<br />&nbsp;</span>
+        </td>
+        <td>
+          <span style="background-color:orange;color:black;">sehr&nbsp;schwach<br />sauer</span>
+        </td>
+        <td>
+          <span style="background-color:orangered;color:white;">schwach<br />sauer</span>
+        </td>
+        <td>
+          <span style="background-color:red;color:white;">stark<br />sauer</span>
+        </td>
+      </tr>  
+    </table>  
+  </body>
+</html>

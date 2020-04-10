@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PSEler - online</title>
+    <meta name="description" content="einfaches Lernprogramm zu den ersten zwanzig Elementen des Periodensystems und ihrer Anordnung aufgrund steigender Ordnungszahl und der sich periodisch wiederholenden Stoffeigenschaften" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Periodensystem der Elemente, PSE, Ordnungszahl, Protonenzahl, Metalle, Nichtmetalle, Alkalimetalle, Erdalkalimetalle, Chalkogene, Halogene, Edelgase" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/imgdata.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/elementsammlung.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="navi" onchange="aendere_anordnung();">
+      <label for="a_anordnung">Anordnung:</label>
+      <select id="a_anordnung">
+        <option value="linear">linear</value>
+        <option value="tabellarisch">tabellarisch</value>
+      </select>
+      <label for="a_einfaerbung">Einfärbung:</label>
+      <select id="a_einfaerbung" onchange="aendere_einfaerbung();">
+        <option value="keine">keine</value>
+        <option value="nach_hauptgruppen">nach Hauptgruppen</value>
+        <option value="nach_perioden">nach Perioden</value>
+        <option value="metalle_und_nichtmetalle">Metalle und Nichtmetalle</value>
+      </select>
+    </div>
+    <div id="pse_bereich">
+      <div id="H" class="el" title="Wasserstoff">H</div>
+      <div id="He" class="el" title="Helium">He</div>
+      <div id="Li" class="el" title="Lithium">Li</div>
+      <div id="Be" class="el" title="Beryllium">Be</div>
+      <div id="B" class="el" title="Bor">B</div>
+      <div id="C" class="el" title="Kohlenstoff">C</div>
+      <div id="N" class="el" title="Stickstoff">N</div>
+      <div id="O" class="el" title="Sauerstoff">O</div>
+      <div id="F" class="el" title="Fluor">F</div>
+      <div id="Ne" class="el" title="Neon">Ne</div>
+      <div id="Na" class="el" title="Natrium">Na</div>
+      <div id="Mg" class="el" title="Magnesium">Mg</div>
+      <div id="Al" class="el" title="Aluminium">Al</div>
+      <div id="Si" class="el" title="Silicium">Si</div>
+      <div id="P" class="el" title="Phosphor">P</div>
+      <div id="S" class="el" title="Schwefel">S</div>
+      <div id="Cl" class="el" title="Chlor">Cl</div>
+      <div id="Ar" class="el" title="Argon">Ar</div>
+      <div id="K" class="el" title="Kalium">K</div>
+      <div id="Ca" class="el" title="Calcium">Ca</div>
+    </div>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_elementname">Name:</label>
+        </td>
+        <td>
+          <input id="o_elementname" type="text" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="zentriert">
+          <strong>Teilcheneigenschaften</strong>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_protonenzahl">Protonenzahl:</label>
+        </td>
+        <td>
+          <input id="o_protonenzahl" type="text" readonly />
+        </td>
+        <td rowspan="9">
+          <img id="atombau_vorschau" src="daten/img/atombau/leer.png" width="250" onclick="zeige_vergroesserung();" title="Bild vergrößert anzeigen?" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_neutronenzahl">Neutronenzahl:</label>
+        </td>
+        <td>
+          <input id="o_neutronenzahl" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_massenzahl">Massenzahl:</label>
+        </td>
+        <td>
+          <input id="o_massenzahl" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_valenzelektronenzahl">Valenzelektronenzahl:</label>
+        </td>
+        <td>
+          <input id="o_valenzelektronenzahl" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_valenzschale">Valenzschale:</label>
+        </td>
+        <td>
+          <input id="o_valenzschale" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_atomradius">Atomradius in Pikometern [pm]:</label>
+        </td>
+        <td>
+          <input id="o_atomradius" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_elektronegativitaet">Elektronegativität:</label>
+        </td>
+        <td>
+          <input id="o_elektronegativitaet" type="text" readonly />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_struktur">Struktur:</label>
+        </td>
+        <td>
+          <input id="o_struktur" type="text" readonly />
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td colspan="2" class="zentriert">
+          <strong>Stoffeigenschaften</strong>
+        </td>
+        <!-- <td>
+          &nbsp;
+        </td> -->
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_farbe">Farbe:</label>
+        </td>
+        <td>
+          <input id="o_farbe" type="text" readonly />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="o_zustand">Zustand:</label>
+        </td>
+        <td>
+          <input id="o_zustand" type="text" readonly />
+        </td>
+        <td>
+          <a href="#" onclick="zeige_stoff_struktur(); return false" title="Abbildungen zu Stoff und Struktur anzeigen?"><img src="daten/img/help-start.png" /></a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

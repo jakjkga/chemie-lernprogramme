@@ -1,0 +1,121 @@
+body, table {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  background-color:#ffffff;
+}
+/*
+@font-face {
+  font-family: 'STIX';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/STIXGeneral-Regular.otf') format('opentype');
+}*/
+td {
+  padding:0px;
+}
+div {
+  margin:0px;
+}
+table#beschriftung {
+  background-color:white;
+  width:620px;
+}
+div.schreibhintergrund {
+  background-color:white;
+  padding:5px;
+  line-height:22px;
+}
+div.gleichung {
+  min-width:320px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif,monospace;
+  font-size:18px;
+  padding-top:14px;
+}
+table, td {
+  border-collapse:collapse;
+  border-style:none;
+  padding:0px;
+}
+td.oxm {
+  color:red;
+  font-weight:bold;
+  text-align:center;
+}
+td.redm {
+  color:green;
+  font-weight:bold;
+  text-align:center;
+}
+.nach_rechts {
+  text-align:right;
+}
+.knopf {
+  border-style:solid;
+  border-width:1px;
+  /*border-radius:5px;*/
+  width:180px;
+  padding-top:2px;
+  padding-left:4px;
+  padding-right:4px;
+  padding-bottom:2px;
+  background-color:#fff;
+  margin-top:1px;
+  margin-bottom:1px;
+}
+.knopf:hover {
+  font-weight:bold;
+  cursor:pointer;
+}
+.oxm_knopf {
+  color:red;
+  border-color:red;
+  margin-right:1px;
+}
+.redm_knopf {
+  color:green;
+  border-color:green;
+  margin-left:1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.oxm_knopf:hover {
+  background-color:#ffd5d5;
+}
+.redm_knopf:hover {
+  background-color:#e5ffd5;
+}
+.gerade_aktiv_oxm,
+.gerade_aktiv_oxm:hover {
+  font-weight:bold;
+  color:white;
+  background-color:red;
+}
+.gerade_aktiv_redm,
+.gerade_aktiv_redm:hover {
+  font-weight:bold;
+  color:white;
+  background-color:green;
+}
+.el {
+  color:#ff6600;
+}
+.ladung {
+  color:purple;
+}
+.redm {
+  color:green;
+  position:relative;
+}
+.oxm {
+  color:red;
+  position:relative;
+}
+.ox {
+  display:inline-block;
+  color:#ff6600;
+  font-size:0.8em;
+  position:absolute;
+  top:-14px;
+  left:1px;
+}

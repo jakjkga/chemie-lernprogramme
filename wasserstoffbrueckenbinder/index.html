@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Wasserstoffbrückenbinder</title>
+    <meta name="description" content="Lernprogramm zu den starken Wasserstoffbrückenbindungen">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Wasserstoffbrücken, Wasserstoffbindung, Wasserstoffbrückenbindung, Hydrogenbond, Hydrogenbridge, Zwischenmolekulare Kräfte, Kationische Wasserstoffbrückenbindungen, Elektronegativtätsdifferenz, Ladungsdichte">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAXFQTFRFCWKhCWOhC2ShDGWiEWekEWikEmikE2mkE2mlFWqmGGynGm2nG26oHG6oH3GoaGdtamhuamlubGtwbGtxbWxxbWxybm1ycG90MXyvcXB1cnF2c3J3dHN4dXR5dXV5eXl9fHuAfXyAfn2Cf36CgYCEhIOIhYSIT4+7iIeLVpO+i4uOXJe/XJi/kI+TkpGVl5aZmZmcbqLGnJufnp6hpKSnpaSnfa3NpqWpg7DOqqqsq6utra2wlrzWl73XuLi6ubi7vLu+v7/BwcDCxcXHtc/iz8/R0NDRvNTl0dHT1tbXxtro19fY2Nja2dnZ2dna2trb3d3e3t7f397f4uHi4uLj4+Pk2ufw3unx3ury6Ojp6ejp6enp6+vr6+vs4+307Ozs7e3u5/D16PD27+/v8fHy8vLy7fP48/P07vX39PT09fX19vb29vb38/f6+Pj49fn6+fj59vn7+vr6+vv9+/v7/Pz8/f39/f7+/v7+/v7/////yhqRBwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdCg0NABTIrCIDAAAA6UlEQVQY0yWOZVcCURRFn11PRZkxmDuKIBZ2d4tgY2N3t8Bcz6/3zvBx77VOKDDADoO/18anbwAl/JXYyeCwPb9EDbxDgVNjtTEcNxRrXdr5IOJjsjq4j+4yrSuKZn5FPPebPWeo1Lq8MHqNP4W7LmPkFdG8gqrRC+lXuA03hjbxtLp89CkskSsiat6A48BlESeGbVNgRZ4Iuj/2alr7WqhuIZ0zird8kfVhovqpx1yEt/2Rg/MOosDQqVfKL/ODScSbbLJ6k94sspdvwJxpkdUWdyPszaUngn7ToNms8rbEZH7ud2NLi6l/9VRQuPeje2EAAAAASUVORK5CYII=" />
+    <style type="text/css">
+      body, table {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:16px;
+      }
+      select, input {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:16px;
+      }
+      select {
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        padding:4px;
+        background-color:white;
+        /*width:46px;*/
+      }
+      select option {
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        vertical-align:bottom;
+      }
+      input[type=text] {
+        border-style:solid;
+        border-color:#bebebe;
+        border-width:1px;
+        border-radius:5px;
+        padding:2px;
+        width:60px;
+        text-align:right;
+        padding-right:4px;
+      }
+      .hoch {
+        font-size:0.8em;
+        vertical-align:10px;
+      }
+      .negativ {
+        color:blue;
+      }
+      .positiv {
+        color:red;
+      }
+      .wechselwirkung {
+        color:#f60;
+        font-weight:bold;
+      }
+      .nach_rechts {
+        text-align:right;
+      }
+      .zentriert {
+        text-align:center;
+      }
+      .nach_oben {
+        vertical-align:top;
+      }
+      ul {
+        list-style-type:none;
+      }
+      ul li {
+        text-indent:-18px;
+      }
+      ul li:before {
+        content:"...";
+      }
+      .serifenschrift {
+        font-family:"Times New Roman",serif;
+        font-style:italic;
+      }
+      a:focus {
+        outline: thin dotted;
+      }
+      a:active, a:hover {
+        outline: 0;
+      }
+      a {
+        color: #428bca;
+        text-decoration: none;
+      }
+      a:hover, a:focus {
+        color: #2a6496;
+        text-decoration: underline;
+      }
+      a:focus {
+        outline: thin dotted #333;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+      }
+      div#info {
+        max-width:920px;
+      }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var daten={
+        'FF':['245','29','180', '25', '1,8'], // 250, 32 bis 161,5 bei FHF⁻, Verkürzung: 270-245
+        //'FO':['265','',''],
+        //'FN':['262','',''],
+        //'FCl':['','',''],
+        //'OF':['','',''],
+        'OO':['248','22','180', '32', '1,3'], // 21, Verkürzung: 280-248
+        //'ON':['281','8',''],
+        //'OCl':['','',''],
+        //'NF':['','',''],
+        //'NO':['268','29',''],
+        'NN':['294','17','180', '6', '0,8'], // 13, Verkürzung: 300-294
+        //'NCl':['','',''],    
+        //'ClF':['','',''],
+        //'ClO':['292','',''],
+        //'ClN':['','',''],
+        //'ClCl':['','',''],
+      };
+    
+      function lade_seite() {
+          $('#auswahl_x option:first').prop('selected', true);
+          $('#auswahl_x option:first').prop('selected', true);
+          $('input[type=text]').attr('readonly', true);
+          zeige_daten('auswahl_x');
+      }
+      
+      function zeige_daten(wer) {
+          switch (wer) {
+              case 'auswahl_x':
+                  var x=$('#auswahl_x option:selected').val();
+                  switch (x) {
+                      case 'F':
+                          $('#auswahl_y option[value=F]').prop('selected', true);
+                          break;
+                      case 'O':
+                          $('#auswahl_y option[value=O]').prop('selected', true);
+                          break;
+                      case 'N':
+                          $('#auswahl_y option[value=N]').prop('selected', true);
+                          break;
+                  }
+                  var y=$('#auswahl_y option:selected').val();
+                  break;
+              case 'auswahl_y':
+                  var y=$('#auswahl_y option:selected').val();
+                  switch (y) {
+                      case 'F':
+                          $('#auswahl_x option[value=F]').prop('selected', true);
+                          break;
+                      case 'O':
+                          $('#auswahl_x option[value=O]').prop('selected', true);
+                          break;
+                      case 'N':
+                          $('#auswahl_x option[value=N]').prop('selected', true);
+                          break;
+                  }
+                  var x=$('#auswahl_x option:selected').val();
+                  break;
+          }
+          var schluessel=x+y;
+          var bindungslaenge=daten[schluessel][0];
+          var bindungsstaerke=daten[schluessel][1];
+          var bindungswinkel=daten[schluessel][2];
+          var delta_en=daten[schluessel][4];
+          $('#auswahl_bindungslaenge').text(x+'···H–'+y);
+          $('#auswahl_bindungsstaerke').text(x+'···H');
+          $('#auswahl_bindungswinkel').text(x+'···H–'+y);
+          $('#auswahl_delta_en').text('H–'+y);
+          $('#a_bindungslaenge').val(bindungslaenge);
+          $('#a_bindungsstaerke').val(bindungsstaerke);
+          $('#a_bindungswinkel').val(bindungswinkel);
+          $('#a_delta_en').val(delta_en);
+      }
+      
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <select id="auswahl_x" onchange="zeige_daten(this.id);" class="nach_rechts">
+            <option value="F">HF&nbsp;</option>
+            <option value="O">H₂O&nbsp;</option>
+            <option value="N">H₃N&nbsp;</option>
+            <!-- <option value="Cl">Cl</option> -->
+          </select><span class="negativ">|<span class="hoch">δ⁻</span><span>
+        </td>
+        <td>
+          <span class="wechselwirkung">···</span>
+        </td>
+        <td>
+          <span class="positiv">H<span class="hoch">δ⁺</span><span>
+        </td>
+        <td>
+         –
+        </td>
+        <td>
+          <span class="hoch negativ">δ⁻</span>
+          <select id="auswahl_y" onchange="zeige_daten(this.id);">
+            <option value="F">F</option>
+            <option value="O">OH</option>
+            <option value="N">NH₂</option>
+            <!-- <option value="Cl">Cl</option> -->
+          </select>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="nach_rechts" title="entspricht der „Bindungslänge“">
+          <label for="a_delta_en">ΔEN <span id="auswahl_delta_en">&nbsp;</span>:</label>
+        </td>
+        <td class="nach_oben">
+          <input type="text" id="a_delta_en" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts" title="entspricht der „Bindungslänge“">
+          <label for="a_bindungslaenge">Abstand <span id="auswahl_bindungslaenge">&nbsp;</span>:</label>
+        </td>
+        <td class="nach_oben">
+          <input type="text" id="a_bindungslaenge" /> pm
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts" title="entspricht der „Bindungsenergie“">
+          <label for="a_">Stärke der Anziehungskraft <span id="auswahl_bindungsstaerke">&nbsp;</span>:</label>
+        </td>
+        <td class="nach_oben">
+          <input type="text" id="a_bindungsstaerke" /> kJ mol⁻¹
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts" title="entspricht dem „Bindungswinkel“">
+          <label for="a_">Winkel <span id="auswahl_bindungswinkel">&nbsp;</span>:</label>
+        </td>
+        <td class="nach_oben">
+          <input type="text" id="a_bindungswinkel" /> °
+        </td>
+      </tr>
+    </table>
+    <div id="info">
+      <dl>
+        <dd>
+          Eine Wasserstoffbrückenbindung ist eine <em>gerichtete</em> 
+          <span class="wechselwirkung">zwischenmolekulare Kraft</span>, bei der ein 
+          <span class="negativ">freies Elektronenpaar</span> eines 
+          negativ polarisierten Atoms (oder ein <span class="serifenschrift">π</span>-Elektronenpaar)
+          einer Base (allgemeiner eines <a href="http://de.wikipedia.org/wiki/Nukleophilie" target="_blank">Nukleophils</a>) an einem 
+          <span class="positiv">positiv polarisierten Wasserstoffatom</span>
+          einer Säure (allgemeiner eines <a href="http://de.wikipedia.org/wiki/Elektrophilie" target="_blank">Elektrophils</a>) angreift.
+        </dd>
+      </dl>
+      <ul>Wasserstoffbrückenbindungen...
+        <li>
+          sind verantwortlich für die stark 
+          erhöhten Siedepunkte von H₂O, HF und NH₃ im Vergleich zu den
+          entsprechenden Verbindungen der 3. Periode H₂S, HCl und PH₃
+          trotz deren viel höherer molarer Masse. 
+        </li>
+        <li>
+          sind wichtig für die Geschwindigkeit von
+          <a href="http://de.wikipedia.org/wiki/S%C3%A4ure-Base-Reaktion" target="_blank">Säure-Base-Reaktionen</a>
+           und elektrophilen Reaktionsmechanismen. 
+        </li>
+        <li>
+          erhöhen in Flüssigkeiten stark die 
+          elektrische Leitfähigkeit über kooperative Effekte zur 
+          <a href="http://de.wikipedia.org/wiki/Grotthu%C3%9F-Mechanismus" target="_blank">Protonenwanderung</a>,
+          meist ausgehend von 
+          <a href="http://de.wikipedia.org/wiki/Hydroxidion" target="_blank">Hydroxid-</a>
+          oder 
+          <a href="http://de.wikipedia.org/wiki/Oxoniumion" target="_blank">Oxoniumionen</a>.
+        </li>
+         <li>
+          beeinflussen in Feststoffen die
+          Struktur des Kristallgitters und sind so etwa für die 
+          <a href="http://de.wikipedia.org/wiki/Dichteanomalie" target="_blank">Dichteanomalie</a> 
+          des Wasser mitverantwortlich.
+      </ul>
+    </div>
+  </body>
+</html>

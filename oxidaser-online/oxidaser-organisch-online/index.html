@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Oxidaser organische Redoxrekationen - online</title>
+    <meta name="description" content="Der Oxidaser generiert Redoxgleichungen zu organische Redoxreaktionen wie z.B. der Oxidation von Aldehyden durch schwache Oxidationsmittel als Nachweisreagenzien." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Aldehyde, Oxidierbarkeit, Reduktionsmittelstärke, Fehling-Probe, Silberspiegel-Probe, schwarzes Kupferoxid, Kaliumdichromat" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table id="table_formularinhalt">
+      <tr>
+        <td class="zentriert">
+          <label for="s_redm" class="redm">Redm</label>
+        </td>
+        <td class="zentriert">
+          <label for="s_oxm" class="oxm">Oxm</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select id="s_redm" size="7" onchange="setze_redm()" class="zentriert">
+            <option value="Aldehyd_Carbonsaeure">Aldehyd</option>
+            <option value="Kupfer(I)-oxid_Kupfer(II)-ion">Kupfer(I)-oxid</option>
+            <option value="Silber_Silber(I)-ion">Silber</option>
+            <option value="primaerer Alkohol_Aldehyd">primärer Alkohol</option>
+            <option value="sekundaerer Alkohol_Keton">sekundärer Alkohol</option>
+            <option value="Kupfer_Kupfer(II)-oxid">Kupfer</option>
+            <option value="Chrom(III)-ion_Dichromation">Chrom(III)-ion</option>
+          </select>
+        </td>
+        <td>
+          <select id="s_oxm" size="7" onchange="setze_oxm()" class="zentriert">
+            <option value="Aldehyd_Carbonsaeure">Carbonsäure</option>
+            <option value="Kupfer(I)-oxid_Kupfer(II)-ion_alkalisch">Kupfer(II)-ion (alkalisch)</option>
+            <option value="Silber_Silber(I)-ion_alkalisch">Silber(I)-ion (alkalisch)</option>
+            <option value="primaerer Alkohol_Aldehyd">Aldehyd</option>
+            <option value="sekundaerer Alkohol_Keton">Keton</option>
+            <option value="Kupfer_Kupfer(II)-oxid_alkalisch">Kupfer(II)-oxid (fest)</option>
+            <option value="Chrom(III)-ion_Dichromation_sauer">Dichromation (sauer)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <!-- <input type="button" value="ermittle Redoxgleichung"  onclick="ermittle()" /> -->
+      <input type="button" value="Zurücksetzen" onclick="zuruecksetzen()" />
+    </p>
+    <textarea id="t_ausgabe" cols="80" rows="3"></textarea>
+    <table id="table_ausgabe"></table>
+  </body>
+</html>

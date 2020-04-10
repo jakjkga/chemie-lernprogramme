@@ -1,0 +1,67 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+table#phskala {
+  padding:0px;
+  margin:0px;
+}
+table#phskala, table#phskala td {
+  border-collapse:collapse;
+  border-style:none;
+  border-width:0px;
+  padding:0px;
+  margin:0px;
+}
+table#phskala td {
+  max-height:42px;
+  vertical-align:middle;
+}
+table#phskala td span {
+  display:inline-block;
+  width:120px;
+  height:40px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  text-align:center;
+  vertical-align:middle;
+  padding-top:2px;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

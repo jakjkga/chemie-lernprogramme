@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stöchiometrie</title>
+    <meta name="description" content="Veranschaulicht die Proportionalität zwischen messbarer Größe und Stoffmenge mit der Kehrwert der molaren Größe als Proportionalitätsfaktor am Beispiel der Masse, dem (Gas-)Volumen und der Teilchenzahl" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Molare Masse, Molares Volumen, Normvolumen, Avogadro-Konstante, Mol, Stöchiometrie" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions:["mhchem.js"]}});</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_groesse">betrachtete&nbsp;messbare&nbsp;Größe</label>:
+        </td>
+        <td>
+          <select id="s_groesse" onchange="setze_formel()">
+            <option value="masse">Masse</option>
+            <option value="volumen">Volumen (bei Gasen)</option>
+            <option value="teilchenzahl">Teilchenzahl</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_aufloesen">auflösen nach</label>:
+        </td>
+        <td>
+          <select id="s_aufloesen" onchange="setze_formel()">
+            <option value="stoffmenge">Stoffmenge</option>
+            <option value="messbare_groesse">Messbare Größe</option>
+            <option value="molare_groesse">Molare Größe</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                <div id="mindesthoehe"></div>
+              </td>
+              <td>
+                <div id="div_formelanzeige"></div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_parameter_1">gegeben 1</label>:
+        </td>
+        <td>
+          <input type="number" id="i_parameter_1" class="nach_rechts" />&nbsp;<span id="span_einheit_1"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_parameter_2">gegeben 2</label>:
+        </td>
+        <td>
+          <input type="number" id="i_parameter_2" class="nach_rechts" />&nbsp;<span id="span_einheit_2"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          &nbsp;
+        </td>
+        <td>
+          <input type="button" value="Ergebnis berechnen" onclick="berechne()" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_gesucht">gesucht</label>:
+        </td>
+        <td>
+          <input type="number" id="i_gesucht" class="nach_rechts" />&nbsp;<span id="span_einheit_gesucht"></span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="zentriert">
+          <a href="daten/media/loesungsdreieck.pdf" type="application/pdf" target="_blank">Übersicht</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

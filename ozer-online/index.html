@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ozer - online</title>
+    <meta name="description" content="Der Ozer berechnet Oxidationszahlen." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Oxidationszahl, binäre, ternäre Verbindung" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <label for="s_verbtyp">Verbindungstyp&nbsp;bzgl.&nbsp;der&nbsp;Zahl&nbsp;der&nbsp;beteiligten&nbsp;Elemente</label>:
+        </td>
+        <td>
+          <select id="s_verbtyp" onchange="auswahl_typ()">
+            <option value="zwei">aus zwei Elementen (binär)</option>
+            <option value="drei">aus drei Elementen (ternär)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          OZ:
+        </td>
+        <td>
+          <input id="i_oz" type="text" size="4" readonly="true" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <input id="i_el1" type="text" class="myformel" size="2" title="Elementsymbol des dritten Elements" /><select id="s_el1" class="myindex" title="Index des dritten Elements">
+            <option value="1">&nbsp;</option>
+            <option value="2">₂</option>
+            <option value="3">₃</option>
+            <option value="4">₄</option>
+            <option value="5">₅</option>
+            <option value="6">₆</option>
+            <option value="7">₇</option>
+            <option value="8">₈</option>
+            <option value="9">₉</option>
+            <option value="10">₁₀</option>
+            <option value="11">₁₁</option>
+            <option value="12">₁₂</option>
+            <option value="13">₁₃</option>
+            <option value="14">₁₄</option>
+            <option value="15">₁₅</option>
+            <option value="16">₁₅</option>
+            <option value="17">₁₇</option>
+            <option value="18">₁₈</option>
+            <option value="19">₁₉</option>
+            <option value="20">₂₀</option>
+            <option value="21">₂₁</option>
+            <option value="22">₂₂</option>
+            <option value="23">₂₃</option>
+            <option value="24">₂₄</option>
+          </select>
+        </td>
+        <td>
+          <input id="i_el2" type="text" class="myformel" size="2" title="Elementsymbol des ersten Elements" /><select id="s_el2" class="myindex" title="Index des ersten Elements">
+            <option value="1">&nbsp;</option>
+            <option value="2">₂</option>
+            <option value="3">₃</option>
+            <option value="4">₄</option>
+            <option value="5">₅</option>
+            <option value="6">₆</option>
+            <option value="7">₇</option>
+            <option value="8">₈</option>
+            <option value="9">₉</option>
+            <option value="10">₁₀</option>
+            <option value="11">₁₁</option>
+            <option value="12">₁₂</option>
+            <option value="13">₁₃</option>
+            <option value="14">₁₄</option>
+            <option value="15">₁₅</option>
+            <option value="16">₁₅</option>
+            <option value="17">₁₇</option>
+            <option value="18">₁₈</option>
+            <option value="19">₁₉</option>
+            <option value="20">₂₀</option>
+            <option value="21">₂₁</option>
+            <option value="22">₂₂</option>
+            <option value="23">₂₃</option>
+            <option value="24">₂₄</option>
+          </select>
+        </td>
+        <td>
+          <input id="i_el3" type="text" class="myformel" size="2" title="Elementsymbol des zweiten Elements" /><select id="s_el3" class="myindex" title="Index des zweiten Elements">
+            <option value="1">&nbsp;</option>
+            <option value="2">₂</option>
+            <option value="3">₃</option>
+            <option value="4">₄</option>
+            <option value="5">₅</option>
+            <option value="6">₆</option>
+            <option value="7">₇</option>
+            <option value="8">₈</option>
+            <option value="9">₉</option>
+            <option value="10">₁₀</option>
+            <option value="11">₁₁</option>
+            <option value="12">₁₂</option>
+            <option value="13">₁₃</option>
+            <option value="14">₁₄</option>
+            <option value="15">₁₅</option>
+            <option value="16">₁₅</option>
+            <option value="17">₁₇</option>
+            <option value="18">₁₈</option>
+            <option value="19">₁₉</option>
+            <option value="20">₂₀</option>
+            <option value="21">₂₁</option>
+            <option value="22">₂₂</option>
+            <option value="23">₂₃</option>
+            <option value="24">₂₄</option>
+          </select>
+        </td>
+        <td>
+          <select id="s_ladung" class="myindex" title="Gesamtladung des Moleküls oder Molekülions">
+            <option value="0">&nbsp;</option>
+            <option value="+1">⁺</option>
+            <option value="+2">²⁺</option>
+            <option value="+3">³⁺</option>
+            <option value="-1">⁻</option>
+            <option value="-2">²⁻</option>
+            <option value="-3">³⁻</option>
+          </select>
+      </tr>
+    </table>
+    <p><input type="button" value="Oxidationszahl ermitteln" onclick="ermittle()" /></p>
+  </body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Stoffklassenermittler - online</title>
+    <meta name="description" content="Stoffklassen sauerstoffhaltiger Verbindungen ermitteln: Carbonylverbindungen sowie auch alle abgeleiteten Hydroxy- oder Alkoxyverbindungen." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Carbonylgruppe, Hydroxygruppe, Alkoxygruppe, Aminogruppe, Ester, Aldehyd, Keton, Ether, Carbamat, Harnstoff, Halbacetal, Vollacetal, Acetal, Halbketal, Vollketal, Ketal, Carbonsäureamid, Amid, Säureamid, Urethan, Halbaminal, Vollaminal, Aminal" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <!-- Zeile 1 -->
+      <tr>
+        <!-- Spalte 1 -->
+        <td>
+          &nbsp;
+        </td>
+        <!-- Spalte 2 -->
+        <td colspan="5">
+          Carbonylverbindungen
+        </td>
+        <!-- Spalte 3 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 4 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 5 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 6 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 7 -->
+        <td colspan="5">
+          Hydroxy- und Alkoxyverbindungen
+        </td>
+        <!-- Spalte 8 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 9 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 10 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 11 -->
+        <!-- <td>
+        
+        </td> -->
+      </tr>
+      <!-- Zeile 2 -->
+      <tr>
+        <!-- Spalte 2-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-4 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 2-8 -->
+        <td colspan="3" class="zentriert">
+        
+        <!-- </td> -->
+        <!-- Spalte 2-9 -->
+        <!-- <td class="nach_rechts"> -->
+          <select id="a_6" class="nach_links" onchange="hole_hydroxy();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+          </select>
+        <!-- </td> -->
+        <!-- Spalte 2-10 -->
+        <!-- <td> -->
+        
+        </td>
+        <!-- Spalte 2-11 -->
+        <td>
+        
+        </td>
+      </tr>
+            <!-- Zeile 3 -->
+      <tr>
+        <!-- Spalte 3-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-4 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-8 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-9 -->
+        <td class="zentriert">
+         |
+        </td>
+        <!-- Spalte 3-10 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 3-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 4 -->
+      <tr>
+        <!-- Spalte 4-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-4 -->
+        <td class="zentriert">
+         |O|
+        </td>
+        <!-- Spalte 4-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-8 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-9 -->
+        <td class="zentriert">
+         |O|
+        </td>
+        <!-- Spalte 4-10 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 4-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 5 -->
+      <tr>
+        <!-- Spalte 5-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-4 -->
+        <td class="zentriert">
+          ǁ
+        </td>
+        <!-- Spalte 5-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-8 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-9 -->
+        <td class="zentriert">
+         |
+        </td>
+        <!-- Spalte 5-10 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 5-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 6 -->
+      <tr>
+        <!-- Spalte 6-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 6-2 -->
+        <td class="nach_rechts">
+          <select id="a_1" class="nach_rechts" onchange="hole_carbonyl();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+            <option value="HO">HO</option>
+            <option value="RO">RO</option>
+            <option value="H₂N">H₂N</option>
+          </select>
+        </td>
+        <!-- Spalte 6-3 -->
+        <td class="zentriert">
+          &nbsp;–&nbsp;
+        </td>
+        <!-- Spalte 6-4 -->
+        <td class="zentriert">
+          C
+        </td>
+        <!-- Spalte 6-5 -->
+        <td class="zentriert">
+          &nbsp;–&nbsp;
+        </td>
+        <!-- Spalte 6-6 -->
+        <td>
+          <select id="a_2" class="nach_links" onchange="hole_carbonyl();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+            <option value="OH">OH</option>
+            <option value="OR">OR</option>
+            <option value="NH₂">NH₂</option>
+          </select>
+        </td>
+        </td>
+        <!-- Spalte 6-7 -->
+        <td class="nach_rechts">
+          <select id="a_3" class="nach_rechts" onchange="hole_hydroxy();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+            <option value="HO">HO</option>
+            <option value="RO">RO</option>
+            <option value="H₂N">H₂N</option>
+          </select>
+        </td>
+        </td>
+        <!-- Spalte 6-8 -->
+        <td class="zentriert">
+          &nbsp;–&nbsp;
+        </td>
+        <!-- Spalte 6-9 -->
+        <td class="zentriert">
+          C
+        </td>
+        <!-- Spalte 6-10 -->
+        <td class="zentriert">
+          &nbsp;–&nbsp;
+        </td>
+        <!-- Spalte 6-11 -->
+        <td>
+          <select id="a_5" class="nach_links" onchange="hole_hydroxy();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+            <option value="OH">OH</option>
+            <option value="OR">OR</option>
+            <option value="NH₂">NH₂</option>
+          </select>
+        </td>
+      </tr>
+      <!-- Zeile 7 -->
+      <tr>
+        <!-- Spalte 7-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-4 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-8 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-9 -->
+        <td class="zentriert">
+         |
+        </td>
+        <!-- Spalte 7-10 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 7-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 8 -->
+      <tr>
+        <!-- Spalte 8-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-4 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 8-8 -->
+        <td colspan="3" class="nach_rechts">
+        
+        <!-- </td> -->
+        <!-- Spalte 8-9 -->
+        <!-- <td class="nach_rechts"> -->
+          <select id="a_4" class="nach_rechts" onchange="hole_hydroxy();">
+            <option value="H">H</option>
+            <option value="R">R</option>
+            <option value="OH">OH</option>
+            <option value="OR">OR</option>
+            <option value="NH₂">NH₂</option>
+          </select>
+        <!-- </td> -->
+        <!-- Spalte 8-10 -->
+        <!-- <td> -->
+        
+        </td>
+        <!-- Spalte 8-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 9 -->
+      <tr>
+        <!-- Spalte 9-1 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-2 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-3 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-4 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-5 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-6 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-7 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-8 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-9 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-10 -->
+        <td>
+        
+        </td>
+        <!-- Spalte 9-11 -->
+        <td>
+        
+        </td>
+      </tr>
+      <!-- Zeile 10 -->
+      <tr>
+        <!-- Spalte 10-1 -->
+        <td>
+          Stoffklasse:
+        </td>
+        <!-- Spalte 10-2 -->
+        <td colspan="5">
+          <input type="text" id="aus_carbonyl" />
+        <!-- </td> -->
+        <!-- Spalte 10-3 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 10-4 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 10-5 -->
+        <!-- <td>
+        
+        </td> -->
+        <!-- Spalte 10-6 -->
+        <!-- <td> -->
+        
+        </td>
+        <!-- Spalte 10-7 -->
+        <td colspan="5">
+          <input type="text" id="aus_hydroxy" />
+        <!-- </td> -->
+        <!-- Spalte 10-8 -->
+        <!-- <td> -->
+        
+        <!-- </td> -->
+        <!-- Spalte 10-9 -->
+        <!-- <td> -->
+        
+        <!-- </td> -->
+        <!-- Spalte 10-10 -->
+        <!-- <td> -->
+        
+        <!-- </td> -->
+        <!-- Spalte 10-11 -->
+        <!-- <td> -->
+        
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

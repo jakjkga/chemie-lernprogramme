@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fettsäurer - online</title>
+    <meta name="description" content="Der Fettsäurer veranschaulicht die Struktur sowie die Eigenschaften wichtiger Fettsäuremoleküle." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Fettsäuren, gesättigte, ungesättigte, Anzahl der Doppelbindungen, Sättigungsgrad, Schmelzpunkte, räumlicher Bau" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table id="table_formularinhalt">
+      <tr>
+        <td rowspan="2" class="nach_oben">
+          <a href="#" onclick="zuruecksetzen()"><img src="daten/img/task-recurring.png" width="22" /></a>
+        </td>
+        <td class="nach_unten zentriert">
+         <label for="s_catome">C-Atome</label>:
+        </td>
+        <td class="nach_unten zentriert">
+         <label for="s_doppelbindungen">Doppelbindungen</label>:
+        </td>
+        <td class="nach_unten zentriert">
+         <label for="s_erste_doppelbindung">Stellung&nbsp;der ersten<br >
+         Doppelbindung</label>:
+        </td>
+        <td class="nach_unten zentriert">
+         <label for="s_trans">trans-Fettsäure</label>?
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_oben zentriert">
+         <select id="s_catome" size="5" onchange="setze_catome();" class="nach_rechts">
+           <option value="4">4</option>
+           <option value="14">14</option>
+           <option value="16">16</option>
+           <option value="18">18</option>
+           <option value="20">20</option>
+         </select>
+        </td>
+        <td class="nach_oben zentriert">
+         <select id="s_doppelbindungen" size="5" onchange="setze_doppelbindungen();" class="zentriert">
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+         </select>
+        </td>
+        <td class="nach_oben zentriert">
+         <select id="s_erste_doppelbindung" size="3" onchange="setze_erste_doppelbindung();" class="nach_rechts">
+           <option value="6">6</option>
+           <option value="9">9</option>
+           <option value="11">11</option>
+         </select>
+        </td>
+        <td class="nach_oben zentriert">
+         <select id="s_trans" size="2" onchange="setze_trans();" class="zentriert">
+           <option value="ja">ja</option>
+           <option value="nein">nein</option>
+         </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <img id="img_abb" src="daten/img/start.gif"  width="480"  height="240" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Name:
+        </td>
+        <td colspan="4">
+          <input type="text" id="i_name" size="40" />
+          <a href="#" id="a_informationsseite" title="Link zur interaktiven 3D-Ansicht dieses Moleküls"><img id="img_informationsseite" src="daten/img/dialog-information-inactive.png" height="16" /></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Summenformel:
+        </td>
+        <td colspan="4">
+          <input type="text" id="i_summenformel" size="40" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Schmelzpunkt:
+        </td>
+        <td colspan="4">
+          <input type="text" id="i_schmelzpunkt" size="40" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          Vorkommen:
+        </td>
+        <td colspan="4">
+          <input type="text" id="i_vorkommen" size="40" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

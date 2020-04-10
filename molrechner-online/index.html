@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Molrechner - online</title>
+    <meta name="description" content="Der Molrechner berechnet mit Hilfe molarer Größen messbare Größen wie Masse, Volumen oder auch die Teilchenzahl." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Mol, Stoffmenge, Stöchiometrie, Molare Masse, Molares Volumen, Avogadro-Konstante, Normvolumen, ideales Gas" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_ges">gesucht</label>:
+        </td>
+        <td colspan="4">
+          <select id="s_ges" onchange="auswahl()">
+            <option value="volumen">Volumen (eines Gases)</option>
+            <option value="masse">Masse</option>
+            <option value="teilchenzahl">Teilchenzahl</option>
+            <option value="stoffmenge">Stoffmenge</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          gegeben:
+        </td>
+        <td class="zentriert">
+          Größe
+        </td>
+        <td class="zentriert">
+          Zahlenwert
+        </td>
+        <td colspan="2" class="zentriert">
+          Einheit
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          <label for="i_n">Stoffmenge&nbsp;(n)</label>:
+        </td>
+        <td>
+          <input id="i_n" type="text" />
+        </td>
+        <td colspan="2">
+          Mol
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          <label for="i_M">Molare&nbsp;Masse&nbsp;(M)</label>:
+        </td>
+        <td>
+          <input id="i_M" type="text" />
+        </td>
+        <td colspan="2">
+          Gramm pro Mol
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          <input type="radio"  name="r_geg" id="r_m" onclick="zweitauswahl()" /><label for="r_m">Masse&nbsp;(m)</label>:
+        </td>
+        <td>
+          <input id="i_m" type="text" />
+        </td>
+        <td colspan="2">
+          Gramm
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          <input type="radio"  name="r_geg" id="r_V" onclick="zweitauswahl()" /><label for="r_V">Volumen&nbsp;(V)</label>:
+        </td>
+        <td>
+          <input id="i_V" type="text" />
+        </td>
+        <td colspan="2">
+          Liter
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="nach_rechts">
+          <input type="radio"  name="r_geg" id="r_N" onclick="zweitauswahl()" /><label for="r_N">Teilchenzahl&nbsp;(N)</label>:
+        </td>
+        <td>
+          <input id="i_N" type="text" />
+        </td>
+        <td>
+          mal 10 hoch
+        </td>
+        <td>
+          <input id="i_exp" type="text" size="4" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td colspan="4">
+          <input type="button" value="Berechnen" onclick="berechne()" />
+        </td>
+      </tr>
+    </table>
+    <div id="div_anzeige">&nbsp;</div>
+    <p class="hinweis">
+      Alle messbaren Größen sind zur Stoffmenge proportional.<br />
+      Die Stoffmenge ist also proportional zum Volumen, zur Masse und zur Teilchenzahl.<br />
+      Die jeweiligen Proportionalitätsfaktoren sind im Falle des Volumens der 
+      Kehrwert des Molaren Normvolumens 1/V<sub>m</sub>, 
+      im Falle der Masse der Kehrwert der Molaren Masse 1/M und
+      im Falle der Teilchenzahl der Kehrwert der Avogadro Konstante 1/N<sub>A</sub>.
+      Die Reaktionsenergie ΔH (vereinfacht für Reaktionsenthalpie)
+      wurde hier weggelassen.
+      Aber auch hier gilt der Proportionalitätsfaktor des Kehrwerts der 
+      Molaren Reaktionsenthalpie 1/ΔH<sub>m</sub>.'
+    </p>
+  </body>
+</html>

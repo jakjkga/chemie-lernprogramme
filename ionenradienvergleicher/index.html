@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ionenradienvergleicher</title>
+    <meta name="description" content="Ionenradien vergleichen für Metallkationen und Nichtmetallanionen wichtiger Nichtmetalle">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Ionenradius, Ionisierungsenergie, Elektronenaffinität, Kästchen, Muster, Vektorgrafik, Koordinatensystem, Trends im Periodensystem der Elemente, PSE">
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <select id="a_element" onchange="zeige_radius();">
+            <optgroup label="I. Hauptgruppe">
+              <option value="Li⁺" title="Lithiumkation">Li⁺</option>
+              <option value="Na⁺" title="Natriumkation">Na⁺</option>
+              <option value="K⁺" title="Kaliumkation">K⁺</option>
+              <option value="Rb⁺" title="Rubidiumkation">Rb⁺</option>
+            </optgroup>
+            <optgroup label="II. Hauptgruppe">
+              <option value="Be²⁺" title="Berylliumkation">Be²⁺</option>
+              <option value="Mg²⁺" title="Magnesiumkation">Mg²⁺</option>
+              <option value="Ca²⁺" title="Calciumkation">Ca²⁺</option>
+            </optgroup>
+            <optgroup label="III. Hauptgruppe">
+              <option value="Al³⁺" title="Aluminiumkation">Al³⁺</option>
+              <option value="Ga³⁺" title="Galliumkation">Ga³⁺</option>
+            </optgroup>
+            <optgroup label="V. Hauptgruppe">
+              <option value="N³⁻" title="Nitridion">N³⁻</option>
+              <option value="P³⁻" title="Phosphidion">P³⁻</option>
+            </optgroup>
+            <optgroup label="VI. Hauptgruppe">
+              <option value="O²⁻" title="Oxidion">O²⁻</option>
+              <option value="S²⁻" title="Sulfidion">S²⁻</option>
+              <option value="Se²⁻" title="Selenidion">Se²⁻</option>
+            </optgroup>
+            <optgroup label="VII. Hauptgruppe">
+              <option value="F⁻" title="Fluoridion">F⁻</option>
+              <option value="Cl⁻" title="Chloridion">Cl⁻</option>
+              <option value="Br⁻" title="Bromidion">Br⁻</option>
+              <option value="I⁻" title="Iodidion">I⁻</option>
+            </optgroup>
+          </select>
+        </td>
+        <td>
+          <a href="http://chemie-lernprogramme.de/daten/programme/js/atomradienvergleicher/index.html" target="_blank">Atomradienvergleicher</a>
+        </td>
+    </table>
+    <!-- <div id="zeichenflaeche"> -->
+    <!-- ANFANG SVG -->   
+     <?xml version="1.1" encoding="UTF-8" ?>
+     <svg
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:cc="http://creativecommons.org/ns#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns="http://www.w3.org/2000/svg"
+         version="1.1"
+         width="130mm"
+         height="130mm"
+         id="zeichnung"
+         transform="scale(1.0)">
+      <rect id="hintergrundflaeche"
+            x="0"
+            y="0"
+            width="130mm"
+            height="130mm"
+            fill="white"></rect>
+      <g id="gitter">
+        <line x1="5mm" y1="5mm" x2="125mm" y2="5mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="10mm" x2="125mm" y2="10mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="15mm" x2="125mm" y2="15mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="20mm" x2="125mm" y2="20mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="25mm" x2="125mm" y2="25mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="30mm" x2="125mm" y2="30mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="35mm" x2="125mm" y2="35mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="40mm" x2="125mm" y2="40mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="45mm" x2="125mm" y2="45mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="50mm" x2="125mm" y2="50mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="55mm" x2="125mm" y2="55mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="60mm" x2="125mm" y2="60mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="65mm" x2="125mm" y2="65mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="70mm" x2="125mm" y2="70mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="75mm" x2="125mm" y2="75mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="80mm" x2="125mm" y2="80mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="85mm" x2="125mm" y2="85mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="90mm" x2="125mm" y2="90mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="95mm" x2="125mm" y2="95mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="100mm" x2="125mm" y2="100mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="105mm" x2="125mm" y2="105mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="110mm" x2="125mm" y2="110mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="115mm" x2="125mm" y2="115mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="120mm" x2="125mm" y2="120mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="125mm" x2="125mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="5mm" y1="5mm" x2="5mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="10mm" y1="5mm" x2="10mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="15mm" y1="5mm" x2="15mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="20mm" y1="5mm" x2="20mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="25mm" y1="5mm" x2="25mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="30mm" y1="5mm" x2="30mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="35mm" y1="5mm" x2="35mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="40mm" y1="5mm" x2="40mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="45mm" y1="5mm" x2="45mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="50mm" y1="5mm" x2="50mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="55mm" y1="5mm" x2="55mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="60mm" y1="5mm" x2="60mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="65mm" y1="5mm" x2="65mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="70mm" y1="5mm" x2="70mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="75mm" y1="5mm" x2="75mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="80mm" y1="5mm" x2="80mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="85mm" y1="5mm" x2="85mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="90mm" y1="5mm" x2="90mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="95mm" y1="5mm" x2="95mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="100mm" y1="5mm" x2="100mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="105mm" y1="5mm" x2="105mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="110mm" y1="5mm" x2="110mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="115mm" y1="5mm" x2="115mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="120mm" y1="5mm" x2="120mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+        <line x1="125mm" y1="5mm" x2="125mm" y2="125mm" stroke="black" stroke-width="0.2pt"></line>
+     </g>
+     <circle id="kreis"
+             cx="65mm" 
+             cy="65mm"
+             r="25mm"
+             stroke="black"
+             stroke-width="1pt"
+             fill="red"></circle>
+     <circle id="kreis2"
+             cx="65mm" 
+             cy="65mm"
+             r="1px"
+             stroke="none"
+             stroke-width="1px"
+             fill="black"></circle>
+     <text id="anzeige_elementname" 
+           x="100mm" 
+           y="9mm" 
+           style="font-size:12pt;font-family:'Helvetica Neue',Helvetica,Arial;font-style:italic;fill:darkblue;">Elementname</text>
+     <marker id="pfeilspitze"
+             viewBox="0 0 10 10"
+             preserveAspectRatio="none"
+             overflow="visible"
+             refX="0" refY="5"
+             markerUnits="strokeWidth"
+             markerWidth="10" markerHeight="6"
+             orient="auto">
+             <path fill="black" d="M 0 0 L 10 5 L 0 10 z" />
+      </marker>
+      <text id="anzeige_zahlenwert_radius" 
+           x="70mm" 
+           y="118mm" 
+           style="font-size:12pt;font-family:'Helvetica Neue',Helvetica,Arial;font-style:italic;fill:darkblue;">r</text>
+      <line id="anzeige_radius"
+            x1="65mm"
+            y1="65mm"
+            x2="80mm"
+            y2="65mm"
+            stroke="black"
+            stroke-width="1pt"
+            marker-end="url(#pfeilspitze)"></line>
+    </svg>
+    <!-- ENDE SVG -->
+    <!-- <div> -->
+    <table>
+      <tr>
+      <td>
+         1 Kästchen ≙ 
+         20 <a href="http://de.wiktionary.org/wiki/Pikometer" target="_blank">Pikometer</a> (pm) ≙ 
+         20×10⁻¹² <a href="http://de.wikipedia.org/wiki/Meter" target="_blank">Meter</a> (m) ≙ 
+         0,20 <a href="http://de.wiktionary.org/wiki/Pikometer" target="_blank">Ångström</a>  (Å)
+        </td>
+      </tr>
+    </table>
+    <p>
+      <a href="http://chemie-lernprogramme.de/daten/programme/js/pse/" target="_blank">online-PSE</a> | <a href="http://de.wikipedia.org/wiki/Kation" target="_blank">Kation</a> | <a href="http://de.wikipedia.org/wiki/Anion" target="_blank">Anion</a>
+    </p>
+  </body>
+</html>

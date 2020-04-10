@@ -1,0 +1,106 @@
+body, table {
+  font-family:'Arial','Helvetica',sans-serif;
+  font-size:12px;
+  background-color:#ffffff; /*#F8F8FF;*/
+}
+td#a, td#b, td#c, td#d, td#e, td#f, td#g, td#h {
+  background-color:white;
+  line-height:28px;
+  padding:2px;
+  border-color:lightgrey; /*#F8F8FF;*/
+  border-width:1px;
+  border-style:solid;;
+  /*border-radius:5px;*/
+}
+.mformel {
+  font-family:'Times New Roman',sans;
+  font-size:16px;
+  font-style:italic;
+}
+sub, sup {
+  font-size:80%;
+  margin-left:4px;
+}
+
+div#loesungsbereich {
+  background-color:white;
+  min-height:90px;
+  padding:5px;
+}
+.nach_rechts {
+  text-align:right;
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), 
+       local('DroidSans'), 
+       url('../fonts/DroidSans.woff') format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), 
+       local('DroidSans-Bold'), 
+       url('../fonts/DroidSans-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), 
+       local('OpenSans-CondensedBold'), 
+       url('../fonts/OpenSans-CondensedBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), 
+       local('OpenSans-CondensedLight'), 
+       url('../fonts/OpenSans-CondensedLight.woff') format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), 
+       local('SourceCodePro-Regular'), 
+       url(../fonts/SourceCodePro.woff) format('woff');
+}
+.sf {
+  /*font-family:'Droid Sans';*/ /*'Source Code Pro'; */
+  font-size:16px;
+  font-weight:bold;
+}
+select {
+  background-color:white;
+  border-color:lightgrey; /*#F8F8FF;*/
+  border-width:1px;
+  border-style:none;
+  /*border-radius:5px;*/
+  padding:0px;
+  margin:0px;
+}
+select:hover {
+  background-color:yellow; /*rgba(255, 229, 213, 1);*/
+}
+input[type=text] {
+  font-family:'Droid Sans';
+  background-color:white;
+  border-color:lightgrey; /*#F8F8FF;*/
+  border-width:1px;
+  border-style:none;
+  /*border-radius:5px;*/
+}
+input[type=text]:hover {
+  background-color:yellow; /*rgba(255, 229, 213, 1);*/
+  /*text-decoration:blink;*/
+}
+select.runter {
+  position:relative;
+  top:8px;
+  font-size:0.8em;
+}

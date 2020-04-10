@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elektronendruckreiher</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+  <!-- Google-Analytics -->
+  <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <!-- <div class="mein_absatz">jQuery-Vorlage</div> -->
+    <table>
+      <tr>
+        <td class="redm" title="Edukt: Reduktionsmittel 1">
+          Redm1
+        </td>
+        <td class="oxm" title="Edukt: Oxidationsmittel 2">
+          Oxm2
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Na" value="elementares Natrium" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Na⁺" value="Natriumion" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_H₂_alkalisch" value="elementarer Wasserstoff" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_H₂O_alkalisch" value="Wasser (alkalisch)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Zn" value="elementares Zink" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Zn²⁺" value="Zink(II)-ion" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_H₂_sauer" value="elementarer Wasserstoff" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_H₃O⁺_sauer" value="Oxoniumion (sauer)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Cu" value="elementares Kupfer" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Cu²⁺" value="Kupfer(II)-ion" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_MnO₂_alkalisch" value="Mangan(IV)-oxid" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_MnO₄⁻_alkalisch" value="Permanganation (alkalisch)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Cr³⁺_alkalisch" value="Chrom(III)-ion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_CrO₄²⁻_alkalisch" value="Chromation (alkalisch)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_I⁻" value="Iodidion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_I₂" value="elementares Iod" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Br⁻" value="Bromidion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Br₂" value="elementares Brom" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Cl⁻" value="Chloridion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Cl₂" value="elementares Chlor" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Mn²⁺_sauer" value="Mangan(II)-ion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_MnO₄⁻_sauer" value="Permanganation (sauer)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" class="knopf redm_knopf" id="Redm1_Cr³⁺_sauer" value="Chrom(III)-ion" onclick="setze_redm(this.id, this.value);" />
+        </td>
+        <td>
+          <input type="button" class="knopf oxm_knopf" id="Oxm2_Cr₂O₇²⁻_sauer" value="Dichromation (sauer)" onclick="setze_oxm(this.id, this.value);" />
+        </td>
+      </tr>
+    </table>
+    <table id="beschriftung">
+      <tr>
+        <td>
+          <div class="schreibhintergrund nach_rechts" title="Oxidationsteilreaktion: Das Reduktionsmittel gibt Elektronen ab, es wird selbst oxidiert und seine Oxidationszahl erhöht sich.">Ox.:</div>
+        </td>
+        <td>
+          <div id="ox_teilreaktion" class="gleichung schreibhintergrund">&nbsp;</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="schreibhintergrund nach_rechts" title="Reduktionsteilreaktion: Das Oxidationsmittel nimmt Elektronen auf, es wird selbst reduziert und seine Oxidationszahl verringert sich.">Red.:</div>
+        </td>
+        <td>
+          <div id="red_teilreaktion" class="gleichung schreibhintergrund">&nbsp;</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ol class="schreibhintergrund">
+            <li>Wähle oben zwei korrespondierende Redoxpaare aus.<br />
+                Die beiden Teilgleichungen werden schrittweise erstellt:<br />
+                &nbsp;&nbsp;① <span class="el">Elektronenausgleich</span><br />
+                &nbsp;&nbsp;② <span class="ladung">Ladungsausgleich</span><br />
+                &nbsp;&nbsp;③ <span class="stoff">Stoffausgleich</span>
+                </li>
+            <li>Die beiden Teilgleichungen werden anschließend zur
+                Gesamtreaktion zusammengefasst.
+                Darin dürfen <em>keine</em> <span class="el">Elektronen</span>
+                mehr auftreten!
+                </li>
+            <li>Eine freiwillige/exotherme Reaktion läuft normalerweise
+                zwischen dem stärkeren Reduktionsmittel (links oben) und dem stärkeren
+                Oxidationsmittel (rechts unten) ab.<br />
+                Eine Umkehrung ist z.B. durch ständige Zufuhr elektrischer Energie
+                (Elektrolyse) möglich.
+                </li>
+          </ol>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

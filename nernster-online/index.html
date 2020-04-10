@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nernster - online</title>
+    <meta name="description" content="Der Nernster ermittelt die Nernstsche Gleichung zur Ermittlung des elektrochemischen Potentials wichtiger Halbzellen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Nernstsche Gleichung, Halbzelle, Halbzellenpotenzial, Elektromotorische Kraft, EMK, Konzentrationsabhängigkeit, Elektrochemie" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions:["mhchem.js"]}});</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <!-- ANFANG Steuerelemente -->
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_halbzelle">Halbzelle</label>:
+        </td>
+        <td>
+          <select id="s_halbzelle" onchange="setze_oxidationsteilreaktion()">
+            <option value="0">Li/Li⁺</option>
+            <option value="1">Na/Na⁺</option>
+            <option value="2">Al/Al³⁺</option>
+            <option value="3">H₂/H₂O (alkalisch)</option>
+            <option value="4">Zn/Zn²⁺</option>
+            <option value="5">Fe/Fe²⁺</option>
+            <option value="6">Cd/Cd²⁺</option>
+            <option value="7">Pb/PbSO₄</option>
+            <option value="8">Ni/Ni²⁺</option>
+            <option value="9">Sn/Sn²⁺</option>
+            <option value="10">H₂/2H₃O⁺ (sauer)</option>
+            <option value="11">Cu/Cu²⁺</option>
+            <option value="12">2OH⁻/O₂ (alkalisch)</option>
+            <option value="13">2I⁻/I₂</option>
+            <option value="14">Ag/Ag⁺</option>
+            <option value="15">2Br⁻/Br₂</option>
+            <option value="16">2H₂O/O₂ (sauer)</option>
+            <option value="17">2Cl⁻/Cl₂</option>
+            <option value="18">Mn²⁺/MnO₄⁻ (sauer)</option>
+            <option value="19">PbSO₄/PbO₂ (sauer)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_oxidationsteilreaktion">Oxidationsteilreaktion</label>:
+        </td>
+        <td>
+          <input id="i_oxidationsteilreaktion" type="text" size="40" />
+        </td>
+      </tr>
+      <!-- <tr>
+        <td class="nach_rechts">
+          c(<span id="s_redm">Redm.</span>):
+        </td>
+        <td>
+          <input id="i_c_redm" type="number" value="1" min="0.01" max="1" step="0.01">&nbsp;mol/l
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          c(<span id="s_oxm">Oxm.</span>):
+        </td>
+        <td>
+          <input id="i_c_oxm" type="number" value="1" min="0.01" max="1" step="0.01">&nbsp;mol/l
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          pH-Wert:
+        </td>
+        <td>
+          <input id="i_ph" type="number" value="7" min="0" max="14" step="1">&nbsp;mol/l
+        </td>
+      </tr> -->
+    </table>
+    <!-- ENDE Steuerelemente -->
+    <div id="anzeigebereich" class="formel"></div>
+    <p class="hinweis">
+      Tipp: Die Python basierte 
+      <a href="http://chemie-lernprogramme.de/daten/html/nernster.html" target="_blank">offline Variante</a> 
+      dieses Programms bietet die Möglichkeit, E mit verschiedenen 
+      Konzentrationen und ggf. pH-Werten mit konkreten Zahlenwerten 
+      zu berechnen!
+    </p>
+  </body>
+</html>

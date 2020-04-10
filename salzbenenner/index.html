@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Salzbenenner</title>
+<!--
+Copyright (C) 2011  Joachim Jakob
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="AUTHOR" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <link rel="stylesheet" 
+          type="text/css" 
+          href="daten/css/stilvorlagen.css" />
+    <script type="text/javascript" 
+            src="daten/scripts/textbausteine.js"></script>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body onload="lade_seite();"><!-- onload="lade_seite();" -->
+    <table border="0">
+      <tr><!-- Zeile 1: Anweisung 1 -->
+        <td class="nach_unten" colspan="2">
+          Summenformel:
+        </td>
+      </tr>
+      <tr><!-- Zeile 2: Auswahl Summenformeln -->
+        <td colspan="2">
+          <form id="SF" name="SF" title="Tipp: Vergrößere für bessere Lesbarkeit die Ansicht mit Strg++">
+          <select id="SF_auswahl" onchange="hole_aktuellen_index('SF', 'SF_auswahl');">
+            <option value="-">&nbsp;</option>
+            <optgroup label="Chloride">
+              <option value="NaCl">NaCl</option>
+              <option value="KCl">KCl</option>
+              <option value="NH₄Cl">NH₄Cl</option>
+              <option value="CuCl">CuCl</option>
+              <option value="CaCl₂">CaCl₂</option>
+              <option value="MgCl₂">MgCl₂</option>
+              <option value="ZnCl₂">ZnCl₂</option>
+              <option value="CuCl₂">CuCl₂</option>
+              <option value="FeCl₂">FeCl₂</option>
+              <option value="AlCl₃">AlCl₃</option>
+              <option value="FeCl₃">FeCl₃</option>
+            </optgroup>
+            <optgroup label="Oxide">
+              <option value="Na₂O">Na₂O</option>
+              <option value="K₂O">K₂O</option>
+              <option value="Cu₂O">CuO</option>
+              <option value="CaO">CaO</option>
+              <option value="MgO">MgO</option>
+              <option value="ZnO">ZnO</option>
+              <option value="CuO">CuO</option>
+              <option value="FeO">FeO</option>
+              <option value="Al₂O₃">Al₂O₃</option>
+              <option value="Fe₂O₃">Fe₂O₃</option>
+            </optgroup>
+            <optgroup label="Hydroxide">
+              <option value="NaOH">NaOH</option>
+              <option value="KOH">KOH</option>
+              <option value="NH₄OH">NH₄OH</option>
+              <option value="Ca(OH)₂">Ca(OH)₂</option>
+              <option value="Mg(OH)₂">Mg(OH₂)</option>
+              <!-- <option value="Zn(OH)₂">Zn(OH)₂</option> -->
+              <option value="Cu(OH)₂">Cu(OH)₂</option>
+              <!-- <option value="Fe(OH)₂">Fe(OH)₂</option> -->
+              <option value="Al(OH)₃">Al(OH)₃</option>
+              <option value="Fe(OH)₃">Fe(OH)₃</option>
+            </optgroup>
+            <optgroup label="Nitrate">
+              <option value="NaNO₃">NaNO₃</option>
+              <option value="KNO₃">KNO₃</option>
+              <option value="NH₄NO₃">NH₄NO₃</option>
+              <option value="Ca(NO₃)₂">Ca(NO₃)₂</option>
+              <option value="Mg(NO₃)₂">Mg(NO₃)₂</option>
+              <!-- <option value="Zn(NO₃)₂">Zn(NO₃)₂</option> -->
+              <option value="Cu(NO₃)₂">Cu(NO₃)₂</option>
+              <!-- <option value="Fe(NO₃)₂">Fe(NO₃)₂</option> -->
+              <option value="Al(NO₃)₃">Al(NO₃)₃</option>
+              <option value="Fe(NO₃)₃">Fe(NO₃)₃</option>
+            </optgroup>
+            <optgroup label="Carbonate">
+              <option value="Na₂CO₃">Na₂CO₃</option>
+              <option value="K₂CO₃">K₂CO₃</option>
+              <option value="(NH₄)₂CO₃">(NH₄)₂CO₃</option>
+              <option value="Cu₂CO₃">Cu₂CO₃</option>
+              <option value="CaCO₃">CaCO₃</option>
+              <option value="MgCO₃">MgCO₃</option>
+              <!-- <option value="ZnCO₃">ZnCO₃</option> -->
+              <option value="CuCO₃">CuCO₃</option>
+              <option value="FeCO₃">FeCO₃</option>
+              <!-- <option value="Al₂(CO₃)₃">Al₂(CO₃)₃</option> -->
+              <!-- <option value="Fe₂(CO₃)₃">Fe₂(CO₃)₃</option> -->
+            </optgroup>
+            <optgroup label="Sulfate">
+              <option value="Na₂SO₄">Na₂SO₄</option>
+              <option value="K₂SO₄">K₂SO₄</option>
+              <option value="(NH₄)₂SO₄">(NH₄)₂SO₄</option>
+              <option value="Cu₂SO₄">Cu₂SO₄</option>
+              <option value="CaSO₄">CaSO₄</option>
+              <option value="MgSO₄">MgSO₄</option>
+              <option value="ZnSO₄">ZnSO₄</option>
+              <option value="CuSO₄">CuSO₄</option>
+              <option value="FeSO₄">FeSO₄</option>
+              <option value="Al₂(SO₄)₃">Al₂(SO₄)₃</option>
+              <option value="Fe₂(SO₄)₃">Fe₂(SO₄)₃</option>
+            </optgroup>
+            <optgroup label="Phosphate">
+              <option value="Na₃PO₄">Na₃PO₄</option>
+              <option value="K₃PO₄">K₃PO₄</option>
+              <option value="Ca₃(PO₄)₂">Ca₃(PO₄)₂</option>
+              <!-- <option value="Mg₃(PO₄)₂">Mg₃(PO₄)₂</option> -->
+              <!-- <option value="Zn₃(PO₄)₂">Zn₃(PO₄)₂</option> -->
+              <option value="Cu₃(PO₄)₂">Cu₃(PO₄)₂</option>
+              <!-- <option value="Fe₃(PO₄)₂">Fe₃(PO₄)₂</option> -->
+              <option value="AlPO₄">AlPO₄</option>
+              <option value="FePO₄">FePO₄</option>
+            </optgroup>
+          </select>
+        </form>
+        </td>
+      <tr><!-- Zeile 3: Anweisung 2 -->
+         <td class="nach_unten" colspan="2">
+          Name des Salzes:
+        </td>
+      </tr>
+      <tr><!-- Zeile 4: Eingabefeld Name des Salzes -->
+        <td colspan="2">
+          <form name="Salzname" id="Salzname">
+            <input name="Salzname_Eingabe"
+                   id="Salzname_Eingabe"
+                   type="text"
+                   size="60"
+                   maxlength="60"
+                   disabled
+                    /><!-- onkeypress="eingabetaste(event);" -->
+        </form>
+        </td>
+      </tr>
+      <tr><!-- Zeile 5: Kommentarfeld -->
+        <td colspan="2">
+          <form name="Salzname" id="Salzname" title="Tipp: Vergrößere für bessere Lesbarkeit die Ansicht mit Strg++">
+            <input name="Salzname_Ausgabe"
+                   id="Salzname_Ausgabe"
+                   type="text"
+                   size="80"
+                   maxlength="80"
+                   disabled
+                   readonly
+                   style="border-width:0px;background-color:#ffffff;" />
+        </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <input value="Auswerten"
+                   type="button"
+                   onclick="auswertung('SF', 'SF_auswahl');" />
+        </td>
+        <td class="nach_links">
+          <a  id="infolink" name="infolink"
+              href=""
+              style="border-width:0px;"
+              target="_blank"
+              title="Wikipedia-Link - wird nach jeder richtigen Antwort aktualisiert!">
+              <img id="info" 
+                   name="info" 
+                   src="daten/icons/wp-favicon.png"
+                   height="16"
+                   width="16" />
+          </a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

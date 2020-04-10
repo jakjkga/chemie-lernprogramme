@@ -1,0 +1,152 @@
+body {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  line-height:22px;
+  background-color:#ffffff;
+}
+
+td#beschriftung {
+  text-align:right;
+}
+
+optgroup.groueb {
+  color:#369;
+  font-size:14px;
+  background-color:white;
+}
+
+optgroup.kleueb {
+  color:black;
+  font-size:14px;
+  background-color:white;
+}
+
+option.eintrag {
+  color:black;
+  font-size:14px;
+  background-color:white;
+}
+
+a.linkbereich {
+  height:12px;
+  cursor:pointer;
+  border-bottom:dotted 1px grey; 
+  text-decoration:none;
+  color:grey;
+}
+a.linkbereich:hover {
+  background-color:#e9f3f8;
+}
+
+span.subs {
+  color:blue;
+  font-weight:bold;
+  font-size:18px;
+  border-style:solid;
+  border-width:1px;
+  border-color:white;
+  border-radius:5px;
+  padding:2px;
+  margin:2px;
+}
+
+span.subs:hover {
+  background-color:#d5e5ff;
+  border-color:blue;
+}
+
+span.wirk {
+  color:magenta;
+  font-weight:bold;
+  font-size:18px;
+  text-align:center;
+  border-style:solid;
+  border-width:1px;
+  border-color:white;
+  border-radius:5px;
+  padding:2px;
+  margin:2px;
+}
+
+span.wirk:hover {
+  background-color:#ffd5f6;
+  border-color:magenta;
+}
+
+span.endu {
+  color:#f60;
+  font-weight:bold;
+  font-size:18px;
+  text-align:left;
+  border-style:solid;
+  border-width:1px;
+  border-color:white;
+  border-radius:5px;
+  padding:2px;
+  margin:2px;
+}
+
+span.endu:hover {
+  background-color:#ffe6d5;
+  border-color:#f60;
+}
+
+span.t_subs {
+  color:blue;
+  font-weight:bold;
+}
+
+span.t_wirk {
+  color:magenta;
+  font-weight:bold;
+}
+
+span.t_endu {
+  color:#f60;
+  font-weight:bold;
+}
+
+span.t_prod {
+  color:green;
+  font-weight:bold;
+}
+
+span#name_des_substrats {
+  margin-right:2px;
+}
+
+span#wirkungsweise_des_enzyms {
+  margin-left:2px;
+  margin-right:2px;
+}
+
+span#endung_ase {
+  margin-left:2px;
+}
+
+div#namensbereich {
+  width:640px;
+  padding:5px;
+  background-color:white;
+  border-style:solid;
+  border-width:1px;
+  border-color:lightgrey;
+}
+
+div#allgemeiner_typ {
+  width:640px;
+  padding:5px;
+  background-color:white;
+  border-style:solid;
+  border-width:1px;
+  border-color:lightgrey;
+}
+
+div#beispiele {
+  width:640px;
+  padding:5px;
+  background-color:white;
+  border-style:solid;
+  border-width:1px;
+  border-color:lightgrey;
+}

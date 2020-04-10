@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="online Version des Chemie Lernprogramms zum Aufbau verschiedener Farbstoffklassen">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Farbstoffe, Farbstoffklassen, Chromophor, Auxochrom, Antiauxochrom, Azofarbstoffe, Chemie, Lernprogramme, Übungsaufgaben">
+    <title>Farbstoffermittler - online</title>
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <form id="formular1">
+      <table>
+        <tr>
+          <td class="zentriert">
+            <label for="a_chromophor"><span class="chromophor">Chromophor</span></label><br />
+            <select id="a_chromophor" onchange="auswahl();">
+              <option value="X">-</option>
+              <option value="benzol">Benzol</option>
+              <option value="azobenzol">Azobenzol</option>
+              <option value="triphenylmethan">Triphenylmethan/Pthalein</option>
+              <option value="anthrachinon">Anthrachinon</option>
+            </select>
+          </td>
+          <td class="zentriert">
+            <label for="a_auxochrom"><span class="auxochrom">Auxochrom</span></label><br />
+            <select id="a_auxochrom" onchange="auswahl();">
+              <option value="X">-</option>
+              <option value="hydroxy">Hydroxy</option>
+              <option value="amino">Amino</option>
+              <option value="aminoalkyl">Aminoalkyl</option>
+            </select>
+          </td>
+          <td class="zentriert">
+            <label for="a_antiauxochrom"><span class="antiauxochrom">Antiauxochrom</span></label><br />
+            <select id="a_antiauxochrom" onchange="auswahl();">
+              <option value="X">-</option>
+              <option value="nitro">Nitro</option>
+            </select>
+          </td>
+          <td class="zentriert">
+            <label for="a_loeslichegruppe"><span class="loeslichegruppe">Lösliche Gruppe</span></label><br />
+            <select id="a_loeslichegruppe" onchange="auswahl();">
+              <option value="X">-</option>
+              <option value="sulfon">Sulfonsäure/Sulfonat</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="zentriert">
+            <input id="b_anzeigen" type="button" value="Strukturformel anzeigen" onclick="anzeigen();" />
+          </td>
+          <td colspan="2" class="zentriert">
+            <input id="b_zuruecksetzen" type="button" value="Zurücksetzen" onclick="zuruecksetzen();" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <img id="abb_strukturformel" src="daten/img/start.gif" />
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td class="nach_rechts">
+            <label for="name_des_farbstoffs">Name des Farbstoffs:</label>
+          </td>
+          <td colspan="3">
+            <input id="name_des_farbstoffs" type="text" size="40" />
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            <label for="name_der_farbe">Sichtbare Farbe:</label>
+          </td>
+          <td colspan="3">
+            <input id="name_der_farbe" type="text" size="10" />
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr title="Wellenlänge des absorbierten Lichts in Nanometern (nm)">
+          <td class="nach_rechts nach_oben">
+            Wellenlänge:&nbsp;&nbsp;
+          </td>
+          <td colspan="3">
+            <div style="position:relative;height:60px;">
+              <div id="beschriftungslabel" style="position:absolute;left:0px;top:34px;">380</div>
+              <div id="schieberegler_behaelter" style="position:absolute;left:-4px;top:0px;">
+                <input id="schieberegler" type="range" min="380" max="750" step="1" value="380" style="width:500px;" />
+              </div>
+            </div>
+            
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts nach_oben">
+            Absorbiert:&nbsp;&nbsp;
+          </td>
+          <td colspan="3" rowspan="2">
+            <img id="abb_spektrum" src="daten/img/spektrum.gif" />
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts nach_oben">
+            Reflektiert:&nbsp;&nbsp;
+          </td>
+        </tr>
+        
+      </table>
+    </form>
+  </body>
+</html>

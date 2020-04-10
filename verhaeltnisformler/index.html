@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Verhältnisformler</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="description" content="Lernprogramm zur Verhältnisformel der Salze">
+    <meta name="keywords" lang="de" content="Summenformel, Verhältnisformel, Salze, Ionen, ionische Verbindungen, Koeffezienten, Indizes">
+    <link rel="shortcut icon" href="https://chemie-lernprogramme.de/daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="https://chemie-lernprogramme.de/daten/css/style.css" />
+    <style type="text/css">
+      body, table, select {
+          font-family:sans-serif;
+          background:#ffffff;
+          font-size:18px;
+      }
+      select {
+        border-style:solid;
+        border-width:1px;
+        border-color:#bebebe;
+        background-color:#ffffff;
+      }
+      div {
+          margin-top:5px;
+          margin-left:5px;
+      }
+      td.negativ {
+          font-size:18px;
+          color:blue;
+          font-weight:bold;
+          text-align:center;
+      }
+      td.positiv {
+          font-size:18px;
+          color:red;
+          font-weight:bold;
+          vertical-align:center;
+      }
+      table#auswahlfelder {
+          border-style:solid;
+          border-width:1px;
+          border-color:lightgrey;
+          border-spacing:0px;
+      }
+      td.feld {
+          background-color:white;
+          border-style:solid;
+          border-width:1px;
+          border-color:white;
+          border-spacing:0px;
+          margin:1px;
+          padding:0px;
+      }
+      td.feld:hover {
+          background-color:#ffe6d5;
+          border-style:solid;
+          border-width:1px;
+          border-color:#ff6600;
+          cursor:crosshair
+      }
+      span.richtig {
+          font-weight:bold;
+          font-style:italic;
+          font-size:18px;
+          color:green;
+      }
+      span.falsch {
+          font-weight:bold;
+          font-style:italic;
+          font-size:18px;
+          color:red;
+      }
+    </style>
+    <script type="text/javascript">
+var wert_ladung_kation='-';
+var wert_ladung_anion='-';
+var schluessel='--';
+
+var allgemeine_summenformeln={
+    '11':['MN',   '1 M⁺  + 1 N⁻'],
+    '12':['M₂N',  '2 M⁺  + 1 N²⁻'],
+    '13':['M₃N',  '3 M⁺  + 1 N³⁻'],
+    '21':['MN₂',  '1 M²⁺ + 2 N⁻'],
+    '22':['MN',   '1 M²⁺ + 1 N²⁻'],
+    '23':['M₃N₂', '3 M²⁺ + 2 N³⁻'],
+    '31':['MN₃',  '1 M³⁺ + 1 N⁻'],
+    '32':['M₂N₃', '2 M³⁺ + 3 N²⁻'],
+    '33':['MN',   '1 M³⁺ + 1 N³⁻'],
+    '--':['Noch keine Auswahl', 'Noch keine ausgewählt'],
+    '1-':['Noch keine Auswahl', 'Bisher nur einfach positiv geladenes Kation M⁺ ausgewählt'],
+    '2-':['Noch keine Auswahl', 'Bisher nur zweifach positiv Kation M²⁺ ausgewählt'],
+    '3-':['Noch keine Auswahl', 'Bisher nur dreifach positiv Kation M³⁺ ausgewählt'],
+    '-1':['Noch keine Auswahl', 'Bisher nur einfach negativ Anion N⁻ ausgewählt'],
+    '-2':['Noch keine Auswahl', 'Bisher nur zweifach negativ Anion N⁻ ausgewählt'],
+    '-3':['Noch keine Auswahl', 'Bisher nur dreifach negativ Anion N⁻ ausgewählt']
+}
+
+var canvas_ids=[
+    '11', '12', '13',
+    '21', '22', '23',
+    '31', '32', '33'
+]
+
+var canvas_rects={
+           //canvasid, fuellfarbe, rahmenfarbe,   x,    y,  breite, hoehe
+    '11':[['11',       '#ffaaaa',  '#ff0000',      5,  105,  20,     20 ], 
+          ['11',       '#aaccff',  '#0000ff',     25,  105,  20,     20 ] 
+         ],
+    '12':[
+          ['12',       '#ffaaaa',  '#ff0000',      5,  105,  20,     20 ], 
+          ['12',       '#ffaaaa',  '#ff0000',      5,   85,  20,     20 ],
+          ['12',       '#aaccff',  '#0000ff',     25,   85,  20,     40 ] 
+         ],
+    '13':[
+          ['13',       '#ffaaaa',  '#ff0000',      5,  105,  20,     20 ], 
+          ['13',       '#ffaaaa',  '#ff0000',      5,   85,  20,     20 ],
+          ['13',       '#ffaaaa',  '#ff0000',      5,   65,  20,     20 ],
+          ['13',       '#aaccff',  '#0000ff',     25,   65,  20,     60 ]
+         ],
+    '21':[
+          ['21',       '#ffaaaa',  '#ff0000',      5,    85,  20,     40 ], 
+          ['21',       '#aaccff',  '#ff0000',     25,    85,  20,     20 ],
+          ['21',       '#aaccff',  '#0000ff',     25,   105,  20,     20 ]
+         ],
+    '22':[
+          ['22',       '#ffaaaa',  '#ff0000',      5,   85,  20,     40 ], 
+          ['22',       '#aaccff',  '#0000ff',     25,   85,  20,     40 ]
+         ],
+    '23':[
+          ['23',       '#ffaaaa',  '#ff0000',      5,    85,  20,     40 ], 
+          ['23',       '#ffaaaa',  '#ff0000',      5,    45,  20,     40 ],
+          ['23',       '#ffaaaa',  '#ff0000',      5,     5,  20,     40 ],
+          ['23',       '#aaccff',  '#0000ff',     25,    65,  20,     60 ],
+          ['23',       '#aaccff',  '#0000ff',     25,     5,  20,     60 ]
+         ],
+    '31':[
+          ['31',       '#ffaaaa',  '#ff0000',      5,    65,  20,     60 ], 
+          ['31',       '#aaccff',  '#0000ff',     25,    65,  20,     20 ],
+          ['31',       '#aaccff',  '#0000ff',     25,    85,  20,     20 ],
+          ['31',       '#aaccff',  '#0000ff',     25,   105,  20,     20 ]
+         ],
+    '32':[
+          ['32',       '#ffaaaa',  '#ff0000',      5,     5,  20,     60 ], 
+          ['32',       '#ffaaaa',  '#ff0000',      5,    65,  20,     60 ],
+          ['32',       '#aaccff',  '#0000ff',     25,     5,  20,     40 ],
+          ['32',       '#aaccff',  '#0000ff',     25,    45,  20,     40 ],
+          ['32',       '#aaccff',  '#0000ff',     25,    85,  20,     40 ]
+         ],
+    '33':[
+          ['33',       '#ffaaaa',  '#ff0000',      5,    65,  20,     60 ], 
+          ['33',       '#aaccff',  '#0000ff',     25,    65,  20,     60 ]
+         ]
+}
+
+function neu_laden() {
+    document.getElementById('ausgabe').innerHTML='';
+    document.auswahl.kation.options[0].selected="selected";
+    document.auswahl.anion.options[0].selected="selected";
+    
+    //alle weiß, damit vorherige Klicks nicht mehr sichtbar sind
+    var alle_tabellenfelder=document.getElementsByTagName('td');
+    for (var i=0; i < alle_tabellenfelder.length; i++) {
+        if (alle_tabellenfelder[i].className == 'feld') {
+            alle_tabellenfelder[i].removeAttribute('backgroundColor', false);
+            //alle_tabellenfelder[i].style.backgroundColor='white';
+        }
+    }
+    
+    //Canvas zeichnen
+    for (var i in canvas_ids) {
+        erzeuge_hintergrund(canvas_ids[i]);
+    }
+    //Rechtecke auf die jeweiligen Canvas-Elemente zeichnen
+    //canvas_ids als Schlüssel
+    //alle in canvas_rects enthaltenen Rechtecke => Länge des Arrays, da unterschiedliche Anzahl
+    for (var j in canvas_ids) {
+        for (var i=0;i < canvas_rects[canvas_ids[j]].length; i++) {
+            var canvasid    = canvas_rects[canvas_ids[j]][i][0];
+            var fuellfarbe  = canvas_rects[canvas_ids[j]][i][1];
+            var rahmenfarbe = canvas_rects[canvas_ids[j]][i][2];
+            var x           = canvas_rects[canvas_ids[j]][i][3];
+            var y           = canvas_rects[canvas_ids[j]][i][4];
+            var breite      = canvas_rects[canvas_ids[j]][i][5];
+            var hoehe       = canvas_rects[canvas_ids[j]][i][6];
+            zeichne_rechteck(canvasid, fuellfarbe, rahmenfarbe, x, y, breite, hoehe);
+        }
+    }
+    for (var i in canvas_ids) {
+        //alert(canvas_ids[i]);
+        document.getElementById(canvas_ids[i]).addEventListener('click', ueberpruefe, false);
+    }
+    document.getElementById('neuladen').setAttribute('hidden', true);
+}
+
+function ueberpruefe(ev) {
+    var feld=this.id;
+    
+    //alle weiß, damit vorherige Klicks nicht mehr sichtbar sind
+    var alle_tabellenfelder=document.getElementsByTagName('td');
+    for (var i=0; i < alle_tabellenfelder.length; i++) {
+        if (alle_tabellenfelder[i].className == 'feld') {
+            alle_tabellenfelder[i].removeAttribute('backgroundColor', false);
+            //alle_tabellenfelder[i].style.backgroundColor='white';
+        }
+    }
+    
+    //Richtige Lösung holen und vergleichen
+    //alert('Feld: '+feld+'Schlüssel: '+schluessel);
+    if (feld == schluessel) {
+        var hinweistext_richtig='<span class="richtig">Richtig! <span style="font-size:22px;">☺</span></span><br>\
+Allgemeine Summenformel: '+allgemeine_summenformeln[schluessel][0]+'\
+<br>Zerlegt in Ionen: '+allgemeine_summenformeln[schluessel][1];
+        document.getElementById('ausgabe').innerHTML=hinweistext_richtig;      
+        
+        //aktuelles grün hervorheben
+        document.getElementById(feld).style.backgroundColor='#e5ffd5';
+        
+        // Neu Laden Knopf anzeigen
+        document.getElementById('neuladen').removeAttribute('hidden');
+    } else { // Rückmeldungen bei ungültiger oder fehlerhafter Auswahl
+        var hinweistext_falsch='<span class="falsch">Leider falsch! <span style="font-size:22px;">☹</span></span><br>\
+<ul>\
+<li><u>ausgewählt wurde:</u><br>\
+    Allgemeine Summenformel: '+allgemeine_summenformeln[feld][0]+'\
+    <br>Zerlegt in Ionen: '+allgemeine_summenformeln[feld][1]+'\
+<li><u>richtig wäre für das oben ausgewählte Salz:</u><br>\
+Allgemeine Summenformel: '+allgemeine_summenformeln[schluessel][0]+'<br>\
+    Zerlegt in Ionen: '+allgemeine_summenformeln[schluessel][1];
+        document.getElementById('ausgabe').innerHTML=hinweistext_falsch;
+        
+        //aktuelles rot hervorheben
+        document.getElementById(feld).style.backgroundColor='#ffd5d5';
+        
+    }   
+}
+
+function hole_werte_auswahl() {
+    var kat=hole_wert_ladung_kation();
+    var an=hole_wert_ladung_anion();
+    schluessel=kat+an;
+    document.getElementById('ausgabe').innerHTML='';
+    
+    //alle weiß, damit vorherige Klicks nicht mehr sichtbar sind
+    var alle_tabellenfelder=document.getElementsByTagName('td');
+    for (var i=0; i < alle_tabellenfelder.length; i++) {
+        if (alle_tabellenfelder[i].className == 'feld') {
+            alle_tabellenfelder[i].removeAttribute('backgroundColor', false);
+            //alle_tabellenfelder[i].style.backgroundColor='white';
+        }
+    }
+    
+}
+
+function zeichne_rechteck(canvasid, fuellfarbe, rahmenfarbe, x, y, breite, hoehe) {
+    var zeichenflaeche=document.getElementById(canvasid);
+    var ctx=zeichenflaeche.getContext('2d');
+    //Inhalt des Rechtecks zeichnen
+    ctx.fillStyle=fuellfarbe;
+    ctx.fillRect(x, y, breite, hoehe);
+    //Rahmen des Rechtecks zeichnen
+    ctx.lineWidth='1';
+    ctx.fillStyle=rahmenfarbe;
+    ctx.strokeRect(x, y, breite, hoehe);
+   
+}
+
+function hole_wert_ladung_kation() {
+    var wert_ladung_kation=document.auswahl.kation.value;
+    return wert_ladung_kation;
+}
+
+function hole_wert_ladung_anion() {
+    var wert_ladung_anion=document.auswahl.anion.value;
+    return wert_ladung_anion;
+}
+
+function erzeuge_hintergrund(canvasid) {
+    var zeichenflaeche=document.getElementById(canvasid);
+    var ctx=zeichenflaeche.getContext('2d');
+    ctx.fillStyle='lightgrey';
+    ctx.lineWidth='0.1';
+    //ctx.fillRect (10, 10, 55, 50); 
+    ctx.beginPath();  
+    //senkrechte Linien festlegen
+    ctx.moveTo(5,5);  
+    ctx.lineTo(5,125);
+    ctx.moveTo(25,5);
+    ctx.lineTo(25,125);
+    ctx.moveTo(45,5);
+    ctx.lineTo(45,125);
+    //waagrechte Linien festlegen
+    ctx.moveTo(5,5);
+    ctx.lineTo(45,5);
+    ctx.moveTo(5,25);
+    ctx.lineTo(45,25);
+    ctx.moveTo(5,45);
+    ctx.lineTo(45,45);
+    ctx.moveTo(5,65);
+    ctx.lineTo(45,65);
+    ctx.moveTo(5,85);
+    ctx.lineTo(45,85);
+    ctx.moveTo(5,105);
+    ctx.lineTo(45,105);
+    ctx.moveTo(5,125);
+    ctx.lineTo(45,125);
+    ctx.moveTo(5,145);
+    ctx.lineTo(45,145);
+    //Linien zeichnen
+    ctx.stroke();  
+}
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body onload="neu_laden();">
+    <!-- <div>Schritt 1: Wähle zunächst hier ein Salz aus</div> -->
+    <table title="Schritt 1: Wähle zunächst hier ein Salz aus">
+      <form name="auswahl">
+        <tr>
+          <td>
+            <select name="kation" onchange="hole_werte_auswahl();" title="Metallkation">
+              <option value="-">&nbsp;</option>
+              <optgroup label="M⁺">
+                <option value="1">Lithium</option>
+                <option value="1">Natrium</option>
+                <option value="1">Kalium</option>
+                <option value="1">Rubidium</option>
+                <option value="1">Cäsium</option>
+                <option value="1">Ammonium</option>
+                <option value="1">Kupfer(I)-</option>
+                <option value="1">Silber(I)-</option>
+              </optgroup>
+              <optgroup label="M²⁺">
+                <option value="2">Beryllium</option>
+                <option value="2">Magnesium</option>
+                <option value="2">Calcium</option>
+                <option value="2">Strontium</option>
+                <option value="2">Eisen(II)-</option>
+                <option value="2">Kupfer(II)-</option>
+                <option value="2">Zink(II)-</option>
+                <option value="2">Nickel(II)-</option>
+              </optgroup>
+              <optgroup label="M³⁺">
+                <option value="3">Aluminium</option>
+                <option value="3">Gallium</option>
+                <option value="3">Indium</option>
+                <option value="3">Eisen(III)-</option>
+                <option value="3">Chrom(III)-</option>
+              </optgroup>
+            </select>
+          </td>
+          <td>
+            <select name="anion" onchange="hole_werte_auswahl();" title="Nichtmetallanion">
+              <option value="-">&nbsp;</option>
+              <optgroup label="N⁻">
+                <option value="1">fluorid</option>
+                <option value="1">chlorid</option>
+                <option value="1">bromid</option>
+                <option value="1">iodid</option>
+                <option value="1">nitrat</option>
+                <option value="1">nitrit</option>
+                <option value="1">hydroxid</option>
+                <option value="1">hydrogensulfid</option>
+                <option value="1">cyanid</option>
+                <option value="1">hydrogencarbonat</option>
+                <option value="1">hydrogensulfat</option>
+                <option value="1">hydrogensulfit</option>
+                <option value="1">dihydrogenphosphat</option>
+                <option value="1">acetat</option>
+                <option value="1">ethanolat</option>
+                <option value="1">bromat</option>
+                <option value="1">permanganat</option>
+                <option value="1">perchlorat</option>
+              </optgroup>
+              <optgroup label="N²⁻">
+                <option value="2">oxid</option>
+                <option value="2">sulfid</option>
+                <option value="2">sulfat</option>
+                <option value="2">sulfit</option>
+                <option value="2">carbonat</option>
+                <option value="2">hydrogenphosphat</option>
+                <option value="2">thiosulfat</option>
+                <option value="2">peroxid</option>
+                <option value="2">chromat</option>
+                <option value="2">dichromat</option>
+              </optgroup>
+              <optgroup label="N³⁻">
+                <option value="3">nitrid</option>
+                <option value="3">phosphid</option>
+                <option value="3">phosphat</option>
+                <option value="3">arsenat</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+      </form>
+    </table>
+    <!-- <div>Schritt 2: Wähle anschließend hier das dazugehörige Schema aus</div> -->
+    <table id="auswahlfelder" title="Schritt 2: Wähle anschließend hier das dazugehörige Schema aus">
+      <tr><!-- nullte Zeile -->
+        <td>
+          &nbsp;
+        </td>
+        <td class="negativ" title="einfach negativ geladenes Anion">
+          N⁻
+        </td>
+        <td class="negativ" title="zweifach negativ geladenes Anion">
+          N²⁻
+        </td>
+        <td class="negativ" title="dreifach negativ geladenes Anion">
+          N³⁻
+        </td>
+      </tr>
+      <tr><!-- erste Zeile -->
+        <td class="positiv" title="einfach positiv geladenes Kation">
+          M⁺
+        </td>
+        <td class="feld">
+          <canvas id="11" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="12" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="13" width="50" height="130"></canvas>
+        </td>
+      </tr>
+      <tr><!-- zweite Zeile -->
+        <td class="positiv" title="zweifach positiv geladenes Kation">
+          M²⁺
+        </td>
+        <td class="feld">
+          <canvas id="21" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="22" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="23" width="50" height="130"></canvas>
+        </td>
+      </tr>
+      <tr><!-- dritte Zeile -->
+        <td class="positiv" title="dreifach positiv geladenes Kation">
+          M³⁺
+        </td>
+        <td class="feld">
+          <canvas id="31" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="32" width="50" height="130"></canvas>
+        </td>
+        <td class="feld">
+          <canvas id="33" width="50" height="130"></canvas>
+        </td>
+      </tr>  
+    </table>
+    <div id="ausgabe"></div>
+    <input id="neuladen" type="button" value="Neu laden für das nächste Salz" onclick="location.reload();"></input>
+  </body>
+</html>

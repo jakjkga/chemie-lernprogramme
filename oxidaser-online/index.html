@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Oxidaser - online</title>
+    <meta name="description" content="Der Oxidaser generiert Redoxgleichungen zu anorganischen sowie ausgewählten organische Redoxreaktionen." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Salzbildung, Verdrängungsreaktionen, Metalle, Nichtmetalle, Reduktionsmittel, Oxidationsmittel, Aldehyde, Oxidierbarkeit, Reduktionsmittelstärke, Fehling-Probe, Silberspiegel-Probe, schwarzes Kupferoxid, Kaliumdichromat, Kaliumpermanganat" />
+    <link rel="shortcut icon" href="oxidaser-organisch-online/daten/img/favicon.png" />
+    <style type="text/css">
+      input[type=button] {
+        background-color:#ffffff;
+        color:#008EDA;
+        border-style:solid;
+        border-color:#bebebe;
+        border-width:1px;
+        cursor:pointer;
+      }
+      input[type=button]:hover {
+        border-style:solid;
+        border-color:#008EDA;
+        border-width:1px;
+      }
+      input[type=button].aktiv {
+        background-color:#008EDA;
+        color:#ffffff;
+      }
+      div {
+        margin:0px;
+        padding:0px;
+      }
+    </style>
+    <script type="text/javascript" src="oxidaser-organisch-online/daten/js/jquery.min.js"></script>
+    <script type="text/javascript">
+      function lade_seite() {
+          $('#iframe_anzeige').attr('src', 'oxidaser-anorganisch-online/index.html');
+      }
+      
+      function setze(wert) {
+          switch (wert) {
+              case 'ac':
+                  $('#iframe_anzeige').attr('src', 'oxidaser-anorganisch-online/index.html');
+                  $('#b_oc').removeClass('aktiv');
+                  $('#b_ac').addClass('aktiv');
+                  break
+              case 'oc':
+                  $('#iframe_anzeige').attr('src', 'oxidaser-organisch-online/index.html');
+                  $('#b_ac').removeClass('aktiv');
+                  $('#b_oc').addClass('aktiv');
+                  break
+          }
+      
+      }
+      
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <div>
+    <input type="button" id="b_ac" class="aktiv" value="Anorganische Redoxreaktionen" onclick="setze('ac')" />&nbsp;&nbsp;<input type="button" id="b_oc" value="Organische Redoxreaktionen" onclick="setze('oc')" />
+    </div>
+    <div>
+    <iframe id="iframe_anzeige"
+        src=""
+        style="width:680px;height:480px;border:0px none transparent;background-color:white;"
+        seamless>
+    </iframe>
+  </body>
+</html>

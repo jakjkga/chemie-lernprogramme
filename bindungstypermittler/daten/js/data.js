@@ -1,0 +1,17 @@
+en_sammlung={
+'H':[2.2, 'Wasserstoff'],
+'Li':[1.0,'Lithium'],
+'Be':[1.5,'Beryllium'],
+'B':[2.0,'Bor'],
+'C':[2.5,'Kohlenstoff'],
+'N':[3.0,'Stickstoff'],
+'O':[3.5,'Sauerstoff'],
+'F':[4.0,'Fluor'],
+'Na':[0.9,'Natrium'],
+'Mg':[1.2,'Magnesium'],
+'Al':[1.5,'Aluminium'],
+'Si':[1.8,'Silicium'],
+'P':[2.1,'Phosphor'],
+'S':[2.5,'Schwefel'],
+'Cl':[3.0,'Chlor'],
+};

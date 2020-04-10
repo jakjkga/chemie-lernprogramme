@@ -1,0 +1,51 @@
+body, table {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  background-color:#ffffff;
+}
+input[type=text] {
+  width:480px; 
+}
+select, input[type=text], textarea {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:4px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+.nach_rechts {
+  text-align:right;
+}
+#b_ermitteln {
+  width:480px;
+}
+input[type=button] {
+  background-color:cornflowerblue;
+  color:#ffffff;
+  font-weight:bold;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:4px;
+  cursor:pointer;
+}
+input[type=button]:hover {
+  background-color:#ffffff;
+  color:cornflowerblue;
+  border-color:cornflowerblue;
+}
+/*
+#aus_sf {
+  font-family:'Courier New',monospace;
+  font-weight:bold;
+  font-size:1.2em;
+}
+#aus_name {
+  font-style:italic;
+}
+*/

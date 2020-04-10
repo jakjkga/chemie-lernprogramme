@@ -1,0 +1,145 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  background-color:#ffffff;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+.inaktiv {
+  color:gray;
+}
+text.text_ueber_bild {
+  /*stroke:grey;
+  stroke-width:1px;
+  font-weight:bold;
+  fill:black;*/
+}
+input.nach_rechts {
+  padding-right:4px;
+}
+span.ox {
+  color:blue;
+}
+span.red {
+  color:red;
+}
+text.ox {
+  fill:blue;
+}
+text.red {
+  fill:red;
+}
+a img {
+  border-style:none;
+}
+select:hover, textarea:hover {
+  border-color:cornflowerblue;
+  cursor:pointer;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+td.mittig {
+  vertical-align:middle;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+svg {
+  background-color:#ffffff;
+  border-style:dotted;
+  border-width:1px;
+  border-color:#bebebe;
+}
+rect.folienheader {
+  fill:#DFEAF2;
+  stroke-width:1px;
+  stroke:#bebebe;
+}
+rect.loesung {
+  fill:white;
+}
+rect.elektrode {
+  fill:gray;
+  stroke:gray;
+  stroke-width:1px;
+}
+circle.messinstrument {
+  fill:#ffffff;
+  stroke-width:2px;
+  stroke:black;
+}
+text {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+}
+text.folienheader {
+  font-size:32px;
+  font-weight:bold;
+  fill:#008EDA;
+  /*font-variant:small-caps;*/
+}
+text.stichpunkt {
+  font-size:22px;
+}
+text.stichpunkt:hover {
+  fill:#008EDA;
+  cursor:pointer;
+}
+text.seite {
+  fill:#666666;
+}
+line.begrenzungslinie {
+  stroke:#bebebe;
+  stroke-width:1px;
+}
+line.linie {
+  stroke-width:2px;
+  stroke:black;
+}
+line.anode {
+  stroke-width:4px;
+  stroke:blue;
+}
+line.kathode {
+  stroke-width:4px;
+  stroke:red;
+}
+a text {
+  fill:#428bca;
+}
+a text:hover, a text:focus {
+  color: #2a6496;
+}
+p.hinweise {
+  width:640px;
+  color:#666666;
+  font-size:0.9em;
+}

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Elektrochemer - online</title>
+    <meta name="description" content="Der Elektrochemer ermöglicht das Ableiten der elektrochemischen Spannungsreihe anhand der jeweiligen galvanischen Halbzellen sowie die Veranschaulichung des elektrochemischen Potenzials bzw. der Elektromotischen Kraft.">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Halbzellenpotenzial, Halbzellenpotential, Elektromotorische Kraft, EMK, elektrochemische Spannungsreihe, Elektronendruckreihe, Primärelement, Sekundärelement, Batterie, Akkumulator, galvanische Zelle">
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            lade_seite();
+        });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts mittig">
+          <a href="#" onclick="lade_seite()" title="Auswahl zurücksetzen"><img src="daten/img/reload.png" width="22" height="22" /></a>&nbsp;<label for="s_linke_halbzelle" class="anode">Linke&nbsp;Halbzelle</anode>:
+        </td>
+        <td>
+          <select id="s_linke_halbzelle" onchange="waehle_linke_halbzelle()">
+            <option value="0"></option>
+            <option value="1">Li/Li⁺</option>
+            <option value="2">Na/Na⁺</option>
+            <option value="3">Al/Al³⁺</option>
+            <option value="4">H₂/2 H₂O (alkalisch)</option>
+            <option value="5">Zn/Zn²⁺</option>
+            <option value="6">Fe/Fe²⁺</option>
+            <option value="7">Cd/Cd²⁺</option>
+            <option value="8">Pb/PbSO₄ (sauer)</option>
+            <option value="9">Ni/Ni²⁺</option>
+            <option value="10">Sn/Sn²⁺</option>
+            <option value="11">H₂/2 H₃O⁺</option>
+            <option value="12">Cu/Cu²⁺</option>
+            <option value="13">2 OH⁻/O₂ (alkalisch)</option>
+            <option value="14">2 I⁻/I₂</option>
+            <option value="15">Ag/Ag⁺</option>
+            <option value="16">2 Br⁻/Br₂</option>
+            <option value="17">2 H₂O/O₂ (sauer)</option>
+            <option value="18">2 Cl⁻/Cl₂</option>
+            <option value="19">Mn²⁺/MnO₄⁻</option>
+            <option value="20">PbSO₄/PbO₂ (sauer)</option>
+          </select>
+        </td>
+        <td class="nach_rechts mittig">
+          <img src="daten/img/dummy.png" width="22" height="22" /><label for="s_rechte_halbzelle" class="anode">Rechte&nbsp;Halbzelle</anode>:
+        </td>
+        <td>
+          <select id="s_rechte_halbzelle" onchange="waehle_rechte_halbzelle()">
+            <option value="0"></option>
+            <option value="1">Li/Li⁺</option>
+            <option value="2">Na/Na⁺</option>
+            <option value="3">Al/Al³⁺</option>
+            <option value="4">H₂/2 H₂O (alkalisch)</option>
+            <option value="5">Zn/Zn²⁺</option>
+            <option value="6">Fe/Fe²⁺</option>
+            <option value="7">Cd/Cd²⁺</option>
+            <option value="8">Pb/PbSO₄ (sauer)</option>
+            <option value="9">Ni/Ni²⁺</option>
+            <option value="10">Sn/Sn²⁺</option>
+            <option value="11">H₂/2 H₃O⁺</option>
+            <option value="12">Cu/Cu²⁺</option>
+            <option value="13">2 OH⁻/O₂ (alkalisch)</option>
+            <option value="14">2 I⁻/I₂</option>
+            <option value="15">Ag/Ag⁺</option>
+            <option value="16">2 Br⁻/Br₂</option>
+            <option value="17">2 H₂O/O₂ (sauer)</option>
+            <option value="18">2 Cl⁻/Cl₂</option>
+            <option value="19">Mn²⁺/MnO₄⁻</option>
+            <option value="20">PbSO₄/PbO₂ (sauer)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+<svg id="praesentationsinhalt"
+     version="1.1" xmlns="http://www.w3.org/2000/svg" width="640" height="480"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<!-- Pfeilspitzen -->
+  <defs>  
+    <marker id="pforange"
+      viewBox="0 0 10 10" refX="0" refY="5"
+      markerUnits="strokeWidth"
+      markerWidth="5" markerHeight="5"
+      orient="auto">
+      <path d="M 0,0 l 10,5 l -10,5 z" fill="#ff6600" stroke="#ff6600" />
+    </marker>
+  </defs>
+<!-- ANFANG Folienhintergrund  -->
+<g>
+  <rect id="rect_linke_halbzelle" class="loesung" x="20" y="240" width="280" height="200"></rect>
+  <rect id="rect_rechte_halbzelle" class="loesung" x="340" y="240" width="280" height="200"></rect>
+  <line x1="20" y1="240" x2="220" y2="240" class="begrenzungslinie"></line>
+  <line x1="280" y1="240" x2="300" y2="240" class="begrenzungslinie"></line>
+  <line x1="340" y1="240" x2="360" y2="240" class="begrenzungslinie"></line>
+  <line x1="420" y1="240" x2="620" y2="240" class="begrenzungslinie"></line>
+  <rect class="loesung" x="220" y="160" width="200" height="60"></rect>
+  <rect class="loesung" x="220" y="220" width="60" height="20"></rect>
+  <rect class="loesung" x="360" y="220" width="60" height="20"></rect>
+  <line class="linie" x1="20" y1="230" x2="20" y2="440"></line>
+  <line class="linie" x1="300" y1="230" x2="300" y2="440"></line>
+  <line class="linie" x1="340" y1="230" x2="340" y2="440"></line>
+  <line class="linie" x1="340" y1="230" x2="340" y2="440"></line>
+  <line class="linie" x1="620" y1="230" x2="620" y2="440"></line>
+  <line class="linie" x1="20" y1="440" x2="300" y2="440"></line>
+  <line class="linie" x1="340" y1="440" x2="620" y2="440"></line>
+  <line class="linie" x1="220" y1="160" x2="220" y2="250"></line>
+  <line class="linie" x1="280" y1="220" x2="280" y2="250"></line>
+  <line class="linie" x1="360" y1="220" x2="360" y2="250"></line>
+  <line class="linie" x1="420" y1="160" x2="420" y2="250"></line>
+  <line class="linie" x1="220" y1="160" x2="420" y2="160"></line>
+  <line class="linie" x1="280" y1="220" x2="360" y2="220"></line>
+  <line class="anode" x1="110" y1="80" x2="320" y2="80"></line>
+  <line class="kathode" x1="320" y1="80" x2="510" y2="80"></line>
+  <line class="anode" x1="110" y1="80" x2="110" y2="250"></line>
+  <line class="kathode" x1="510" y1="80" x2="510" y2="250"></line>
+  <circle class="messinstrument" cx="320" cy="80" r="50"></circle>
+  <text id="messwert" x="290" y="80" style="font-size:16px;">V</text>
+  <rect id="elektrode_linke_halbzelle" class="elektrode" x="80" y="220" width="60" height="140"></rect>
+  <rect id="elektrode_rechte_halbzelle" class="elektrode" x="480" y="220" width="60" height="140"></rect>
+  <text id="text_linke_halbzelle" class="text_ueber_bild" x="30" y="420">Elektrolyt der linken Halbzelle</text>
+  <text id="text_rechte_halbzelle" class="text_ueber_bild" x="350" y="420">Elektrolyt der rechten Halbzelle</text>
+  <text id="text_linke_elektrode" class="text_ueber_bild" x="30" y="380">Elektrodenmaterial der linken Halbzelle</text>
+  <text id="text_rechte_elektrode" class="text_ueber_bild" x="350" y="380">Elektrodenmaterial der rechten Halbzelle</text>
+  <line id="line_elektronen" x1="300" y1="100" x2="330" y2="100" style="stroke:#ff6600;stroke-width:2;" marker-end="url(#pforange)"></line>
+  <text id="text_elektronen" x="310" y="115" style="fill:#ff6600;font-weight:bold;font-size:18px;">e⁻</text>
+  <text class="ox" x="40" y="20">⊖ <tspan style="font-weight:bold;">Anode</tspan> (Ort der <tspan style="font-style:italic;">Oxidations</tspan>teilreaktion)</text>
+  <text class="red" x="350" y="20">⊕ <tspan style="font-weight:bold;">Kathode</tspan> (Ort der <tspan style="font-style:italic;">Reduktions</tspan>teilreaktion)</text>
+</g>
+</svg>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="zentriert">
+          <span class="ox">Ox</span>.:&nbsp;<input type="text" id="i_halbzellenreaktion_links" size="28" readonly />
+        </td>
+        <td colspan="2" class="zentriert">
+          <span class="red">Red</span>.:&nbsp;<input type="text" id="i_halbzellenreaktion_rechts" size="28" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_halbzellenpotenzial_links" title="Standard-Redoxpotenzial">Halbzellenpotenzial</label>:
+        </td>
+        <td>
+          <input type="text" id="i_halbzellenpotenzial_links" class="nach_rechts" size="6" readonly />&nbsp;V
+        </td>
+        <td class="nach_rechts">
+          <label for="i_halbzellenpotenzial_rechts" title="Standard-Redoxpotenzial">Halbzellenpotenzial</label>:
+        </td>
+        <td>
+          <input type="text" id="i_halbzellenpotenzial_rechts" class="nach_rechts" size="6" readonly />&nbsp;V
+        </td>
+      </tr>
+    </table>
+    <p class="hinweise">
+      Die hier angegebenen 
+      <a href="http://chemie-lernprogramme.de/daten/html/tabellen.html#elektronendruckreihe" target="_blank">Halbzellenpotenziale</a> beziehen sich auf Standardbedingungen.<br />
+      Für Abhängigkeit der Redoxpotenziale von der Konzentration und vom pH-Wert wird
+      die Python basierte<br /> 
+      <a href="http://chemie-lernprogramme.de/daten/html/elektrochemer.html" target="_blank">offline-Version</a> 
+      dieses Programms benötigt.<br />
+      Die 
+      <a href="http://de.wikipedia.org/wiki/%C3%9Cberspannung_%28Elektrochemie%29" target="_blank">Überspannung</a> 
+      wird hier vernachlässigt.<br />
+      Beim hier dargestellten Entladevorgang ist die 
+      <a href="http://de.wikipedia.org/wiki/Anode" target="_blank">Anode</a> 
+      der ⊖-Pol. 
+      Nur beim Ladevorgang eines Akkus, welcher einer Elektrolyse entspricht,
+      ist die Anode der ⊕-Pol, wie es der bei den Salzen behandelte 
+      Merksatz (<span style="font-style:italic;">„Die [negativ geladenen] Anionen wandern zur [positiv geladenen] Anode“</span>) besagt!
+    </p>
+  </body>
+</html>

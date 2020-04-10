@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stoffmengenverhältnisser</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Lernprogramm zur Stöchiometrie im Lehrplankapitel quantitative Aspekte chemischer Reaktionen">
+    <meta name="keywords" lang="de" content="Molrechner, Stöchiometrie, quantitative Aspekte chemischer Reaktionen, MathJax">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/style.css" />
+    <script type="text/javascript" src="daten/js/jquery.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions:["mhchem.js"]}});</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="daten/js/funktionen.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            zurueck_setzen();
+        });
+    //jQuery ready Funktion zum Zurücketzen
+    </script>
+  </head>
+  <body>
+    <table>
+      <form name="formular1" id="f1">
+        <tr><!-- Überschriftenzeile: gegeben/gesucht -->
+          <td>
+            <a href="http://chemie-lernprogramme.de/daten/programme/js/formelsammlung/index.html"
+               title="Chemische Formelsammlung online in neuem Fenster öffnen"
+               style="color:lightgrey;"
+               target="_blank">Formelsammlung Chemie</a>
+          </td>
+          <td>
+            geg.:
+          </td>
+          <th colspan="3" 
+              title="Es ist hier völlig egal, ob es sich hier um einen Ausgangsstoff oder um einen Endstoff handelt, er muss nur in der gleichen Reaktionsgleichung wie der andere Stoff vorkommen!">
+            Stoff mit gegebener Größe
+          </th>
+          <th colspan="3"
+              title="Es ist hier völlig egal, ob es sich hier um einen Ausgangsstoff oder um einen Endstoff handelt, er muss nur in der gleichen Reaktionsgleichung wie der andere Stoff vorkommen!">
+            Stoff mit gesuchter Größe
+          </th>
+          <td>
+            ges.:
+          </td>
+        </tr>
+        <tr><!-- Zeile 1: Name des Stoffes (bzw. des Teilchens als Teil einer Reaktionsgleichung) -->
+          <td>
+            Name:
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td colspan="3">
+            <input id="a_name" 
+                   type="text"
+                   title="Name des Stoffs (oder des Teilchens)"
+                   size="25"></input>
+          </td>
+          <td colspan="3">
+            <input id="b_name" 
+                   type="text" 
+                   title="Name des Stoffs (oder des Teilchens)"
+                   size="25"></input>
+          </td>
+          <td>
+            &nbsp;
+          </td>
+        </tr>
+        <tr><!-- Zeile 2: Reaktionsgleichungsausschnitt mit Koeffizienten -->
+          <td>
+            Reaktionsgleichungsausschnitt:
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+             <select id="a_koeff" 
+                     name="a_koeff_name"
+                     title="Koeffizient" 
+                     class="koeff_auswahl orange"
+                     onchange="verhaeltnis_anpassen(this.id, this.value);">
+              <option value="1" class="orange">&nbsp;1</option>
+              <option value="2" class="orange">&nbsp;2</option>
+              <option value="3" class="orange">&nbsp;3</option>
+              <option value="4" class="orange">&nbsp;4</option>
+              <option value="5" class="orange">&nbsp;5</option>
+              <option value="6" class="orange">&nbsp;6</option>
+              <option value="7" class="orange">&nbsp;7</option>
+              <option value="8" class="orange">&nbsp;8</option>
+              <option value="9" class="orange">&nbsp;9</option>
+              <option value="10" class="orange">10</option>
+              <option value="11" class="orange">11</option>
+              <option value="12" class="orange">12</option>
+              <option value="13" class="orange">13</option>
+              <option value="14" class="orange">14</option>
+              <option value="15" class="orange">15</option>
+              <option value="16" class="orange">16</option>
+              <option value="17" class="orange">17</option>
+              <option value="18" class="orange">18</option>
+              <option value="19" class="orange">19</option>
+              <option value="20" class="orange">20</option>
+              <option value="21" class="orange">21</option>
+              <option value="22" class="orange">22</option>
+              <option value="23" class="orange">23</option>
+              <option value="24" class="orange">24</option>
+              <option value="25" class="orange">25</option>
+              <option value="26" class="orange">26</option>
+              <option value="27" class="orange">27</option>
+              <option value="28" class="orange">28</option>
+              <option value="29" class="orange">29</option>
+              <option value="30" class="orange">30</option>
+              <option value="31" class="orange">31</option>
+              <option value="32" class="orange">32</option>
+              <option value="33" class="orange">33</option>
+              <option value="34" class="orange">34</option>
+              <option value="35" class="orange">35</option>
+              <option value="36" class="orange">36</option>
+            </select>
+          </td>
+          <td colspan="2">
+            <input id="a_sf" 
+                   type="text"
+                   title="Summenformel, Eingabe in der Form z.B. H2O2 für H₂O₂; Na+ für Na⁺; Fe^{3+} für Fe³⁺; I_{3}- für I₃⁻"
+                   size="20"></input>
+          </td>
+          <td>
+            <select id="b_koeff" 
+                    name="b_koeff_name"
+                    title="Koeffizient" 
+                    class="koeff_auswahl gruen"
+                    onchange="verhaeltnis_anpassen(this.id, this.value);">
+              <option value="1" class="gruen">&nbsp;1</option>
+              <option value="2" class="gruen">&nbsp;2</option>
+              <option value="3" class="gruen">&nbsp;3</option>
+              <option value="4" class="gruen">&nbsp;4</option>
+              <option value="5" class="gruen">&nbsp;5</option>
+              <option value="6" class="gruen">&nbsp;6</option>
+              <option value="7" class="gruen">&nbsp;7</option>
+              <option value="8" class="gruen">&nbsp;8</option>
+              <option value="9" class="gruen">&nbsp;9</option>
+              <option value="10" class="gruen">10</option>
+              <option value="11" class="gruen">11</option>
+              <option value="12" class="gruen">12</option>
+              <option value="13" class="gruen">13</option>
+              <option value="14" class="gruen">14</option>
+              <option value="15" class="gruen">15</option>
+              <option value="16" class="gruen">16</option>
+              <option value="17" class="gruen">17</option>
+              <option value="18" class="gruen">18</option>
+              <option value="19" class="gruen">19</option>
+              <option value="20" class="gruen">20</option>
+              <option value="21" class="gruen">21</option>
+              <option value="22" class="gruen">22</option>
+              <option value="23" class="gruen">23</option>
+              <option value="24" class="gruen">24</option>
+              <option value="25" class="gruen">25</option>
+              <option value="26" class="gruen">26</option>
+              <option value="27" class="gruen">27</option>
+              <option value="28" class="gruen">28</option>
+              <option value="29" class="gruen">29</option>
+              <option value="30" class="gruen">30</option>
+              <option value="31" class="gruen">31</option>
+              <option value="32" class="gruen">32</option>
+              <option value="33" class="gruen">33</option>
+              <option value="34" class="gruen">34</option>
+              <option value="35" class="gruen">35</option>
+              <option value="36" class="gruen">36</option>
+            </select>
+          </td>
+          <td colspan="2">
+            <input id="b_sf" 
+                   type="text"
+                   title="Summenformel, Eingabe in der Form z.B. H2O2 für H₂O₂; Na+ für Na⁺; Fe^{3+} für Fe³⁺; I_{3}- für I₃⁻"
+                   size="20"></input>
+          </td>
+          <td>
+            &nbsp;
+          </td>
+        </tr>
+        <tr><!-- Zeile 3: Molare Masse -->
+          <td>
+            Molare Masse <span class="groesse">M</span>:
+          </td>
+          <td class="auswahl_a_M">
+            &nbsp;
+          </td>
+          <td class="auswahl_a_M">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_a_M">
+            <input id="a_M" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001" 
+                   size="8" value="0" 
+                   title="Molare Masse (vereinfacht auf ganze Zahlen gerundet) ⇒ berechne diese aus den Nukleonenzahlen im PSE und trage sie anschließend hier in dieses Feld ein"></input>
+          </td>
+          <td class="auswahl_a_M">
+            <span class="einheit">g/mol</span>
+          </td>
+          <td class="auswahl_b_M">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_b_M">
+            <input id="b_M" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001"
+                   size="8" value="0" 
+                   title="Molare Masse (vereinfacht auf ganze Zahlen gerundet) ⇒ berechne diese aus den Nukleonenzahlen im PSE und trage sie anschließend hier in dieses Feld ein"></input>
+          </td>
+          <td class="auswahl_b_M">
+            <span class="einheit">g/mol</span>
+          </td>
+          <td class="auswahl_b_M">
+            &nbsp;
+          </td>
+        </tr>
+        <tr><!-- Zeile 4: Masse -->
+          <td>
+            Masse <span class="groesse">m</span>:
+          </td>
+          <td class="auswahl_a_m">
+            <input id="a_r2" 
+                   name="a_r"
+                   type="radio"
+                   title="gegeben ist die Masse"
+                   value="geg_m"
+                   onclick="waehle_geg_a(this.value);"></input>
+          </td>
+          <td class="auswahl_a_m">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_a_m">
+            <input id="a_m" type="number" class="zahlen"
+                   min="0.001" max="9999" step="0.001" 
+                   size="8" value="0" 
+                   title="Masse in Gramm (vereinfacht auf zwei Kommastellen gerundet)"></input>
+          </td>
+          <td class="auswahl_a_m">
+            <span class="einheit">g</span>
+          </td>
+          <td class="auswahl_b_m">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_b_m">
+            <input id="b_m" type="number" class="zahlen"
+                   min="0.001" max="9999" step="0.001" 
+                   size="8" value="0" 
+                   title="Volumen in Liter (vereinfacht auf zwei Kommastellen gerundet)"></input>
+          </td>
+          <td class="auswahl_b_m">
+            <span class="einheit">g</span>
+          </td>
+          <td class="auswahl_b_m">
+            <input id="b_r2"
+                   name="b_r" 
+                   type="radio"
+                   title="gesucht ist die Masse"
+                   value="ges_m"
+                   onclick="waehle_ges_b(this.value);"></input>
+          </td>
+        </tr>
+        <tr><!-- Zeile 5: Volumen -->
+          <td>
+            Volumen <span class="groesse">V</span>:
+          </td>
+          <td class="auswahl_a_V">
+            <input id="a_r3"
+                   name="a_r" 
+                   type="radio"
+                   title="gegeben ist das Volumen"
+                   value="geg_V"
+                   onclick="waehle_geg_a(this.value);"></input>
+          </td>
+          <td class="auswahl_a_V">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_a_V">
+            <input id="a_V" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001" 
+                   size="8" value="0" 
+                   title="Volumen in Liter (vereinfacht auf eine Kommastelle gerundet)"></input>
+          </td>
+          <td class="auswahl_a_V"><!-- Kleines Schreibschrift-l: Unicode u2113 -->
+            <span class="einheit">ℓ</span>
+          </td>
+          <td class="auswahl_b_V">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_b_V">
+            <input id="b_V" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001" 
+                   size="8" value="0" 
+                   title="Volumen in Liter (vereinfacht auf eine Kommastelle gerundet)"></input>
+          </td>
+          <td class="auswahl_b_V">
+            <span class="einheit">ℓ</span>
+          </td>
+          <td class="auswahl_b_V">
+            <input id="b_r3"
+                   name="b_r" 
+                   type="radio"
+                   title="gesucht ist das Volumen"
+                   value="ges_V"
+                   onclick="waehle_ges_b(this.value);"></input>
+          </td>
+        </tr><!-- Zeile 6: Teilchenzahl -->
+        <tr>
+          <td>
+            Teilchenzahl <span class="groesse">N</span>:
+          </td>
+          <td class="auswahl_a_N">
+            <input id="a_r4"
+                   name="a_r" 
+                   type="radio"
+                   title="gegeben ist die Teilchenzahl"
+                   value="geg_N"
+                   onclick="waehle_geg_a(this.value);"></input>
+          </td>
+          <td colspan="3" class="auswahl_a_N">
+            <input id="a_N" 
+                   type="text"
+                   title="Teilchenzahl, Eingabe in der Form: 6.022*Math.exp(23) entsprechend 6,022•10²³"
+                   value="0"
+                   size="25"></input>
+          </td>
+          <td colspan="3" class="auswahl_b_N">
+            <input id="b_N" 
+                   type="text" 
+                   title="Teilchenzahl"
+                   value="0"
+                   size="25"></input>
+          </td>
+          <td class="auswahl_b_N">
+            <input id="b_r4"
+                   name="b_r" 
+                   type="radio"
+                   title="gesucht ist die Teilchenzahl"
+                   value="ges_N"
+                   onclick="waehle_ges_b(this.value);"></input>
+          </td>
+        </tr>
+        <tr><!-- Zeile 7: ermittelte Stoffmenge n -->
+          <td>
+            Stoffmenge <span class="groesse">n</span>:
+          </td>
+          <td class="auswahl_a_n">
+            <input id="a_r5"
+                   name="a_r" 
+                   type="radio"
+                   title="gegeben ist die Stoffmenge"
+                   value="geg_n"
+                   onclick="waehle_geg_a(this.value);"></input>
+          </td>
+          <td class="auswahl_a_n">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_a_n">
+            <input id="a_n" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001" 
+                   size="8" value="0" 
+                   title="Stoffmenge in Mol"></input>
+          </td>
+          <td class="auswahl_a_n">
+            <span class="einheit">mol</span>
+          </td>
+          <td class="auswahl_b_n">
+            &nbsp;
+          </td>
+          <td class="nach_rechts auswahl_b_n">
+            <input id="b_n" type="number" class="zahlen"
+                   min="0.001" max="999" step="0.001" 
+                   size="8" value="0" 
+                   title="Stoffmenge in Mol"></input>
+          </td>
+          <td class="auswahl_b_n">
+            <span class="einheit">mol</span>
+          </td>
+          <td class="auswahl_b_n">
+            <input id="b_r5"
+                   name="b_r" 
+                   type="radio"
+                   title="gesucht ist die Stoffmenge"
+                   value="ges_n"
+                   onclick="waehle_ges_b(this.value);"></input>
+          </td>
+        </tr>
+        <tr><!-- Zeile 8: Stoffmengenverhältnis -->
+          <td>
+            Stoffmengenverhältnis:
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td class="nach_rechts">
+            <input id="a_verhaeltnis" 
+                   class="koeff_auswahl orange"
+                   type="text"
+                   size="2"
+                   value="1"
+                   title="Stoffmengenverhältnis"
+                   disabled="disabled"></input>
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            :
+          </td>
+          <td class="nach_rechts">
+            <input id="b_verhaeltnis" 
+                   class="koeff_auswahl gruen"
+                   type="text"
+                   size="2"
+                   value="1"
+                   title="Stoffmengenverhältnis"
+                   disabled="disabled"></input>
+          </td>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            &nbsp;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp;
+          </td>
+          <td colspan="3">
+            &nbsp;
+          <td>
+          <td colspan="3">
+            <input type="button" value="Berechne" 
+                   title="Hinweis: Signifikante Stellen werden hier nicht berücksichtigt, sondern es werden normalerweise einfach immer drei Nachkommastellen angegeben. Vor der Übernahme von Berechnungen ins Schulheft müssen daher alle Teilschritte nochmals einzeln mit den korrekten Werten nachvollzogen und dann ggfs. noch korrigiert werden!"
+                   onclick="berechne();"></input>
+            <!-- <input type="button" value="Zurücksetzen" onclick="zurueck_setzen();"></input> -->
+          </td>
+        </tr>
+      </form>
+    </table>
+    <div id="berechnung1" title="1. Schritt: Berechnen der Stoffmenge des Stoffes, von dem eine Größe angegeben ist. Dazu wird zusätzlich entweder die molare Masse M, das Molare Volumen Vm oder die Avogadrokonstante NA benötigt.">&nbsp;</div>
+    <div id="berechnung2" title="2. Schritt: Aus dem Stoffmengenverhältnis wird die Stoffmenge des anderen Stoffes ermittelt; 3. Schritt: Die gesuchte Größe wird berechnet. Im Falle der gleichen Größe entspricht dieser Schritt dem Schritt 1 nur Rückwärts.">&nbsp;</div>
+  </body>
+</html>

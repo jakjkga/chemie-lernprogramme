@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gleichgewichtmodeller - online</title>
+    <meta name="description" content=" Der Gleichgewichtmodeller veranschaulicht dynamische Gleichgewichte anhand eines einfachen Wasserstandsgleichgewichts als Modellversuch. Vorschau ↴ " />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="chemisches Gleichgewicht, Wasserstandsgleichgewicht, dynamisches Gleichgewicht, Wasserstandsmodell, Pipettenheber, Gleichgewichtskonstante, Reaktionsgeschwindigkeit der Hin- und Rückreaktion" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src='daten/js/jcanvas.min.js'></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37957825-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script> -->
+    <!-- range http://www.html5tutorial.info/html5-range.php -->
+  </head>
+  <body>
+    <canvas id="zeichenflaeche" width="600" height="400"></canvas>
+    <table>
+      <tr>
+        <td class="nach_rechts nach_unten">
+          <label for="n_ed" title="Ausgangskonzentration der Edukte beim Start">Füllhöhe in Gefäß&nbsp;A</label>:
+        </td>
+        <td class="zentriert nach_unten">
+          <label for="n_hin" title="Geschwindigkeitskonstante der Hinreaktion">Pipettenbreite</label>:
+        </td>
+        <td class="zentriert nach_unten">
+          <label for="n_rueck" title="Geschwindigkeitskonstante der Rückreaktion">Pipettenbreite</label>:
+        </td>
+        <td class="nach_links nach_unten">
+          <label for="n_prod" title="Ausgangskonzentration der Produkte beim Start">Füllhöhe in Gefäß&nbsp;B</label>:
+        </td>
+      </tr>
+      <tr>  
+        <td class="nach_rechts">
+           <input id="n_ed" type="number" value="200" min="60" max="300"  step="20" title="Ausgangskonzentration der Edukte beim Start" onchange="schritt_null()" />
+        </td>
+        <td class="zentriert">
+          <input id="n_hin" type="number" value="10" min="5" max="20"  step="5" title="Geschwindigkeitskonstante der Hinreaktion" onchange="schritt_null()" />
+        </td>
+        <td class="zentriert">
+           <input id="n_rueck" type="number" value="5" min="5" max="20"  step="5" title="Geschwindigkeitskonstante der Rückreaktion" onchange="schritt_null()" />
+        </td>
+        <td class="nach_links">
+           <input id="n_prod" type="number" value="100" min="60" max="300"  step="20" title="Ausgangskonzentration der Produkte beim Start" onchange="schritt_null()" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="n_ed_verl" title="Konzentration der Edukte im Verlauf">Füllhöhe in Gefäß&nbsp;A<br />im Verlauf</label>:
+        </td>
+        <td class="zentriert">
+          <label for="n_vhin" title="im letzten Schritt hinübertragenes Volumen, entspricht der Geschwindigkeitskonstante der Hinreaktion">Hinübertragenes<br />Volumen</label>:
+        </td>
+        <td class="zentriert">
+          <label for="n_vrueck" title="im letzten Schritt rückübertragenes Volumen, entspricht der Geschwindigkeitskonstante der Rückreaktion">Rückübertragenes<br />Volumen</label>:
+        </td>
+        <td class="nach_links">
+          <label for="n_prod_verl" title="Konzentration der Produkte im Verlauf">Füllhöhe in Gefäß&nbsp;B<br />im Verlauf</label>:
+        </td>
+      </tr>
+      <tr>  
+        <td class="nach_rechts">
+           <input id="n_ed_verl" type="number" value="200" min="60" max="300"  step="1" title="Konzentration der Edukte im Verlauf" readonly />
+        </td>
+        <td class="zentriert">
+          <input id="n_vhin" type="number" value="2000" min="0" max="100000"  step="1" title="im letzten Schritt hinübertragenes Volumen, entspricht der Geschwindigkeitskonstante der Hinreaktion" readonly />
+        </td>
+        <td class="zentriert">
+           <input id="n_vrueck" type="number" value="500" min="0" max="100000"  step="1" title="im letzten Schritt rückübertragenes Volumen, entspricht der Geschwindigkeitskonstante der Rückreaktion" readonly />
+        </td>
+        <td class="nach_links">
+           <input id="n_prod_verl" type="number" value="200" min="60" max="300"  step="1" title="Konzentration der Produkte im Verlauf" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="r_uebertragungsschritt">Übertragungsschritt Nr.</label>:
+        </td>
+        <td colspan="3">
+           <input id="i_uebertragungsschritt" type="text" value="0" size="3" title="Übertragungsschritt Nr." readonly /><input id="r_uebertragungsschritt" type="range" class="breit" value="0" min="0" max="50" step="1" title="Übertragungsschritt Nr." readonly disabled /><!--  onchange="schritt()"  -->
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <input type="button" value="&lt;" onclick="zurueck()" title="einen Übertragungsschritt zurückgehen" />
+          <input type="button" value="&gt;" onclick="weiter()" title="einen Übertragungsschritt zurückgehen" />
+        </td>
+      </tr
+    </table>
+  </body>
+</html>

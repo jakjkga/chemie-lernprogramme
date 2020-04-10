@@ -1,0 +1,80 @@
+body, table {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  line-height:24px;
+}
+/*
+div#behaelter {
+  position:relative;
+}
+[class=ui-autocomplete-input] {
+  z-index:3000 !important;
+}
+div#navi {
+  position:absolute;
+  left:10px;
+  top:10px;
+  z-index:2999 !important;
+  background-color:yellow;
+}*/
+div#mein_applet_appletinfotablediv {
+  border-style:dotted;
+  border-width:1px;
+  border-color:#bebebe;
+}
+select, input[type=text], textarea, input[type=number] {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+input[type=number] {
+  width:70px;
+}
+select:hover, input[type=text]:hover, textarea:hover, input[type=number]:hover {
+  border-color:green;
+}
+input[type=button] {
+  font-weight:bold;
+  background-color:green;
+  color:white;
+  padding:2px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+}
+input[type=button]:hover {
+  color:green;
+  background-color:#fff;
+  border-color:green;
+  cursor:pointer;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

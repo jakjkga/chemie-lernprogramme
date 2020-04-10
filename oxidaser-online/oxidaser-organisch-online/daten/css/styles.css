@@ -1,0 +1,102 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:16px;
+}
+table#table_formularinhalt, table#table_formularinhalt td {
+  border-collapse:collapse;
+  border-style:none;
+  border-width:1px;
+  border-color:#bebebe;
+  margin:0px;
+  padding:0px;
+}
+table#table_ausgabe {
+  font-family:'Droid Sans Mono', 'DroidSansMono','Courier New',monospace;
+  font-size:18px;
+}
+select, input[type=text], textarea {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:16px;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+input[type=button] {
+  background-color:#ffffff;
+  color:#008EDA;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  cursor:pointer;
+}
+input[type=button]:hover {
+  border-style:solid;
+  border-color:#008EDA;
+  border-width:1px;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+select#s_redm {
+  border-style:solid;
+  border-width:2px;
+  border-color:green;
+  overflow:hidden;
+}
+select#s_redm::-webkit-scrollbar    {display:solid;width:1px;background-color:transparent}
+select#s_redm::-moz-scrollbar       {display:solid;width:1px;background-color:transparent}
+select#s_redm::-o-scrollbar         {display:solid;width:1px;background-color:transparent}
+select#s_redm::-google-ms-scrollbar {display:solid;width:1px;background-color:transparent}
+select#s_redm::-khtml-scrollbar     {display:solid;width:1px;background-color:transparent}
+select#s_redm::scrollbar            {display:solid;width:1px;background-color:transparent}
+select#s_oxm {
+  border-style:solid;
+  border-width:2px;
+  border-color:red;
+  overflow:hidden;
+}
+select#s_oxm::-webkit-scrollbar    {display:solid;width:1px;background-color:transparent}
+select#s_oxm::-moz-scrollbar       {display:solid;width:1px;background-color:transparent}
+select#s_oxm::-o-scrollbar         {display:solid;width:1px;background-color:transparent}
+select#s_oxm::-google-ms-scrollbar {display:solid;width:1px;background-color:transparent}
+select#s_oxm::-khtml-scrollbar     {display:solid;width:1px;background-color:transparent}
+select#s_oxm::scrollbar            {display:solid;width:1px;background-color:transparent}
+.redm {
+  color:green;
+}
+.oxm {
+  color:red;
+}
+.el {
+  color:#ff6600
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

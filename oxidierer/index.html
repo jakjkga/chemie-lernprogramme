@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oxidierer</title>
+    <meta charset="UTF-8">
+    <meta name="AUTHOR" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+<!--
+Copyright (C) 2011  Joachim Jakob
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+    <link rel="stylesheet" 
+          type="text/css" 
+          href="daten/css/stilvorlagen.css" />
+    <script type="text/javascript" src="daten/js/funktionen.js"></script>
+    <script type="text/javascript" src="daten/js/textbausteine.js"></script>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" />
+  </head>
+  <body bgcolor="#ffffff" onload="text_schreiben('textbereich', starttext);">
+  <noscript>
+  <h2>Bitte aktiviere erst 
+      <a href="http://support.mozilla.com/de/kb/JavaScript-Einstellungen">JavaScript</a> 
+      im Browser, damit die Seitennavigation funktioniert!</h2>
+  </noscript>
+  <!-- ##########################  Auswahl Edukte  ######################### -->
+  <table border="0" width="720">
+    <tablebody> 
+      <tr>
+        <th rowspan="2">Salzbildung</th>
+        <th colspan="2">Verdrängungsreaktionen</th>
+      </tr>
+        <tr>
+        <th>Metalle</th>
+        <th>Nichtmetalle</th>
+      </tr>
+      <tr>
+        <td>
+          <form name="Startauswahl"
+                id="Startauswahl" >
+          <input
+                 type="radio"
+                 name="Eduktauswahl"
+                 alt="Natrium mit Chlor"
+                 title="Natrium mit Chlor"
+                 value="nacl"
+                 onclick="edukt_auswahl('Eduktauswahl');"
+                 id="i_nacl" />
+                 <label for="i_nacl">Natrium mit Chlor</label><br />
+          <input
+                 type="radio"
+                 name="Eduktauswahl"
+                 alt="Magnesium mit Sauerstoff"
+                 title="Magnesium mit Sauerstoff"
+                 value="mgo"
+                 onclick="edukt_auswahl('Eduktauswahl');"
+                 id="i_mgo" />
+                 <label for="i_mgo">Magnesium mit Sauerstoff</label><br />
+         <input
+                 type="radio"
+                 name="Eduktauswahl"
+                 alt="Zink mit Brom"
+                 title="Zink mit Brom"
+                 value="znbr2"
+                 onclick="edukt_auswahl('Eduktauswahl');"
+                 id="i_znbr" />
+                 <label for="i_znbr">Zink mit Brom</label>
+        </td>
+        <td class="nach_oben">
+          <input
+                 type="radio"
+                 name="Eduktauswahl"
+                 alt="Zink mit Kupfer(II)-ionen"
+                 title="Zink mit Kupfer(II)-ionen"
+                 value="zncu"
+                 onclick="edukt_auswahl('Eduktauswahl');"
+                 id="i_zncu" />
+                 <label for="i_zncu">Zink mit Kupfer(II)-ionen</label>
+        </td>
+        <td class="nach_oben">
+          <input
+                 type="radio"
+                 name="Eduktauswahl"
+                 alt="Iodidionen mit Brom"
+                 title="Iodidionen mit Brom"
+                 value="ibr"
+                 onclick="edukt_auswahl('Eduktauswahl');"
+                 id="i_ibr" />
+                 <label for="i_ibr">Iodidionen mit Brom</label>
+          </form>
+        </td>
+        </tr>
+    </tablebody>
+  </table>
+  <!-- #######  Auswahl Darstellungsform und Teilgleichungen  ############## -->
+  <table border="0" width="720">
+    <tablebody>
+      <tr>
+        <td>
+          <form>
+              <select name="Darstellungsform"
+                      id="Darstellungsform"
+                      size="5"
+                      disabled="disabled">
+                <optgroup label="Darstellungsform:">
+                <option 
+                        value="ku"
+                        onclick="darstellungsform_auswahl('Darstellungsform');">
+                        Kugelmodell</option>
+                <option value="sf"
+                        onclick="darstellungsform_auswahl('Darstellungsform');">
+                        Summenformel</option>
+                <option value="st"
+                        onclick="darstellungsform_auswahl('Darstellungsform');">
+                        Strukturformel</option>
+                <option value="sa"
+                        onclick="darstellungsform_auswahl('Darstellungsform');">
+                        Schalenmodell</option>
+                </optgroup>
+              </select>
+            </form>
+        </td>
+        <td rowspan="2">
+          <div style="background-color:white;width:401px;height:301px;">
+          <img name="abbildung1" 
+               id="abbildung1"
+               src="daten/img/start.gif" 
+               alt="Abbildung 1" 
+               width="400" 
+               height="300" />
+          </div>
+        </td>
+      <tr>
+        <td>
+          <form>
+              <select name="Gleichungen" 
+                      id="Gleichungen"
+                      size="5"
+                      disabled="disabled">
+                <optgroup label="Teilgleichungen:">
+                <option value="ox"
+                        onclick="darstellungsform_auswahl('Gleichungen');">
+                        Nur Elektronenabgabe</option>
+                <option value="red"
+                        onclick="darstellungsform_auswahl('Gleichungen');">
+                        Nur Elektronenaufnahme</option>
+                </optgroup>
+                <optgroup label="Gesamtgleichung:">
+                <option 
+                        value="ges"
+                        onclick="darstellungsform_auswahl('Gleichungen');">
+                        Elektronenübergang</option>
+                </optgroup>
+              </select>
+            </form>
+        </td>     
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div id="textbereich"></div>
+        </td>
+      </tr>
+    </tablebody>
+  </table>
+  </body>
+</html>

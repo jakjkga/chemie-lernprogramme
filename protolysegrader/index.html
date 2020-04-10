@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Protolysegrader</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="daten/css/style.css" />
+    <script type="text/javascript" src="daten/js/jquery.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(function() {               
+        lade_seite();
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <form name="f1">
+        <tr>
+          <td class="nach_rechts">
+            Wähle eine Säure mit einer bestimmten Konzentration aus:
+          </td>
+          <td>
+            <select name="aus" onchange="auswahl(this.value);">
+              <option value="-">&nbsp;</option>
+              <optgroup label="starke Säure (verdünnt)">
+                <option value="HCl_1" title="Konzentration 1 mol/ℓ">c₀(HCl) = 1 mol/ℓ</option>
+                <option value="HCl_0.1" title="Konzentration 0,1 mol/ℓ">c₀(HCl) = 0,1 mol/ℓ</option>
+                <option value="HCl_0.01" title="Konzentration 0,01 mol/ℓ">c₀(HCl) = 0,01 mol/ℓ</option>
+                <option value="HCl_0.001" title="Konzentration 0,001 mol/ℓ">c₀(HCl) = 0,001 mol/ℓ</option>
+                <option value="HCl_0.0001" title="Konzentration 0,0001 mol/ℓ">c₀(HCl) = 0,0001 mol/ℓ</option>
+              </optgroup>
+              <optgroup label="schwache Säure (verdünnt)">
+                <option value="CH₃COOH_1" title="Konzentration 1 mol/ℓ">c₀(CH₃COOH) = 1 mol/ℓ</option>
+                <option value="CH₃COOH_0.1" title="Konzentration 0,1 mol/ℓ">c₀(CH₃COOH) = 0,1 mol/ℓ</option>
+                <option value="CH₃COOH_0.01" title="Konzentration 0,01 mol/ℓ">c₀(CH₃COOH) = 0,01 mol/ℓ</option>
+                <option value="CH₃COOH_0.001" title="Konzentration 0,001 mol/ℓ">c₀(CH₃COOH) = 0,001 mol/ℓ</option>
+                <option value="CH₃COOH_0.0001" title="Konzentration 0,0001 mol/ℓ">c₀(CH₃COOH) = 0,0001 mol/ℓ</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Ausgangskonzentration der Säure c₀(HA) in mol/ℓ:
+          </td>
+          <td>
+            <input type="text" id="anzeige_c0"></input>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Oxoniumionenkonzentration c₀(H₃O⁺) in mol/ℓ:
+          </td>
+          <td>
+            <input type="text" id="anzeige_cOx"></input>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            pH-Wert:
+          </td>
+          <td>
+            <input type="text" id="anzeige_pH"></input>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Dissoziationsgrad α in Prozent:
+          </td>
+          <td>
+            <input type="text" id="anzeige_diss"></input>
+          </td>
+        </tr>
+      </form>  
+    </table>
+    <div id="chart_div"></div>
+  </body>  
+</html>

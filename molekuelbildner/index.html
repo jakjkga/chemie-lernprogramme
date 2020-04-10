@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Molekülbildner</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="3D-Strukturen kleiner anorganischer und organischer Moleküle betrachten, die für den Unterricht in der Schule wichtig sind." />
+    <meta name="keywords" lang="de" content="Molekülvisualisierung, Strukturformel, räumlicher Bau, Bindungsbildung, Elektronenpaarbindung, Atombindung, Molekül, Molekülion, Elektronenpaar-Abstoßungsmodell, VSEPR, elementare Nichtmetalle, Nichtmetalloxide, Nichtmetallhydride, Sauerstoffsäuren" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <!-- 
+     
+    http://wiki.jmol.org/index.php/Jmol_JavaScript_Object
+    http://chemapps.stolaf.edu/jmol/jsmol/jsmol.htm
+    http://wiki.jmol.org/index.php/Jmol_JavaScript_Object/Info
+    -->
+    <script type="text/javascript" src="daten/jsmol/JSmol.min.js"></script>
+    <!-- <script type="text/javascript" src="http://chemie-lernprogramme.de/daten/programme/js/molekuelbetrachter/daten/jsmol/JSmol.min.js"></script> -->
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      var mein_applet;
+      var s = document.location.search;
+      jmol_isReady = function(applet) {
+	      Jmol._getElement(applet, 'appletbereich').style.border='1px solid blue';
+      }
+      
+         
+      // https://code.google.com/p/charmming/source/browse/trunk/head/mytemplates/html/ddviewresultposejmol.html?spec=svn488&r=488
+      //var mein_applet; // s.u.
+      
+      var Info = {
+          addSelectionOptions: false,
+          color:            '#FFFFFF',
+          debug:            true,
+          defaultModel:     '',                         //'daten/structures/wasserstoff.mol'
+          width:            400,
+          height:           400,
+          j2sPath:          'daten/jsmol/j2s',          // nur HTML5
+          readyFunction:    jmol_isReady,
+          /* http://chemie-lernprogramme.de/daten/programme/js/molekuelbetrachter/ */
+          script:           'load daten/structures/wasserstoff.mol', // false
+          serverURL:        'daten/jsmol/jsmol.php',    // Für Bildexport
+          use:              'HTML5',                    // nur HTML5
+          disableInitialConsole: true, // true
+          allowJavaScript: true
+      };
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <!-- <div class="mein_absatz">Wähle eines der folgenden Nichtmetalle aus:</div> -->
+    <table id="psetab" title="Schritt 1: Wähle ein Nichtmetall aus!">
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          I
+        </td>
+        <td>
+          II
+        </td>
+        <td>
+          III
+        </td>
+        <td>
+          IV
+        </td>
+        <td>
+          V
+        </td>
+        <td>
+          VI
+        </td>
+        <td>
+          VII
+        </td>
+        <td>
+          VIII
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1 (K-Schale)
+        </td>
+        <td>
+          <div id="H" class="el" onclick="zeige_bindung(this.id);" title="Wasserstoff">H</div>
+        </td>
+        <td colspan="6">
+          
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2 (L-Schale)
+        </td>
+        <td colspan="3">
+          &nbsp;
+        </td>
+        <td>
+          <div id="C" class="el" onclick="zeige_bindung(this.id);" title="Kohlenstoff">C</div>
+        </td>
+        <td>
+          <div id="N" class="el" onclick="zeige_bindung(this.id);" title="Stickstoff">N</div>
+        </td>
+        <td>
+          <div id="O" class="el" onclick="zeige_bindung(this.id);" title="Sauerstoff">O</div>
+        </td>
+        <td>
+          <div id="F" class="el" onclick="zeige_bindung(this.id);" title="Fluor">F</div>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          3 (M-Schale)
+        </td>
+        <td colspan="4">
+          &nbsp;
+        </td>
+        <td>
+          <div id="P" class="el" onclick="zeige_bindung(this.id);" title="Phosphor">P</div>
+        </td>
+        <td>
+          <div id="S" class="el" onclick="zeige_bindung(this.id);" title="Schwefel">S</div>
+        </td>
+        <td>
+          <div id="Cl" class="el" onclick="zeige_bindung(this.id);" title="Chlor">Cl</div>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          4 (N-Schale)
+        </td>
+        <td colspan="6">
+          &nbsp;
+        </td>
+        <td>
+          <div id="Br" class="el" onclick="zeige_bindung(this.id);" title="Brom">Br</div>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          5 (O-Schale)
+        </td>
+        <td colspan="6">
+          &nbsp;
+        </td>
+        <td>
+          <div id="I" class="el" onclick="zeige_bindung(this.id);" title="Iod">I</div>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+    </table>
+    <form id="molekuelauswahl" title="Schritt 2: Wähle ein Element oder eine Verbindung aus!">&nbsp;</form>
+    <div id="appletbereich">&nbsp;</div>
+    <script type="text/javascript">
+      mein_applet=Jmol.getApplet('mein_applet', Info);
+      //Jmol.getTMApplet('mein_applet', Info);
+    </script>
+    <div>
+    <label for="checkbox1"><input type="checkbox" id="checkbox1" onclick="setze_ansicht();" />Kugel-Stab-Modell oder Kugelmodell</label><br />
+    <label for="checkbox2"><input type="checkbox" id="checkbox2" onclick="setze_rotation();" />Rotation</label><br />
+    </div>
+    <div id="downloadbereich">&nbsp;</div>
+    <div>• <a class="linkbereich" href="http://www.3dchem.com/table.asp" target="_blank">3dchem Datenbank</a></div>
+    </span>
+  </body>
+</html>

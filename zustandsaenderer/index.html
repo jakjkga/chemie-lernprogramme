@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Zustandsänderer</title>
+    <meta name="description" content="Alle Änderungen des Aggregatzustands auf einen Blick mit verschiedenen Teilchenmodellen, auch zur Erklärung der Dichteanomalie des Wassers im Vergleich mit anderen Stoffen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Aggregatzustand, Chemieunterricht, Anfangsunterricht, Teilchenmodell, Teilchenebene, Stoffebene, Zustandsänderung, fest, flüssig, gasförmig, Gefrieren, Schmelzen, Sieden, Kondensieren, Sublimieren, Resublimieren, Dichteanomalie" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+        <p id="navileiste">
+          <select id="s_teilchentyp" onchange="setze_teilchentyp();">
+            <option value="kerzenwachs">Kerzenwachs</option>
+            <option value="metalle">Metalle</option>
+            <option value="essigsaeure">Essigsäure</option>
+            <option value="wasser">Wasser</option>
+          </select>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Alles anzeigen" onclick="setze('alles')" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Alles ausblenden" onclick="lade_seite()" />
+        </p>
+        <p>
+          <!-- <?xml version="1.0" encoding="utf-8" standalone="no" ?> -->
+          <svg version="1.1" 
+               xmlns="http://www.w3.org/2000/svg" 
+               width="600" 
+               height="420"
+               xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Pfeilspitzen -->
+            <defs>
+              <marker id="pfred"
+                      viewBox="0 0 10 10" refX="0" refY="5"
+                      markerUnits="strokeWidth"
+                      markerWidth="5" markerHeight="5"
+                      orient="auto">
+                <path d="M 0,0 l 10,5 l -10,5 z" fill="red" stroke="red" />
+              </marker>   
+              <marker id="pfblue"
+                      viewBox="0 0 10 10" refX="0" refY="5"
+                      markerUnits="strokeWidth"
+                      markerWidth="5" markerHeight="5"
+                      orient="auto">
+                <path d="M 0,0 l 10,5 l -10,5 z" fill="blue" stroke="blue" />
+              </marker>
+              <marker id="pfgrey"
+                      viewBox="0 0 10 10" refX="0" refY="5"
+                      markerUnits="strokeWidth"
+                      markerWidth="5" markerHeight="5"
+                      orient="auto">
+                <path d="M 0,0 l 10,5 l -10,5 z" fill="#d3d3d3" stroke="d3d3d3" />
+              </marker>
+            </defs>
+            <!-- Hintergrundfläche -->   
+            <rect id="r_hintergrund" x="0" y="0" width="600" height="420"
+                  style="fill:#ffffff;stroke:#bebebe;stroke-width:1px;"></rect>
+            <!-- 
+                 ###############################################################
+                 ####              Zustandsänderungen                       ####
+                 ###############################################################
+            --> 
+            <!-- Schmelzen -->
+            <a xlink:href="#" onclick="setze('schmelzen');"><text id="t_schmelzen" x="250" y="330" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_erwaermen">Schmelzen</text>
+            <line id="l_schmelzen" x1="180" y1="310" x2="405" y2="310" style="stroke-width:3;"  class="l_aktiv_erwaermen" marker-end="url(#pfred)" /></a>
+            <!-- Gefrieren -->
+            <a xlink:href="#" onclick="setze('gefrieren');"><text id="t_gefrieren" x="250" y="280" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_abkuehlen">Gefrieren</text>
+            <line id="l_gefrieren" x1="420" y1="290" x2="195" y2="290" style="stroke-width:3;"  class="l_aktiv_abkuehlen" marker-end="url(#pfblue)" /></a>
+            <!-- Sieden -->
+            <a xlink:href="#" onclick="setze('sieden');"><text id="t_sieden" x="480" y="140" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_erwaermen">Sieden</text>
+            <line id="l_sieden" x1="540" y1="220" x2="392" y2="70" style="stroke-width:3;"  class="l_aktiv_erwaermen" marker-end="url(#pfred)" /></a>
+            <!-- Kondensieren -->
+            <a xlink:href="#" onclick="setze('kondensieren');"><text id="t_kondensieren" x="367" y="210" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_abkuehlen">Kondensieren</text>
+            <line id="l_kondensieren" x1="380" y1="90" x2="500" y2="210" style="stroke-width:3;"  class="l_aktiv_abkuehlen" marker-end="url(#pfblue)" /></a>
+            <!-- Sublimieren -->
+            <a xlink:href="#" onclick="setze('sublimieren');"><text id="t_sublimieren" x="20" y="140" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_erwaermen">Sublimieren</text>
+            <line id="l_sublimieren" x1="60" y1="220" x2="210" y2="70" style="stroke-width:3;"  class="l_aktiv_erwaermen" marker-end="url(#pfred)" /></a>
+            <!-- Resublimieren -->
+            <a xlink:href="#" onclick="setze('resublimieren');"><text id="t_resublimieren" x="120" y="210" style="font-family:Arial,sans-serif;font-size:18px;" class="t_aktiv_abkuehlen">Resublimieren</text>
+            <line id="l_resublimieren" x1="220" y1="90" x2="100" y2="210" style="stroke-width:3;"  class="l_aktiv_abkuehlen" marker-end="url(#pfblue)" /></a>
+            <!-- 
+                 ###############################################################
+                 ####                    Zustände                           ####
+                 ###############################################################
+            --> 
+            <!-- fester Zustand -->
+            <a xlink:href="#" onclick="setze('fest');">
+            <image id="img_fest" xlink:href="daten/img/kerzenwachs/fest_inaktiv.svg" x="20" y="220" width="160" height="160"></image>
+            <rect id="r_fest" x="20" y="220" width="160" height="160" class="rechteck_aktiv" style="fill:none;stroke-width:1px;"></rect>
+            <text id="t_fest" x="80" y="402" class="text_aktiv" style="font-family:Arial,sans-serif;font-size:22px;">fest</text></a>
+            <!-- flüssiger Zustand -->
+            <a xlink:href="#" onclick="setze('fluessig');">
+            <image id="img_fluessig" xlink:href="daten/img/kerzenwachs/fluessig_inaktiv.svg" x="420" y="220" width="160" height="160"></image>
+            <rect id="r_fluessig" x="420" y="220" width="160" height="160" class="rechteck_aktiv" style="fill:none;stroke-width:1px;"></rect>
+            <text id="t_fluessig" x="476" y="402" class="text_aktiv" style="font-family:Arial,sans-serif;font-size:22px;">flüssig</text></a>
+            <!-- gasförmiger Zustand -->
+            <a xlink:href="#" onclick="setze('gasfoermig');">
+            <image id="img_gasfoermig" xlink:href="daten/img/kerzenwachs/gasfoermig_inaktiv.svg" x="220" y="20" width="160" height="160"></image>
+            <rect id="r_gasfoermig" x="220" y="20" width="160" height="160" class="rechteck_aktiv" style="fill:none;stroke-width:1px;"></rect>
+            <text id="t_gasfoermig" x="256" y="202" class="text_aktiv" style="font-family:Arial,sans-serif;font-size:22px;">gasförmig</text></a>
+            
+            
+            
+            
+            
+            
+          </svg>
+        </p>
+        <p id="beschreibung">
+            &nbsp;
+        </p>
+  </body>
+</html>

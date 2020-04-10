@@ -1,0 +1,73 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+select, input[type=text], input[type=number], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+div#div_formelanzeige {
+  height:56px;
+  min-height:56px;
+}
+div#mindesthoehe {
+  height:56px;
+  min-height:56px;
+  width:200px;
+}
+.hinweis {
+  font-size:0.9em;
+  color:#696969;
+}
+input[type=number].fehler {
+  background-color:#ffd5d5;
+  border-color:#ff0000;
+}
+input[type=button] {
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  background-color:cornflowerblue;
+  color:white;
+  font-weight:bold;
+}
+input[type=button]:hover {
+  border-color:cornflowerblue;
+  background-color:#f8f8ff;
+  color:cornflowerblue;
+  cursor:pointer;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

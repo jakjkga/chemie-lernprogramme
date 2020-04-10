@@ -1,0 +1,142 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  background-color:#ffffff;
+}
+select {
+  background-color:#ffffff;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+}
+select:hover {
+  border-color:cornflowerblue;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+img#atombau_vorschau {
+  cursor:pointer;
+}
+input[type=text] {
+  background-color:#ffffff;
+  border-style:solid;
+  border-color:#ffffff;
+  border-width:1px;
+  width:360px;
+}
+input[type=text][readonly] {
+  background-color:#ffffff;
+  border-style:solid;
+  border-color:#ffffff;
+  border-width:1px;
+}
+div#pse_bereich {
+  position:relative;
+  width:560px;
+  height:112px;
+  background-color:#ffffff;
+}
+div.el {
+  position:absolute;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  width:28px;
+  height:28px;
+  max-width:28px;
+  max-height:28px;
+  text-align:center;
+  font-family:Arial;
+  font-size:14px;
+  font-weight:bold;
+  /*display:inline-block;*/
+  /*vertical-align:middle;*/
+  line-height:28px;
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+div.el:hover {
+  /*border-color:#ff6600;*/
+  cursor:pointer;
+  background-color:#ffffff;
+  color:#800000;
+}
+.gerade_aktiv {
+  background-color:#800000 !important;
+  color:#ffffff !important;
+}
+/* Klassen für Färbung nach Perioden */
+.periode1 {
+  background-color:#deaa87;
+}
+.periode2 {
+  background-color:#e9afaf;
+}
+.periode3 {
+  background-color:#8dd35f;
+}
+.periode4 {
+  background-color:#ff9955;
+}
+.metalle {
+  background-color:#d3d3d3;
+}
+.halbmetalle {
+  background-color:#f5dEb3
+}
+.nichtmetalle {
+  background-color:#fA8072;
+}
+.edelgase {
+  background-color:#000000;
+}
+.hg1 {
+  background-color:#ffffff;
+}
+.hg2 {
+  background-color:#80ffe6;
+}
+.hg3 {
+  background-color:#e580ff;
+}
+.hg4 {
+  background-color:#80b3ff;
+}
+.hg5 {
+  background-color:#aade87;
+}
+.hg6 {
+  background-color:#ffdd55;
+}
+.hg7 {
+  background-color:#ffb380;
+}
+.hg8 {
+  background-color:#ff8080;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

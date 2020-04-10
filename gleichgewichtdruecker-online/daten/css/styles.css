@@ -1,0 +1,66 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  background-color:#ffffff;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+#innere_tabelle1, #innere_tabelle1 td {
+  border-style:none;
+  /*border-collapse:collapse;
+  border-width:1px;
+  border-color:#bebebe;*/
+  margin:0px;
+  padding:0px;
+}
+#innere_tabelle2, #innere_tabelle2 td {
+  border-style:none;
+  /*border-collapse:collapse;
+  border-width:1px;
+  border-color:#bebebe;*/
+  margin:0px;
+  padding:0px;
+}
+#i_massenprozent_no2, #i_teilchenanteil_no2 {
+  color:white;
+  background-color:#800000;
+}
+.no2 {
+  color:#800000;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

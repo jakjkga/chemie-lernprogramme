@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulator - online</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Verhältnisformel eines Salzes aus den Namen der enthaltenen Elemente oder Ionen ermitteln">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Verhältnisformel, Salz, Summenformel, Index, Indizes, Koeffizient, Ladung, Ladungszahl, Oxidationszahl, Wertigkeit">
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">      
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+   <!-- jgallery ANFANG-->
+  </head>
+  <body>
+    <form>
+      <table>
+        <tr>
+          <td colspan="2">
+            <strong>Eingabe</strong>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Metall:
+          </td>
+          <td>
+            <input type="text" id="in_metall" placeholder="Name des Elements oder des Kations (z.B. Ammonium)" />
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Nichtmetall:
+          </td>
+          <td>
+            <input type="text" id="in_nichtmetall" placeholder="Name des Elements oder des Anions (z.B. Carbonat)" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <strong>Ausgabe</strong>
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Summenformel:
+          </td>
+          <td>
+            <input type="text" id="aus_sf" placeholder="Gib erst oben die Namen der Bestandteile dieses Salzes an!" disabled />
+          </td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">
+            Name:
+          </td>
+          <td>
+            <input type="text" id="aus_name" placeholder="Gib erst oben die Namen der Bestandteile dieses Salzes an!" disabled />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="Zurücksetzen" onclick="zurueck_setzen();" />
+          </td>
+          <td>
+            <input type="button" id="b_ermitteln" value="Verhältnisformel und Namen ermitteln" onclick="ermittle_sf();" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

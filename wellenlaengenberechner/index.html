@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Maximale Absorptions-Wellenlänge bei Polymethin-Farbstoffen</title>
+    <meta name="description" content="Berechnung der Wellenlänge des Absorptionsmaximums bei Polymethinfarbstoffen mit Hilfe der Elektronengastheorie nach Kuhn">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Farbstoffklassen, Polymethin, Cyanine, Absorptionsmaximum, Wellenlänge, reflektiertes sichtbares Licht, Farbe, Farbvertiefung, konjugierte Systeme, Chromophor, bathochromer Effekt">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90LEAosD+GkMDYAAAKVSURBVDjLXZJNSFRhGIWf7/7NbziNE2MKJUKORkhQQZtIK7NfkKBalQW1a9u2XQktgxZFFO0KK9OKKLIszRYRmJQklSaG1KQzzujk3Lk/X4s7M4yd9Xee75z3fYX0hBACACklEhCAEAIpJXnLYXR6noHxWarDfo5srSdeFQBAqzQXzALfJyfx+XysX78OVVX59jvL+TvvefF5Fr+u8td0+DK7wMWjWwn7dbTSL8nkH14ODDIy8o4zZ0+jqipTfxY5fvUV03M5IkEfngS/MnkKtguAAlAoFBgaGubNm2EikQjRaBSACw8+8DO1TMDQyvVcKWnbuJZVft2rAGDbNqlUGl3XicWqCQT8AAyO/8bQFAAcV2JaDgc319G5ZR26piBlMYHjuGSzWUCyZk2MUCgEQGtznFTOJLNcwKcLzu1tpvvYNmqqgsU60kvgug5Li0tomsbExFdmZmZobGzkysntnNrRiGk5NNdWEY8ECBp6uY4QAiGllKlUmu5LlylJN3S6uk6QSGzAldIbVnFTlebyEG3LwjRNjygEVsHi+rUbjI6OIYpmKSWyCBMVMEVKiWmaOI5DOByioaGeQMCPoijcunmb16+HsG17xaFVSgFYzudBgqpqtLbtJNGUAMAwDPoePqK//wlLS7lywkqIUoqkqCoA4XCYjo52YrFqb8+axtvhEXp67pNMJssVShAFoK6uls7Ow9TUxLEsi1ismv0H9iEU70dFUfj8aZy7d+4xNfVjBUTIIsp1XdLpNMFgqHxIz5+94PHjpxiGXjZEo6s5dPggLS2bPJDruvL/yZbWZNs2vb19jH38xMJCpvhG4vP52NO+i/b23R6g0vw/xHEcXNcln88zPzdPJpsll/uLbVkkmhL8AyrZNAr0Ah+0AAAAAElFTkSuQmCC" />
+    <style type="text/css">
+      body, table {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:14px;
+      }
+      input, select {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:14px;
+      }
+      input[type=text] {
+        border-style:solid;
+        border-width:1px;
+        border-color:#bebebe;
+        border-radius:5px;
+        padding:2px;
+      }
+      .nach_rechts {
+        text-align:right;
+      }
+      .nach_oben {
+        vertical-align:top;
+      }
+      sub {
+        font-size:0.8em;
+        font-style:italic;
+      }
+a:focus {
+  outline: thin dotted;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+ul li.pdfdat {
+  list-style-image:url(pdfdat.gif);
+}
+ul li.odt {
+  list-style-image:url(libreoffice-writer.png);
+}
+    </style>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions:["mhchem.js"]}});</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var halbstrukturformeln={
+          '1.44':{
+             '3':'H₂N–CH=CH-CH=NH₂⁺',
+             '5':'H₂N–CH=CH-CH=CH-CH=NH₂⁺',
+             '7':'H₂N–CH=CH-CH=CH-CH=CH-CH=NH₂⁺',
+             '9':'H₂N–CH=CH-CH=CH-CH=CH-CH=CH-CH=NH₂⁺',
+            '11':'H₂N–CH=CH-CH=CH-CH=CH-CH=CH-CH=CH-CH=NH₂⁺'
+          },
+          '1.85':{
+             '3':'(CH₃)₂N–CH=CH-CH=N(CH₃)₂⁺',
+             '5':'(CH₃)₂N–CH=CH-CH=CH-CH=N(CH₃)₂⁺',
+             '7':'(CH₃)₂N–CH=CH-CH=CH-CH=CH-CH=N(CH₃)₂⁺',
+             '9':'(CH₃)₂N–CH=CH-CH=CH-CH=CH-CH=CH-CH=N(CH₃)₂⁺',
+            '11':'(CH₃)₂N–CH=CH-CH=CH-CH=CH-CH=CH-CH=CH-CH=N(CH₃)₂⁺'
+          },
+          '1.5':{
+             '3':'⁻O–CH=CH-CH=O',
+             '5':'⁻O–CH=CH-CH=CH-CH=O',
+             '7':'⁻O–CH=CH-CH=CH-CH=CH-CH=O',
+             '9':'⁻O–CH=CH-CH=CH-CH=CH-CH=CH-CH=O',
+            '11':'⁻O–CH=CH-CH=CH-CH=CH-CH=CH-CH=CH-CH=O'
+          }
+      }
+      
+      function bestimme_farbe(wellenlaenge) {
+          if (wellenlaenge < 380) {
+              var farbe=['farblos (Absorption im UV-Bereich)', 'white'];
+          } else if (wellenlaenge < 417) {
+              var farbe=['Gelb', 'yellow'];
+          } else if (wellenlaenge < 485) {
+              var farbe=['Orange', '#f60'];
+          } else if (wellenlaenge < 570) {
+              var farbe=['Rot', 'red'];
+          } else if (wellenlaenge < 585) {
+              var farbe=['Violett', 'purple'];
+          } else if (wellenlaenge < 648) {
+              var farbe=['Blau', 'blue'];
+          } else if (wellenlaenge <  750) {
+              var farbe=['Grün', 'green'];
+          } else {
+              var farbe=['farblos (Absorption im IR-Bereich)', 'white'];
+          }
+          return farbe
+      }
+      
+      function lade_seite() {
+          $('.mein_absatz').css('color', '#369');
+          $('#a_anzahl_methingruppen option:first').prop('selected', true);
+          $('#a_mittlerer_endgruppenfaktor option:first').prop('selected', true);
+          berechne();
+      }
+      
+      $(document).ready(function(){
+          lade_seite();
+      });
+      
+      function berechne() {
+          var anzahl_methingruppen=parseFloat($('#a_anzahl_methingruppen option:selected').val());
+          //console.log(anzahl_methingruppen+' '+typeof(anzahl_methingruppen));
+          var mittlerer_endgruppenfaktor=parseFloat($('#a_mittlerer_endgruppenfaktor option:selected').val());
+          //console.log(mittlerer_endgruppenfaktor+' '+typeof(mittlerer_endgruppenfaktor));
+          var wellenlaenge=parseFloat(50*(anzahl_methingruppen+mittlerer_endgruppenfaktor*mittlerer_endgruppenfaktor)).toFixed(0)
+          $('#out_wellenlaenge').val(wellenlaenge);
+          var halbstrukturformel=halbstrukturformeln[String(mittlerer_endgruppenfaktor)][String(parseInt(anzahl_methingruppen))];
+          //console.log(halbstrukturformel);
+          $('#out_halbstruktur').val(halbstrukturformel);
+          $('#out_struktur').attr('src', anzahl_methingruppen+'_'+mittlerer_endgruppenfaktor+'.svg');
+          var farbe=bestimme_farbe(wellenlaenge);
+          //console.log(farbe);
+          $('#out_farbe').val(farbe[0]);
+          $('#out_farbe').css('background-color', farbe[1]);
+      }
+    </script>
+    <!-- Google-Analytics -->
+      <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <p class="mein_absatz">
+      Nach der „Elektronengastheorie von
+      <a href="http://de.wikipedia.org/wiki/Hans_Kuhn_%28Physikochemiker%29" target="_blank">Kuhn</a>“, 
+      lässt sich das Absorptionsmaximum bei der 
+      Farbstoffklasse der <a href="http://de.wikipedia.org/wiki/Cyanine" target="_blank">Polymethine</a> 
+      wie folgt quantitativ bestimmen: 
+    </p>
+    <p>
+      \[
+        \lambda_{max} = 50 \cdot \left( 
+                                    \text{Anzahl Methin-Gruppen} +  
+                                    \text{mittlerer Endgruppenfaktor}^{2} 
+                                 \right) nm
+      \]
+    </p>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="a_anzahl_methingruppen">Anzahl Methin-Gruppen:</label>
+        </td>
+        <td>
+         <select id="a_anzahl_methingruppen" onchange="berechne();">
+           <option value="3">3</option>
+           <option value="5">5</option>
+           <option value="7">7</option>
+           <option value="9">9</option>
+           <option value="11">11</option>
+         </select>
+          mal (–CH=)
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="a_mittlerer_endgruppenfaktor">Mittlerer Endgruppenfaktor:</label>
+        </td>
+        <td>
+          <select id="a_mittlerer_endgruppenfaktor" onchange="berechne();">
+            <option value="1.44" title="Aminogruppe als Donator und Ammoniumgruppe als Akzeptor">1,44&nbsp;&nbsp;&nbsp;&nbsp;H₂N– / =NH₂⁺:</option>
+            <option value="1.85" title="Dimethylaminogruppe als Donator und Dimethylammoniumgruppe als Akzeptor">1,85&nbsp;&nbsp;&nbsp;&nbsp;(CH₃)₂N– / =N(CH₃)₂⁺:</option>
+            <option value="1.50" title="Oxidgruppe als Donator und Oxogruppe als Akzeptor">1,50&nbsp;&nbsp;&nbsp;&nbsp;⁻O– / =O:</option>
+          </select>
+          Dieser ist typisch für eine Kombination aus Donator- und Akzeptor-Gruppe
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <input type="button" value="Struktur und Wellenlänge ermitteln" onclick="berechne();" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="out_halbstruktur">Halbstrukturformel:</label>
+        </td>
+        <td>
+          <input id="out_halbstruktur" type="text" size="56" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          <label for="out_struktur">Strukturformel:</label>
+        </td>
+        <td>
+          <img id="out_struktur" height="232" src=""  style="background-color:white;border-style:solid;border-width:1px;border-color:white;" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="out_wellenlaenge">Absorbierte Wellenlänge λ<sub>max</sub>:</label>
+        </td>
+        <td>
+          <input id="out_wellenlaenge" type="text" size="4" /> nm
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="out_farbe">sichtbare Farbe:</label>
+        </td>
+        <td>
+          <input id="out_farbe" type="text" size="40" />
+        </td>
+      </tr>
+    </table>
+      <ul>
+    <li class="pdfdat">
+         <a href="ueb_wellenlaengenberechner.pdf" 
+            class="linkbereich"
+            type="application/pdf"
+            target="_blank"
+            title="Übungsaufgaben herunterladen">Übungsaufgaben</a></li>
+         <li class="odt">
+         <a href="ueb_wellenlaengenberechner.odt" 
+            class="linkbereich"
+            type="application/vnd.oasis.opendocument.text"
+            target="_blank"
+            title="Übungsaufgaben herunterladen">Übungsaufgaben</a></li>
+  </ul>
+  </body>
+</html>

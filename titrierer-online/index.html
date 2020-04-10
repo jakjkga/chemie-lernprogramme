@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Titrierer - online</title>
+    <meta name="description" content="Simulation von Titrationen einprotoniger starker und schwacher Säuren und Basen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Titration, Äquivalenzpunkt, Halbäquivalenzpunkt, Neutralpunkt, schwache Säuren, schwache Basen, Umschlagspunkt" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="daten/css/jsxgraph.css" />
+    <script type="text/javascript" src="daten/js/jsxgraphcore.js"></script>
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <!-- START Einstellungen  -->
+        <td>
+          <table>
+            <tr>
+              <td>
+                &nbsp;
+              </td>
+              <td>
+                &nbsp;
+              </td>
+              <td>
+                Konzentration
+              </td>
+              <td>
+                &nbsp;
+              </td>
+              <td>
+                Volumen
+              </td>
+            </tr>
+            <tr>
+              <td class="nach_rechts">
+                <label for="s_massloesung">Maßlösung</label>:
+              </td>
+              <td>
+                <select id="s_massloesung" style="width:160px;" onchange="setze_massloesung()">
+                  <optgroup label="starke Base">
+                    <option value="naoh_loes">Natronlauge</option>
+                  </optgroup>
+                  <optgroup label="starke Säure">
+                    <option value="hcl_loes">Salzsäure</option>
+                  </optgroup>
+                </select>
+              </td>
+              <td>
+                <select id="s_konzentration_massloesung" style="width:60px;" onchange="neue_zufallskonzentration()">
+                  <option value="1.0">1,0</option>
+                  <!-- <option value="0.1">0,1</option> -->
+                </select>&nbsp;mol/l
+              </td>
+              <td class="nach_rechts">
+                <label for="i_volumen_massloesung">zugegebenes</label>:
+              </td>
+              <td>
+                <input id="i_volumen_massloesung" type="number" size="7" value="0" min="0" max="20" step="0.5" style="width:56px;" onchange="schritt()" />&nbsp;ml
+              </td>
+            </tr>
+            <tr>
+              <td class="nach_rechts">
+                <label for="s_probeloesung">Probelösung</label>:
+              </td>
+              <td>
+                <select id="s_probeloesung" style="width:160px;" onchange="setze_probeloesung()">
+                  <optgroup label="starke Säure">
+                    <option value="hcl_loes">Salzsäure</option>
+                  </optgroup>
+                  <optgroup label="schwache Säure">
+                    <option value="hoac_loes">Essigsäure</option>
+                  </optgroup>
+                  <optgroup label="starke Base">
+                    <option value="naoh_loes">Natronlauge</option>
+                  </optgroup>
+                  <optgroup label="schwache Base">
+                    <option value="nh3_loes">Ammoniaklösung</option>
+                  </optgroup>
+                </select>
+              </td>
+              <td>
+                <input id="i_konzentration_probeloesung" type="text" size="7" value="gesucht" readonly disabled style="width:56px;" />&nbsp;mol/l
+              </td>
+              <td class="nach_rechts">
+                <label for="i_volumen_probeloesung">vorgelegtes</label>:
+              </td>
+              <td>
+                <input id="i_volumen_probeloesung" type="number" size="7" value="20" min="20" max="40" step="1" style="width:56px;" />&nbsp;ml
+              </td>
+            </tr>
+            <!-- <tr>
+              <td colspan="2">
+                &nbsp;
+              </td>
+              <td>
+                <input id="b_farbumschlag" type="button" value="Farbumschlag?" onclick="ermittle()" />
+              </td>
+              <td>
+                &nbsp;
+              </td>
+            </tr> -->
+            <tr>
+              <td>
+                <label for="i_aktueller_ph">aktueller&nbsp;ph-Wert</label>:
+              </td>
+              <td>
+                <input id="i_aktueller_ph" type="text" value="noch nicht gesetzt" readonly style="width:156px;" />
+              </td>
+              <td>
+                &nbsp;
+              </td>
+              <td colspan="2">
+                <input type="button" value="Zurücksetzen" onclick="location.reload()" />
+              </td>
+            </tr>
+          </table>
+        </td>
+        <!-- ENDE Einstellungen -->
+        <!-- START Bürette -->
+        <td rowspan="2">
+          <!-- Abb. Bürette -->
+          V<sub>Maßl.</sub>;pH<br />
+          <textarea id="anzeige_ergebnisse" cols="14" rows="41"></textarea><br />
+          <input type="button" value="CSV speichern" onclick="csv_speichern();" /><br />
+          Im&nbsp;Firefox&nbsp;aktualisiert<br />
+          dies&nbsp;auch&nbsp;das&nbsp;Diagramm!
+        </td>
+        <!-- ENDE Bürette -->
+      </tr>
+      <tr>
+        <!-- START pH-Wert Diagramm -->
+        <td class="nach_oben">
+          <!-- 
+			  http://jsxgraph.uni-bayreuth.de/wiki/index.php/Data_plot 
+			  http://jsxgraph.uni-bayreuth.de/wiki/index.php?title=Data_plot&action=edit
+			  http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph_refcard.pdf
+			  http://jsxgraph.uni-bayreuth.de/wiki/index.php/Circle
+		   -->
+          <div id="jxgbox" class="jxgbox" style="width:700px; height:500px;"></div>
+	<script>
+	var color = ['blue','red','magenta', 'green', 'black','yellow'];
+	var nr = 0;
+	var maxX = 0.0;
+	var maxY = 0.0;
+	var minY = 100000.0;
+
+	var brd = JXG.JSXGraph.initBoard('jxgbox',{boundingbox:[-1, 15, 22, -1],axis:true});
+
+	var plotData = function() {
+		var i, x=[], y=[], d;
+		var t = document.getElementById('anzeige_ergebnisse').value;
+		var data = t.split('\n');
+		for (i=0;i<data.length-1;i++) {
+			d = data[i].split(';');
+			x[i] = parseFloat(d[0])*1.0;
+			y[i] = parseFloat(d[1])*1.0;
+			if (x[i]>maxX) maxX = x[i];
+			if (y[i]>maxY) maxY = y[i];
+			if (y[i]<minY) minY = y[i];
+
+		}
+		//brd.setBoundingBox([-1,maxY*1.01,maxX*1.05,minY*0.95]);
+		//console.log(x);
+		var c = brd.create('curve',
+		                   [x,y],
+		                   {strokeColor:color[0]});
+		//r=2;
+		for (i=0; i < x.length; i++) {
+		  kreise = brd.create('point',
+		                   [x[i],y[i]],
+		                   {name:'', size:2, fillColor:'blue', face: 'o', strokeWidth:0});
+		}
+		var p1 = brd.create('point',[0,7],  {name:'7',size:1,fillColor:'grey',strokeWidth:0,labelColor:'red'});
+        var p2 = brd.create('point',[22,7], {name:'B',size:1,fillColor:'grey',strokeWidth:0});
+		var li7 = brd.create('line', ["7","B"], {strokeColor:'grey',strokeWidth:1});
+		var p3 = brd.create('point',[0,14],  {name:'14',size:1,fillColor:'grey',strokeWidth:0,labelColor:'red'});
+        var p4 = brd.create('point',[22,14], {name:'D',size:1,fillColor:'grey',strokeWidth:0});
+		var li14 = brd.create('line', ["14","D"], {strokeColor:'grey',strokeWidth:1});
+		nr++;
+		brd.update();
+		//console.log(x);
+	};
+
+	var clearBoard = function() {
+		JXG.JSXGraph.freeBoard(brd); 
+		brd = JXG.JSXGraph.initBoard('jxgbox',{boundingbox:[-1, 15, 22, -1],axis:true});
+		maxX = 0.0;
+		maxY = 0.0;
+		brd.update();
+	};
+
+	var clearInput = function() {
+		document.getElementById('in_data').value = '';
+	};
+
+    </script>
+        </td>
+        <!-- ENDE pH-Wert Diagramm -->
+      </tr>
+    </table>
+    <p>
+      Tipp: Die Python basierte 
+      <a href="http://chemie-lernprogramme.de/daten/html/titrierer.html" target="_blank">offline Variante</a> dieses Programms bietet erweiterte
+      Einstellungsmöglichkeiten, insbesondere die grafische Ermittlung des Äquivalenzpunkts!
+    </p>
+  </body>
+</html>

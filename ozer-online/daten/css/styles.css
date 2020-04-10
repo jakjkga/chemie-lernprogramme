@@ -1,0 +1,82 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+input[type=button] {
+  font-weight:bold;
+  background-color:cornflowerblue;
+  color:white;
+  padding:2px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  margin:2px;
+  margin-right:10px;
+}
+
+input[type=button]:hover {
+  color:cornflowerblue;
+  background-color:#fff;
+  border-color:cornflowerblue;
+  cursor:pointer;
+}
+
+input[type=text].myformel {
+  /*border-color:#ffffff;*/
+  border-style:dotted;
+  font-size:18px;
+}
+input[type=text].myformel:hover {
+  background-color:#DFEAF2;
+}
+#i_el1[disabled], #s_el1[disabled] {
+  background-color:#f5f5f5;
+  border-color:#ffffff;
+}
+#i_el1[disabled]:hover, #s_el1[disabled]:hover {
+  background-color:#f5f5f5;
+  border-color:#ffffff;
+}
+select.myindex {
+  border-color:#ffffff;
+  font-size:18px;
+  cursor:pointer;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

@@ -1,0 +1,960 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Monosaccharider</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="de">
+    <meta name="description" content="Chemie Lernprogramm zu den Monosacchariden">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Monosaccharid, Triose, Tetrose, Pentose, Hexose, Aldose, Ketose, Enantiomere, Diastereomere, D, L">
+    <style>
+      body, table {
+        font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:14px;
+        background-color:#ffffff;
+      }
+      div   {
+        background-color:white;
+        padding:4px;
+        border-style:solid;
+        border-width:1px;
+        border-color:#bebebe;
+        min-width:270px;
+      }
+      select {
+        min-width:300px;
+      }
+      div#vollstaendiger_name:hover {
+        color:#f60;
+        border-color:#f60;
+        font-weight:bold;
+        background-color:rgba(255, 229, 213, 1);
+        cursor:pointer;
+      }
+      div#fischerprojektion {
+        padding-left:20px;
+        padding-top:10px;
+        min-height:270px;
+      }
+      .nach_rechts {
+        text-align:right;
+      }
+      .nach_oben {
+        vertical-align:top;
+        padding-top:4px;
+      }
+      input[type=text], select, textarea {
+        font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;
+        font-size:14px;
+        background-color:#fff;
+        line-height:18px;
+        padding:2px;
+        border-style:solid;
+        border-color:#bebebe;
+        border-width:1px;   
+      }
+      input[type=text]:hover, select:hover, textarea:hover {
+        border-color:cornflowerblue;
+      }
+      select:hover {
+        cursor:pointer;
+      }
+      input[type=button] {
+        font-weight:bold;
+        background-color:cornflowerblue;
+        color:white;
+        padding:2px;
+        border-style:solid;
+        border-color:#bebebe;
+        border-width:1px;
+        margin:2px;
+        margin-right:10px;
+      }
+      input[type=button]:hover {
+        color:cornflowerblue;
+        background-color:#fff;
+        border-color:cornflowerblue;
+        cursor:pointer;
+      }
+      a {
+        color: #428bca;
+        text-decoration: none;
+      }
+      a:hover, a:focus {
+        color: #2a6496;
+        text-decoration: underline;
+      }
+      
+      
+    </style>
+    <script type="text/javascript">
+function lade_seite() {
+    document.forms['formular1'].elements['auswahl1'].options[0].selected='selected';
+    hole_aktuellen_index('formular1', 'auswahl1');
+}
+
+function hole_aktuellen_index(formular, auswahl) {
+    var schluessel=String(document.forms[formular].elements[auswahl].value);
+    var vollst_name=monosaccharide[schluessel].vn;
+    var f_projektion=monosaccharide[schluessel].fp;
+    var linkkeyword=schluessel.slice(2);
+    if (linkkeyword.length < 1) {
+        linkkeyword='';
+    }
+    var wp_link='https://de.wikipedia.org/wiki/'+linkkeyword;
+    document.getElementById('vollstaendiger_name').innerHTML=vollst_name;
+    document.getElementById('fischerprojektion').innerHTML=f_projektion;
+    var neuer_link='<a href="'+wp_link+'" target="_blank" title="weitere Informationen zu diesem Monosaccharid bei Wikipedia">'+linkkeyword+'</a>'
+    document.getElementById('linkbereich').innerHTML=neuer_link;
+}
+
+function suche_name() {
+    var suchbegriff=String(document.getElementById('vollstaendiger_name').innerHTML);
+    neue_url=encodeURI('https://www.google.com/search?hl=de&q='+suchbegriff)
+    //alert(neue_url)
+    if (suchbegriff != '-') {
+        window.open(neue_url, '_blank'); /* in neuem Fenster öffnen */
+        //location.href=neue_url; /* im gleichen Fenster öffnen */
+    }
+}
+
+/*******************************************************************************
+****                              PNG-Export                                ****
+*******************************************************************************/
+function exportiere() {
+    var zeichenkette=document.getElementById('fischerprojektion').innerHTML;
+    var schriftgrad=16;
+    var canvas=document.getElementById('zeichenflaeche_versteckt');
+    /* Canvas-Inhalt löschen */
+    canvas.setAttribute('width', 700, 0);
+    canvas.setAttribute('height', 500, 0);
+    var context=canvas.getContext('2d');
+    context.clearRect(0, 0, 700, 500);
+    var zeilen=new Array();
+    zeilen=zeichenkette.split('\n');
+    /* Canvas-Größe anpassen */
+    /* Teil 1: Neue Höhe */
+    // Abstand nach oben und unten
+    var abstand_ou=5;
+    // Zeilenzahl
+    var zeilenzahl=parseInt(zeilen.length);
+    // Zeilenabstand
+    var abstand_zeilen=4;
+    // Abstand von Links
+    var startposition_x=10;
+    // Neue Höhe
+    var startposition_y=parseInt(schriftgrad)+parseInt(abstand_ou);
+    var neue_hoehe=parseInt(startposition_y)+zeilenzahl*(parseInt(schriftgrad)+4)+abstand_ou;
+    canvas.setAttribute('height', neue_hoehe, 0);
+    /* Teil 2: Neue Breite */
+    // Ein Zeichen ist etwa 11 px breit
+    var zeichenbreite=11;
+    var zeichenzahlen=new Array();
+    for (i=0; i < zeilen.length;i++) {
+        zeichenzahlen.push(zeilen[i].length);
+    }
+    zeichenzahlen.sort(Numsort);
+    var laengste_zeile=zeichenzahlen[zeichenzahlen.length-1];
+    var neue_breite=parseInt(zeichenbreite)*parseInt(laengste_zeile)+2*parseInt(startposition_x);
+    //alert('Zeilenzahl='+zeilenzahl+', erste Y-Startposition='+startposition_y+', neue Höhe='+neue_hoehe+', neue Breite='+neue_breite);
+    canvas.setAttribute('width', neue_breite, 0);
+    /* Neuen Canvas-Context füllen */
+    var neuer_context=canvas.getContext('2d');
+    neuer_context.fillStyle='black';
+    neuer_context.font=schriftgrad+'px monospace'; //DejaVu Sans Mono
+    for (i=0; i < zeilen.length; i++) {
+        //alert(zeilen[i]);
+        neuer_context.fillText(zeilen[i], startposition_x, startposition_y);
+        startposition_y=parseInt(startposition_y)+parseInt(schriftgrad)+parseInt(abstand_zeilen);
+        //alert(startposition_y);
+    }
+    var dataURL=canvas.toDataURL();
+    var neues_bild=window.open(dataURL,'Druckansicht');
+}
+
+function Numsort (a, b) {
+      return a - b;
+}
+
+
+
+
+var monosaccharide = { // ANFANG monosaccharide
+'-':{
+vn:'-',
+fp:'\
+-\
+'
+},
+
+/*******************************************************************************
+**                              Triosen                                       **
+*******************************************************************************/
+/* Aldotriosen */
+'D-Glycerinaldehyd':{
+vn:'(2R)-2,3-Dihydroxypropanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Glycerinaldehyd':{
+vn:'(2S)-2,3-Dihydroxypropanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/*******************************************************************************
+**                             Tetrosen                                       **
+*******************************************************************************/
+/* Aldotetrosen */
+'D-Erythrose':{
+vn:'(2R,3R)-2,3,4-Trihydroxybutanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Erythrose':{
+vn:'(2S,3S)-2,3,4-Trihydroxybutanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Threose':{
+vn:'(2S,3R)-2,3,4-Trihydroxybutanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Threose':{
+vn:'(2R,3S)-2,3,4-Trihydroxybutanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/* Ketotetrosen */
+'D-Erythrulose':{
+vn:'(3R)-1,3,4-Trihydroxybutan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Erythrulose':{
+vn:'(3S)-1,3,4-Trihydroxybutan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/*******************************************************************************
+**                             Pentosen                                       **
+*******************************************************************************/
+/* Aldopentosen */
+'D-Ribose':{
+vn:'(2R,3R,4R)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Ribose':{
+vn:'(2S,3S,4S)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Arabinose':{
+vn:'(2S,3R,4R)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Arabinose':{
+vn:'(2R,3S,4S)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Xylose':{
+vn:'(2R,3S,4R)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Xylose':{
+vn:'(2S,3R,4S)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Lyxose':{
+vn:'(2S,3S,4R)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Lyxose':{
+vn:'(2R,3R,4S)-2,3,4,5-Tetrahydroxypentanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/* Ketopentosen */
+'D-Ribulose':{
+vn:'(3R,4R)-1,3,4,5-Tetrahydroxypentan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Ribulose':{
+vn:'(3S,4S)-1,3,4,5-Tetrahydroxypentan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Xylulose':{
+vn:'(3S,4R)-1,3,4,5-Tetrahydroxypentan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Xylulose':{
+vn:'(3R,4S)-1,3,4,5-Tetrahydroxypentan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/*******************************************************************************
+**                              Hexosen                                       **
+*******************************************************************************/
+/* Aldohexosen */
+'D-Allose':{
+vn:'(2R,3R,4R,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Allose':{
+vn:'(2S,3S,4S,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Altrose':{
+vn:'(2S,3R,4R,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Altrose':{
+vn:'(2R,3S,4S,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Glucose':{
+vn:'(2R,3S,4R,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Glucose':{
+vn:'(2S,3R,4S,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Mannose':{
+vn:'(2S,3S,4R,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Mannose':{
+vn:'(2R,3R,4S,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Gulose':{
+vn:'(2R,3R,4S,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Gulose':{
+vn:'(2S,3S,4R,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Idose':{
+vn:'(2S,3R,4S,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Idose':{
+vn:'(2R,3S,4R,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Galactose':{
+vn:'(2R,3S,4S,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Galactose':{
+vn:'(2S,3R,4R,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Talose':{
+vn:'(2S,3S,4S,5R)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Talose':{
+vn:'(2R,3R,4R,5S)-2,3,4,5,6-Pentahydroxyhexanal',
+fp:'\
+     CHO\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+/* Ketohexosen */
+'D-Psicose':{
+vn:'(3R,4R,5R)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Psicose':{
+vn:'(3S,4S,5S)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Fructose':{
+vn:'(3S,4R,5R)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Fructose':{
+vn:'(3R,4S,5S)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Sorbose':{
+vn:'(3R,4S,5R)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Sorbose':{
+vn:'(3S,4R,5S)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+},
+'D-Tagatose':{
+vn:'(3S,4S,5R)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+HO – C – H\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+     CH₂OH\
+'
+},
+'L-Tagatose':{
+vn:'(3R,4R,5S)-1,3,4,5,6-Pentahydroxyhexan-2-on',
+fp:'\
+     CH₂OH\n\
+     |   _\n\
+     C = O\n\
+     |   ‾\n\
+ H – C – OH\n\
+     |\n\
+ H – C – OH\n\
+     |\n\
+HO – C – H\n\
+     |\n\
+     CH₂OH\
+'
+}
+} // ENDE monosaccharide
+    </script>
+  </head>
+  <body onload="lade_seite();">
+    <table>
+      <tr>
+        <td class="nach_rechts nach_oben">Name:</td>
+        <td>
+    <form id="formular1" name="formular1">
+      <select id="auswahl1" name="auswahl1"
+              onchange="hole_aktuellen_index('formular1', 'auswahl1');"
+              title="Wähle ein offenkettiges Monosaccharid aus">
+        <option value="-">-</option>
+        <optgroup label="Triosen">
+          <optgroup label="&nbsp;&nbsp;Aldotriosen">
+            <option value="D-Glycerinaldehyd">D-Glycerinaldehyd</option>
+            <option value="L-Glycerinaldehyd">L-Glycerinaldehyd</option>
+          </optgroup>
+        </optgroup>
+        <optgroup label="Tetrosen">
+          <optgroup label="&nbsp;&nbsp;Aldotetrosen">
+            <option value="D-Erythrose">D-Erythrose</option>
+            <option value="L-Erythrose">L-Erythrose</option>
+            <option value="D-Threose">D-Threose</option>
+            <option value="L-Threose">L-Threose</option>
+          </optgroup>
+          <optgroup label="&nbsp;&nbsp;Ketotetrosen">
+            <option value="D-Erythrulose">D-Erythrulose</option>
+            <option value="L-Erythrulose">L-Erythrulose</option>
+          </optgroup>
+        </optgroup>
+        <optgroup label="Pentosen">
+          <optgroup label="&nbsp;&nbsp;Aldopentosen">
+            <option value="D-Ribose">D-Ribose</option>
+            <option value="L-Ribose">L-Ribose</option>
+            <option value="D-Arabinose">D-Arabinose</option>
+            <option value="L-Arabinose">L-Arabinose</option>
+            <option value="D-Xylose">D-Xylose</option>
+            <option value="L-Xylose">L-Xylose</option>
+            <option value="D-Lyxose">D-Lyxose</option>
+            <option value="L-Lyxose">L-Lyxose</option>
+          </optgroup>
+          <optgroup label="&nbsp;&nbsp;Ketopentosen">
+            <option value="D-Ribulose">D-Ribulose</option>
+            <option value="L-Ribulose">L-Ribulose</option>
+            <option value="D-Xylulose">D-Xylulose</option>
+            <option value="L-Xylulose">L-Xylulose</option>
+          </optgroup>
+        </optgroup>
+        <optgroup label="Hexosen">
+          <optgroup label="&nbsp;&nbsp;Aldohexosen">
+            <option value="D-Allose">D-Allose</option>
+            <option value="L-Allose">L-Allose</option>
+            <option value="D-Altrose">D-Altrose</option>
+            <option value="L-Altrose">L-Altrose</option>
+            <option value="D-Glucose">D-Glucose</option>
+            <option value="L-Glucose">L-Glucose</option>
+            <option value="D-Mannose">D-Mannose</option>
+            <option value="L-Mannose">L-Mannose</option>
+            <option value="D-Gulose">D-Gulose</option>
+            <option value="L-Gulose">L-Gulose</option>
+            <option value="D-Idose">D-Idose</option>
+            <option value="L-Idose">L-Idose</option>
+            <option value="D-Galactose">D-Galactose</option>
+            <option value="L-Galactose">L-Galactose</option>
+            <option value="D-Talose">D-Talose</option>
+            <option value="L-Talose">L-Talose</option>
+          </optgroup>
+          <optgroup label="&nbsp;&nbsp;Ketohexosen">
+            <option value="D-Psicose">D-Psicose</option>
+            <option value="L-Psicose">L-Psicose</option>
+            <option value="D-Fructose">D-Fructose</option>
+            <option value="L-Fructose">L-Fructose</option>
+            <option value="D-Sorbose">D-Sorbose</option>
+            <option value="L-Sorbose">L-Sorbose</option>
+            <option value="D-Tagatose">D-Tagatose</option>
+            <option value="L-Tagatose">L-Tagatose</option>
+          </optgroup>
+        </optgroup>
+      </select>
+    </form>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">Vollständiger&nbsp;Name:</td>
+        <td><div id="vollstaendiger_name" onclick="suche_name();">-</div></td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">Fischer-Projektion:</td>
+        <td><pre><div id="fischerprojektion" style="font-family:monospace;font-size:14pt;">-</div></pre></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><span id="linkbereich"></span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="button" title="PNG-Export" value="PNG-Export" onclick="exportiere();" /><br>
+            <canvas id="zeichenflaeche_versteckt"
+                    width="270" 
+                    height="270" 
+                    style="background-color:white;" 
+                    hidden="hidden"></canvas>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

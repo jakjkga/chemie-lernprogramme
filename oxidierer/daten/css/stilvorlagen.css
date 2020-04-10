@@ -1,0 +1,28 @@
+h1,h2,h3,h4,h5,h6   {color:#369; font-family:Arial,Helvetica,sans-serif;}
+table               {font-family:Arial; font-size:10pt;}
+.rot                {color:red; font-weight:bold;}
+.blau               {color:blue; font-weight:bold;}
+.gruen              {color:green; font-weight:bold;}
+.orangefarben       {color:orange; font-weight:bold;}
+.nach_oben          {vertical-align:top;}
+.nach_unten         {vertical-align:bottom;}
+.nach_links         {text-align:left;}
+.nach_rechts        {text-align:right;}
+.zentriert          {text-align:center;}
+.system             {background-color:#ffffff;
+                     border-style:hidden;
+                     border-color:#f5f5f5;
+                     border-width:0;}
+.klein              {font-family:Arial; font-size:10pt;}
+select              {background-color:#ffffff;}
+label:hover,
+select option:hover  {color:cornflowerblue;cursor:pointer;}
+#textbereich {
+  background-color:#ffffff; 
+  color:black; 
+  border: 1px solid #bebebe; 
+  font-size:14px; 
+  width: 680px; 
+  max-width:680px; 
+  padding:2px;
+}

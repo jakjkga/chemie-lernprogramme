@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Polymerer - online</title>
+    <meta name="description" content="Der Polymerer zeigt die Synthese und den Aufbau für Naturstoffe wie Proteine, Kohlenhydrate und Nukleinsäuren sowie für alle Kunststoffklassen. " />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Peptidbindung, Glycosidische Bindung, Polyester, Polymide, Polyurethane, Polykondensation, Polymerisation, Polyaddition, Nukleinsäuren, DNA, RNA, Polysaccharide, Naturstoffe, Kunststoffe, Nährstoffe, Nährestoffbausteine, Primärstruktur, Sekundärstruktur, Tertiärstruktur, Doppelhelix" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          <label for="s_monomere">Monomere</label>:
+        </td>
+        <td>
+          <select id="s_monomere" onchange="setze_monomere()">
+            <optgroup label="Naturstoffe - Proteine">
+              <option value="1_lys_ala">Lysin und Alanin</option>
+              <option value="2_ala_lys">Alanin und Lysin</option>
+            </optgroup>
+            <optgroup label="Naturstoffe - Kohlenhydrate">
+              <option value="3_adglucopyr">α-D-Glucopyranose</option>
+              <option value="4_bdglucopyr">β-D-Glucopyranose</option>
+            </optgroup>
+            <optgroup label="Naturstoffe - Nukleinsäuren">
+              <option value="3b_adenin_uracil">Adenosinmoniphosphat (mit der Base Adenin) und Uridinmonophosphat (mit der Base Uracil)</option>
+              <option value="3c_thymin_adenin">Desoxythymidinmonophosphat (mit der Base Thymin) und Desoxyadenosinmonophosphat (mit der Base Adenin)</option>
+            </optgroup>
+            <optgroup label="Kunststoffe - halbsynthetische Kunststoffe">
+              <option value="5_methylbutadien">2-Methylbuta-1,3-dien (Isopren, Vinylethen)</option>
+              <option value="6_cellulose_nitriersaeure">β-D-Glucopyranose und Nitriersäure</option>
+            </optgroup>
+            <optgroup label="Kunststoffe - Polymerisations-Kunststoffe">
+              <option value="7_ethen">Ethen (Ethylen)</option>
+              <option value="8_chlorethen">Chlorethen (Vinylchlorid)</option>
+              <option value="9_tetrafluorethen">Tetrafluorethen (Tetrafluorethylen)</option>
+              <option value="10_phenylethen">Phenylethen (Styrol)</option>
+              <option value="11_propen">Propen (Propylen)</option>
+              <option value="12_acrylnitril">Acrylnitril (Vinylcyanid)</option>
+              <option value="13_acrylsaeuremethylester">Acrylsäuremthylester (Methacrylat)</option>
+            </optgroup>
+            <optgroup label="Kunststoffe - Polykondensations-Kunststoffe">
+              <option value="14_hexansaeure_diaminohexan">Hexandisäure und 1,6-Diaminohexan</option>
+              <option value="15_aminohexansaeure">6-Aminohexansäure</option>
+              <option value="16_terephthalsaeure_ethandiol">Terephthalsäure und Ethan-1,2-diol</option>
+              <option value="17_harnstoff_formaldehyd">Harnstoff und Formaldehyd</option>
+            </optgroup>
+            <optgroup label="Kunststoffe - Polyadditions-Kunststoffe">
+              <option value="18_diisocyanatohexan_butandiol">1,6-Diisocyanatohexan und But-1,4-diol</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <img id="img_monomere" src="#" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Bausteintyp:
+        </td>
+        <td>
+          <span id="span_bausteintyp"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Verknüpfungsvorgang:
+        </td>
+        <td>
+          <span id="span_verknuepfungsvorgang"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Verknüpfungsgruppe:
+        </td>
+        <td>
+          <span id="span_verknuepfungsgruppe"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Name&nbsp;des&nbsp;Polymers:
+        </td>
+        <td>
+          <span id="span_name_des_polymers"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <img id="img_polymer" src="#" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Verzweigungstyp:
+        </td>
+        <td>
+          <span id="span_verzweigungstyp"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <a id="a_informationsseite" href="#" target="_blank">Informationsseite</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elektronenpaar Abstoßer</title>
+<!--
+Copyright (C) 2011  Joachim Jakob
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+    <meta charset="UTF-8">
+    <meta name="AUTHOR" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <link rel="stylesheet" 
+          type="text/css" 
+          href="daten/css/stilvorlagen.css" />
+    <script type="text/javascript" 
+            src="daten/scripts/textbausteine.js"></script>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" />
+  </head>
+  <body onload="lade_seite();"><!-- onload="lade_seite();" -->
+    <table border="0">
+      <tr><!-- Zeile 1: Auswahl Beispiele -->
+        <td class="nach_unten nach_rechts" style="padding-top:6px;">
+          Beispiel:
+        </td>
+        <td>
+          <form id="SF" name="SF">
+            <select id="SF_auswahl" onchange="hole_aktuellen_index('SF', 'SF_auswahl');">
+              <option value="-">&nbsp;</option>
+              <optgroup label="AL₁">
+                <option value="H₂">H₂</option>
+              </optgroup>
+              <optgroup label="AL₁E₁">
+                <option value="N₂">N₂</option>
+              </optgroup>
+              <optgroup label="AL₁E₂">
+                <option value="O₂">O₂</option>
+              </optgroup>
+              <optgroup label="AL₁E₃">
+                <option value="F₂">F₂</option>
+                <option value="Cl₂">Cl₂</option>
+                <option value="Br₂">Br₂</option>
+                <option value="I₂">I₂</option>
+              </optgroup>
+              <optgroup label="AL₂">
+                <option value="CO₂">CO₂</option>
+                <option value="NO₂⁺">NO₂⁺</option>
+                <option value="HCN">HCN</option>
+                <option value="CHCH">CHCH</option>
+              </optgroup>
+              <optgroup label="AL₂E₁">
+                <option value="SO₂">SO₂</option>
+                <option value="NO₂">NO₂</option>
+              </optgroup>
+              <optgroup label="AL₂E₂">
+                <option value="H₂O">H₂O</option>
+                <option value="H₂S">H₂S</option>
+              </optgroup>
+              <optgroup label="AL₂E₃">
+                <option value="I₃⁻">I₃⁻</option>
+              </optgroup>
+              <optgroup label="AL₃">
+                <option value="H₂CO₃">H₂CO₃</option>
+                <option value="CO₃²⁻">CO₃²⁻</option>
+                <option value="CHOH">CHOH</option>
+                <option value="HCOOH">HCOOH</option>
+                <option value="HNO₃">HNO₃</option>
+                <option value="NO₃⁻">NO₃⁻</option>
+                <option value="BF₃">BF₃</option>
+                <option value="SO₃">SO₃</option>
+              </optgroup>
+              <optgroup label="AL₃E₁">
+                <option value="NH₃">NH₃</option>
+                <option value="H₃O⁺">H₃O⁺</option>
+                <option value="PCl₃">PCl₃</option>
+                <option value="H₂SO₃">H₂SO₃</option>
+                <option value="SO₃²⁻">SO₃²⁻</option>
+              </optgroup>
+              <optgroup label="AL₄">
+                <option value="CH₄">CH₄</option>
+                <option value="NH₄⁺">NH₄⁺</option>
+                <option value="H₂SO₄">H₂SO₄</option>
+                <option value="SO₄²⁻">SO₄²⁻</option>
+                <option value="H₃PO₄">H₃PO₄</option>
+                <option value="PO₄³⁻">PO₄³⁻</option>
+                <option value="POCl₃">POCl₃</option>
+              </optgroup>
+              <optgroup label="AL₅">
+                <option value="PF₅">PF₅</option>
+              </optgroup>
+              <optgroup label="AL₆">
+                <option value="SF₆">SF₆</option>
+              </optgroup>
+            </select>
+          </form>
+        </td>
+      </tr>
+      <tr><!-- Zeile 2: Name: -->
+         <td class="nach_rechts">
+          Name:
+        </td>
+        <td>
+          <a id="wp_link" 
+             href=""
+             target="_blank" 
+             style="text-decoration:none;"
+             onmouseover="document.getElementById('name_des_molekuels').style.backgroundColor='#aef';"
+             onmouseout="document.getElementById('name_des_molekuels').style.backgroundColor='white';"
+             title="Wikipedialink zum Molekül">
+          <div id="name_des_molekuels" class="beschriftungsfeld_lang">&nbsp;</div>
+          </a>
+        </td>
+      </tr>
+      <tr><!-- Zeile 3: Zahl der ans zentrale Atom A gebundenen Atome (Liganden) L: -->
+         <td class="nach_rechts">
+          Zahl der ans zentrale <u>A</u>tom <strong>A</strong> gebundenen 
+          <u>L</u>iganden <span class="orangefarben">L</span>:
+        </td>
+        <td>
+          <div id="zahl_liganden" class="beschriftungsfeld orangefarben">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 4: Zahl der freien Elektronenpaare: -->
+         <td class="nach_rechts">
+          Zahl der freien <u>E</u>lektronenpaare <span class="gruen">E</span>:
+        </td>
+        <td>
+          <div id="zahl_freie_ep" class="beschriftungsfeld gruen">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 5: Typ: -->
+         <td class="nach_rechts">
+          Typ:
+        </td>
+        <td>
+          <div id="typ" class="beschriftungsfeld" style="font-weight:bold;">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 6: Gesamtzahl der benötigten Plätze: -->
+         <td class="nach_rechts">
+          Gesamtzahl der benötigten Plätze:
+        </td>
+        <td>
+          <div id="gesamtzahl_plaetze" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 7: Zahl der Einfachbindungen: -->
+         <td class="nach_rechts">
+          Zahl der Einfachbindungen:
+        </td>
+        <td>
+          <div id="zahl_einfachbindungen" class="beschriftungsfeld orangefarben">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 8: Zahl der Doppelbindungen: -->
+         <td class="nach_rechts">
+          Zahl der Doppelbindungen:
+        </td>
+        <td>
+          <div id="zahl_doppelbindungen" class="beschriftungsfeld orangefarben">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 9: Zahl der Dreifachbindungen: -->
+         <td class="nach_rechts">
+          Zahl der Dreifachbindungen:
+        </td>
+        <td>
+          <div id="zahl_dreifachbindungen" class="beschriftungsfeld orangefarben">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 10: Gesamtzahl der Valenzelektronen: -->
+         <td class="nach_rechts">
+          Gesamtzahl der Valenzelektronen:
+        </td>
+        <td>
+          <div id="gesamtzahl_valenzelektronen" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 11: Räumlicher Bau mit freien Elektronenpaaren: -->
+         <td class="nach_rechts">
+          Räumlicher Bau mit freien Elektronenpaaren:
+        </td>
+        <td>
+          <div id="raeumlicher_bau_mit_freien_ep" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 12: Räumlicher nur mit Liganden: -->
+         <td class="nach_rechts">
+          Räumlicher Bau nur mit Liganden:
+        </td>
+        <td>
+          <div id="raeumlicher_bau_mit_liganden" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 13: Winkel freie Elektronenpaare - Zentralatom - Ligand: -->
+         <td class="nach_rechts">
+          Winkel <span class="gruen">E</span>–<strong>A</strong>–<span class="orangefarben">L</span>:
+        </td>
+        <td>
+          <div id="winkel_eal" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 14: Winkel Ligand - Zentralatom - Ligand: -->
+         <td class="nach_rechts">
+          Bindungswinkel <span class="orangefarben">L</span>–<strong>A</strong>–<span class="orangefarben">L</span>:
+        </td>
+        <td>
+          <div id="winkel_lal" class="beschriftungsfeld">&nbsp;</div>
+        </td>
+      </tr>
+      <tr><!-- Zeile 15: Hybridisierung: -->
+         <td class="nach_rechts ausgeblendet">
+          Hybridisierung:
+        </td>
+        <td>
+          <div id="hybridisierung" class="beschriftungsfeld ausgeblendet" style="background-color:#f5f5f5;color:darkgrey;">&nbsp;</div>
+        </td>
+      </tr>
+    </table>
+    <table border="0">
+      <tr>
+        <td>
+          <img id="abb_st"
+               name="abb_st"
+               src="daten/img/start_st.png"
+               width="200" height="200" />
+        </td>
+        <td>
+          <img id="abb_3d"
+               name="abb_3d"
+               src="daten/img/start_3d.png"
+               width="200" height="200" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form name="OAF"
+                id="OAF" >
+          <input id="OA_1"
+                 type="radio"
+                 name="OA"
+                 title="Normalansicht"
+                 value=""
+                 onclick="oktett_auswahl(this.value);hole_aktuellen_index('SF', 'SF_auswahl');" />
+                 <label for="OA_1">Normalansicht, passend zu den <br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oben angegebenen Zahlenwerten
+          </label><br />
+          <input id="OA_2"
+                 type="radio"
+                 name="OA"
+                 title="Magnesium mit Sauerstoff"
+                 value="oktett_"
+                 onclick="oktett_auswahl(this.value);hole_aktuellen_index('SF', 'SF_auswahl');">
+                 <label for="OA_2">Oktettregel strenger erfüllt, <br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dafür mit Ladungstrennung
+          </label><br />
+          </form>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

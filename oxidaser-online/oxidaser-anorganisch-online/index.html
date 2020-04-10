@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Oxidaser anorganische Redoxrekationen - online</title>
+    <meta name="description" content="Der Oxidaser generiert Redoxgleichungen zu anorganische Redoxreaktionen wie z.B. Salzbildungen oder Verdrängungsreaktionen der Metalle und Nichtmetalle sowie Nichtmetalloxidanionen bei unterschiedlichem pH-Wert." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Ionen, Verdrängungsreaktionen, Metalle, Nichtmetalle, Reduktionsmittel, Oxidationsmittel" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table id="table_formularinhalt">
+      <tr>
+        <td class="zentriert">
+          <label for="s_redm" class="redm">Redm</label>
+        </td>
+        <td class="zentriert">
+          <label for="s_oxm" class="oxm">Oxm</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select id="s_redm" size="11" onchange="setze_redm()" class="zentriert">
+            <option value="Natrium_Natriumion">Natrium</option>
+            <option value="Wasserstoff_Wasser">Wasserstoff</option>
+            <option value="Zink_Zink(II)-ion">Zink</option>
+            <option value="Wasserstoff_Oxoniumion">Wasserstoff</option>
+            <option value="Kupfer_Kupfer(II)-ion">Kupfer</option>
+            <option value="Mangan(IV)-oxid_Permanganation">Mangan(IV)-oxid</option>
+            <option value="Chrom(III)-ion_Chromation">Chrom(III)-ion</option>
+            <option value="Iodidion_Iod">Iodidion</option>
+            <option value="Bromidion_Brom">Bromidion</option>
+            <option value="Chloridion_Chlor">Chloridion</option>
+            <option value="Mangan(II)-ion_Permanganation">Mangan(II)-ion</option>
+          </select>
+        </td>
+        <td>
+          <select id="s_oxm" size="11" onchange="setze_oxm()" class="zentriert">
+            <option value="Natrium_Natriumion_sauer">Natriumion</option>
+            <option value="Wasserstoff_Wasser_alkalisch">Wasser (alkalisch)</option>
+            <option value="Zink_Zink(II)-ion_sauer">Zink(II)-ion</option>
+            <option value="Wasserstoff_Oxoniumion_sauer">Oxoniumion (sauer)</option>
+            <option value="Kupfer_Kupfer(II)-ion_alkalisch">Kupfer(II)-ion</option>
+            <option value="Mangan(IV)-oxid_Permanganation_alkalisch">Permanganation (alkalisch)</option>
+            <option value="Chrom(III)-ion_Chromation_alkalisch">Chromation (alkalisch)</option>
+            <option value="Iodidion_Iod_sauer">Iod</option>
+            <option value="Bromidion_Brom_sauer">Brom</option>
+            <option value="Chloridion_Chlor_sauer">Chlor</option>
+            <option value="Mangan(II)-ion_Permanganation_sauer">Permanganation (sauer)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <!-- <input type="button" value="ermittle Redoxgleichung"  onclick="ermittle()" /> -->
+      <input type="button" value="Zurücksetzen" onclick="zuruecksetzen()" />
+    </p>
+    <textarea id="t_ausgabe" cols="80" rows="3"></textarea>
+    <table id="table_ausgabe"></table>
+  </body>
+</html>

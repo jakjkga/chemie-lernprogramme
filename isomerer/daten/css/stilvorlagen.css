@@ -1,0 +1,71 @@
+body, table {
+  background-color:#ffffff;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+input, select {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+input[type=text], select {
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  padding:4px;
+}
+select {
+  background-color:#ffffff;
+  min-width:64px;
+}
+select:hover {
+  border-color:cornflowerblue;
+  cursor:pointer;
+}
+#textbereich {
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+.rot                {color:red; font-weight:bold;}
+.blau               {color:blue; font-weight:bold;}
+.gruen              {color:green; font-weight:bold;}
+.orangefarben       {color:orange; font-weight:bold;}
+.nach_oben          {vertical-align:bottom;}
+.nach_unten         {vertical-align:top;}
+.nach_links         {text-align:left;}
+.nach_rechts        {text-align:right;}
+.zentriert          {text-align:center;}
+.system             {background-color:#e6e6e6;
+                     border-style:hidden;
+                     border-color:#e6e6e6;
+                     border-width:0;}
+.klein              {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11pt;}
+.summenformel       {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; 
+                     font-size:14pt;}
+.textausgabe        {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11pt;
+                     background-color:white; 
+                     color:red; 
+                     border: 1px solid white; 
+                     width: 680px;
+                     min-height:420px;
+                     padding-left:1px;
+                     padding-top:1px; 
+                     padding-right:1px; 
+                     padding-bottom:1px;}
+input.summenformel[disabled] {
+                     background:white;
+                     color:black;}
+.ausgabetabelle      {width:100%;
+                      table-layout:auto}
+ausgabetabelle.td    {border:1px solid #000; 
+                      vertical-align:top; 
+                      overflow:hidden; 
+                      text-align: left;}

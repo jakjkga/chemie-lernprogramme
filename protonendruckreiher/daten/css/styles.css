@@ -1,0 +1,110 @@
+body, table {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  background-color:#ffffff;
+}
+table, td {
+  border-collapse:collapse;
+  border-style:none;
+  padding:0px;
+}
+td.s {
+  color:red;
+  font-weight:bold;
+  text-align:center;
+}
+td.b {
+  color:blue;
+  font-weight:bold;
+  text-align:center;
+}
+.ampholyt {
+  border-color:#f60 !important;
+  color:#f60 !important;
+}
+.ampholyt:hover {
+  background-color:#ffe6d5 !important;
+}
+.nach_rechts {
+  text-align:right;
+}
+.knopf {
+  border-style:solid;
+  border-width:1px;
+  /*border-radius:5px;*/
+  width:180px;
+  padding-top:2px;
+  padding-left:4px;
+  padding-right:4px;
+  padding-bottom:2px;
+  background-color:#fff;
+  margin-top:1px;
+  margin-bottom:1px;
+}
+.knopf:hover {
+  font-weight:bold;
+  cursor:pointer;
+}
+.saeure_knopf {
+  color:red;
+  border-color:red;
+  margin-right:1px;
+}
+.basen_knopf {
+  color:blue;
+  border-color:blue;
+  margin-left:1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.saeure_knopf:hover {
+  background-color:#ffd5d5;
+}
+.basen_knopf:hover {
+  background-color:#d5e5ff;
+}
+.gerade_aktiv_saeure,
+.gerade_aktiv_saeure:hover {
+  font-weight:bold;
+  color:white;
+  background-color:red;
+}
+.gerade_aktiv_base,
+.gerade_aktiv_base:hover {
+  font-weight:bold;
+  color:white;
+  background-color:blue;
+}
+input#gleichung {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:20px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  /*border-radius:5px;*/
+  padding:4px;
+  width:480px;
+}
+textarea#in_worten {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  /*border-radius:5px;*/
+  padding:4px;
+  width:480px;
+}
+input.information {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  /*border-radius:5px;*/
+  padding:2px;
+  width:60px;
+  text-align:right;
+  padding-right:4px;
+}

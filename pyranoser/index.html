@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Pyranoser</title>
+    <meta charset="utf-8">
+    <!-- <script type="text/javascript" src="daten/js/funktionen.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="daten/css/style.css" /> -->
+  </head>
+  <body>
+    <div title="klicke markierte Textbereiche der Grafik an!">
+      <!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+     <svg xmlns="http://www.w3.org/2000/svg" width="640" height="520"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<!-- ANFANG Skript -->
+<script type="text/ecmascript">
+<![CDATA[
+  function wer_bin_ich(wer) {
+      alert(wer);
+}
+
+function wechsle(wen) {
+    var eigener_wert=String(document.getElementById(wen).firstChild.data).trim();
+    var wen=String(wen).trim();
+    var schluessel1=String(wen+'_'+eigener_wert);
+    //alert('schluessel1 = '+schluessel1+' Typ ='+typeof(schluessel1));
+    
+    // Alle Textobjekte zugreifbar machen, es steht dann die Eigenschaft data
+    // sowie die Methoden deleteData(Anfang, Ende) sowie insertData(Anfang, NeueDaten)
+    // zur Verfügung
+    var c1o=document.getElementById('c1_oben').firstChild;
+    var c1u=document.getElementById('c1_unten').firstChild;
+    var c2o=document.getElementById('c2_oben').firstChild;
+    var c2u=document.getElementById('c2_unten').firstChild;
+    var c3o=document.getElementById('c3_oben').firstChild;
+    var c3u=document.getElementById('c3_unten').firstChild;
+    var c4o=document.getElementById('c4_oben').firstChild;
+    var c4u=document.getElementById('c4_unten').firstChild;
+    
+    //TODO: 1. aktuelles Paar tauschen
+    switch (schluessel1) {
+        //C1
+        case 'c1_oben_OH':
+            //alert('c1_oben war OH');
+            c1o.deleteData(0, c1o.length);
+            c1o.insertData(0, 'H')
+            c1u.deleteData(0, c1u.length);
+            c1u.insertData(0, 'OH')
+            break;
+        case 'c1_oben_H':
+            //alert('c1_oben war H');
+            c1o.deleteData(0, c1o.length);
+            c1o.insertData(0, 'OH')
+            c1u.deleteData(0, c1u.length);
+            c1u.insertData(0, 'H')     
+            break;
+        case 'c1_unten_OH':
+            //alert('c1_oben war OH');
+            c1o.deleteData(0, c1o.length);
+            c1o.insertData(0, 'OH')
+            c1u.deleteData(0, c1u.length);
+            c1u.insertData(0, 'H')
+            break;
+        case 'c1_unten_H':
+            //alert('c1_oben war H');
+            c1o.deleteData(0, c1o.length);
+            c1o.insertData(0, 'H')
+            c1u.deleteData(0, c1u.length);
+            c1u.insertData(0, 'OH')     
+            break;
+        //C2
+        case 'c2_oben_OH':
+            //alert('c2_oben war OH');
+            c2o.deleteData(0, c2o.length);
+            c2o.insertData(0, 'H')
+            c2u.deleteData(0, c2u.length);
+            c2u.insertData(0, 'OH')
+            break;
+        case 'c2_oben_H':
+            //alert('c2_oben war H');
+            c2o.deleteData(0, c2o.length);
+            c2o.insertData(0, 'OH')
+            c2u.deleteData(0, c2u.length);
+            c2u.insertData(0, 'H')     
+            break;
+        case 'c2_unten_OH':
+            //alert('c2_oben war OH');
+            c2o.deleteData(0, c2o.length);
+            c2o.insertData(0, 'OH')
+            c2u.deleteData(0, c2u.length);
+            c2u.insertData(0, 'H')
+            break;
+        case 'c2_unten_H':
+            //alert('c2_oben war H');
+            c2o.deleteData(0, c2o.length);
+            c2o.insertData(0, 'H')
+            c2u.deleteData(0, c2u.length);
+            c2u.insertData(0, 'OH')     
+            break;
+        //C3
+        case 'c3_oben_OH':
+            //alert('c3_oben war OH');
+            c3o.deleteData(0, c3o.length);
+            c3o.insertData(0, 'H')
+            c3u.deleteData(0, c3u.length);
+            c3u.insertData(0, 'OH')
+            break;
+        case 'c3_oben_H':
+            //alert('c3_oben war H');
+            c3o.deleteData(0, c3o.length);
+            c3o.insertData(0, 'OH')
+            c3u.deleteData(0, c3u.length);
+            c3u.insertData(0, 'H')     
+            break;
+        case 'c3_unten_OH':
+            //alert('c3_oben war OH');
+            c3o.deleteData(0, c3o.length);
+            c3o.insertData(0, 'OH')
+            c3u.deleteData(0, c3u.length);
+            c3u.insertData(0, 'H')
+            break;
+        case 'c3_unten_H':
+            //alert('c3_oben war H');
+            c3o.deleteData(0, c3o.length);
+            c3o.insertData(0, 'H')
+            c3u.deleteData(0, c3u.length);
+            c3u.insertData(0, 'OH')     
+            break;
+        //C4
+        case 'c4_oben_OH':
+            //alert('c4_oben war OH');
+            c4o.deleteData(0, c4o.length);
+            c4o.insertData(0, 'H')
+            c4u.deleteData(0, c4u.length);
+            c4u.insertData(0, 'OH')
+            break;
+        case 'c4_oben_H':
+            //alert('c4_oben war H');
+            c4o.deleteData(0, c4o.length);
+            c4o.insertData(0, 'OH')
+            c4u.deleteData(0, c4u.length);
+            c4u.insertData(0, 'H')     
+            break;
+        case 'c4_unten_OH':
+            //alert('c4_oben war OH');
+            c4o.deleteData(0, c4o.length);
+            c4o.insertData(0, 'OH')
+            c4u.deleteData(0, c4u.length);
+            c4u.insertData(0, 'H')
+            break;
+        case 'c4_unten_H':
+            //alert('c4_oben war H');
+            c4o.deleteData(0, c4o.length);
+            c4o.insertData(0, 'H')
+            c4u.deleteData(0, c4u.length);
+            c4u.insertData(0, 'OH')     
+            break;
+        
+        /*
+        default:
+            alert('die anderen Fälle liegen nicht vor');
+        */
+    }
+    
+    // 2. alle nach der Veränderung aktuellen Werte holen
+    var schluessel2=c1o.data.trim()+'_'+c1u.data.trim()+'_-_'+c2o.data.trim()+'_'+c2u.data.trim()+'_-_'+c3o.data.trim()+'_'+c3u.data.trim()+'_-_'+c4o.data.trim()+'_'+c4u.data.trim();
+    
+    //TODO: 3. über Schlüssel Namen holen
+    // D-Aldo-Hexosen in der Pyranose-Form, jeweils α- und β-Form
+    /*
+    Quellen:
+    http://de.wikipedia.org/wiki/Allose
+    http://de.wikipedia.org/wiki/Altrose
+    http://de.wikipedia.org/wiki/Glucose
+    http://de.wikipedia.org/wiki/Mannose
+    http://de.wikipedia.org/wiki/Gulose
+    http://de.wikipedia.org/wiki/Idose
+    http://de.wikipedia.org/wiki/Galactose
+    http://de.wikipedia.org/wiki/Talose
+    */  
+    var pyranosen={ // ANFANG Pyranosen
+        'OH_H_-_H_OH_-_H_OH_-_H_OH':'β-D-Allopyranose',
+        'H_OH_-_H_OH_-_H_OH_-_H_OH':'α-D-Allopyranose',    
+        'OH_H_-_OH_H_-_H_OH_-_H_OH':'β-D-Altropyranose',
+        'H_OH_-_OH_H_-_H_OH_-_H_OH':'α-D-Altropyranose', 
+        'OH_H_-_H_OH_-_OH_H_-_H_OH':'β-D-Glucopyranose',
+        'H_OH_-_H_OH_-_OH_H_-_H_OH':'α-D-Glucopyranose',    
+        'OH_H_-_OH_H_-_OH_H_-_H_OH':'β-D-Mannopyranose',
+        'H_OH_-_OH_H_-_OH_H_-_H_OH':'α-D-Mannopyranose', 
+        'OH_H_-_H_OH_-_H_OH_-_OH_H':'β-D-Gulopyranose',
+        'H_OH_-_H_OH_-_H_OH_-_OH_H':'α-D-Gulopyranose',  
+        'OH_H_-_OH_H_-_H_OH_-_OH_H':'β-D-Idopyranose',
+        'H_OH_-_OH_H_-_H_OH_-_OH_H':'α-D-Idopyranose', 
+        'OH_H_-_H_OH_-_OH_H_-_OH_H':'β-D-Galactopyranose',
+        'H_OH_-_H_OH_-_OH_H_-_OH_H':'α-D-Galactopyranose',   
+        'OH_H_-_OH_H_-_OH_H_-_OH_H':'β-D-Talopyranose',
+        'H_OH_-_OH_H_-_OH_H_-_OH_H':'α-D-Talopyranose',
+    } // ENDE Pyranosen
+    //alert(schluessel2);
+    //alert(pyranosen[schluessel2]);
+    var name_der_pyranose=pyranosen[schluessel2];
+    var ausgabe=document.getElementById('ausgabefeld').firstChild;
+    ausgabe.deleteData(0, ausgabe.length);
+    ausgabe.insertData(0, name_der_pyranose);
+    var linkenden={ // ANFANG Linkenden
+        'OH_H_-_H_OH_-_H_OH_-_H_OH':'Allose',
+        'H_OH_-_H_OH_-_H_OH_-_H_OH':'Allose',    
+        'OH_H_-_OH_H_-_H_OH_-_H_OH':'Altrose',
+        'H_OH_-_OH_H_-_H_OH_-_H_OH':'Altrose', 
+        'OH_H_-_H_OH_-_OH_H_-_H_OH':'Glucose',
+        'H_OH_-_H_OH_-_OH_H_-_H_OH':'Glucose',    
+        'OH_H_-_OH_H_-_OH_H_-_H_OH':'Mannose',
+        'H_OH_-_OH_H_-_OH_H_-_H_OH':'Mannose', 
+        'OH_H_-_H_OH_-_H_OH_-_OH_H':'Gulose',
+        'H_OH_-_H_OH_-_H_OH_-_OH_H':'Gulose',  
+        'OH_H_-_OH_H_-_H_OH_-_OH_H':'Idose',
+        'H_OH_-_OH_H_-_H_OH_-_OH_H':'Idose', 
+        'OH_H_-_H_OH_-_OH_H_-_OH_H':'Galactose',
+        'H_OH_-_H_OH_-_OH_H_-_OH_H':'Galactose',   
+        'OH_H_-_OH_H_-_OH_H_-_OH_H':'Talose',
+        'H_OH_-_OH_H_-_OH_H_-_OH_H':'Talose',
+    } // ENDE Linkenden
+    var linkende=linkenden[schluessel2];
+    var neuer_link='http://de.wikipedia.org/wiki/'+linkende;
+    document.getElementById('wp_link').setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', neuer_link);
+}
+]]>
+</script>
+<!-- ENDE Skript -->
+
+<!-- Textlink -->
+<a id="wp_link" xlink:href="http://de.wikipedia.org/wiki/Glucose" target="_blank">
+<!-- Ausgabetextfeld für den Namen der Pyranose -->
+<text id="ausgabefeld" 
+      x="200" y="500" 
+      style="font-size:22px;font-family:Arial;sans-serif;fill:cornflowerblue;text-decoration:none;">
+β-D-Glucopyranose
+</text>
+</a>
+
+<!-- ANFANG Haworth-Projektion -->
+
+<!-- Anomeres C-Atom -->
+<circle id="Anomeres, d.h. in der geschlossenen Ringform chirales C-Atom; Halbacetal" cx="580" cy="240" r="10" 
+        style="fill:#F00;" onclick="wer_bin_ich(this.id);" />
+
+<!-- Grundgerüst -->
+<polygon id="hauptring"
+         points="200,100 440,100 580,240 440,380 200,380 60,240"
+         style="stroke:black;stroke-width:3;fill:none" />
+<line id="c1_senkrecht" x1="580" y1="180" x2="580" y2="300" 
+      style="stroke:black;stroke-width:3;" />
+<line id="c2_senkrecht" x1="440" y1="300" x2="440" y2="440" 
+      style="stroke:black;stroke-width:3;" />
+<line id="c3_senkrecht" x1="200" y1="300" x2="200" y2="440" 
+      style="stroke:black;stroke-width:3;" />
+<line id="c4_senkrecht" x1="60" y1="180" x2="60" y2="300" 
+      style="stroke:black;stroke-width:3;" />
+<line id="c5_senkrecht" x1="200" y1="40" x2="200" y2="160" 
+      style="stroke:black;stroke-width:3;" />
+<rect id="ring-o_hintergrund" 
+      x="420" y="80" width="60" height="40" 
+      style="fill:white;" />
+<text id="Ring O-Atom der Alkoxy-Gruppe des Halbacetals" 
+      x="425" y="115" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:blue;"
+      onclick="wer_bin_ich(this.id);">
+O
+</text>
+<rect id="c5_unten" 
+      x="180" y="140" width="40" height="40" 
+      style="fill:white;" />
+<text id="H-Atom am chiralen C5-Atom" 
+      x="185" y="170" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wer_bin_ich(this.id);">
+H
+</text>
+<rect id="c6_hintergrund" 
+      x="180" y="15" width="140" height="40" 
+      style="fill:white;" />
+<text id="Nicht chirales C6-Atom; primärer Alkohol" 
+      x="185" y="45" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wer_bin_ich(this.id);">
+CH₂OH
+</text>
+
+<!-- Substituenten -->
+<!-- C1 -->
+<rect id="c1_oben_hintergrund" 
+      x="565" y="145" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c1_oben" 
+      x="570" y="180" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+OH
+</text>
+<rect id="c1_unten_hintergrund" 
+      x="565" y="290" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c1_unten" 
+      x="570" y="325" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+H
+</text>
+<!-- C2 -->
+<rect id="c2_oben_hintergrund" 
+      x="425" y="275" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c2_oben" 
+      x="430" y="310" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+H
+</text>
+<rect id="c2_unten_hintergrund" 
+      x="425" y="425" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c2_unten" 
+      x="430" y="455" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+OH
+</text>
+<!-- C3 -->
+<rect id="c3_oben_hintergrund" 
+      x="190" y="275" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c3_oben" 
+      x="195" y="310" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+OH
+</text>
+<rect id="c3_unten_hintergrund" 
+      x="190" y="425" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c3_unten" 
+      x="195" y="455" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+H
+</text>
+<!-- C4 -->
+<rect id="c4_oben_hintergrund" 
+      x="45" y="145" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c4_oben" 
+      x="50" y="180" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+H
+</text>
+<rect id="c4_unten_hintergrund" 
+      x="45" y="290" width="60" height="40" 
+      style="fill:yellow;" />
+<text id="c4_unten" 
+      x="50" y="325" 
+      style="font-size:36px;font-family:Arial;sans-serif;font-weight:bold;fill:black;"
+      onclick="wechsle(this.id);">
+OH
+</text>
+
+<!-- ENDE Haworth-Projektion -->
+
+</svg>
+    </div>
+  </body>
+</html>

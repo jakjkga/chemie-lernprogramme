@@ -1,0 +1,75 @@
+COMPND    D-(+)-Maltose
+REMARK    CAS 69-79-4
+REVDAT   1   19-SEP-06
+REMARK    wpMoleculeViewer
+AUTHOR    welsch & Partner, scientific multimedia, www.welsch.comHETATM    1  O           0      -1.056   1.701   0.984
+HETATM    2  C           0      -0.809   0.412   1.536
+HETATM    3  C           0      -3.326   1.110   0.371
+HETATM    4  C           0      -2.001   1.706  -0.081
+HETATM    5  H           0      -3.778   1.746   1.167
+HETATM    6  O           0      -4.261   1.063  -0.708
+HETATM    7  H           0      -2.747  -0.968   0.058
+HETATM    8  O           0      -4.321  -0.852   1.367
+HETATM    9  H           0      -2.515   0.337   2.860
+HETATM   10  O           0      -1.841  -1.563   2.477
+HETATM   11  H           0      -1.589   1.115  -0.934
+HETATM   12  C           0      -2.140   3.153  -0.529
+HETATM   13  H           0      -0.114   0.566   2.392
+HETATM   14  C           0      -2.093  -0.238   2.004
+HETATM   15  C           0      -3.100  -0.301   0.878
+HETATM   16  O           0      -0.840   3.649  -0.854
+HETATM   17  O           0       2.579   0.089  -0.500
+HETATM   18  C           0       2.812  -1.078  -1.263
+HETATM   19  C           0       0.958  -1.076   0.901
+HETATM   20  C           0       2.201  -0.185   0.841
+HETATM   21  H           0       0.790  -1.446   1.940
+HETATM   22  H           0       0.057  -2.795  -0.103
+HETATM   23  O           0       1.901  -3.283   0.600
+HETATM   24  H           0       1.836  -2.869  -1.959
+HETATM   25  O           0       3.105  -0.468  -2.523
+HETATM   26  O           0       0.588  -1.252  -2.122
+HETATM   27  H           0       1.937   0.812   1.277
+HETATM   28  C           0       3.371  -0.692   1.674
+HETATM   29  H           0       3.718  -1.613  -0.907
+HETATM   30  C           0       1.590  -1.948  -1.377
+HETATM   31  C           0       1.054  -2.301  -0.003
+HETATM   32  O           0       4.426   0.271   1.662
+HETATM   33  O           0      -0.188  -0.337   0.499
+HETATM   34  H           0      -5.122   1.174  -0.337
+HETATM   35  H           0      -4.766  -1.225   0.625
+HETATM   36  H           0      -2.687  -1.930   2.675
+HETATM   37  H           0      -0.265   3.338  -0.171
+HETATM   38  H           0       1.372  -3.787   1.193
+HETATM   39  H           0       3.293   0.431  -2.312
+HETATM   40  H           0       1.026  -0.864  -2.860
+HETATM   41  H           0       5.122  -0.064   2.201
+HETATM   42  H           0       3.796  -1.653   1.317
+HETATM   43  H           0       3.068  -0.831   2.736
+HETATM   44  H           0      -2.552   3.787   0.288
+HETATM   45  H           0      -2.780   3.257  -1.432
+TER
+CONECT    1    2    4
+CONECT    2   13   14   33
+CONECT    3    4    5    6   15
+CONECT    4   11   12
+CONECT    6   34
+CONECT    7   15
+CONECT    8   15   35
+CONECT    9   14
+CONECT   10   14   36
+CONECT   12   16   44   45
+CONECT   14   10   15
+CONECT   16   37
+CONECT   17   18   20
+CONECT   18   25   29   30
+CONECT   19   20   21   31   33
+CONECT   20   27   28
+CONECT   22   31
+CONECT   23   31   38
+CONECT   24   30
+CONECT   25   39
+CONECT   26   30   40
+CONECT   28   32   42   43
+CONECT   30   31
+CONECT   32   41
+END

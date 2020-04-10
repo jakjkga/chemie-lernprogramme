@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg id="kohlenstoffkresilauf" 
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="640px" 
+     height="480px">
+  <!-- Pfeilspitzen -->
+  <defs>
+    <marker id="pfred"
+      viewBox="0 0 10 10" refX="0" refY="5"
+      markerUnits="strokeWidth"
+      markerWidth="5" markerHeight="5"
+      orient="auto">
+      <path d="M 0,0 l 10,5 l -10,5 z" fill="red" stroke="red" />
+    </marker>   
+    <marker id="pfgreen"
+      viewBox="0 0 10 10" refX="0" refY="5"
+      markerUnits="strokeWidth"
+      markerWidth="5" markerHeight="5"
+      orient="auto">
+      <path d="M 0,0 l 10,5 l -10,5 z" fill="green" stroke="green" />
+    </marker>
+  </defs>
+     
+  <!-- Hintergrundfläche -->
+  <rect id="r_hint" x="0px" y="0px" width="640px" height="480px" fill="#ffffff" stroke="#bebebe" stroke-width="1px"></rect>
+  <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@    Speicher   @@@@@@@@@@@@@@@@@@@@@@@@@  -->
+  <!-- Speicher Atmosphäre -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/abiotische_speicher.html" target="_blank"><rect id="r_atm" x="210px" y="10px" width="190px" height="40px" fill="#f5f5f5" stroke="#bebebe" stroke-width="1px"></rect>
+  <text id="t_atm" x="230px" y="35px" style="font-family:Arial,Helvetica;font-size:14px;">Atmosphäre (CH₄ ; CO₂)</text>
+  <!-- Speicher Ozeane -->
+  <rect id="r_oz" x="420px" y="280px" width="200px" height="40px" fill="#f5f5f5" stroke="#bebebe" stroke-width="1px"></rect>
+  <text id="t_oz" x="440px" y="305px" style="font-family:Arial,Helvetica;font-size:14px;">Ozeane (CO₂(aq) ; HCO₃⁻)</text>
+  <!-- Speicher Gestein -->
+  <rect id="r_gest" x="20px" y="280px" width="150px" height="40px" fill="#f5f5f5" stroke="#bebebe" stroke-width="1px"></rect>
+  <text id="t_gest" x="40px" y="305px" style="font-family:Arial,Helvetica;font-size:14px;">Gestein (CaCO₃)</text></a>
+  <!-- Speicher Fossile Brennstoffe -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/fossile_brennstoffe.html" target="_blank"><rect id="r_foss" x="340px" y="380px" width="210px" height="40px" fill="#f5f5f5" stroke="#bebebe" stroke-width="1px"></rect>
+  <text id="t_foss" x="360px" y="405px" style="font-family:Arial,Helvetica;font-size:14px;">Fossile Brennstoffe (CₙHₘ)</text></a>
+  <!-- Speicher Fossile Biomasse in Lebewesen -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/biotische_speicher.html" target="_blank"><rect id="r_bio" x="80px" y="380px" width="210px" height="40px" fill="#f5f5f5" stroke="#bebebe" stroke-width="1px"></rect>
+  <text id="t_bio" x="100px" y="405px" style="font-family:Arial,Helvetica;font-size:14px;">Biomasse (Nähr-/Baustoffe)</text></a>
+  
+  <!-- @@@@@@@@@@@@@@@@@@@@@@@@@    Stoffflüsse     @@@@@@@@@@@@@@@@@@@@@@@  -->
+  <!-- Vulkanausbrüche -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/vulkanausbruch.html" target="_blank"><text x="40px" y="125px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Vulkanausbrüche</text>
+  <line x1="90" y1="280" x2="205" y2="35" style="stroke:red;stroke-width:3;" marker-end="url(#pfred)" /></a>
+  <!-- Gesteinserosion -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/gesteine.html" target="_blank"><text x="250px" y="280px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Gesteinserosion</text>
+  <line x1="170" y1="295" x2="405" y2="295" style="stroke:red;stroke-width:3;" marker-end="url(#pfred)" />
+  <!-- Gesteinsbildung -->
+  <text x="250px" y="335px" style="font-family:Arial,Helvetica;font-size:14px;fill:green;">Gesteinsbildung</text>
+  <line x1="420" y1="310" x2="185" y2="310" style="stroke:green;stroke-width:3;" marker-end="url(#pfgreen)" /></a>
+  <!-- Lösen -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/gase.html" target="_blank"><text x="470px" y="125px" style="font-family:Arial,Helvetica;font-size:14px;fill:green;">Lösen</text>
+  <line x1="400" y1="25" x2="540" y2="265" style="stroke:green;stroke-width:3;" marker-end="url(#pfgreen)" />
+  <!-- Ausgasen -->
+  <text x="380px" y="145px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Ausgasen</text>
+  <line x1="535" y1="280" x2="405" y2="55" style="stroke:red;stroke-width:3;" marker-end="url(#pfred)" /></a>
+  <!-- Verbrennung -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/verbrennung.html" target="_blank"><text x="380px" y="220px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Verbrennung</text>
+  <line x1="425" y1="380" x2="325" y2="65" style="stroke:red;stroke-width:3;" marker-end="url(#pfred)" /></a>
+  <!-- Gärung und Zellatmung -->
+  <a xlink:href="http://chemie-lernprogramme.de/daten/help/kohlenstoffkreislaeufer/html/stoffwechsel.html" target="_blank"><text x="180px" y="145px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Gärung &amp;</text>
+  <text x="180px" y="165px" style="font-family:Arial,Helvetica;font-size:14px;fill:red;">Zellatmung</text>
+  <line x1="165" y1="380" x2="300" y2="65" style="stroke:red;stroke-width:3;" marker-end="url(#pfred)" />
+  <!-- Fotosynthese -->
+  <text x="250px" y="225px" style="font-family:Arial,Helvetica;font-size:14px;fill:green;">Fotosynthese</text>
+  <line x1="315" y1="50" x2="180" y2="365" style="stroke:green;stroke-width:3;" marker-end="url(#pfgreen)" /></a>
+</svg>

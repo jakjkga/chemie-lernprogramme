@@ -1,0 +1,60 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  margin:0px;
+  padding:0px;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+select:hover {
+  cursor:pointer;
+}
+img.img_gruppe {
+  min-height:100px;
+  max-height:100px;
+}
+hr {
+  border-style:none;
+  border-bottom-style:dotted;
+  border-bottom-width:1px;
+  border-bottom-color:#bebebe;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+.mittig {
+  vertical-align:middle;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  /*text-decoration: underline;*/
+}
+/*a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}*/

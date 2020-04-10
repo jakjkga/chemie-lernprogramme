@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hexoser - online</title>
+    <meta name="description" content="Der Hexoser ermittelt die Namen aller D- und L-Aldo- und -Keto-Hexosen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Hexose, Aldose, Ketose, D-Zucker, L-Zucker, Fischer-Projektion, RS-Stereoisomerie, Enantiomere, Diastereomere" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_carbonylverbindungstyp">Carbonylverbindungstyp</label>:
+        </td>
+        <td>
+          <select id="s_carbonylverbindungstyp" onchange="setze_carbonylverbindungstyp()">
+            <option value="aldose">Aldose</option>
+            <option value="ketose">Ketose</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+          Stellung&nbsp;der&nbsp;OH-Gruppe:
+        </td>
+        <td>
+          <!-- ANFANG Abb. Aldosen -->
+          <svg id="svg_aldosen" version="1.1" 
+               xmlns="http://www.w3.org/2000/svg" 
+               xmlns:xlink="http://www.w3.org/1999/xlink"
+               width="240" height="280">
+            <text x="20" y="20" fill="#000000" class="formeltext">
+              <tspan id="c1_o" x="112" y="20">/O\</tspan>
+              <tspan id="c1_b_o" x="121" y="40">ǁ</tspan>
+              <tspan id="c1" x="120" y="60">C</tspan>
+              <tspan id="c1_b_h" x="140" y="60">–</tspan>
+              <tspan id="c1_h" x="160" y="60">H</tspan>
+              <tspan id="c1_b_c2" x="124" y="80">|</tspan>
+              <!-- C2 -->
+              <tspan id="c2_li" x="70" y="101" onclick="setze(this.id)">H</tspan>
+              <tspan id="c2_b_li" x="100" y="101">–</tspan>
+              <tspan id="c2" x="120" y="101">C</tspan>
+              <tspan id="c2_b_re" x="140" y="101">–</tspan>
+              <tspan id="c2_re" x="160" y="101" onclick="setze(this.id)">OH</tspan>
+              <tspan id="c2_b_c3" x="124" y="120">|</tspan>
+              <!-- C3 -->
+              <tspan id="c3_li" x="70" y="141" onclick="setze(this.id)">HO</tspan>
+              <tspan id="c3_b_li" x="100" y="141">–</tspan>
+              <tspan id="c3" x="120" y="141">C</tspan>
+              <tspan id="c3_b_re" x="140" y="141">–</tspan>
+              <tspan id="c3_re" x="160" y="141" onclick="setze(this.id)">H</tspan>
+              <tspan id="c3_b_c4" x="124" y="160">|</tspan>
+              <!-- C4 -->
+              <tspan id="c4_li" x="70" y="181" onclick="setze(this.id)">H</tspan>
+              <tspan id="c4_b_li" x="100" y="181">–</tspan>
+              <tspan id="c4" x="120" y="181">C</tspan>
+              <tspan id="c4_b_re" x="140" y="181">–</tspan>
+              <tspan id="c4_re" x="160" y="181" onclick="setze(this.id)">OH</tspan>
+              <tspan id="c4_b_c5" x="124" y="200">|</tspan>
+              <!-- C5 -->
+              <tspan id="c5_li" x="70" y="221" onclick="setze(this.id)">H</tspan>
+              <tspan id="c5_b_li" x="100" y="221">–</tspan>
+              <tspan id="c5" x="120" y="221">C</tspan>
+              <tspan id="c5_b_re" x="140" y="221">–</tspan>
+              <tspan id="c5_re" x="160" y="221" onclick="setze(this.id)">OH</tspan>
+              <tspan id="c4_b_c6" x="124" y="240">|</tspan>
+              <tspan id="c6" x="120" y="261">CH₂OH</tspan>
+            </text>
+          </svg>
+          <!-- ENDE Abb. Aldosen -->
+          
+          <!-- ANFANG Abb. Ketosen -->
+          <svg id="svg_ketosen" version="1.1" 
+               xmlns="http://www.w3.org/2000/svg" 
+               xmlns:xlink="http://www.w3.org/1999/xlink"
+               width="240" height="280">
+            <text x="20" y="20" fill="#000000" class="formeltext">
+              <tspan id="c1" x="120" y="60">CH₂OH</tspan>
+              <tspan id="c1_b_c2" x="124" y="80">|</tspan>
+              <!-- C2 -->
+              <tspan id="c2" x="120" y="101">C</tspan>
+              <tspan id="c2_b_re" x="140" y="101">=</tspan>
+              <tspan id="c2_re" x="160" y="101">O</tspan>
+              <tspan id="c2_b_c3" x="124" y="120">|</tspan>
+              <!-- C3 -->
+              <tspan id="c3_li" x="70" y="141" onclick="setze(this.id)">HO</tspan>
+              <tspan id="c3_b_li" x="100" y="141">–</tspan>
+              <tspan id="c3" x="120" y="141">C</tspan>
+              <tspan id="c3_b_re" x="140" y="141">–</tspan>
+              <tspan id="c3_re" x="160" y="141" onclick="setze(this.id)">H</tspan>
+              <tspan id="c3_b_c4" x="124" y="160">|</tspan>
+              <!-- C4 -->
+              <tspan id="c4_li" x="70" y="181" onclick="setze(this.id)">H</tspan>
+              <tspan id="c4_b_li" x="100" y="181">–</tspan>
+              <tspan id="c4" x="120" y="181">C</tspan>
+              <tspan id="c4_b_re" x="140" y="181">–</tspan>
+              <tspan id="c4_re" x="160" y="181" onclick="setze(this.id)">OH</tspan>
+              <tspan id="c4_b_c5" x="124" y="200">|</tspan>
+              <!-- C5 -->
+              <tspan id="c5_li" x="70" y="221" onclick="setze(this.id)">H</tspan>
+              <tspan id="c5_b_li" x="100" y="221">–</tspan>
+              <tspan id="c5" x="120" y="221">C</tspan>
+              <tspan id="c5_b_re" x="140" y="221">–</tspan>
+              <tspan id="c5_re" x="160" y="221" onclick="setze(this.id)">OH</tspan>
+              <tspan id="c4_b_c6" x="124" y="240">|</tspan>
+              <tspan id="c6" x="120" y="261">CH₂OH</tspan>
+            </text>
+          </svg>
+          <!-- ENDE Abb. Ketosen -->
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_name">Name&nbsp;des&nbsp;Monosaccharids</label>:
+        </td>
+        <td>
+          <input type="text" id="i_name" size="20" value="D-Glucose" />&nbsp;<a href="#" id="a_wplink" target="_blank"><img src="daten/img/wikipedia.png" height="22" /></a>
+        </td>
+      </tr>
+    
+    </table>
+  </body>
+</html>

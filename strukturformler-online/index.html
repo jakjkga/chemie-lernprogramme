@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Strukturformler - online</title>
+    <meta name="description" content="Der Strukturformler - online generiert die Strukturformeln einfacher Moleküle (ohne Molekülionen) aus einer Auswahl einfacher Grundbausteine" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Valenzstrichformel, Strukturformel, Keilstrichschreibweise, bindendes Elektronenpaar, freies Elektronenpaar, Einfachbindung, Doppelbindung, Aminogruppe, Hydroxygruppe, Methylgruppe" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table id="table_formularinhalt">
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <select id="s_o" onchange="setze_bild(this.id)">
+            <option value="ka_o">&nbsp;</option>
+            <option value="H_o">Wasserstoffatom</option>
+            <option value="Cl_o">Chloratom</option>
+            <option value="O_o">Sauerstoffatom</option>
+          </select>&nbsp;<br />
+          <img id="img_o" src="daten/img/dummy.png" class="img_gruppe" />
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <img id="img_li" src="daten/img/dummy.png"  class="img_gruppe" /><br />
+          <select id="s_li" class="nach_rechts" onchange="setze_bild(this.id)">
+            <option value="ka_li">&nbsp;</option>
+            <option value="H_li">Wasserstoffatom</option>
+            <option value="Cl_li">Chloratom</option>
+            <option value="OH_li">Hydroxygruppe</option>
+            <option value="NH2_li">Aminogruppe</option>
+            <option value="CH3_li">Methylgruppe</option>
+          </select>
+        </td>
+        <td class="zentriert">
+          <img id="img_z" src="daten/img/dummy.png"  class="img_gruppe" /><br />
+          <select id="s_z" class="zentriert" onchange="setze_bild(this.id)">
+            <option value="ka_za">&nbsp;</option>
+            <option value="C_vier_z">Kohlenstoffatom (vier Einfachbdg.)</option>
+            <option value="C_zwei_z">Kohlenstoffatom (eine Doppelbdg.)</option>
+            <option value="N_z">Stickstoffatom</option>
+            <option value="O_z">Sauerstoffatom</option>
+          </select>
+        </td>
+        <td>
+          <img id="img_re" src="daten/img/dummy.png" class="img_gruppe" /><br />
+          <select id="s_re" onchange="setze_bild(this.id)">
+            <option value="ka_re">&nbsp;</option>
+            <option value="H_re">Wasserstoffatom</option>
+            <option value="Cl_re">Chloratom</option>
+            <option value="OH_re">Hydroxygruppe</option>
+            <option value="NH2_re">Aminogruppe</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td class="zentriert">
+          <img id="img_u" src="daten/img/dummy.png" class="img_gruppe" /><br />
+          <select id="s_u" onchange="setze_bild(this.id)">
+            <option value="ka_u">&nbsp;</option>
+            <option value="H_u">Wasserstoffatom</option>
+            <option value="Cl_u">Chloratom</option>
+          </select>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="i_molekuelname">Name</label>:
+        </td>
+        <td class="mittig">
+          <input type="text" id="i_molekuelname" size="30" /><a id="a_wp" href="#" target="_blank">&nbsp;<img src="daten/img/Wikipedia-favicon.png" /></a>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts nach_oben">
+         Valzenstrichformel:
+        </td>
+        <td>
+          <img id="img_molekuelabb" src="daten/img/dummy.png" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Benennung einfacher organischer Moleküle</title>
+    <meta name="description" content="Die IUPAC-Namen für einfache sauerstoffhaltige mehrfunktionale organische Moleküle bestimmen" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Aldehyd, Keton, Carbonsäure, Alkohol, Nomenklatur, IUPAC" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan="4">
+          <strong>Kohlenstoff-Grundgerüst</strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_geruest">Name:</label>
+        </td>
+        <td colspan="3">
+          <input type="text" id="i_geruest" size="32" placeholder="butan" title="Vollständiger Name des Kohlenstoff-Grundgerüsts ggf. mit Seitenketten" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <strong>Anzahl und Position aller enthaltenen Sauerstoff haltigen funktionellen Gruppen</strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_hydroxy">Hydroxygruppen:</label>
+        </td>
+        <td>
+          <select id="s_hydroxy">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </td>
+        <td class="nach_rechts">
+          <label for="i_hydroxy">Positionen:</label>
+        </td>
+        <td>
+          <input type="text" id="i_hydroxy" size="8" placeholder="1,2,3" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_aldehyd">Aldehydgruppen:</label>
+        </td>
+        <td>
+          <select id="s_aldehyd">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </td>
+        <td class="nach_rechts">
+          <label for="i_aldehyd">Positionen:</label>
+        </td>
+        <td>
+          <input type="text" id="i_aldehyd" size="8" placeholder="1,4" title="Positionsangaben von größer als 1 machen nur dann Sinn, wenn eine Carboxygruppe am gegenüberliegenden Kettenende im gleichen Molekül vorliegt oder wenn eine Ketogruppe im Ketteninneren vorliegt oder wenn zwei Aldehydgruppen an den beiden Kettenenden vorliegen!" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_keto">Ketogruppen:</label>
+        </td>
+        <td>
+          <select id="s_keto">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </td>
+        <td class="nach_rechts">
+          <label for="i_keto">Positionen:</label>
+        </td>
+        <td>
+          <input type="text" id="i_keto" size="8" placeholder="2,3" />
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_carboxy">Carboxygruppen:</label>
+        </td>
+        <td>
+          <select id="s_carboxy">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </td>
+        <td  colspan="2">
+          &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="zentriert">
+          <input type="button" value="Name der Sauerstoff haltigen organischen Verbindung ermitteln" onclick="name_ermitteln();" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <input type="text" id="i_verbindungsname" size="60" placeholder="vereinfachter Molekülname, ggf. Bindestriche entfernen oder hinzugefügen" />
+        </td>
+      </tr>
+    </table>
+    <p>
+      Regeln:
+    </p>
+    <ul>
+      <li>Die funktionelle Gruppe mit dem Kohlenstoffatom mit der höchsten 
+          Oxidationszahl (OZ)
+          bestimmt die Hauptfunktion und somit die <strong>Endung</strong>:<br />
+          &nbsp;&nbsp;<tt>RCOOH</tt> oder <tt>HCOOH</tt> (+II ≤ OZ ≤ +III) ⇒ <strong>-säure</strong><br />
+          &nbsp;&nbsp;<tt>CRₘRₙO</tt> (OZ = +II) ⇒ <strong>-on</strong><br />
+          &nbsp;&nbsp;<tt>RCHO</tt> oder <tt>HCHO</tt> (0 ≤ OZ ≤ +I) ⇒ <strong>-al</strong><br />
+          &nbsp;&nbsp;<tt>CRₘHₙOH</tt> (-III ≤ OZ ≤ -I) ⇒ <strong>-ol</strong><br />
+          Dieses C-Atom ist immer Teil der Hauptkette und besitzt die Position 1.
+          </li>
+      <li>Alle anderen funktionellen Gruppen werden dann <strong>vorangestellt</strong>:<br />
+          &nbsp;&nbsp;<tt>CRₘHₙOH</tt> ⇒ <strong>Hydroxy-</strong><br />
+          &nbsp;&nbsp;<tt>RCHO</tt> oder <tt>HCHO</tt> ⇒ <strong>Oxo-</strong><br />
+          &nbsp;&nbsp;<tt>CRₘRₙO</tt> ⇒ <strong>Oxo-</strong><br />
+          
+          </li>
+    </ul>
+    <p>
+       <a href="daten/ueb_stoffklassenbenenner.pdf">Übungsaufgaben zum Stoffklassenbenenner</a><br />
+<a href="daten/ueb_stoffklassenbenenner_loes.pdf">Lösungen</a><br />
+     </p>
+    <p class="zentriert">
+      <a href="http://www.acdlabs.com/iupac/nomenclature/93/r93_16.htm" target="_blank">IUPAC Nomenclature of Organic Chemistry</a>
+    </p>
+  </body>
+</html>

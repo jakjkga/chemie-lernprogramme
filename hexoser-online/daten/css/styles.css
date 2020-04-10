@@ -1,0 +1,70 @@
+body, table {
+  font-family:"Helvetica-Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+select, input[type=text], textarea {
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+  padding:2px;
+  background-color:#ffffff;
+}
+select:hover, input[type=text]:hover, textarea:hover {
+  border-color:cornflowerblue;
+}
+#svg_aldosen #c2_li:hover, #svg_aldosen #c2_re:hover,
+#svg_aldosen #c3_li:hover, #svg_aldosen #c3_re:hover,
+#svg_aldosen #c4_li:hover, #svg_aldosen #c4_re:hover {
+  fill:#008EDA;
+  cursor:pointer;
+  font-weight:bold;
+}
+#svg_ketosen #c3_li:hover, #svg_ketosen #c3_re:hover,
+#svg_ketosen #c4_li:hover, #svg_ketosen #c4_re:hover {
+  fill:#008EDA;
+  cursor:pointer;
+  font-weight:bold;
+}
+#c5_li:hover, #c5_re:hover {
+  fill:#ff6600;
+  cursor:pointer;
+  font-weight:bold;
+}
+svg {
+  background-color:#ffffff;
+  border-style:dotted;
+  border-width:1px;
+  border-color:#bebebe;
+}
+.formeltext {
+  font-family:Arial,"Helvetica",sans-serif;
+  font-size:18px;
+}
+.nach_rechts {
+  text-align:right;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_oben {
+  vertical-align:top;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}

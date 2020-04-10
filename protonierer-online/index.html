@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Protonierer-online</title>
+    <meta name="description" content="Der Protonierer zeigt das einfachen Säure-Base-Reaktionen zugrundeliegende Donator-Akzeptor- Konzept auf verschiedenen Darstellungsebenen (u.a. Kugelmodell, Strukturformel, Schalenmodell) an" />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Säure-Base-Reaktion, Protonenübergang, Protonenübertragung, Säure, Base, Arrhenius, Brönsted, Lewis" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/data2.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_reaktion">Beispielreaktion</label>:
+        </td>
+        <td>
+          <select id="s_reaktion" onchange="setze('ed')">
+            <optgroup label="in wässriger Lösung">
+              <option value="h2ohcl">Wasser mit Chlorwasserstoff</option>
+              <option value="nh3h2o">Ammoniak mit Wasser</option>
+            </optgroup>
+            <optgroup label="in der Gasphase">
+              <option value="nh3hcl">Ammoniak mit Chlorwasserstoff</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_darstellungsebene">Darstellungsebene</label>:
+        </td>
+        <td>
+          <select id="s_darstellungsebene" onchange="setze('ed')">
+            <option value="kugel">Kugelmodell</option>
+            <option value="summe">Summenformel</option>
+            <option value="struktur">Strukturformel</option>
+            <option value="schalen">Schalenmodell</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_rechts">
+          <label for="s_schritt">Schritte</label>:
+        </td>
+        <td>
+          <select id="s_schritt" onchange="setze('ed')">
+            <optgroup label="Gesamtgleichung">
+              <option value="ueber">Protonenübergang</option>
+            </optgroup>
+            <optgroup label="Teilgleichungen">
+              <option value="auf">nur Protonenaufnahme</option>
+              <option value="ab">nur Protonenabgabe</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="3">
+          <img id="img_anzeige" src="daten/img/start.gif" width="400"  height="300" />
+          <div id="div_anzeige"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <textarea id="t_anzeige"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td class="zentriert">
+         <input type="button" class="knopf" id="ed" value="Edukte" onclick="setze(this.id)" />
+        </td>
+        <td class="zentriert">
+         <input type="button" class="knopf" id="uez" value="Übergangszustand" onclick="setze(this.id)" />
+        </td>
+        <td class="zentriert">
+          <input type="button" class="knopf" id="prod" value="Produkte" onclick="setze(this.id)" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

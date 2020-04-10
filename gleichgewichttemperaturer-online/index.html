@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gleichgewichttemperaturer - online</title>
+    <meta name="description" content="Der Gleichgewichttemperaturer veranschaulicht die Temperaturabhängigkeit der Lage des chemischen Gleichgewichts am Beispiel von Stickstoffdioxid und Distickstofftetraoxid." />
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg" />
+    <meta name="keywords" lang="de" content="Stickstoffdioxid-Distickstofftetroxid-Gleichgewicht, Temperaturabhngigkeit, endotherme Zerfallsreaktion, exotherme Bildungsreaktion" />
+    <link rel="shortcut icon" href="daten/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24670710-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="zentriert">
+          Farbe eines Gefäßes <br>
+          mit <span class="no2">NO₂</span>/N₂O₄-Gemisch:
+        </td>
+        <td class="nach_unten zentriert">
+          Vergrößerte Teilchendarstellung:
+        </td>
+      </tr>
+      <tr>
+        <td class="nach_oben">
+<!-- ANFANG Abb. Stoffebene -->
+<svg id="" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+     width="200" height="480"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect id="gefaesshintergrund" x="10" y="16" width="180" height="444" 
+        fill="white" stroke="black" stroke-width="2.5"></rect>
+</svg>
+<!-- ENDE Abb. Stoffebene -->
+        </td>
+        <td>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
+     width="480" height="480"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <image id="teilchenabbildung" x="0" y="0" width="480" height="480"
+         xlink:href="daten/img/t_20.png"></image>
+</svg>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                <label for="r_temp">Temperatur:</label>
+              </td>
+              <td>
+                <input type="text" id="i_temp" size="3" value="20" class="nach_rechts" readonly />
+              </td>
+              <td>
+                °C
+              </td>
+              <td>
+                <input type="range" id="r_temp" min="0" max="130" step="10" style="width:480px;" value="20" onchange="setze_temp()" />
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="nach_rechts">
+                <label for="i_massprozent_no2">Anteil&nbsp;<span class="no2">NO₂</span>&nbsp;(in&nbsp;Massen-%)</label>:
+              </td>
+              <td>
+                <input type="text" id="i_massenprozent_no2" size="3" class="nach_rechts" readonly />
+              </td>
+              <td class="nach_rechts">
+                <label for="i_teilchenanteil_no2">Teilchenanteil&nbsp;<span class="no2">NO₂</span></label>:
+              </td>
+              <td>
+                <input type="text" id="i_teilchenanteil_no2" size="3" class="nach_rechts" readonly />
+              </td>
+            </tr>
+            <tr>
+              <td class="nach_rechts">
+                <label for="i_massprozent_n2o4">Anteil&nbsp;N₂O₄&nbsp;(in&nbsp;Massen-%)</label>:
+              </td>
+              <td>
+                <input type="text" id="i_massenprozent_n2o4" size="3" class="nach_rechts" readonly />
+              </td>
+              <td class="nach_rechts">
+                <label for="i_teilchenanteil_n2o4">Teilchenanteil&nbsp;N₂O₄</label>:
+              </td>
+              <td>
+                <input type="text" id="i_teilchenanteil_n2o4" size="3" class="nach_rechts" readonly />
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

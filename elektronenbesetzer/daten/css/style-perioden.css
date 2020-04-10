@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(../fonts/SourceCodePro.woff) format('woff');
+}
+
+body {
+    background-color:white; /*#F8F8FF;*/
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+}
+table, td {
+    /*Rahmen*/
+    border-style:none;
+    border-color:lightgrey;
+    border-width:1px;
+    border-collapse:collapse;
+    /*Schrift*/
+    font-family:Arial,Helvetica,sans-serif;
+    
+}
+table#pse {
+    background-color:white;
+    font-size:1px;
+}
+input:disabled{
+    color:black;
+    background-color:white;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+}
+span.achtung:after {
+    content: " ⚠";
+    color:red;
+}
+div#anzeige_valenzelektronenkonfiguration {
+    font-family:'Source Code Pro';
+    font-size:22px;
+    /*font-weight:bold;*/
+    color:black;
+    background-color:white;
+}
+table#info, table#info td {
+    background-color:white;
+    border-style:none;
+}
+div.hinweis_link {
+    color:grey;
+    width:384px;
+}
+div.hinweis_text {
+    color:grey;
+    width:384px;
+}
+div.hinweis_text:before {
+    content: "⇐ ";
+    /*color:red;*/
+}
+div.warnung_text {
+    color:red;
+    width:384px;
+    min-height:120px;
+}
+.elementfeld {
+    border-style:solid;
+    border-width:1px;
+    border-color:grey;
+    width:12px;
+    height:12px;
+    margin:0px;
+    padding:0px;
+}
+.elementfeld:hover {
+    background-color:white;
+    cursor:pointer;
+}
+.nach_rechts {
+    text-align:right;
+}
+.nach_links {
+    text-align:left;
+}
+.zentriert {
+    text-align:center;   
+}
+.nach_oben {
+    vertical-align:top;
+}
+.nach_unten {
+    vertical-align:bottom;
+}
+.mitte {
+    vertical-align:middle;
+}
+.nr {
+    /*font-family:'Times New Roman',serif;*/
+    font-size:10px;
+    font-weight:bold;
+    text-align:center;
+}
+.element {
+    font-family:'Droid Sans',monospace;
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+}
+.massenzahl {
+    font-family:'Open Sans Condensed';
+    font-size:9px;
+    /*color:grey;*/
+    text-align:right;
+}
+.protonenzahl {
+    font-family:'Open Sans Condensed';
+    font-size:9px;
+    font-weight:bold;
+    color:red;
+    text-align:right;
+}
+.periodenr {
+    font-size:14px;
+    font-weight:bold;
+    margin-right:5px;
+}
+a {
+    text-decoration:none;
+    color:grey;
+    border-bottom:dotted;
+    border-width:1px;
+    border-color:grey;
+}
+a:hover {
+    color:black;
+    border-color:black;
+    background-color:lightgrey;
+}
+span.aktiv {
+    color:#f60;
+}
+span#a_perioden, span#a_gruppen, span#a_metalle_nichtmetalle {
+    cursor:pointer;
+}
+span#a_perioden:hover, span#a_gruppen:hover, span#a_metalle_nichtmetalle:hover {
+    text-decoration:underline;
+}
+/* Klassen für Färbung nach Perioden */
+.periode1 {
+    background-color:#deaa87;
+}
+.periode2 {
+    background-color:#e9afaf;
+}
+.periode3 {
+    background-color:#8dd35f;
+}
+.periode4 {
+    background-color:#ff9955;
+}
+.periode5 {
+    background-color:#80b3ff;
+}
+.periode6 {
+    background-color:#ffe680;
+}
+.periode7 {
+    background-color:#cd87de;
+}
+.p1 {
+    color:#c87137; /* #deaa87; */
+}
+.p2 {
+    color:#e9afaf;
+}
+.p3 {
+    color:#8dd35f;
+}
+.p4 {
+    color:#ff9955;
+}
+.p5 {
+    color:#80b3ff;
+}
+.p6 {
+    color:#ffcc00; /* #ffe680; */
+}
+.p7 {
+    color:#cd87de;
+}

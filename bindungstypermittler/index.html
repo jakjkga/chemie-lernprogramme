@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bindungstypermittler</title>
+    <meta name="description" content="Bindungstyp aus der Elektronegativität mit dynamischem Ketelaar-Diagramm ermitteln">
+    <meta name="author" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <meta name="keywords" lang="de" content="Metallbindung, metallische Bindung, Elektronegativitätsdifferenz, Delta EN, Ionenbindung, Atombindung, Elektronenpaarbindung, polare Bindung, Bindungspolarität, Salze, Moleküle, molekulare Stoffe, Van Ketelaar Diagramm" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/styles.css" />
+    <script type="text/javascript" src="daten/js/jquery.min.js"></script>
+    <script type="text/javascript" src="daten/js/data.js"></script>
+    <script type="text/javascript" src="daten/js/data2.js"></script>
+    <script type="text/javascript" src="daten/js/scripts.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          lade_seite();
+      });
+    </script>
+    <!-- Google-Analytics -->
+    <!-- <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24670710-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script> -->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <label for="a_elem_1">1. Element:</label>
+        </td>
+        <td>
+          <label for="a_elem_2">2. Element:</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select id="a_elem_1" onchange="auswahl_element();">
+            <optgroup label="1. Periode">
+              <option value="H" title="Wasserstoff">H</option>
+            </optgroup>
+            <optgroup label="2. Periode">
+              <option value="Li" title="Lithium">Li</option>
+              <option value="Be" title="Beryllium">Be</option>
+              <option value="B" title="Bor">B</option>
+              <option value="C" title="Kohlenstoff">C</option>
+              <option value="N" title="Stickstoff">N</option>
+              <option value="O" title="Sauerstoff">O</option>
+              <option value="F" title="Fluor">F</option>
+            </optgroup>
+            <optgroup label="3. Periode">
+              <option value="Na" title="Natrium">Na</option>
+              <option value="Mg" title="Magnesium">Mg</option>
+              <option value="Al" title="Aluminium">Al</option>
+              <option value="Si" title="Silizium">Si</option>
+              <option value="P" title="Phosphor">P</option>
+              <option value="S" title="Schwefel">S</option>
+              <option value="Cl" title="Chlor">Cl</option>
+            </optgroup>
+          </select>
+        </td>
+        <td>
+          <select id="a_elem_2" onchange="auswahl_element();">
+            <optgroup label="1. Periode">
+              <option value="H" title="Wasserstoff">H</option>
+            </optgroup>
+            <optgroup label="2. Periode">
+              <option value="Li" title="Lithium">Li</option>
+              <option value="Be" title="Beryllium">Be</option>
+              <option value="B" title="Bor">B</option>
+              <option value="C" title="Kohlenstoff">C</option>
+              <option value="N" title="Stickstoff">N</option>
+              <option value="O" title="Sauerstoff">O</option>
+              <option value="F" title="Fluor">F</option>
+            </optgroup>
+            <optgroup label="3. Periode">
+              <option value="Na" title="Natrium">Na</option>
+              <option value="Mg" title="Magnesium">Mg</option>
+              <option value="Al" title="Aluminium">Al</option>
+              <option value="Si" title="Silizium">Si</option>
+              <option value="P" title="Phosphor">P</option>
+              <option value="S" title="Schwefel">S</option>
+              <option value="Cl" title="Chlor">Cl</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="ausgabe_en_element1">EN:</label>
+          <input type="text" id="ausgabe_en_element1" size="4" />
+        </td>
+        <td>
+          <label for="ausgabe_en_element2">EN:</label>
+          <input type="text" id="ausgabe_en_element2" size="4" />
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="breite_spalte">
+          <label for="ausgabe_delta_en" id="label_delta_en">ΔEN:</label>
+        </td>
+        <td>
+          <input type="text" id="ausgabe_delta_en" size="4" />
+        </td>
+      </tr>
+      <tr>
+        <td class="breite_spalte">
+          <label for="ausgabe_summe_en" id="label_summe_en">ΣEN:</label>
+        </td>
+        <td>
+          <input type="text" id="ausgabe_summe_en" size="4" />
+        </td>
+      </tr>
+    </table>
+    <p id="bildbereich">
+    <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?> -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="461"
+   height="276"
+   id="svg2"
+   transform="scale(1.3)"><!-- width="354.33069" height="212.59842" -->
+  <defs
+     id="defs4">
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         id="path3778"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow2Lend-8"
+       style="overflow:visible">
+      <path
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         id="path3778-2"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow2Lend-3"
+       style="overflow:visible">
+      <path
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         id="path3778-4"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-839.76377)"
+     id="layer1" />
+  <path
+     d="m 35.432837,177.11339 0,-175.0388379"
+     id="path2983-3"
+     style="fill:none;stroke:#000000;stroke-width:1.10391355;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.5;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)" />
+  <path
+     d="m 35.433071,177.16535 0,7.08661"
+     id="path2983-3-7"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 106.29921,177.16535 0,7.08661"
+     id="path2983-3-7-4"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 70.866142,177.16535 0,7.08661"
+     id="path2983-3-7-4-4"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 141.73228,177.16535 0,7.08661"
+     id="path2983-3-7-4-0"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 177.16535,177.16535 0,7.08661"
+     id="path2983-3-7-4-2"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 212.59843,177.16535 0,7.08661"
+     id="path2983-3-7-4-9"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 248.0315,177.16535 0,7.08661"
+     id="path2983-3-7-4-09"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 283.46457,177.16535 0,7.08661"
+     id="path2983-3-7-4-8"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 35.433071,177.16535 -7.086614,0"
+     id="path2983-3-7-4-23"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 35.433071,141.73228 -7.086614,0"
+     id="path2983-3-7-4-23-0"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 35.433071,106.29921 -7.086614,0"
+     id="path2983-3-7-4-23-8"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 35.433071,70.866136 -7.086614,0"
+     id="path2983-3-7-4-23-5"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 35.433071,35.433065 -7.086614,0"
+     id="path2983-3-7-4-23-5-1"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <path
+     d="m 318.89764,177.16535 0,7.08661"
+     id="path2983-3-7-4-8-3"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
+  <text
+     x="66.344917"
+     y="196.20731"
+     id="text4591"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="66.344917"
+       y="196.20731"
+       id="tspan4593">1</tspan></text>
+  <text
+     x="103.02975"
+     y="195.4268"
+     id="text4595"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="103.02975"
+       y="195.4268"
+       id="tspan4597">2</tspan></text>
+  <text
+     x="137.76328"
+     y="195.42679"
+     id="text4599"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="137.76328"
+       y="195.42679"
+       id="tspan4601">3</tspan></text>
+  <text
+     x="174.4481"
+     y="196.20732"
+     id="text4603"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="174.4481"
+       y="196.20732"
+       id="tspan4605">4</tspan></text>
+  <text
+     x="209.18163"
+     y="196.20732"
+     id="text4607"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="209.18163"
+       y="196.20732"
+       id="tspan4609">5</tspan></text>
+  <text
+     x="244.69568"
+     y="196.20732"
+     id="text4611"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="244.69568"
+       y="196.20732"
+       id="tspan4613">6</tspan></text>
+  <text
+     x="280.20972"
+     y="196.20732"
+     id="text4615"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="280.20972"
+       y="196.20732"
+       id="tspan4617">7</tspan></text>
+  <text
+     x="316.11401"
+     y="196.20732"
+     id="text4619"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="316.11401"
+       y="196.20732"
+       id="tspan4621">8</tspan></text>
+  <text
+     x="19.51321"
+     y="145.47298"
+     id="text4623"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="19.51321"
+       y="145.47298"
+       id="tspan4625">1</tspan></text>
+  <text
+     x="18.732683"
+     y="110.73946"
+     id="text4627"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="18.732683"
+       y="110.73946"
+       id="tspan4629">2</tspan></text>
+  <text
+     x="18.732683"
+     y="75.22541"
+     id="text4631"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="18.732683"
+       y="75.22541"
+       id="tspan4633">3</tspan></text>
+  <text
+     x="17.952154"
+     y="40.101631"
+     id="text4635"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="17.952154"
+       y="40.101631"
+       id="tspan4637">4</tspan></text>
+  <text
+     x="31.064314"
+     y="195.83665"
+     id="text4591-8"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="31.064314"
+       y="195.83665"
+       id="tspan4593-4">0</tspan></text>
+  <text
+     x="20.527184"
+     y="181.00661"
+     id="text4591-4"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="20.527184"
+       y="181.00661"
+       id="tspan4593-8">0</tspan></text>
+  <text
+     x="328.83127"
+     y="196.23825"
+     id="text4591-6"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="328.83127"
+       y="196.23825"
+       id="tspan4593-2">ΣEN</tspan></text>
+  <text
+     x="4.5263515"
+     y="15.534575"
+     id="text4591-86"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="4.5263515"
+       y="15.534575"
+       id="tspan4593-0">ΔEN</tspan></text>
+  <path
+     d="m 209.70224,63.779526 54.59769,56.692914 54.59771,56.69291 -109.84253,-0.22223 -109.842512,-0.22222 55.244822,-56.47069 z"
+     id="path4689"
+     style="fill:#cccccc;stroke:none" />
+  <path
+     d="m 35.459938,177.16523 316.918162,0"
+     id="path2983"
+     style="fill:none;stroke:#000000;stroke-width:1.05373299;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.5;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)" />
+  <text
+     x="175.45703"
+     y="57.038704"
+     id="text4691"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="175.45703"
+       y="57.038704"
+       id="tspan4693">Ionenbindung</tspan></text>
+  <text
+     x="68.397453"
+     y="206.73558"
+     id="text4691-1"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="68.397453"
+       y="206.73558"
+       id="tspan4693-4">Metallbindung</tspan></text>
+  <text
+     x="282.5144"
+     y="207.83377"
+     id="text4691-0"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+       x="280.5144"
+       y="207.83377"
+       id="tspan4693-3">Atombindung</tspan></text>
+  <circle id="kreis1" 
+          cx="0"
+          cy="0"
+          r="5"
+          stroke="black"
+          stroke-width="1px"
+          fill="#ff6600"
+          transform="translate(+35,+177)"
+          />
+</svg>
+    </p>
+    <textarea id="zusatzinformationen" cols="80" rows="2"></textarea>
+    <ul>
+         <li class="pdfdat">
+         <a href="daten/medien/ueb_bindungstypermittler.pdf" 
+            class="linkbereich"
+            type="application/pdf"
+            target="_blank"
+            title="Übungsaufgaben herunterladen">Übungsaufgaben</a></li>
+         <li class="odt">
+         <a href="daten/medien/ueb_bindungstypermittler.odt" 
+            class="linkbereich"
+            type="application/vnd.oasis.opendocument.text"
+            target="_blank"
+            title="Übungsaufgaben herunterladen">Übungsaufgaben</a></li>
+         <li class="pdfdat">
+         <a href="#"
+            id="loesung_pdf"
+            class="linkbereich"
+            type="application/pdf"
+            title="Übungsaufgaben herunterladen"
+            onmousedown="loesung_herunterladen('pdf', this.id);">Lösungen</a></li>
+         <li class="odt">
+         <a href="#"
+            id="loesung_odt"
+            class="linkbereich"
+            type="application/vnd.oasis.opendocument.text"
+            title="Übungsaufgaben herunterladen"
+            onmousedown="loesung_herunterladen('odt', this.id);">Lösungen</a></li>
+  </ul>
+  </body>
+</html>

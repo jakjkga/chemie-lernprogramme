@@ -1,0 +1,96 @@
+<html>
+  <head>
+     <title>Isomerer</title>
+<!--
+Copyright (C) 2011  Joachim Jakob
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="AUTHOR" content="Joachim Jakob, Kronberg-Gymnasium Aschaffenburg">
+    <link rel="stylesheet"
+          type="text/css"
+          href="daten/css/stilvorlagen.css" />
+    <script type="text/javascript" src="daten/js/tiefgestellte_zahlen.js"></script>
+    <script type="text/javascript" src="daten/js/erlaubte_schluessel.js"></script>
+    <script type="text/javascript" src="daten/js/textbausteine.js"></script>
+    <script type="text/javascript" src="daten/js/funktionen.js"></script>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" />
+  </head>
+  <body onload="lade_seite();"><!-- Setzt die fehlerhafte Startsummenformel sowie ggfs. den JS-Fehlertext -->
+    <table>
+    <!-- Auswahl Indices und Summenformel -->
+    <tr>
+      <td>
+        <label for="C">C-Atome:</label>
+        <form id="C" name="C">
+          <select id="C_auswahl" onchange="hole_aktuellen_index('C', 'C_auswahl');">
+            <option value="1">1×</option>
+            <option value="2">2×</option>
+            <option value="3">3×</option>
+            <option value="4">4×</option>
+          </select>
+        </form>
+      </td>
+      <td><label for="H">H-Atome:</label>
+        <form id="H" name="H">
+          <select id="H_auswahl" onchange="hole_aktuellen_index('H', 'H_auswahl');">
+            <option value="2">2×</option>
+            <option value="4">4×</option>
+            <option value="6">6×</option>
+            <option value="8">8×</option>
+            <option value="10">10×</option>
+          </select>
+        </form>
+      </td>
+      <td><label for="O">O-Atome:</label>
+        <form name="O" id="O">
+          <select id="O_auswahl" onchange="hole_aktuellen_index('O', 'O_auswahl');">
+            <option value="0">0×</option>
+            <option value="1">1×</option>
+            <option value="2">2×</option>
+          </select>
+        </form>
+      </td>
+      <td>
+      <label for="sf">Summenformel:</label>
+      <form name="sf" id="sf">
+          <input name="sf_in"
+                 id="sf_in"
+                 type="text"
+                 size="8"
+                 maxlength="8"
+                 class="summenformel"
+                 disabled>
+          </input>
+        </form>
+      </td>
+     </tr>
+    </table>
+    <!-- Anzeige Liste mit Halbstrukturformeln, Namen und Stoffklassen -->
+    <div id="textbereich"
+         class="textausgabe">
+         <strong>Aktiviere zuerst JavaScript im Browser!</strong><br>
+         <ul>
+         <li>In Webkit basierten Browsern [z.B. Chrome/Chromium, Konqueror/Rekonq 
+             oder Safari] klappt "onclick" nicht mehr, daher wurde hier bereits "onchange" 
+             verwendet. 
+         <li>Auch die JavaScript-Schleife des Typs 
+             <tt>for (each in arrayname) {ausdruck}</tt> ist in diesen Browsern und auch 
+             in Opera nicht mehr möglich.<br>
+         </ul>
+         Am Besten klappt's derzeit Firefox.
+    </div>
+  </body>
+</html>

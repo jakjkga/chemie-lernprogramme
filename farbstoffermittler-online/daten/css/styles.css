@@ -1,0 +1,110 @@
+body, table {
+  background-color:#ffffff;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  padding:0px;
+  margin:0px;
+}
+table {
+  width:600px;
+}
+select, input[type=text] {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  min-width:100px;
+  background-color:#ffffff;
+  border-style:solid;
+  border-width:1px;
+  border-color:#bebebe;
+}
+select:hover {
+  border-color:cornflowerblue;
+  cursor:pointer;
+}
+select:disabled:hover {
+  border-color:#bebebe;
+  cursor:auto;
+}
+input {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+}
+input[type=button] {
+  font-weight:bold;
+  background-color:cornflowerblue;
+  color:white;
+  padding:2px;
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  margin:2px;
+  margin-right:10px;
+}
+input[type=button]:disabled {
+  background-color:#f5f5f5;
+  color:#d3d3d3;
+}
+input[type=button]:disabled:hover {
+  background-color:#f5f5f5;
+  color:#d3d3d3;
+  border-color:#bebebe;
+}
+
+input[type=button]:hover {
+  color:cornflowerblue;
+  background-color:#fff;
+  border-color:cornflowerblue;
+  cursor:pointer;
+}
+
+div#behaelter {
+  position:relative;
+}
+div#anzeige_wert {
+  position:absolute;
+  left:0px;
+  top:16px;
+}
+.chromophor {
+  color:#f60;
+  font-weight:bold;
+}
+.auxochrom {
+  color:blue;
+  font-weight:bold;
+}
+.antiauxochrom {
+  color:red;
+  font-weight:bold;
+}
+.loeslichegruppe {
+  color:darkgrey;
+  font-weight:bold;
+}
+.zentriert {
+  text-align:center;
+}
+.nach_rechts {
+  text-align:right;
+}
+.nach_oben {
+  vertical-align:top;
+}
+.mittig {
+  vertical-align:middle;
+}
+#abb_spektrum {
+  width:500px;
+  height:50px;
+}
+#abb_strukturformel {
+  width:600px;
+  height:380px; /*original: 400px */
+  border-style:solid;
+  border-color:#bebebe;
+  border-width:1px;
+  background-color:white;
+}
+#b_anzeigen, #b_zuruecksetzen {
+  width:296px;
+}

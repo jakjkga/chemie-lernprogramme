@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+  <head>
+    <title>Zwischenmolekulare Kräfte</title>
+    <meta name="author" content="Joachim Jakob" />
+    <meta name="keywords" content="Zwischenmolekulare Kräfte, Wasserstoffbrückenbindungen, Wasserstoffbrücken, Van-der-Waals-Kräfte, Dipol-Dipol-Wechselwirkungen" />
+    <meta name="description" content="Lernprogramm für die Zuordnung verschiedener Moleküle zu den verschiedenen zwischenmolekularen Kräften." />
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="daten/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="daten/css/style.css" />
+    <script type="text/javascript" src="daten/js/textsammlung.js"></script>
+    <script type="text/javascript" src="daten/js/funktionen.js"></script>
+  </head>
+  <body onload="lade_seite();">
+    <table>
+      <tr>
+        <td>
+          <form id="SF" name="SF">
+            <label for="SF_auswahl">Wähle ein Molekül aus</label>
+            <select id="SF_auswahl" 
+                    onchange="hole_aktuellen_index('SF', 'SF_auswahl');"
+                    title="Molekülauswahl">
+              <option value="-">-</option>
+              <option value="HF">HF</option>
+              <option value="H₂O">H₂O</option>
+              <option value="NH₃">NH₃</option>
+              <option value="HCl">HCl</option>
+              <option value="HBr">HBr</option>
+              <option value="CH₃OH">CH₃OH</option>
+              <option value="CH₃CH₂OH">CH₃CH₂OH</option>
+              <option value="CH₃COOH">CH₃COOH</option>
+              <option value="H₂">H₂</option>
+              <option value="F₂">F₂</option>
+              <option value="Cl₂">Cl₂</option>
+              <option value="Br₂">Br₂</option>
+              <option value="I₂">I₂</option>
+              <option value="CH₄">CH₄</option>
+              <option value="CH₃CH₃">CH₃CH₃</option>
+              <option value="CCl₄">CCl₄</option>
+              <option value="CO₂">CO₂</option>
+              <option value="CH₂Cl₂">CH₂Cl₂</option>
+              <option value="CH₂O">CH₂O</option>
+            </select>
+            <input id="startknopf"
+                   type="button"
+                   value="Start"
+                   onclick="start();"
+                   title="Fragen oder Informationsanzeige starten"></input>
+            <label for="i_modus"
+                   title="Bei gesetztem Häkchen im Quizmodus müssen erst nacheinander die entscheidenden Fragen zur Zuordnung der entsprechenden Zwischenmolekularen Kraft beantwortet werden. Bei ausgeschaltetem Quizmodus werden die Informationen zum Molekül direkt angezeigt.">Quizmodus</label>
+            <input id="i_modus"
+                   name="modus"
+                   type="checkbox"
+                   checked="checked"
+                   onclick="setze_quizmodus();"
+                   / >
+            <a href="daten/media/uebersicht_bind_u_zwimol.pdf" 
+               class="linkbereich"
+               type="application/pdf"
+               target="_blank"
+               title="Übersichtsschema zur Hilfe">Hilfe</a>
+          </form>
+        </td>
+      </tr>
+    </table>
+    
+    <div>
+      <table id="datentabelle"
+              title="Wichtige Daten zum Molekül: Name, Zwischenmolekulare Kraft und Siedepunkt">
+        <tr>
+          <td class="nach_rechts">Name des Moleküls:</td><td><div id="name_des_molekuels">&nbsp;</div></td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">Zwischenmolekulare Kraft:</td><td><div id="zwischenmolekulare_kraft">&nbsp;</div></td>
+        </tr>
+        <tr>
+          <td class="nach_rechts">Siedepunkt:</td><td><div id="siedepunkt">&nbsp;</div></td>
+        </tr>
+      </table>
+    </div>
+    <div id="infotext"
+         title="Stichpunktartige Information"></div>
+    <div id="strukturformel"
+         title="Vereinfachte Strukturformeln"></div>
+  </body>
+</html>

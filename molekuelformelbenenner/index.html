@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Molekülformelbenenner</title>
+    <meta name="author" content="Joachim Jakob" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="daten/css/style.css" />
+    <script type="text/javascript" src="daten/js/textsammlung.js"></script>
+    <script type="text/javascript" src="daten/js/funktionen.js"></script>
+  </head>
+  <body onlaod="zurueck_setzen;">
+    <form id="form_verbindung" name="form_verbindung">
+      <table>
+        <tr>
+          <td>
+            Wähle eine Molekülformel aus:
+          <td>
+          <td>
+            <select id="element1_auswahl" 
+                    title="Elementsymbol des ersten Nichtmetalls"
+                    onchange="teste_auf_gleiches_element();">
+              <option value="" title="Noch keine Auswahl getroffen">&nbsp;</option>
+              <option value="Hydrogen" title="Hydrogen- (statt des deutschen Elementnamens „Wasserstoff“ ⇒ Ausnahme!)">H</option>
+              <option value="Fluor" title="Fluor-">F</option>
+              <option value="Chlor" title="Chlor-">Cl</option>
+              <option value="Brom" title="Brom-">Br</option>
+              <option value="Iod" title="Iod-">I</option>
+              <option value="Sauerstoff" title="Sauerstoff-">O</option>
+              <option value="Schwefel" title="Schwefel-">S</option>
+              <option value="Stickstoff" title="Stickstoff-">N</option>
+              <option value="Phosphor" title="Phosphor-">P</option>
+              <option value="Kohlenstoff" title="Kohlenstoff-">C</option>
+            </select>
+          </td>
+          <td>
+            <select id="index1_auswahl" 
+                    title="Index des ersten Nichtmetalls">
+              <option value="" title="Eins (Mono-)">&nbsp;₁</option>
+              <option value="Di" title="Zwei (Di-)">&nbsp;₂</option>
+              <option value="Tri" title="Drei (Tri-)">&nbsp;₃</option>
+              <option value="Tetra" title="Vier (Tetra-)">&nbsp;₄</option>
+              <option value="Penta" title="Fünf (Penta-)">&nbsp;₅</option>
+              <option value="Hexa" title="Sechs (Hexa-)">&nbsp;₆</option>
+              <option value="Hepta" title="Sieben (Hepta-)">&nbsp;₇</option>
+              <option value="Octa" title="Acht (Octa-)">&nbsp;₈</option>
+              <option value="Nona" title="Neun (Nona-)">&nbsp;₉</option>
+              <option value="Deca" title="Zehn (Deca-)">₁₀</option>
+            </select>
+          </td>
+          <td>
+            <select id="element2_auswahl" 
+                    title="Elementsymbol des zweiten Nichtmetalls"
+                    onchange="teste_auf_gleiches_element();">
+              <option value="" title="Noch keine Auswahl getroffen">&nbsp;</option>
+              <option value="hydrid" title="-hydrid">H</option>
+              <option value="fluorid" title="-fluorid">F</option>
+              <option value="chlorid" title="-chlorid">Cl</option>
+              <option value="bromid" title="-bromid">Br</option>
+              <option value="iodid" title="-iodid">I</option>
+              <option value="oxid" title="-oxid">O</option>
+              <option value="sulfid" title="-sulfid">S</option>
+              <option value="nitrid" title="-nitrid">N</option>
+              <option value="phosphid" title="-phosphid">P</option>
+            </select>
+          </td>
+          <td>
+            <select id="index2_auswahl" 
+                    onchange="hole_aktuellen_index('form_verbindung', 'index2_auswahl');"
+                    title="Index des zweiten Nichtmetalls">
+              <option value="mono" title="Eins (-mono-)">&nbsp;₁</option>
+              <option value="di" title="Zwei (-di-)">&nbsp;₂</option>
+              <option value="tri" title="Drei (-tri-)">&nbsp;₃</option>
+              <option value="tetra" title="Vier (-tetra-)">&nbsp;₄</option>
+              <option value="penta" title="Fünf (-penta-)">&nbsp;₅</option>
+              <option value="hexa" title="Sechs (-hexa-)">&nbsp;₆</option>
+              <option value="hepta" title="Sieben (-hepta-)">&nbsp;₇</option>
+              <option value="octa" title="Acht (-octa-)">&nbsp;₈</option>
+              <option value="nona" title="Neun (-nona-)">&nbsp;₉</option>
+              <option value="deca" title="Zehn (-deca-)">₁₀</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp;
+          </td>
+          <td colspan="4" class="zentrieren">
+            <input type="button" 
+                   value="Name ermitteln" 
+                   onclick="name_ermitteln();"
+                   title="Vorsicht: Der hier formal ermittelte Name muss nicht zwingend zu einer real existierenden (stabilen) Verbindung gehören!">
+          </td>
+        </tr>
+      </table>
+    </from>
+    <div id="namensfeld">&nbsp;</div>
+    <div><a href="http://de.wikipedia.org/wiki/Nomenklatur_%28Chemie%29#Hauptgruppenelemente"
+            title="Weitere Wurzeln zu Elementnamen"
+            target="_blank"><img src="daten/img/wp-favicon.png"></img></a></div>
+  </body>
+</html>
