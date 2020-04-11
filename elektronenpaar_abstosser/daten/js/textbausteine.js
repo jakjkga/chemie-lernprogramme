@@ -782,7 +782,7 @@ function hole_aktuellen_index(auswahlname, optionname) {
     if (linkende == 'Phosphoroxidtrichlorid') {
          linkende='Phosphoroxychlorid';
     }
-    document.getElementById('wp_link').href='http://de.wikipedia.org/wiki/'+linkende;
+    document.getElementById('wp_link').href='https://de.wikipedia.org/wiki/'+linkende;
     // Bilder setzen
     if (schluessel == '-') {
         NameDesMolekuels='start';
