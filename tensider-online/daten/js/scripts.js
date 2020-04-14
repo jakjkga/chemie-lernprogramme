@@ -11,5 +11,5 @@ var baseurl='daten/html/';
 function zeige_seite(wer) {
     var pfad=baseurl+wer+'.html';
     $('#anzeigerahmen').attr('src', pfad);
-    document.getElementById("IframeId").body.scrollLeft;
+    //document.getElementById("IframeId").body.scrollLeft;
 }
