@@ -4,6 +4,10 @@
 
 [chemie-lernprogramme.de](https://chemie-lernprogramme.de)
 
+## Kurzbeschreibung
+
+Die kostenlosen Open Source Chemie-Lernprogramme decken fast die gesamte Schulchemie ab. Sie können direkt im Webbrowser gestartet und in Lernplattformen eingebettet werden. Übungsaufgaben in Form herkömmlicher Arbeitsblätter mit Lösungen sowie zusätzliche online-Übungen ergänzen das Angebot.
+
 ## Lizenz
 
 ### Didaktisches Konzept, Programmidee, selbst erstellte Mediendateien und ggf. Übungsaufgaben
