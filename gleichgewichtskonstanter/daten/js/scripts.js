@@ -32,7 +32,7 @@ function erstelle_mwg() {
     if (v_koeff_a == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_a='\\,';
     }
-    var v_sf_a=$('#i_sf_a').attr('value'); //Summenformel
+    var v_sf_a=$('#i_sf_a').val(); //Summenformel
     var v_ph_a=$('#a_ph_a').val(); //Phase
     var v_typ_a=typen[v_ph_a]; //Konzentration oder Partialdruck
     if (v_ph_a == 'l' || v_ph_a == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -62,7 +62,7 @@ function erstelle_mwg() {
     if (v_koeff_b == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_b='\\,';
     }
-    var v_sf_b=$('#i_sf_b').attr('value'); //Summenformel
+    var v_sf_b=$('#i_sf_b').val(); //Summenformel
     var v_ph_b=$('#a_ph_b').val(); //Phase
     var v_typ_b=typen[v_ph_b]; //Konzentration oder Partialdruck
     if (v_ph_b == 'l' || v_ph_b == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -96,7 +96,7 @@ function erstelle_mwg() {
     if (v_koeff_c == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_c='\\,';
     }
-    var v_sf_c=$('#i_sf_c').attr('value'); //Summenformel
+    var v_sf_c=$('#i_sf_c').val(); //Summenformel
     var v_ph_c=$('#a_ph_c').val(); //Phase
     var v_typ_c=typen[v_ph_c]; //Konzentration oder Partialdruck
     if (v_ph_c == 'l' || v_ph_c == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -126,7 +126,7 @@ function erstelle_mwg() {
     if (v_koeff_d == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_d='\\,';
     }
-    var v_sf_d=$('#i_sf_d').attr('value'); //Summenformel
+    var v_sf_d=$('#i_sf_d').val(); //Summenformel
     var v_ph_d=$('#a_ph_d').val(); //Phase
     var v_typ_d=typen[v_ph_d]; //Konzentration oder Partialdruck
     if (v_ph_d == 'l' || v_ph_d == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -156,7 +156,7 @@ function erstelle_mwg() {
     if (v_koeff_e == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_e='\\,';
     }
-    var v_sf_e=$('#i_sf_e').attr('value'); //Summenformel
+    var v_sf_e=$('#i_sf_e').val(); //Summenformel
     var v_ph_e=$('#a_ph_e').val(); //Phase
     var v_typ_e=typen[v_ph_e]; //Konzentration oder Partialdruck
     if (v_ph_e == 'l' || v_ph_e == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -186,7 +186,7 @@ function erstelle_mwg() {
     if (v_koeff_f == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_f='\\,';
     }
-    var v_sf_f=$('#i_sf_f').attr('value'); //Summenformel
+    var v_sf_f=$('#i_sf_f').val(); //Summenformel
     var v_ph_f=$('#a_ph_f').val(); //Phase
     var v_typ_f=typen[v_ph_f]; //Konzentration oder Partialdruck
     if (v_ph_f == 'l' || v_ph_f == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -220,7 +220,7 @@ function erstelle_mwg() {
     if (v_koeff_g == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_g='\\,';
     }
-    var v_sf_g=$('#i_sf_g').attr('value'); //Summenformel
+    var v_sf_g=$('#i_sf_g').val(); //Summenformel
     var v_ph_g=$('#a_ph_g').val(); //Phase
     var v_typ_g=typen[v_ph_g]; //Konzentration oder Partialdruck
     if (v_ph_g == 'l' || v_ph_g == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -250,7 +250,7 @@ function erstelle_mwg() {
     if (v_koeff_h == '1') { //Koeffizient 1 nicht anzeigen
         v_koeff_h='\\,';
     }
-    var v_sf_h=$('#i_sf_h').attr('value'); //Summenformel
+    var v_sf_h=$('#i_sf_h').val(); //Summenformel
     var v_ph_h=$('#a_ph_h').val(); //Phase
     var v_typ_h=typen[v_ph_h]; //Konzentration oder Partialdruck
     if (v_ph_h == 'l' || v_ph_h == 's') { //Falls flüssig oder fest ⇒ weglassen!
@@ -525,7 +525,7 @@ function lade_seite() {
     }
     for (i=0; i<sf_alle.length; i++) {
         var s1='#'+sf_alle[i];
-        $(s1).attr('value', zuord1[i]);
+        $(s1).val(zuord1[i]);
     }
     $('#a_koeff_a').val('1');
     $('#a_koeff_b').val('1');
@@ -565,8 +565,8 @@ function passe_laenge_an(wer, wert) {
     var wer=wer;
     var zeichenkette=wert;
     var zeichenkette_kurz=ohne_leerzeichen(zeichenkette);
-    $('#'+wer).attr('value', zeichenkette_kurz);
-    var neue_laenge=String(zeichenkette_kurz.length); //evtl. +1?
+    $('#'+wer).val(zeichenkette_kurz);
+    var neue_laenge=String(zeichenkette_kurz.length+1); //evtl. +1?
     if (parseInt(zeichenkette_kurz.length) > 0) {
         $('#'+wer).attr('size', neue_laenge);
     }
@@ -574,7 +574,7 @@ function passe_laenge_an(wer, wert) {
 
 function ohne_leerzeichen(wert) {
     var wert=wert;
-    var neuer_wert=wert.replace(/\ /g , ''); //Leerzeichen durch nichts ersetzen
+    var neuer_wert=wert.replace(/^\s+/g , '').replace(/\s+$/g , ''); //begrenzende Leerzeichen durch nichts ersetzen, trim
     return neuer_wert;
 }
 
